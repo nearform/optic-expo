@@ -23,8 +23,7 @@ WebBrowser.maybeCompleteAuthSession()
 export default function Auth() {
   const [user, setUser] = useState()
 
-  // eslint-disable-next-line no-unused-vars
-  const [_, response, promptAsync] = Google.useIdTokenAuthRequest({
+  const [, response, promptAsync] = Google.useIdTokenAuthRequest({
     clientId:
       '230076165693-0mj3vb13158tnru89f1re89m9o94g8e7.apps.googleusercontent.com',
   })
