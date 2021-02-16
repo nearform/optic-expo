@@ -1,18 +1,29 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
-import theme from '../defaultTheme'
+import { useSecretsContext } from '../context/secrets'
+import routes from '../lib/routeDefinitions'
 
-import AppBar from './AppBar'
 import EmptyTokensText from './EmptyTokensText'
 import Actions from './Actions'
 
 export default function Home() {
+  const { navigate } = useNavigation()
+  const { secrets } = useSecretsContext()
+
   return (
     <View style={styles.container}>
-      <AppBar />
-      <EmptyTokensText />
-      <Actions />
+      {secrets.length === 0 && <EmptyTokensText />}
+      <Actions
+        onScanNewSecretScreen={() => navigate(routes.scan.name)}
+        onUploadNewSecretScreen={() => navigate(routes.upload.name)}
+        onTypeNewSecretScreen={() => navigate(routes.type.name)}
+      />
+      {secrets.length > 0 &&
+        secrets.map(secret => (
+          <Text key={secret._id}>{JSON.stringify(secret)}</Text>
+        ))}
     </View>
   )
 }
@@ -20,7 +31,6 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    paddingTop: theme.spacing(3),
     width: '100%',
   },
   actions: {
