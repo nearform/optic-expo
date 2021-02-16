@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Appbar, IconButton, Text, Subheading } from 'react-native-paper'
+import { Appbar, IconButton, Text, Subheading, Menu } from 'react-native-paper'
+import { useAuthenticationContext } from '../context/authentication'
 
 import theme from '../default-theme'
 
@@ -17,12 +18,28 @@ const A11Y_LABELS = {
   upload: 'Add new secret by uploading a QR Code',
   add: 'Add new secret by filling the details',
 }
+
 export default function Home() {
+  const [isMenuActive, setMenuActive] = React.useState(false)
+  const { handleLogout } = useAuthenticationContext()
   return (
     <View style={styles.container}>
       <Appbar style={styles.bottom}>
         <Appbar.Content title={<Text style={styles.title}>Optic</Text>} />
-        <Appbar.Action icon="account" onPress={console.log} />
+        <View>
+          <Menu
+            visible={isMenuActive}
+            onDismiss={() => setMenuActive(false)}
+            anchor={
+              <Appbar.Action
+                icon="account"
+                onPress={() => setMenuActive(true)}
+              />
+            }
+          >
+            <Menu.Item onPress={() => handleLogout()} title="Logout" />
+          </Menu>
+        </View>
       </Appbar>
       <View style={styles.description}>
         <Subheading style={styles.descriptionText}>
