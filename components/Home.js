@@ -34,6 +34,7 @@ export default function Home() {
               <Appbar.Action
                 icon="account"
                 onPress={() => setMenuActive(true)}
+                color="white"
               />
             }
           >
