@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper'
+import { Provider as PaperProvider } from 'react-native-paper'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, View } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
 import {
   AuthenticationProvider,
@@ -10,12 +10,7 @@ import {
 import Auth from './components/Auth'
 import Home from './components/Home'
 
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-  },
-}
+import theme from './default-theme'
 
 function Main() {
   const { user } = useAuthenticationContext()
