@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Appbar, IconButton, Text } from 'react-native-paper'
+import { Appbar, IconButton, Text, Subheading } from 'react-native-paper'
 
 import theme from '../default-theme'
 
@@ -25,10 +25,12 @@ export default function Home() {
         <Appbar.Action icon="account" onPress={console.log} />
       </Appbar>
       <View style={styles.description}>
-        <Text style={styles.descriptionText}>{UI_STRINGS.default.heading}</Text>
-        <Text style={styles.descriptionText}>
+        <Subheading style={styles.descriptionText}>
+          {UI_STRINGS.default.heading}
+        </Subheading>
+        <Subheading style={styles.descriptionText}>
           {UI_STRINGS.default.description}
-        </Text>
+        </Subheading>
       </View>
       <View style={styles.actions}>
         <IconButton
@@ -88,7 +90,6 @@ const styles = StyleSheet.create({
     paddingRight: theme.spacing.tiny,
   },
   descriptionText: {
-    fontSize: theme.text.small,
     marginBottom: theme.spacing.tiny,
   },
 })
