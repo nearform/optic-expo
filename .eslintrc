@@ -1,6 +1,8 @@
 {
   "extends": [
     "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "@react-native-community",
@@ -14,10 +16,16 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
-  "rules": {},
+  "rules": {
+    "import/order": ["error", { "newlines-between": "always" }]
+  },
   "settings": {
     "react": {
       "version": "detect"
-    }
+    },
+    // ESLint doesn't find React Native components
+    // Remove this setting when this issue is fixed.
+    // https://github.com/facebook/react-native/issues/28549
+    "import/ignore": ["react-native"]
   }
 }

@@ -1,43 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import * as WebBrowser from 'expo-web-browser'
-import * as Google from 'expo-auth-session/providers/google'
-import firebase from 'firebase'
-import { Button, Platform, StyleSheet, Text, View } from 'react-native'
+import { Platform, View, StyleSheet } from 'react-native'
+import { Button, Title, Subheading } from 'react-native-paper'
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyBFiuUulmuQ7Pv1VvxpUQB01AWCEQhIToA',
-  authDomain: 'npm-otp-f6bfc.firebaseapp.com',
-  databaseURL: 'https://npm-otp-f6bfc.firebaseio.com',
-  projectId: 'npm-otp-f6bfc',
-  storageBucket: 'npm-otp-f6bfc.appspot.com',
-  messagingSenderId: '230076165693',
-  appId: '1:230076165693:web:a04f9ad6f64be8ec248454',
+import { useAuthenticationContext } from '../context/authentication'
+import theme from '../defaultTheme'
+
+import Spacer from './Spacer'
+
+const UI_STRINGS = {
+  title: 'Optic',
+  subheading: 'Grant your favorite automated tools an OTP when they need it!',
+  button: 'Login',
 }
-
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig)
-}
-
-WebBrowser.maybeCompleteAuthSession()
 
 export default function Auth() {
-  const [user, setUser] = useState()
-
-  const [, response, promptAsync] = Google.useIdTokenAuthRequest({
-    clientId:
-      '230076165693-0mj3vb13158tnru89f1re89m9o94g8e7.apps.googleusercontent.com',
-  })
-
-  useEffect(() => {
-    if (response?.type === 'success') {
-      const { id_token } = response.params
-
-      const credential = firebase.auth.GoogleAuthProvider.credential(id_token)
-      firebase.auth().signInWithCredential(credential)
-    }
-  }, [response])
-
-  useEffect(() => firebase.auth().onAuthStateChanged(setUser), [])
+  const { handleLogin } = useAuthenticationContext()
 
   useEffect(() => {
     if (Platform.OS === 'web') {
@@ -52,21 +30,34 @@ export default function Auth() {
   }, [])
 
   return (
-    <View>
-      {user && <Text>Hi, {user.displayName}!</Text>}
-      <View style={styles.buttons}>
-        {user ? (
-          <Button title="Logout" onPress={() => firebase.auth().signOut()} />
-        ) : (
-          <Button title="Login" onPress={() => promptAsync()} />
-        )}
+    <View style={styles.container}>
+      <Title>{UI_STRINGS.title}</Title>
+      <Spacer size={2} />
+      <Subheading>{UI_STRINGS.subheading}</Subheading>
+      <Spacer size={2} />
+      <View>
+        <Button
+          style={styles.button}
+          accessibilityLabel="login"
+          mode="contained"
+          icon="google"
+          onPress={handleLogin}
+        >
+          {UI_STRINGS.button}
+        </Button>
       </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  buttons: {
-    marginTop: 8,
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button: {
+    textAlign: 'center',
+    alignItems: 'center',
+    padding: theme.spacing(),
   },
 })
