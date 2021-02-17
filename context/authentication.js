@@ -51,15 +51,14 @@ export function AuthenticationProvider({ children }) {
 
   useEffect(() => firebase.auth().onAuthStateChanged(setUser), [])
 
-  const handleLogin = useCallback(() => promptAsync(), [promptAsync])
   const handleLogout = useCallback(() => firebase.auth().signOut(), [])
   const authValue = useMemo(() => {
     return {
       user,
-      handleLogin: handleLogin,
+      handleLogin: () => promptAsync(),
       handleLogout: handleLogout,
     }
-  }, [user, handleLogin, handleLogout])
+  }, [user, promptAsync, handleLogout])
 
   return (
     <AuthenticationContext.Provider value={authValue}>
