@@ -19,7 +19,7 @@ export default function Actions() {
         mode="contained"
         style={styles.button}
         size={40}
-        color={theme.colors.white}
+        color={theme.colors.surface}
       />
       <IconButton
         icon="upload"
@@ -27,7 +27,7 @@ export default function Actions() {
         mode="contained"
         style={styles.button}
         size={40}
-        color={theme.colors.white}
+        color={theme.colors.surface}
       />
       <IconButton
         icon="import"
@@ -35,7 +35,7 @@ export default function Actions() {
         mode="contained"
         style={styles.button}
         size={40}
-        color={theme.colors.white}
+        color={theme.colors.surface}
       />
     </View>
   )
