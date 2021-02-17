@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import * as WebBrowser from 'expo-web-browser'
-
 import { Platform, View, StyleSheet } from 'react-native'
 import { Button, Title, Subheading } from 'react-native-paper'
-import { useAuthenticationContext } from '../context/authentication'
 
+import { useAuthenticationContext } from '../context/authentication'
 import theme from '../defaultTheme'
+
 import Spacer from './Spacer'
 
 const UI_STRINGS = {

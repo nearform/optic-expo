@@ -1,11 +1,11 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
+import theme from '../defaultTheme'
+
 import AppBar from './AppBar'
 import EmptyTokensText from './EmptyTokensText'
 import Actions from './Actions'
-
-import theme from '../defaultTheme'
 
 export default function Home() {
   return (

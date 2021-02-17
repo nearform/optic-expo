@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Appbar, Text, Menu } from 'react-native-paper'
+
 import { useAuthenticationContext } from '../context/authentication'
 import theme from '../defaultTheme'
 
