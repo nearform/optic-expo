@@ -28,7 +28,11 @@ WebBrowser.maybeCompleteAuthSession()
 
 const AuthenticationContext = createContext()
 
-function useFirebaseAuth() {
+export function useAuthenticationContext() {
+  return useContext(AuthenticationContext)
+}
+
+export function AuthenticationProvider({ children }) {
   const [user, setUser] = useState()
 
   const [, response, promptAsync] = Google.useIdTokenAuthRequest({
@@ -47,27 +51,15 @@ function useFirebaseAuth() {
 
   useEffect(() => firebase.auth().onAuthStateChanged(setUser), [])
 
-  const firebaseAuth = useMemo(() => {
-    return { user, promptAsync }
-  }, [user, promptAsync])
-
-  return firebaseAuth
-}
-
-export function useAuthenticationContext() {
-  return useContext(AuthenticationContext)
-}
-
-export function AuthenticationProvider({ children }) {
-  const { user, promptAsync } = useFirebaseAuth()
+  const handleLogin = useCallback(() => promptAsync(), [promptAsync])
   const handleLogout = useCallback(() => firebase.auth().signOut(), [])
   const authValue = useMemo(() => {
     return {
       user,
-      handleLogin: promptAsync,
+      handleLogin: handleLogin,
       handleLogout: handleLogout,
     }
-  }, [user, promptAsync, handleLogout])
+  }, [user, handleLogin, handleLogout])
 
   return (
     <AuthenticationContext.Provider value={authValue}>
