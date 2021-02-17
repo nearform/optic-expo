@@ -5,7 +5,8 @@ import { Platform, View, StyleSheet } from 'react-native'
 import { Button, Title, Subheading } from 'react-native-paper'
 import { useAuthenticationContext } from '../context/authentication'
 
-import theme from '../default-theme'
+import theme from '../defaultTheme'
+import Spacer from './Spacer'
 
 const UI_STRINGS = {
   title: 'Optic',
@@ -30,15 +31,17 @@ export default function Auth() {
 
   return (
     <View style={styles.container}>
-      <Title style={styles.title}>{UI_STRINGS.title}</Title>
-      <Subheading style={styles.subheading}>{UI_STRINGS.subheading}</Subheading>
+      <Title>{UI_STRINGS.title}</Title>
+      <Spacer size={2} />
+      <Subheading>{UI_STRINGS.subheading}</Subheading>
+      <Spacer size={2} />
       <View>
         <Button
           style={styles.button}
           accessibilityLabel="login"
           mode="contained"
           icon="google"
-          onPress={() => handleLogin()}
+          onPress={handleLogin}
         >
           {UI_STRINGS.button}
         </Button>
@@ -51,18 +54,10 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    display: 'flex',
   },
   button: {
     textAlign: 'center',
     alignItems: 'center',
-    padding: 8,
-  },
-  title: {
-    fontSize: theme.text.small,
-    marginBottom: theme.spacing.tiny,
-  },
-  subheading: {
-    marginBottom: theme.spacing.medium,
+    padding: theme.spacing(),
   },
 })

@@ -10,7 +10,7 @@ import {
 import Auth from './components/Auth'
 import Home from './components/Home'
 
-import theme from './default-theme'
+import theme from './defaultTheme'
 
 function Main() {
   const { user } = useAuthenticationContext()

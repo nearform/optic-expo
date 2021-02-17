@@ -1,4 +1,11 @@
-import * as React from 'react'
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  useContext,
+} from 'react'
 import * as Google from 'expo-auth-session/providers/google'
 import firebase from 'firebase'
 import * as WebBrowser from 'expo-web-browser'
@@ -19,17 +26,17 @@ if (!firebase.apps.length) {
 
 WebBrowser.maybeCompleteAuthSession()
 
-const AuthenticationContext = React.createContext()
+const AuthenticationContext = createContext()
 
 function useFirebaseAuth() {
-  const [user, setUser] = React.useState()
+  const [user, setUser] = useState()
 
   const [, response, promptAsync] = Google.useIdTokenAuthRequest({
     clientId:
       '230076165693-0mj3vb13158tnru89f1re89m9o94g8e7.apps.googleusercontent.com',
   })
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (response?.type === 'success') {
       const { id_token } = response.params
 
@@ -38,23 +45,29 @@ function useFirebaseAuth() {
     }
   }, [response])
 
-  React.useEffect(() => firebase.auth().onAuthStateChanged(setUser), [])
+  useEffect(() => firebase.auth().onAuthStateChanged(setUser), [])
 
-  return { user, promptAsync }
+  const firebaseAuth = useMemo(() => {
+    return { user, promptAsync }
+  }, [user, promptAsync])
+
+  return firebaseAuth
 }
 
 export function useAuthenticationContext() {
-  return React.useContext(AuthenticationContext)
+  return useContext(AuthenticationContext)
 }
 
 export function AuthenticationProvider({ children }) {
   const { user, promptAsync } = useFirebaseAuth()
+  const handleLogout = useCallback(() => firebase.auth().signOut(), [])
+
   return (
     <AuthenticationContext.Provider
       value={{
         user,
         handleLogin: promptAsync,
-        handleLogout: () => firebase.auth().signOut(),
+        handleLogout: handleLogout,
       }}
     >
       {children}
