@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import * as WebBrowser from 'expo-web-browser'
-import { Platform, View, StyleSheet } from 'react-native'
+import { Platform, View, StyleSheet, Image } from 'react-native'
 import { Button } from 'react-native-paper'
 
 import theme from '../lib/defaultTheme'
@@ -39,7 +39,12 @@ export default function Auth({ handleLogin }) {
         style={styles.button}
         accessibilityLabel="login"
         mode="contained"
-        icon="google"
+        icon={({ size }) => (
+          <Image
+            source={require('../assets/google.png')}
+            style={{ width: size, height: size }}
+          />
+        )}
         onPress={handleLogin}
         color={theme.colors.surface}
       >
