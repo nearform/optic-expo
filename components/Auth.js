@@ -3,20 +3,17 @@ import * as WebBrowser from 'expo-web-browser'
 import { Platform, View, StyleSheet } from 'react-native'
 import { Button, Title, Subheading } from 'react-native-paper'
 
-import { useAuthenticationContext } from '../context/authentication'
-import theme from '../defaultTheme'
+import theme from '../lib/defaultTheme'
 
 import Spacer from './Spacer'
 
 const UI_STRINGS = {
-  title: 'Optic',
+  heading: 'Optic',
   subheading: 'Grant your favorite automated tools an OTP when they need it!',
   button: 'Login',
 }
 
-export default function Auth() {
-  const { handleLogin } = useAuthenticationContext()
-
+export default function Auth({ handleLogin }) {
   useEffect(() => {
     if (Platform.OS === 'web') {
       return
@@ -31,9 +28,9 @@ export default function Auth() {
 
   return (
     <View style={styles.container}>
-      <Title>{UI_STRINGS.title}</Title>
       <Spacer size={2} />
-      <Subheading>{UI_STRINGS.subheading}</Subheading>
+      <Title style={styles.title}>{UI_STRINGS.heading}</Title>
+      <Subheading style={styles.subheading}>{UI_STRINGS.subheading}</Subheading>
       <Spacer size={2} />
       <View>
         <Button
@@ -52,8 +49,18 @@ export default function Auth() {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: theme.colors.primary,
+    flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  title: {
+    textAlign: 'center',
+    color: theme.colors.surface,
+  },
+  subheading: {
+    textAlign: 'center',
+    color: theme.colors.surface,
   },
   button: {
     textAlign: 'center',

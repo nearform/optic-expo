@@ -1,16 +1,21 @@
-import * as React from 'react'
+import React from 'react'
+import { StatusBar } from 'expo-status-bar'
 import { Provider as PaperProvider } from 'react-native-paper'
 
 import { AuthenticationProvider } from './context/authentication'
-import Main from './Main'
-import theme from './defaultTheme'
+import { SecretsProvider } from './context/secrets'
+import Main from './components/Main'
+import theme from './lib/defaultTheme'
 
 export default function App() {
   return (
     <AuthenticationProvider>
-      <PaperProvider theme={theme}>
-        <Main />
-      </PaperProvider>
+      <SecretsProvider>
+        <PaperProvider theme={theme}>
+          <Main />
+          <StatusBar style="auto" />
+        </PaperProvider>
+      </SecretsProvider>
     </AuthenticationProvider>
   )
 }

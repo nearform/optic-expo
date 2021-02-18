@@ -3,10 +3,12 @@ import firebase from 'firebase'
 import * as Google from 'expo-auth-session/providers/google'
 import { fireEvent } from '@testing-library/react-native'
 
-import Main from '../Main'
+import Main from '../components/Main'
 
 import { renderWithTheme } from './utils'
 
+// This is mocked to silence the warning: Animated: `useNativeDriver` is not supported
+jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper')
 jest.mock('expo-auth-session/providers/google')
 jest.mock('firebase')
 
@@ -75,6 +77,6 @@ describe('Main', () => {
     )
     getByA11yLabel('Add new secret by scanning a QR Code')
     getByA11yLabel('Add new secret by uploading a QR Code')
-    getByA11yLabel('Add new secret by filling the details')
+    getByA11yLabel('Add new secret by typing the details')
   })
 })

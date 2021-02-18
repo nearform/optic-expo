@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import theme from '../defaultTheme'
+import theme from '../lib/defaultTheme'
 
 export default function Spacer({
   horizontal,
