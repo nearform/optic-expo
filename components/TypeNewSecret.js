@@ -16,7 +16,7 @@ export default function TypeNewSecret() {
   const [account, setAccount] = useState(user.displayName)
   const { navigate } = useNavigation()
 
-  const handleOnPress = async () => {
+  const handleAddSecretButtonPress = async () => {
     await add({ uid: user.uid, secret, account, issuer })
     navigate(routes.home.name)
   }
@@ -49,7 +49,7 @@ export default function TypeNewSecret() {
           style={styles.formButton}
           icon="plus"
           mode="contained"
-          onPress={handleOnPress}
+          onPress={handleAddSecretButtonPress}
         >
           {UI_STRINGS.addSecretButtonLabel}
         </Button>
