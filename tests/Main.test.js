@@ -71,12 +71,13 @@ describe('Main', () => {
       ui: <Main />,
     })
 
-    getByText(`You don't have a secret set up yet.`)
-    getByText(
-      'Add one by scanning or uploading a QR code, or even enter the details manually.'
-    )
-    getByA11yLabel('Add new secret by scanning a QR Code')
-    getByA11yLabel('Add new secret by uploading a QR Code')
-    getByA11yLabel('Add new secret by typing the details')
+    getByText(`No Secrets`)
+    getByText('Add a new secret and it will appear here.')
+    const showActionsButton = getByA11yLabel('show-actions')
+    fireEvent.press(showActionsButton)
+
+    getByA11yLabel('Scan QR Code')
+    getByA11yLabel('Upload')
+    getByA11yLabel('Add details manually')
   })
 })

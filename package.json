@@ -8,7 +8,8 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@expo-google-fonts/didact-gothic": "^0.1.0",
