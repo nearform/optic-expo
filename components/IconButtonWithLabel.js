@@ -10,13 +10,7 @@ export default function IconButtonWithLabel({ onPress, label, icon }) {
   return (
     <View style={styles.container}>
       <View style={styles.label}>
-        <Caption
-          style={{
-            color: theme.colors.surface,
-          }}
-        >
-          {label}
-        </Caption>
+        <Caption color={theme.colors.surface}>{label}</Caption>
       </View>
 
       <IconButton
