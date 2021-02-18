@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Subheading } from 'react-native-paper'
 
-import theme from '../defaultTheme'
+import theme from '../lib/defaultTheme'
 
 import Spacer from './Spacer'
 
