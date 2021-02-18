@@ -4,10 +4,7 @@ import { StyleSheet } from 'react-native'
 
 export function Headline({ children, color, style, ...props }) {
   return (
-    <Text
-      style={[styles.headline, color && { color }, color && { color }, style]}
-      {...props}
-    >
+    <Text style={[styles.headline, color && { color }, style]} {...props}>
       {children}
     </Text>
   )
@@ -15,10 +12,7 @@ export function Headline({ children, color, style, ...props }) {
 
 export function BodyText({ children, color, style, ...props }) {
   return (
-    <Text
-      style={[styles.bodyText, color && { color }, color && { color }, style]}
-      {...props}
-    >
+    <Text style={[styles.bodyText, color && { color }, style]} {...props}>
       {children}
     </Text>
   )
