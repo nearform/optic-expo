@@ -4,6 +4,7 @@ import React, {
   useMemo,
   useContext,
   useCallback,
+  useEffect,
 } from 'react'
 
 import { upsert, find } from '../lib/secretsManager'
@@ -16,6 +17,12 @@ export function useSecretsContext() {
 
 export function SecretsProvider({ children }) {
   const [secrets, setSecrets] = useState([])
+
+  useEffect(() => {
+    ;(async () => {
+      setSecrets(await find())
+    })()
+  }, [])
 
   const add = useCallback(async secret => {
     await upsert(secret)
