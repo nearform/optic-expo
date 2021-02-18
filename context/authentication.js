@@ -61,9 +61,11 @@ export function AuthenticationProvider({ children }) {
     }
   }, [user, handleLogout])
 
+  const handleLogin = useCallback(() => promptAsync(), [promptAsync])
+
   return (
     <AuthenticationContext.Provider value={authValue}>
-      {user ? children : <Auth handleLogin={promptAsync} />}
+      {user ? children : <Auth handleLogin={handleLogin} />}
     </AuthenticationContext.Provider>
   )
 }
