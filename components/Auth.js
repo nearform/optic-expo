@@ -30,11 +30,13 @@ export default function Auth({ handleLogin }) {
 
   return (
     <View style={styles.container}>
-      <Spacer size={12} />
-      <Headline color={theme.colors.surface}>{UI_STRINGS.heading}</Headline>
-      <Spacer size={4} />
-      <BodyText style={styles.subheading}>{UI_STRINGS.subheading}</BodyText>
-      <Spacer size={12} />
+      <View>
+        <Headline style={styles.text} color={theme.colors.surface}>
+          {UI_STRINGS.heading}
+        </Headline>
+        <Spacer size={4} />
+        <BodyText style={styles.text}>{UI_STRINGS.subheading}</BodyText>
+      </View>
       <Button
         style={styles.button}
         accessibilityLabel="login"
@@ -50,7 +52,6 @@ export default function Auth({ handleLogin }) {
       >
         {UI_STRINGS.button}
       </Button>
-      <Spacer size={18} />
       <Logo />
     </View>
   )
@@ -61,12 +62,13 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
     flexGrow: 1,
     alignItems: 'center',
+    justifyContent: 'space-around',
   },
   title: {
     textAlign: 'center',
     color: theme.colors.surface,
   },
-  subheading: {
+  text: {
     textAlign: 'center',
     color: theme.colors.surface,
     paddingHorizontal: theme.spacing(7),
