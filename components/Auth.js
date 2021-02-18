@@ -10,10 +10,29 @@ import Spacer from './Spacer'
 import Logo from './Logo'
 
 const UI_STRINGS = {
-  heading: 'Optic',
+  headline: 'Optic',
   subheading: 'Grant your favorite automated tools an OTP when they need it!',
   button: 'Sign in with Google',
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: theme.colors.primary,
+    flexGrow: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  text: {
+    textAlign: 'center',
+    color: theme.colors.surface,
+    paddingHorizontal: theme.spacing(7),
+  },
+  button: {
+    textAlign: 'center',
+    alignItems: 'center',
+    padding: theme.spacing(),
+  },
+})
 
 export default function Auth({ handleLogin }) {
   useEffect(() => {
@@ -32,7 +51,7 @@ export default function Auth({ handleLogin }) {
     <View style={styles.container}>
       <View>
         <Headline style={styles.text} color={theme.colors.surface}>
-          {UI_STRINGS.heading}
+          {UI_STRINGS.headline}
         </Headline>
         <Spacer size={4} />
         <BodyText style={styles.text}>{UI_STRINGS.subheading}</BodyText>
@@ -56,26 +75,3 @@ export default function Auth({ handleLogin }) {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: theme.colors.primary,
-    flexGrow: 1,
-    alignItems: 'center',
-    justifyContent: 'space-around',
-  },
-  title: {
-    textAlign: 'center',
-    color: theme.colors.surface,
-  },
-  text: {
-    textAlign: 'center',
-    color: theme.colors.surface,
-    paddingHorizontal: theme.spacing(7),
-  },
-  button: {
-    textAlign: 'center',
-    alignItems: 'center',
-    padding: theme.spacing(),
-  },
-})

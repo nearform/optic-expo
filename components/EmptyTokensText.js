@@ -12,6 +12,13 @@ const UI_STRINGS = {
     'Add one by scanning or uploading a QR code, or even enter the details manually.',
 }
 
+const styles = StyleSheet.create({
+  description: {
+    paddingVertical: theme.spacing(4),
+    paddingHorizontal: theme.spacing(3),
+  },
+})
+
 export default function EmptyTokensText() {
   return (
     <View style={styles.description}>
@@ -22,10 +29,3 @@ export default function EmptyTokensText() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  description: {
-    paddingVertical: theme.spacing(4),
-    paddingHorizontal: theme.spacing(3),
-  },
-})

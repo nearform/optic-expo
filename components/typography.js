@@ -2,6 +2,20 @@ import React from 'react'
 import { Text } from 'react-native-paper'
 import { StyleSheet } from 'react-native'
 
+const styles = StyleSheet.create({
+  headline: {
+    fontFamily: 'Poppins_700Bold',
+    fontWeight: '700',
+    fontSize: 60,
+  },
+  bodyText: {
+    fontFamily: 'DidactGothic_400Regular',
+    fontWeight: '400',
+    fontSize: 16,
+    lineHeight: 24,
+  },
+})
+
 export function Headline({ children, color, style, ...props }) {
   return (
     <Text style={[styles.headline, color && { color }, style]} {...props}>
@@ -17,17 +31,3 @@ export function BodyText({ children, color, style, ...props }) {
     </Text>
   )
 }
-
-const styles = StyleSheet.create({
-  headline: {
-    fontFamily: 'Poppins_700Bold',
-    fontWeight: '700',
-    fontSize: 60,
-  },
-  bodyText: {
-    fontFamily: 'DidactGothic_400Regular',
-    fontWeight: '400',
-    fontSize: 16,
-    lineHeight: 24,
-  },
-})
