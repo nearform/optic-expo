@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react'
 import * as WebBrowser from 'expo-web-browser'
 import { Platform, View, StyleSheet } from 'react-native'
-import { Button, Title, Subheading } from 'react-native-paper'
+import { Button } from 'react-native-paper'
 
 import theme from '../lib/defaultTheme'
 
+import { Headline, BodyText } from './typography'
 import Spacer from './Spacer'
+import Logo from './Logo'
 
 const UI_STRINGS = {
   heading: 'Optic',
   subheading: 'Grant your favorite automated tools an OTP when they need it!',
-  button: 'Login',
+  button: 'Sign in with Google',
 }
 
 export default function Auth({ handleLogin }) {
@@ -28,21 +30,23 @@ export default function Auth({ handleLogin }) {
 
   return (
     <View style={styles.container}>
-      <Spacer size={2} />
-      <Title style={styles.title}>{UI_STRINGS.heading}</Title>
-      <Subheading style={styles.subheading}>{UI_STRINGS.subheading}</Subheading>
-      <Spacer size={2} />
-      <View>
-        <Button
-          style={styles.button}
-          accessibilityLabel="login"
-          mode="contained"
-          icon="google"
-          onPress={handleLogin}
-        >
-          {UI_STRINGS.button}
-        </Button>
-      </View>
+      <Spacer size={12} />
+      <Headline color={theme.colors.surface}>{UI_STRINGS.heading}</Headline>
+      <Spacer size={4} />
+      <BodyText style={styles.subheading}>{UI_STRINGS.subheading}</BodyText>
+      <Spacer size={12} />
+      <Button
+        style={styles.button}
+        accessibilityLabel="login"
+        mode="contained"
+        icon="google"
+        onPress={handleLogin}
+        color={theme.colors.surface}
+      >
+        {UI_STRINGS.button}
+      </Button>
+      <Spacer size={18} />
+      <Logo />
     </View>
   )
 }
@@ -52,7 +56,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
     flexGrow: 1,
     alignItems: 'center',
-    justifyContent: 'center',
   },
   title: {
     textAlign: 'center',
@@ -61,6 +64,7 @@ const styles = StyleSheet.create({
   subheading: {
     textAlign: 'center',
     color: theme.colors.surface,
+    paddingHorizontal: theme.spacing(7),
   },
   button: {
     textAlign: 'center',
