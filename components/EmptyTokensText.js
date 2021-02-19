@@ -23,9 +23,11 @@ const styles = StyleSheet.create({
 export default function EmptyTokensText() {
   return (
     <View style={styles.description}>
-      <Headline level="5">{UI_STRINGS.heading}</Headline>
+      <Headline level="5" alpha={0.6}>
+        {UI_STRINGS.heading}
+      </Headline>
       <Spacer size={2} />
-      <BodyText>{UI_STRINGS.description}</BodyText>
+      <BodyText alpha={0.6}>{UI_STRINGS.description}</BodyText>
       <Spacer size={2} />
     </View>
   )
