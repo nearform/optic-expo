@@ -1,21 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { IconButton } from 'react-native-paper'
 
 import theme from '../lib/defaultTheme'
 
+import IconButtonWithLabel from './IconButtonWithLabel'
+
 const A11Y_LABELS = {
-  scan: 'Add new secret by scanning a QR Code',
-  upload: 'Add new secret by uploading a QR Code',
-  type: 'Add new secret by typing the details',
+  scan: 'Scan QR Code',
+  upload: 'Upload',
+  type: 'Add details manually',
 }
 
 const styles = StyleSheet.create({
-  actions: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+  container: {
+    alignItems: 'flex-end',
+    marginHorizontal: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
-  button: {
+  actions: {
+    alignItems: 'flex-end',
+    paddingRight: theme.spacing(1),
+  },
+  primaryButton: {
     borderRadius: 100,
     backgroundColor: theme.colors.primary,
   },
@@ -26,34 +33,36 @@ export default function Actions({
   onUploadNewSecretScreen,
   onTypeNewSecretScreen,
 }) {
+  const [actionsVisible, setActionsVisible] = useState(false)
   return (
-    <View style={styles.actions}>
+    <View style={styles.container}>
+      {actionsVisible && (
+        <View style={styles.actions}>
+          <IconButtonWithLabel
+            label={A11Y_LABELS.scan}
+            icon="qrcode"
+            onPress={onScanNewSecretScreen}
+          />
+          <IconButtonWithLabel
+            label={A11Y_LABELS.upload}
+            onPress={onUploadNewSecretScreen}
+            icon="upload"
+          />
+          <IconButtonWithLabel
+            label={A11Y_LABELS.type}
+            onPress={onTypeNewSecretScreen}
+            icon="import"
+          />
+        </View>
+      )}
       <IconButton
-        icon="qrcode"
-        accessibilityLabel={A11Y_LABELS.scan}
-        mode="contained"
-        style={styles.button}
+        icon="plus"
+        accessibilityLabel="show-actions"
+        style={styles.primaryButton}
         size={40}
         color={theme.colors.surface}
-        onPress={onScanNewSecretScreen}
-      />
-      <IconButton
-        icon="upload"
-        accessibilityLabel={A11Y_LABELS.upload}
         mode="contained"
-        style={styles.button}
-        size={40}
-        color={theme.colors.surface}
-        onPress={onUploadNewSecretScreen}
-      />
-      <IconButton
-        icon="import"
-        accessibilityLabel={A11Y_LABELS.type}
-        mode="contained"
-        style={styles.button}
-        size={40}
-        color={theme.colors.surface}
-        onPress={onTypeNewSecretScreen}
+        onPress={() => setActionsVisible(previousState => !previousState)}
       />
     </View>
   )
