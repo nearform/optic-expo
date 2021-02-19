@@ -8,6 +8,13 @@ import routes from '../lib/routeDefinitions'
 import EmptyTokensText from './EmptyTokensText'
 import Actions from './Actions'
 
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    width: '100%',
+  },
+})
+
 export default function Home() {
   const { navigate } = useNavigation()
   const { secrets } = useSecretsContext()
@@ -27,14 +34,3 @@ export default function Home() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    width: '100%',
-  },
-  actions: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-})

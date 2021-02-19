@@ -10,6 +10,17 @@ const A11Y_LABELS = {
   type: 'Add new secret by typing the details',
 }
 
+const styles = StyleSheet.create({
+  actions: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  button: {
+    borderRadius: 100,
+    backgroundColor: theme.colors.primary,
+  },
+})
+
 export default function Actions({
   onScanNewSecretScreen,
   onUploadNewSecretScreen,
@@ -47,14 +58,3 @@ export default function Actions({
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  actions: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  button: {
-    borderRadius: 100,
-    backgroundColor: theme.colors.primary,
-  },
-})

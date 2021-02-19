@@ -8,6 +8,31 @@ import routes from '../lib/routeDefinitions'
 import { useAuthenticationContext } from '../context/authentication'
 import { useSecretsContext } from '../context/secrets'
 
+const UI_STRINGS = {
+  issuerTextInputLabel: 'Issuer',
+  secretTextInputLabel: 'Secret',
+  accountTextInput: 'Account',
+  addSecretButtonLabel: 'Add Secret',
+}
+
+const styles = StyleSheet.create({
+  screen: {
+    width: '100%',
+  },
+  appBarTitle: {
+    color: theme.colors.surface,
+  },
+  form: {
+    padding: theme.spacing(0.5),
+  },
+  formTextInput: {
+    marginTop: theme.spacing(0.5),
+  },
+  formButton: {
+    marginTop: theme.spacing(1.5),
+  },
+})
+
 export default function TypeNewSecret() {
   const { user } = useAuthenticationContext()
   const { add } = useSecretsContext()
@@ -16,7 +41,7 @@ export default function TypeNewSecret() {
   const [account, setAccount] = useState(user.displayName)
   const { navigate } = useNavigation()
 
-  const handleOnPress = async () => {
+  const handleAddSecretButtonPress = async () => {
     await add({ uid: user.uid, secret, account, issuer })
     navigate(routes.home.name)
   }
@@ -49,7 +74,7 @@ export default function TypeNewSecret() {
           style={styles.formButton}
           icon="plus"
           mode="contained"
-          onPress={handleOnPress}
+          onPress={handleAddSecretButtonPress}
         >
           {UI_STRINGS.addSecretButtonLabel}
         </Button>
@@ -57,28 +82,3 @@ export default function TypeNewSecret() {
     </View>
   )
 }
-
-const UI_STRINGS = {
-  issuerTextInputLabel: 'Issuer',
-  secretTextInputLabel: 'Secret',
-  accountTextInput: 'Account',
-  addSecretButtonLabel: 'Add Secret',
-}
-
-const styles = StyleSheet.create({
-  screen: {
-    width: '100%',
-  },
-  appBarTitle: {
-    color: theme.colors.surface,
-  },
-  form: {
-    padding: theme.spacing(0.5),
-  },
-  formTextInput: {
-    marginTop: theme.spacing(0.5),
-  },
-  formButton: {
-    marginTop: theme.spacing(1.5),
-  },
-})
