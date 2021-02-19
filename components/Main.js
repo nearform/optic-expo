@@ -8,6 +8,7 @@ import routes from '../lib/routeDefinitions'
 
 import Home from './Home'
 import TypeNewSecret from './TypeNewSecret'
+import ScanNewSecret from './ScanNewSecret'
 import HomeHeaderRight from './HomeHeaderRight'
 import DefaultHeaderLeft from './DefaultHeaderLeft'
 
@@ -56,7 +57,7 @@ export default function Main() {
         />
         <Stack.Screen
           name={routes.scan.name}
-          component={() => <Text>{routes.scan.name} placeholder</Text>}
+          component={ScanNewSecret}
           options={{
             title: UI_STRINGS.routes.scan.title,
             headerLeft: DefaultHeaderLeft,

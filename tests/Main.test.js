@@ -1,7 +1,9 @@
 import React from 'react'
+import 'react-native-gesture-handler/jestSetup'
 import firebase from 'firebase'
 import * as Google from 'expo-auth-session/providers/google'
-import { fireEvent } from '@testing-library/react-native'
+import { act, fireEvent } from '@testing-library/react-native'
+import { BarCodeScanner } from 'expo-barcode-scanner'
 
 import Main from '../components/Main'
 
@@ -11,6 +13,15 @@ import { renderWithTheme } from './utils'
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper')
 jest.mock('expo-auth-session/providers/google')
 jest.mock('firebase')
+jest.mock('react-native-reanimated', () => {
+  const Reanimated = require('react-native-reanimated/mock')
+  // The mock for `call` immediately calls the callback which is incorrect
+  // So we override it with a no-op
+  Reanimated.default.call = () => {}
+
+  return Reanimated
+})
+jest.mock('expo-barcode-scanner')
 
 describe('Main', () => {
   let request
@@ -79,5 +90,39 @@ describe('Main', () => {
     getByA11yLabel('Scan QR Code')
     getByA11yLabel('Upload')
     getByA11yLabel('Add details manually')
+  })
+
+  it('should allow an authenticated user to scan a QR code', async () => {
+    mockUseAuthRequest({
+      type: 'success',
+      params: {
+        id_token: 'token',
+      },
+    })
+
+    firebase.auth().onAuthStateChanged = jest.fn(callback =>
+      callback({ name: 'user' })
+    )
+
+    const { queryByText, getByA11yLabel } = renderWithTheme({
+      ui: <Main />,
+    })
+
+    expect(queryByText('Your Tokens')).not.toBeNull()
+
+    const showActionsButton = getByA11yLabel('show-actions')
+
+    fireEvent.press(showActionsButton)
+
+    const scanCodeButton = getByA11yLabel('Scan QR Code')
+
+    fireEvent.press(scanCodeButton)
+    expect(queryByText('Requesting for camera permission')).not.toBeNull()
+
+    act(() => {
+      BarCodeScanner.requestPermissionsAsync = jest
+        .fn()
+        .mockResolvedValue('granted')
+    })
   })
 })
