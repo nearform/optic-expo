@@ -1,5 +1,5 @@
 import React from 'react'
-import color from 'color'
+import colorUtility from 'color'
 import { Text } from 'react-native-paper'
 import { StyleSheet } from 'react-native'
 
@@ -30,8 +30,15 @@ const styles = StyleSheet.create({
   },
 })
 
-export function Headline({ children, alpha = 1, style, level, ...props }) {
-  const textColor = color(theme.colors.text).alpha(alpha).rgb().string()
+export function Headline({
+  children,
+  color = theme.colors.text,
+  alpha = 1,
+  style,
+  level,
+  ...props
+}) {
+  const textColor = colorUtility(color).alpha(alpha).rgb().string()
   const headlineStyles = styles[level ? `headline${level}` : 'headline']
   return (
     <Text style={[headlineStyles, { color: textColor }, style]} {...props}>
@@ -40,8 +47,14 @@ export function Headline({ children, alpha = 1, style, level, ...props }) {
   )
 }
 
-export function BodyText({ children, alpha = 1, style, ...props }) {
-  const textColor = color(theme.colors.text).alpha(alpha).rgb().string()
+export function BodyText({
+  children,
+  color = theme.colors.text,
+  alpha = 1,
+  style,
+  ...props
+}) {
+  const textColor = colorUtility(color).alpha(alpha).rgb().string()
   return (
     <Text style={[styles.bodyText, { color: textColor }, style]} {...props}>
       {children}
@@ -49,8 +62,14 @@ export function BodyText({ children, alpha = 1, style, ...props }) {
   )
 }
 
-export function Caption({ children, alpha = 1, style, ...props }) {
-  const textColor = color(theme.colors.text).alpha(alpha).rgb().string()
+export function Caption({
+  children,
+  color = theme.colors.text,
+  alpha = 1,
+  style,
+  ...props
+}) {
+  const textColor = colorUtility(color).alpha(alpha).rgb().string()
   return (
     <Text style={[styles.caption, { color: textColor }, style]} {...props}>
       {children}
