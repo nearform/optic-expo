@@ -2,11 +2,10 @@ import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import { useSecretsContext } from '../context/secrets'
-import routes from '../lib/routeDefinitions'
-
-import EmptyTokensText from './EmptyTokensText'
-import Actions from './Actions'
+import { useSecretsContext } from '../../context/secrets'
+import routes from '../../lib/routeDefinitions'
+import EmptyTokensText from '../EmptyTokensText'
+import Actions from '../Actions'
 
 const styles = StyleSheet.create({
   container: {

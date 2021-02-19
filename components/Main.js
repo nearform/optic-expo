@@ -1,14 +1,14 @@
 import React from 'react'
-import { Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import theme from '../lib/defaultTheme'
 import routes from '../lib/routeDefinitions'
 
-import Home from './Home'
-import TypeNewSecret from './TypeNewSecret'
-import ScanNewSecret from './ScanNewSecret'
+import Home from './screens/Home'
+import TypeNewSecretScreen from './screens/TypeNewSecretScreen'
+import ScanNewSecretScreen from './screens/ScanNewSecretScreen'
+import UploadNewSecretScreen from './screens/UploadNewSecretScreen'
 import HomeHeaderRight from './HomeHeaderRight'
 import DefaultHeaderLeft from './DefaultHeaderLeft'
 
@@ -57,7 +57,7 @@ export default function Main() {
         />
         <Stack.Screen
           name={routes.scan.name}
-          component={ScanNewSecret}
+          component={ScanNewSecretScreen}
           options={{
             title: UI_STRINGS.routes.scan.title,
             headerLeft: DefaultHeaderLeft,
@@ -65,7 +65,7 @@ export default function Main() {
         />
         <Stack.Screen
           name={routes.upload.name}
-          component={() => <Text>{routes.upload.name} placeholder</Text>}
+          component={UploadNewSecretScreen}
           options={{
             title: UI_STRINGS.routes.upload.title,
             headerLeft: DefaultHeaderLeft,
@@ -73,7 +73,7 @@ export default function Main() {
         />
         <Stack.Screen
           name={routes.type.name}
-          component={TypeNewSecret}
+          component={TypeNewSecretScreen}
           options={{
             title: UI_STRINGS.routes.type.title,
             headerLeft: DefaultHeaderLeft,
