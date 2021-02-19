@@ -12,6 +12,22 @@ const A11Y_LABELS = {
   type: 'Add details manually',
 }
 
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'flex-end',
+    marginHorizontal: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+  },
+  actions: {
+    alignItems: 'flex-end',
+    paddingRight: theme.spacing(1),
+  },
+  primaryButton: {
+    borderRadius: 100,
+    backgroundColor: theme.colors.primary,
+  },
+})
+
 export default function Actions({
   onScanNewSecretScreen,
   onUploadNewSecretScreen,
@@ -51,19 +67,3 @@ export default function Actions({
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'flex-end',
-    marginHorizontal: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
-  },
-  actions: {
-    alignItems: 'flex-end',
-    paddingRight: theme.spacing(1),
-  },
-  primaryButton: {
-    borderRadius: 100,
-    backgroundColor: theme.colors.primary,
-  },
-})

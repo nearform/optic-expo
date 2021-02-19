@@ -11,6 +11,15 @@ const UI_STRINGS = {
   description: 'Add a new secret and it will appear here.',
 }
 
+const styles = StyleSheet.create({
+  description: {
+    paddingVertical: theme.spacing(4),
+    paddingHorizontal: theme.spacing(3),
+    alignItems: 'center',
+    flex: 1,
+  },
+})
+
 export default function EmptyTokensText() {
   return (
     <View style={styles.description}>
@@ -23,12 +32,3 @@ export default function EmptyTokensText() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  description: {
-    paddingVertical: theme.spacing(4),
-    paddingHorizontal: theme.spacing(3),
-    alignItems: 'center',
-    flex: 1,
-  },
-})

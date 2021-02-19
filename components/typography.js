@@ -2,6 +2,31 @@ import React from 'react'
 import { Text } from 'react-native-paper'
 import { StyleSheet } from 'react-native'
 
+const styles = StyleSheet.create({
+  headline: {
+    fontFamily: 'Poppins_700Bold',
+    fontWeight: '700',
+    fontSize: 60,
+  },
+  bodyText: {
+    fontFamily: 'DidactGothic_400Regular',
+    fontWeight: '400',
+    fontSize: 16,
+    lineHeight: 24,
+  },
+  headline5: {
+    fontFamily: 'Poppins_700Bold',
+    fontWeight: '700',
+    fontSize: 24,
+  },
+  caption: {
+    fontFamily: 'DidactGothic_400Regular',
+    fontWeight: '400',
+    fontSize: 12,
+    lineHeight: 16,
+  },
+})
+
 export function Headline({ children, color, style, level, ...props }) {
   const headlineStyles = styles[level ? `headline${level}` : 'headline']
   return (
@@ -26,28 +51,3 @@ export function Caption({ children, color, style, ...props }) {
     </Text>
   )
 }
-
-const styles = StyleSheet.create({
-  headline: {
-    fontFamily: 'Poppins_700Bold',
-    fontWeight: '700',
-    fontSize: 60,
-  },
-  headline5: {
-    fontFamily: 'Poppins_700Bold',
-    fontWeight: '700',
-    fontSize: 24,
-  },
-  bodyText: {
-    fontFamily: 'DidactGothic_400Regular',
-    fontWeight: '400',
-    fontSize: 16,
-    lineHeight: 24,
-  },
-  caption: {
-    fontFamily: 'DidactGothic_400Regular',
-    fontWeight: '400',
-    fontSize: 12,
-    lineHeight: 16,
-  },
-})
