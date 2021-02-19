@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 })
 
 const UI_STRINGS = {
-  undetermined: 'Requesting for camera permission',
+  undetermined: 'Requesting permission to use Camera',
   denied: 'No access to camera',
   active: 'Tap to Scan Again',
 }
@@ -65,8 +65,18 @@ export default function ScanNewSecretScreen() {
   const { navigate } = useNavigation()
 
   async function requestPermissions() {
-    const { status } = await BarCodeScanner.requestPermissionsAsync()
-    dispatch({ type: ACTION_TYPES.SET_PERMISSION, value: status })
+    try {
+      const permissions = await BarCodeScanner.requestPermissionsAsync()
+      if (permissions) {
+        const { status } = permissions
+        dispatch({ type: ACTION_TYPES.SET_PERMISSION, value: status })
+      }
+    } catch (error) {
+      dispatch({
+        type: ACTION_TYPES.SET_PERMISSION,
+        value: PERMISSION_STATES.undetermined,
+      })
+    }
   }
 
   async function handleBarcodeScan(barcodeScan) {

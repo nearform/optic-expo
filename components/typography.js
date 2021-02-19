@@ -30,14 +30,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export function Headline({
-  children,
-  color = theme.colors.text,
-  alpha = 1,
-  style,
-  level,
-  ...props
-}) {
+export function Headline({ children, color, alpha, style, level, ...props }) {
   const textColor = colorUtility(color).alpha(alpha).rgb().string()
   const headlineStyles = styles[level ? `headline${level}` : 'headline']
   return (
@@ -47,13 +40,12 @@ export function Headline({
   )
 }
 
-export function BodyText({
-  children,
-  color = theme.colors.text,
-  alpha = 1,
-  style,
-  ...props
-}) {
+Headline.defaultProps = {
+  color: theme.colors.text,
+  alpha: 1,
+}
+
+export function BodyText({ children, color, alpha, style, ...props }) {
   const textColor = colorUtility(color).alpha(alpha).rgb().string()
   return (
     <Text style={[styles.bodyText, { color: textColor }, style]} {...props}>
@@ -62,17 +54,21 @@ export function BodyText({
   )
 }
 
-export function Caption({
-  children,
-  color = theme.colors.text,
-  alpha = 1,
-  style,
-  ...props
-}) {
+BodyText.defaultProps = {
+  color: theme.colors.text,
+  alpha: 1,
+}
+
+export function Caption({ children, color, alpha, style, ...props }) {
   const textColor = colorUtility(color).alpha(alpha).rgb().string()
   return (
     <Text style={[styles.caption, { color: textColor }, style]} {...props}>
       {children}
     </Text>
   )
+}
+
+Caption.defaultProps = {
+  color: theme.colors.text,
+  alpha: 1,
 }

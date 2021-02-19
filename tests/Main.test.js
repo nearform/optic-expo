@@ -117,7 +117,7 @@ describe('Main', () => {
     const scanCodeButton = getByA11yLabel('Scan QR Code')
 
     fireEvent.press(scanCodeButton)
-    expect(queryByText('Requesting for camera permission')).not.toBeNull()
+    expect(queryByText('Requesting permission to use Camera')).not.toBeNull()
 
     act(() => {
       BarCodeScanner.requestPermissionsAsync = jest
