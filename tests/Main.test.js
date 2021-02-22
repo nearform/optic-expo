@@ -3,7 +3,6 @@ import 'react-native-gesture-handler/jestSetup'
 import firebase from 'firebase'
 import * as Google from 'expo-auth-session/providers/google'
 import { act, fireEvent } from '@testing-library/react-native'
-import { BarCodeScanner } from 'expo-barcode-scanner'
 
 import Main from '../components/Main'
 
@@ -21,7 +20,6 @@ jest.mock('react-native-reanimated', () => {
 
   return Reanimated
 })
-jest.mock('expo-barcode-scanner')
 
 describe('Main', () => {
   let request
@@ -93,6 +91,8 @@ describe('Main', () => {
   })
 
   it('should allow an authenticated user to scan a QR code', async () => {
+    const mockSecret = `{"_id":0,"secret":"mock-qr-secret","account":"test","issuer":""}`
+
     mockUseAuthRequest({
       type: 'success',
       params: {
@@ -104,25 +104,24 @@ describe('Main', () => {
       callback({ name: 'user' })
     )
 
-    const { queryByText, getByA11yLabel } = renderWithTheme({
+    const { queryByText, getByA11yLabel, getByText } = renderWithTheme({
       ui: <Main />,
     })
 
     expect(queryByText('Your Tokens')).not.toBeNull()
 
     const showActionsButton = getByA11yLabel('show-actions')
-
     fireEvent.press(showActionsButton)
 
     const scanCodeButton = getByA11yLabel('Scan QR Code')
-
-    fireEvent.press(scanCodeButton)
-    expect(queryByText('Requesting permission to use Camera')).not.toBeNull()
-
-    act(() => {
-      BarCodeScanner.requestPermissionsAsync = jest
-        .fn()
-        .mockResolvedValue('granted')
+    // await any async work e.g - requesting permissions,
+    // simulating native scan event
+    await act(async () => {
+      fireEvent.press(scanCodeButton)
     })
+
+    // The scanned secret should now appear on the home page
+    expect(queryByText('No Secrets')).toBeNull()
+    getByText(mockSecret)
   })
 })
