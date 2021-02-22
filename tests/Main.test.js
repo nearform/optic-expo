@@ -104,7 +104,12 @@ describe('Main', () => {
       callback({ name: 'user' })
     )
 
-    const { queryByText, getByA11yLabel, getByText } = renderWithTheme({
+    const {
+      queryByText,
+      getByA11yLabel,
+      queryByA11yLabel,
+      getByText,
+    } = renderWithTheme({
       ui: <Main />,
     })
 
@@ -122,6 +127,7 @@ describe('Main', () => {
 
     // The scanned secret should now appear on the home page
     expect(queryByText('No Secrets')).toBeNull()
+    expect(queryByA11yLabel('Scan QR Code')).toBeNull()
     getByText(mockSecret)
   })
 })
