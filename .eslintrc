@@ -28,5 +28,8 @@
     // Remove this setting when this issue is fixed.
     // https://github.com/facebook/react-native/issues/28549
     "import/ignore": ["react-native"]
+  },
+  "env": {
+    "jest/globals": true
   }
 }

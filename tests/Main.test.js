@@ -1,5 +1,4 @@
 import React from 'react'
-import 'react-native-gesture-handler/jestSetup'
 import firebase from 'firebase'
 import * as Google from 'expo-auth-session/providers/google'
 import { act, fireEvent } from '@testing-library/react-native'
@@ -8,18 +7,8 @@ import Main from '../components/Main'
 
 import { renderWithTheme } from './utils'
 
-// This is mocked to silence the warning: Animated: `useNativeDriver` is not supported
-jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper')
 jest.mock('expo-auth-session/providers/google')
 jest.mock('firebase')
-jest.mock('react-native-reanimated', () => {
-  const Reanimated = require('react-native-reanimated/mock')
-  // The mock for `call` immediately calls the callback which is incorrect
-  // So we override it with a no-op
-  Reanimated.default.call = () => {}
-
-  return Reanimated
-})
 
 describe('Main', () => {
   let request
