@@ -1,14 +1,12 @@
 import React from 'react'
 import firebase from 'firebase'
 import * as Google from 'expo-auth-session/providers/google'
-import { fireEvent } from '@testing-library/react-native'
+import { act, fireEvent } from '@testing-library/react-native'
 
 import Main from '../components/Main'
 
 import { renderWithTheme } from './utils'
 
-// This is mocked to silence the warning: Animated: `useNativeDriver` is not supported
-jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper')
 jest.mock('expo-auth-session/providers/google')
 jest.mock('firebase')
 
@@ -79,5 +77,46 @@ describe('Main', () => {
     getByA11yLabel('Scan QR Code')
     getByA11yLabel('Upload')
     getByA11yLabel('Add details manually')
+  })
+
+  it('should allow an authenticated user to scan a QR code', async () => {
+    const mockSecret = `{"_id":0,"secret":"mock-qr-secret","account":"test","issuer":""}`
+
+    mockUseAuthRequest({
+      type: 'success',
+      params: {
+        id_token: 'token',
+      },
+    })
+
+    firebase.auth().onAuthStateChanged = jest.fn(callback =>
+      callback({ name: 'user' })
+    )
+
+    const {
+      queryByText,
+      getByA11yLabel,
+      queryByA11yLabel,
+      getByText,
+    } = renderWithTheme({
+      ui: <Main />,
+    })
+
+    expect(queryByText('Your Tokens')).not.toBeNull()
+
+    const showActionsButton = getByA11yLabel('show-actions')
+    fireEvent.press(showActionsButton)
+
+    const scanCodeButton = getByA11yLabel('Scan QR Code')
+    // await any async work e.g - requesting permissions,
+    // simulating native scan event
+    await act(async () => {
+      fireEvent.press(scanCodeButton)
+    })
+
+    // The scanned secret should now appear on the home page
+    expect(queryByText('No Secrets')).toBeNull()
+    expect(queryByA11yLabel('Scan QR Code')).toBeNull()
+    getByText(mockSecret)
   })
 })

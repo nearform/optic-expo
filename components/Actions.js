@@ -41,16 +41,25 @@ export default function Actions({
           <IconButtonWithLabel
             label={A11Y_LABELS.scan}
             icon="qrcode"
-            onPress={onScanNewSecretScreen}
+            onPress={() => {
+              setActionsVisible(false)
+              onScanNewSecretScreen()
+            }}
           />
           <IconButtonWithLabel
             label={A11Y_LABELS.upload}
-            onPress={onUploadNewSecretScreen}
+            onPress={() => {
+              setActionsVisible(false)
+              onUploadNewSecretScreen()
+            }}
             icon="upload"
           />
           <IconButtonWithLabel
             label={A11Y_LABELS.type}
-            onPress={onTypeNewSecretScreen}
+            onPress={() => {
+              setActionsVisible(false)
+              onTypeNewSecretScreen()
+            }}
             icon="import"
           />
         </View>
