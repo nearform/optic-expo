@@ -28,7 +28,7 @@ WebBrowser.maybeCompleteAuthSession()
 
 const AuthenticationContext = createContext()
 
-export function useAuthenticationContext() {
+export function useAuthentication() {
   return useContext(AuthenticationContext)
 }
 
