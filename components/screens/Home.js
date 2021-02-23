@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import { useSecretsContext } from '../../context/secrets'
+import { useSecrets } from '../../context/secrets'
 import routes from '../../lib/routeDefinitions'
 import EmptyTokensText from '../EmptyTokensText'
 import Actions from '../Actions'
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 
 export default function Home() {
   const { navigate } = useNavigation()
-  const { secrets } = useSecretsContext()
+  const { secrets } = useSecrets()
 
   return (
     <View style={styles.container}>

@@ -4,7 +4,10 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import theme from '../lib/defaultTheme'
 import routes from '../lib/routeDefinitions'
+import { useAuthenticationContext } from '../context/authentication'
+import { useSecrets } from '../context/secrets'
 
+import Auth from './Auth'
 import Home from './screens/Home'
 import TypeNewSecretScreen from './screens/TypeNewSecretScreen'
 import ScanNewSecretScreen from './screens/ScanNewSecretScreen'
@@ -32,6 +35,14 @@ const UI_STRINGS = {
 }
 
 export default function Main() {
+  const { user, handleLogin } = useAuthenticationContext()
+
+  const { isInitialized } = useSecrets()
+
+  if (!user || !isInitialized) {
+    return <Auth {...{ handleLogin }} />
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator

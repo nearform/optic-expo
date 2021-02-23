@@ -1,3 +1,4 @@
+import 'react-native-get-random-values'
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { Provider as PaperProvider } from 'react-native-paper'
