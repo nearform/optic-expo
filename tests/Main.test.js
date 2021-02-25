@@ -8,6 +8,14 @@ import { useSecrets } from '../context/secrets.js'
 
 import { renderWithTheme } from './utils'
 
+jest.mock('@expo-google-fonts/poppins', () => ({
+  useFonts: jest.fn().mockReturnValue([true]),
+}))
+
+jest.mock('@expo-google-fonts/didact-gothic', () => ({
+  useFonts: jest.fn().mockReturnValue([true]),
+}))
+
 jest.mock('expo-auth-session/providers/google')
 
 jest.mock('firebase')
