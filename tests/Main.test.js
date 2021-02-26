@@ -1,14 +1,32 @@
 import React from 'react'
 import firebase from 'firebase'
 import * as Google from 'expo-auth-session/providers/google'
-import { act, fireEvent } from '@testing-library/react-native'
+import { waitFor, fireEvent } from '@testing-library/react-native'
 
 import Main from '../components/Main'
+import { useSecrets } from '../context/secrets.js'
 
 import { renderWithTheme } from './utils'
 
+jest.mock('@expo-google-fonts/poppins', () => ({
+  useFonts: jest.fn().mockReturnValue([true]),
+}))
+
+jest.mock('@expo-google-fonts/didact-gothic', () => ({
+  useFonts: jest.fn().mockReturnValue([true]),
+}))
+
 jest.mock('expo-auth-session/providers/google')
+
 jest.mock('firebase')
+
+jest.mock('../context/secrets.js', () => ({
+  ...jest.requireActual('../context/secrets.js'),
+  useSecrets: jest.fn(() => ({
+    isInitialized: true,
+    secrets: [],
+  })),
+}))
 
 describe('Main', () => {
   let request
@@ -35,7 +53,7 @@ describe('Main', () => {
   })
 
   afterEach(() => {
-    jest.resetAllMocks()
+    jest.clearAllMocks()
   })
 
   it('should render correct initial state for unauthenticated users', () => {
@@ -80,7 +98,12 @@ describe('Main', () => {
   })
 
   it('should allow an authenticated user to scan a QR code', async () => {
-    const mockSecret = `{"_id":0,"secret":"mock-qr-secret","account":"test","issuer":""}`
+    const mockSecret = {
+      secret: 'mock-qr-secret',
+      account: 'test',
+      issuer: '',
+      uid: 'uid',
+    }
 
     mockUseAuthRequest({
       type: 'success',
@@ -89,16 +112,19 @@ describe('Main', () => {
       },
     })
 
+    const addSecretsMock = jest.fn()
+
+    useSecrets.mockReturnValue({
+      isInitialized: true,
+      secrets: [],
+      add: addSecretsMock,
+    })
+
     firebase.auth().onAuthStateChanged = jest.fn(callback =>
-      callback({ name: 'user' })
+      callback({ name: 'user', uid: 'uid' })
     )
 
-    const {
-      queryByText,
-      getByA11yLabel,
-      queryByA11yLabel,
-      getByText,
-    } = renderWithTheme({
+    const { queryByText, getByA11yLabel } = renderWithTheme({
       ui: <Main />,
     })
 
@@ -108,15 +134,8 @@ describe('Main', () => {
     fireEvent.press(showActionsButton)
 
     const scanCodeButton = getByA11yLabel('Scan QR Code')
-    // await any async work e.g - requesting permissions,
-    // simulating native scan event
-    await act(async () => {
-      fireEvent.press(scanCodeButton)
-    })
+    fireEvent.press(scanCodeButton)
 
-    // The scanned secret should now appear on the home page
-    expect(queryByText('No Secrets')).toBeNull()
-    expect(queryByA11yLabel('Scan QR Code')).toBeNull()
-    getByText(mockSecret)
+    await waitFor(() => expect(addSecretsMock).toHaveBeenCalledWith(mockSecret))
   })
 })

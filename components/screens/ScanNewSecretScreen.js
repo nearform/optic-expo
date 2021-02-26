@@ -3,8 +3,8 @@ import { View, StyleSheet, Button } from 'react-native'
 import { BarCodeScanner } from 'expo-barcode-scanner'
 import { useNavigation } from '@react-navigation/native'
 
-import { useAuthenticationContext } from '../../context/authentication'
-import { useSecretsContext } from '../../context/secrets'
+import { useAuthentication } from '../../context/authentication'
+import { useSecrets } from '../../context/secrets'
 import { parse } from '../../lib/qrParser'
 import routes from '../../lib/routeDefinitions'
 import { BodyText } from '../typography'
@@ -59,8 +59,8 @@ function scanReducer(state, action) {
 
 export default function ScanNewSecretScreen() {
   const [{ scan, permission }, dispatch] = useReducer(scanReducer, initialState)
-  const { user } = useAuthenticationContext()
-  const { add } = useSecretsContext()
+  const { user } = useAuthentication()
+  const { add } = useSecrets()
   const { navigate } = useNavigation()
 
   async function requestPermissions() {

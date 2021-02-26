@@ -5,8 +5,8 @@ import { useNavigation } from '@react-navigation/native'
 
 import theme from '../../lib/defaultTheme'
 import routes from '../../lib/routeDefinitions'
-import { useAuthenticationContext } from '../../context/authentication'
-import { useSecretsContext } from '../../context/secrets'
+import { useAuthentication } from '../../context/authentication'
+import { useSecrets } from '../../context/secrets'
 
 const UI_STRINGS = {
   issuerTextInputLabel: 'Issuer',
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
 })
 
 export default function TypeNewSecretScreen() {
-  const { user } = useAuthenticationContext()
-  const { add } = useSecretsContext()
+  const { user } = useAuthentication()
+  const { add } = useSecrets()
   const [issuer, setIssuer] = useState('')
   const [secret, setSecret] = useState('')
   const [account, setAccount] = useState(user.displayName)

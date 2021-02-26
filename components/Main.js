@@ -1,14 +1,26 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import {
+  useFonts as usePoppins,
+  Poppins_700Bold,
+} from '@expo-google-fonts/poppins'
+import {
+  useFonts as useDidactGothic,
+  DidactGothic_400Regular,
+} from '@expo-google-fonts/didact-gothic'
+import AppLoading from 'expo-app-loading'
 
 import theme from '../lib/defaultTheme'
 import routes from '../lib/routeDefinitions'
+import { useAuthentication } from '../context/authentication'
+import { useSecrets } from '../context/secrets'
 
 import Home from './screens/Home'
 import TypeNewSecretScreen from './screens/TypeNewSecretScreen'
 import ScanNewSecretScreen from './screens/ScanNewSecretScreen'
 import UploadNewSecretScreen from './screens/UploadNewSecretScreen'
+import Auth from './Auth'
 import HomeHeaderRight from './HomeHeaderRight'
 import DefaultHeaderLeft from './DefaultHeaderLeft'
 
@@ -32,6 +44,26 @@ const UI_STRINGS = {
 }
 
 export default function Main() {
+  const [hasPoppinsLoaded] = usePoppins({
+    Poppins_700Bold,
+  })
+
+  const [hasDidactLoaded] = useDidactGothic({
+    DidactGothic_400Regular,
+  })
+
+  const { isInitialized } = useSecrets()
+
+  const { user, handleLogin } = useAuthentication()
+
+  if (!hasDidactLoaded || !hasPoppinsLoaded || !isInitialized) {
+    return <AppLoading />
+  }
+
+  if (!user) {
+    return <Auth {...{ handleLogin }} />
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator

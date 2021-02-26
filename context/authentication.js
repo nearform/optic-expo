@@ -10,8 +10,6 @@ import * as Google from 'expo-auth-session/providers/google'
 import firebase from 'firebase'
 import * as WebBrowser from 'expo-web-browser'
 
-import Auth from '../components/Auth'
-
 const firebaseConfig = {
   apiKey: 'AIzaSyBFiuUulmuQ7Pv1VvxpUQB01AWCEQhIToA',
   authDomain: 'npm-otp-f6bfc.firebaseapp.com',
@@ -30,7 +28,7 @@ WebBrowser.maybeCompleteAuthSession()
 
 const AuthenticationContext = createContext()
 
-export function useAuthenticationContext() {
+export function useAuthentication() {
   return useContext(AuthenticationContext)
 }
 
@@ -54,18 +52,20 @@ export function AuthenticationProvider({ children }) {
   useEffect(() => firebase.auth().onAuthStateChanged(setUser), [])
 
   const handleLogout = useCallback(() => firebase.auth().signOut(), [])
-  const authValue = useMemo(() => {
-    return {
-      user,
-      handleLogout: handleLogout,
-    }
-  }, [user, handleLogout])
 
   const handleLogin = useCallback(() => promptAsync(), [promptAsync])
 
+  const authValue = useMemo(() => {
+    return {
+      user,
+      handleLogout,
+      handleLogin,
+    }
+  }, [user, handleLogout, handleLogin])
+
   return (
     <AuthenticationContext.Provider value={authValue}>
-      {user ? children : <Auth handleLogin={handleLogin} />}
+      {children}
     </AuthenticationContext.Provider>
   )
 }
