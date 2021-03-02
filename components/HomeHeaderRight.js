@@ -16,6 +16,14 @@ export default function HomeHeaderRight() {
   const [isMenuActive, setMenuActive] = useState(false)
   const { handleLogout } = useAuthentication()
 
+  const logout = async () => {
+    try {
+      await handleLogout()
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <Menu
       visible={isMenuActive}
@@ -28,10 +36,7 @@ export default function HomeHeaderRight() {
         />
       }
     >
-      <Menu.Item
-        onPress={handleLogout}
-        title={UI_STRINGS.menu.logoutButton.label}
-      />
+      <Menu.Item onPress={logout} title={UI_STRINGS.menu.logoutButton.label} />
     </Menu>
   )
 }

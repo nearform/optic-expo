@@ -4,6 +4,7 @@ import { Platform, View, StyleSheet, Image } from 'react-native'
 import { Button } from 'react-native-paper'
 
 import theme from '../lib/defaultTheme'
+import { useAuthentication } from '../context/authentication'
 
 import { Headline, BodyText } from './typography'
 import Spacer from './Spacer'
@@ -34,7 +35,9 @@ const styles = StyleSheet.create({
   },
 })
 
-export default function Auth({ handleLogin }) {
+export default function Auth() {
+  const { handleLogin } = useAuthentication()
+
   useEffect(() => {
     if (Platform.OS === 'web') {
       return
@@ -46,6 +49,14 @@ export default function Auth({ handleLogin }) {
       WebBrowser.coolDownAsync()
     }
   }, [])
+
+  const login = async () => {
+    try {
+      await handleLogin()
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -66,7 +77,7 @@ export default function Auth({ handleLogin }) {
             style={{ width: size, height: size }}
           />
         )}
-        onPress={handleLogin}
+        onPress={login}
         color={theme.colors.surface}
       >
         {UI_STRINGS.button}

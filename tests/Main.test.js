@@ -18,7 +18,15 @@ jest.mock('@expo-google-fonts/didact-gothic', () => ({
 
 jest.mock('expo-auth-session/providers/google')
 
-jest.mock('firebase')
+jest.mock('expo-auth-session/providers/google', () => ({
+  useIdTokenAuthRequest: jest.fn(),
+}))
+
+jest.mock('firebase', () => ({
+  apps: [],
+  initializeApp: jest.fn(),
+  auth: jest.fn(),
+}))
 
 jest.mock('../context/secrets.js', () => ({
   ...jest.requireActual('../context/secrets.js'),
@@ -29,34 +37,29 @@ jest.mock('../context/secrets.js', () => ({
 }))
 
 describe('Main', () => {
-  let request
-  let promptAsync
+  const promptAsync = jest.fn()
 
   const mockUseAuthRequest = response => {
-    return jest
-      .spyOn(Google, 'useIdTokenAuthRequest')
-      .mockReturnValue([request, response, promptAsync])
+    Google.useIdTokenAuthRequest.mockReturnValue([null, response, promptAsync])
   }
 
-  const mockFirebaseAuthRequest = () => {
-    return jest.spyOn(firebase, 'auth').mockReturnValue({
-      onAuthStateChanged: jest.fn(),
+  const mockFirebaseAuthRequest = (
+    onAuthStateChangedImplementation = jest.fn()
+  ) => {
+    firebase.auth.mockReturnValue({
       signOut: jest.fn(),
       signInWithCredential: jest.fn().mockResolvedValue({}),
+      onAuthStateChanged: jest.fn(onAuthStateChangedImplementation),
     })
   }
-
-  beforeEach(() => {
-    promptAsync = jest.fn()
-    request = null
-    mockFirebaseAuthRequest()
-  })
 
   afterEach(() => {
     jest.clearAllMocks()
   })
 
   it('should render correct initial state for unauthenticated users', () => {
+    mockFirebaseAuthRequest(() => jest.fn())
+
     mockUseAuthRequest(null)
 
     const { getByText, getByA11yLabel } = renderWithTheme({
@@ -72,16 +75,17 @@ describe('Main', () => {
   })
 
   it('should render correct initial state for authenticated users', () => {
+    mockFirebaseAuthRequest(callback => {
+      callback({ name: 'user' })
+      return jest.fn()
+    })
+
     mockUseAuthRequest({
       type: 'success',
       params: {
         id_token: 'token',
       },
     })
-
-    firebase.auth().onAuthStateChanged = jest.fn(callback =>
-      callback({ name: 'user' })
-    )
 
     const { getByText, getByA11yLabel } = renderWithTheme({
       ui: <Main />,
@@ -98,20 +102,6 @@ describe('Main', () => {
   })
 
   it('should allow an authenticated user to scan a QR code', async () => {
-    const mockSecret = {
-      secret: 'mock-qr-secret',
-      account: 'test',
-      issuer: '',
-      uid: 'uid',
-    }
-
-    mockUseAuthRequest({
-      type: 'success',
-      params: {
-        id_token: 'token',
-      },
-    })
-
     const addSecretsMock = jest.fn()
 
     useSecrets.mockReturnValue({
@@ -120,9 +110,17 @@ describe('Main', () => {
       add: addSecretsMock,
     })
 
-    firebase.auth().onAuthStateChanged = jest.fn(callback =>
+    mockUseAuthRequest({
+      type: 'success',
+      params: {
+        id_token: 'token',
+      },
+    })
+
+    mockFirebaseAuthRequest(callback => {
       callback({ name: 'user', uid: 'uid' })
-    )
+      return jest.fn()
+    })
 
     const { queryByText, getByA11yLabel } = renderWithTheme({
       ui: <Main />,
@@ -136,6 +134,13 @@ describe('Main', () => {
     const scanCodeButton = getByA11yLabel('Scan QR Code')
     fireEvent.press(scanCodeButton)
 
-    await waitFor(() => expect(addSecretsMock).toHaveBeenCalledWith(mockSecret))
+    await waitFor(() =>
+      expect(addSecretsMock).toHaveBeenCalledWith({
+        secret: 'mock-qr-secret',
+        account: 'test',
+        issuer: '',
+        uid: 'uid',
+      })
+    )
   })
 })

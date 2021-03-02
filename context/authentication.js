@@ -3,7 +3,6 @@ import React, {
   useState,
   useEffect,
   useMemo,
-  useCallback,
   useContext,
 } from 'react'
 import * as Google from 'expo-auth-session/providers/google'
@@ -35,6 +34,8 @@ export function useAuthentication() {
 export function AuthenticationProvider({ children }) {
   const [user, setUser] = useState()
 
+  const auth = useMemo(() => firebase.auth(), [])
+
   const [, response, promptAsync] = Google.useIdTokenAuthRequest({
     clientId:
       '230076165693-0mj3vb13158tnru89f1re89m9o94g8e7.apps.googleusercontent.com',
@@ -42,26 +43,38 @@ export function AuthenticationProvider({ children }) {
 
   useEffect(() => {
     if (response?.type === 'success') {
-      const { id_token } = response.params
+      async function signIn() {
+        const credential = firebase.auth.GoogleAuthProvider.credential(
+          response.params.id_token
+        )
 
-      const credential = firebase.auth.GoogleAuthProvider.credential(id_token)
-      firebase.auth().signInWithCredential(credential)
+        try {
+          await auth.signInWithCredential(credential)
+        } catch (err) {
+          console.error(err)
+        }
+      }
+
+      signIn()
     }
-  }, [response])
+  }, [response, auth])
 
-  useEffect(() => firebase.auth().onAuthStateChanged(setUser), [])
-
-  const handleLogout = useCallback(() => firebase.auth().signOut(), [])
-
-  const handleLogin = useCallback(() => promptAsync(), [promptAsync])
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(setUser)
+    return () => unsubscribe()
+  }, [auth])
 
   const authValue = useMemo(() => {
+    const handleLogin = async () => promptAsync()
+
+    const handleLogout = async () => auth.signOut()
+
     return {
       user,
       handleLogout,
       handleLogin,
     }
-  }, [user, handleLogout, handleLogin])
+  }, [user, promptAsync, auth])
 
   return (
     <AuthenticationContext.Provider value={authValue}>
