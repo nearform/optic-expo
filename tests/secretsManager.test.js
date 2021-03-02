@@ -1,14 +1,5 @@
-import {
-  isAvailableAsync,
-  getItemAsync,
-  setItemAsync,
-  deleteItemAsync,
-} from 'expo-secure-store'
-import {
-  getItem,
-  setItem,
-  removeItem,
-} from '@react-native-async-storage/async-storage'
+import { isAvailableAsync, getItemAsync, setItemAsync } from 'expo-secure-store'
+import { getItem, setItem } from '@react-native-async-storage/async-storage'
 
 import SecretsManager from '../lib/secretsManager'
 
