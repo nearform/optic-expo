@@ -10,6 +10,7 @@ import {
   DidactGothic_400Regular,
 } from '@expo-google-fonts/didact-gothic'
 import AppLoading from 'expo-app-loading'
+import { useAssets } from 'expo-asset'
 
 import theme from '../lib/defaultTheme'
 import routes from '../lib/routeDefinitions'
@@ -44,6 +45,8 @@ const UI_STRINGS = {
 }
 
 export default function Main() {
+  const [assets] = useAssets([require('../assets/google.png')])
+
   const [hasPoppinsLoaded] = usePoppins({
     Poppins_700Bold,
   })
@@ -56,7 +59,7 @@ export default function Main() {
 
   const { user } = useAuthentication()
 
-  if (!hasDidactLoaded || !hasPoppinsLoaded || !isInitialized) {
+  if (!assets || !hasDidactLoaded || !hasPoppinsLoaded || !isInitialized) {
     return <AppLoading />
   }
 

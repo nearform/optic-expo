@@ -16,7 +16,9 @@ jest.mock('@expo-google-fonts/didact-gothic', () => ({
   useFonts: jest.fn().mockReturnValue([true]),
 }))
 
-jest.mock('expo-auth-session/providers/google')
+jest.mock('expo-asset', () => ({
+  useAssets: jest.fn().mockReturnValue([true]),
+}))
 
 jest.mock('expo-auth-session/providers/google', () => ({
   useIdTokenAuthRequest: jest.fn(),
