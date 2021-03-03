@@ -39,12 +39,21 @@ export function SecretsProvider({ children }) {
     [secretsManager]
   )
 
+  const update = useCallback(
+    async secret => {
+      await secretsManager.upsert(secret)
+      setSecrets(await secretsManager.find({ uid: secret.uid }))
+    },
+    [secretsManager]
+  )
+
   return (
     <SecretsContext.Provider
-      value={useMemo(() => ({ isInitialized, secrets, add }), [
+      value={useMemo(() => ({ isInitialized, secrets, add, update }), [
         isInitialized,
         secrets,
         add,
+        update,
       ])}
     >
       {children}

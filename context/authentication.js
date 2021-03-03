@@ -49,7 +49,15 @@ export function AuthenticationProvider({ children }) {
     }
   }, [response])
 
-  useEffect(() => firebase.auth().onAuthStateChanged(setUser), [])
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(async firebaseUser => {
+      setUser({
+        name: firebaseUser.name,
+        uid: firebaseUser.uid,
+        idToken: await firebaseUser.getIdToken(),
+      })
+    })
+  }, [])
 
   const handleLogout = useCallback(() => firebase.auth().signOut(), [])
 
