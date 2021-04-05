@@ -17,7 +17,7 @@
     "@react-native-async-storage/async-storage": "1.14.1",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "5.9.2",
-    "@react-navigation/stack": "5.14.3",
+    "@react-navigation/stack": "5.14.4",
     "aes-js": "3.1.2",
     "color": "^3.1.3",
     "expo": "~40.0.0",
