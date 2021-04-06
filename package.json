@@ -16,7 +16,7 @@
     "@expo-google-fonts/poppins": "^0.1.0",
     "@react-native-async-storage/async-storage": "1.15.1",
     "@react-native-community/masked-view": "0.1.10",
-    "@react-navigation/native": "5.9.2",
+    "@react-navigation/native": "5.9.4",
     "@react-navigation/stack": "5.14.4",
     "aes-js": "3.1.2",
     "color": "^3.1.3",
