@@ -13,7 +13,7 @@ import Secret from '../Secret'
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     width: '100%',
   },
 })
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 export default function Home() {
   const { user } = useAuthentication()
   const { navigate } = useNavigation()
-  const { secrets, update } = useSecrets()
+  const { secrets, update, remove } = useSecrets()
 
   const secretsService = new SecretsService(user)
 
@@ -29,6 +29,24 @@ export default function Home() {
     try {
       const token = await secretsService.generateToken(secret)
       await update({ ...secret, token })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleRevokeToken = async secret => {
+    try {
+      const token = await secretsService.revokeToken(secret)
+      await update({ ...secret, token })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleDeleteSecret = async secret => {
+    try {
+      await secretsService.revokeToken(secret)
+      await remove(secret)
     } catch (err) {
       console.log(err)
     }
@@ -43,7 +61,9 @@ export default function Home() {
           <Secret
             key={secret._id}
             data={secret}
-            onGenerateToken={handleGenerateToken}
+            onGenerate={handleGenerateToken}
+            onRevoke={handleRevokeToken}
+            onDelete={handleDeleteSecret}
           />
         ))
       )}

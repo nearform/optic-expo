@@ -51,6 +51,8 @@ export function AuthenticationProvider({ children }) {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async firebaseUser => {
+      if (!firebaseUser) return
+
       setUser({
         name: firebaseUser.name,
         uid: firebaseUser.uid,
