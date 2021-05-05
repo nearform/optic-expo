@@ -3,11 +3,11 @@ import { View, StyleSheet, Button } from 'react-native'
 import { BarCodeScanner } from 'expo-barcode-scanner'
 import { useNavigation } from '@react-navigation/native'
 
-import { useAuthentication } from '../../context/authentication'
-import { useSecrets } from '../../context/secrets'
-import { parse } from '../../lib/qrParser'
-import routes from '../../lib/routeDefinitions'
-import { BodyText } from '../typography'
+import { useAuthentication } from '../context/authentication'
+import { useSecrets } from '../context/secrets'
+import { parse } from '../lib/qrParser'
+import routes from '../lib/routeDefinitions'
+import { BodyText } from '../components/typography'
 
 const styles = StyleSheet.create({
   container: {

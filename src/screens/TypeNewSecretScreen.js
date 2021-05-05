@@ -3,10 +3,10 @@ import { StyleSheet, View } from 'react-native'
 import { TextInput, Button } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
 
-import theme from '../../lib/defaultTheme'
-import routes from '../../lib/routeDefinitions'
-import { useAuthentication } from '../../context/authentication'
-import { useSecrets } from '../../context/secrets'
+import theme from '../lib/defaultTheme'
+import routes from '../lib/routeDefinitions'
+import { useAuthentication } from '../context/authentication'
+import { useSecrets } from '../context/secrets'
 
 const UI_STRINGS = {
   issuerTextInputLabel: 'Issuer',
