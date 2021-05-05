@@ -1,5 +1,5 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "./src/index.js",
   "private": true,
   "scripts": {
     "start": "expo start",
@@ -28,7 +28,7 @@
     "expo-secure-store": "~10.1.0",
     "expo-status-bar": "~1.0.4",
     "expo-web-browser": "~9.1.0",
-    "firebase": "8.4.3",
+    "firebase": "8.2.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
@@ -49,6 +49,7 @@
     "@commitlint/config-conventional": "^12.1.1",
     "@react-native-community/eslint-config": "^2.0.0",
     "@testing-library/jest-native": "^4.0.1",
+    "@testing-library/react-hooks": "^5.1.2",
     "@testing-library/react-native": "^7.2.0",
     "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.2.0",
