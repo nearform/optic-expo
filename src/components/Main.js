@@ -54,9 +54,9 @@ export default function Main() {
 
   const { isInitialized } = useSecrets()
 
-  const { user, handleLogin } = useAuthentication()
+  const { user, loading, handleLogin } = useAuthentication()
 
-  if (!hasDidactLoaded || !hasPoppinsLoaded || !isInitialized) {
+  if (!hasDidactLoaded || !hasPoppinsLoaded || !isInitialized || loading) {
     return <AppLoading />
   }
 

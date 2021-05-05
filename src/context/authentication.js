@@ -33,6 +33,7 @@ export function useAuthentication() {
 }
 
 export function AuthenticationProvider({ children }) {
+  const [loading, setLoading] = useState(true)
   const [user, setUser] = useState()
 
   const [, response, promptAsync] = Google.useIdTokenAuthRequest({
@@ -51,6 +52,7 @@ export function AuthenticationProvider({ children }) {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async firebaseUser => {
+      setLoading(false)
       if (!firebaseUser) return
 
       setUser({
@@ -65,13 +67,15 @@ export function AuthenticationProvider({ children }) {
 
   const handleLogin = useCallback(() => promptAsync(), [promptAsync])
 
-  const authValue = useMemo(() => {
-    return {
+  const authValue = useMemo(
+    () => ({
+      loading,
       user,
       handleLogout,
       handleLogin,
-    }
-  }, [user, handleLogout, handleLogin])
+    }),
+    [user, loading, handleLogout, handleLogin]
+  )
 
   return (
     <AuthenticationContext.Provider value={authValue}>
