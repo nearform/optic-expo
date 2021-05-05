@@ -55,6 +55,7 @@ export default function TypeNewSecretScreen() {
           mode="outlined"
           value={issuer}
           onChangeText={setIssuer}
+          autoFocus
         />
         <TextInput
           style={styles.formTextInput}

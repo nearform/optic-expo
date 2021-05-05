@@ -71,7 +71,7 @@ describe('Main', () => {
     expect(promptAsync).toHaveBeenCalledTimes(1)
   })
 
-  it('should render correct initial state for authenticated users', () => {
+  it('should render correct initial state for authenticated users', async () => {
     mockUseAuthRequest({
       type: 'success',
       params: {
@@ -79,13 +79,20 @@ describe('Main', () => {
       },
     })
 
+    const getIdTokenMock = jest.fn().mockResolvedValue('id-token')
+
     firebase.auth().onAuthStateChanged = jest.fn(callback =>
-      callback({ name: 'user' })
+      callback({
+        name: 'user',
+        getIdToken: getIdTokenMock,
+      })
     )
 
     const { getByText, getByA11yLabel } = renderWithTheme({
       ui: <Main />,
     })
+
+    await waitFor(() => expect(getIdTokenMock).toHaveBeenCalled())
 
     getByText(`No Secrets`)
     getByText('Add a new secret and it will appear here.')
@@ -120,13 +127,21 @@ describe('Main', () => {
       add: addSecretsMock,
     })
 
+    const getIdTokenMock = jest.fn().mockResolvedValue('id-token')
+
     firebase.auth().onAuthStateChanged = jest.fn(callback =>
-      callback({ name: 'user', uid: 'uid' })
+      callback({
+        name: 'user',
+        uid: 'uid',
+        getIdToken: getIdTokenMock,
+      })
     )
 
     const { queryByText, getByA11yLabel } = renderWithTheme({
       ui: <Main />,
     })
+
+    await waitFor(() => expect(getIdTokenMock).toHaveBeenCalled())
 
     expect(queryByText('Your Tokens')).not.toBeNull()
 
