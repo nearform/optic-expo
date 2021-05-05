@@ -3,7 +3,7 @@ import firebase from 'firebase'
 import * as Google from 'expo-auth-session/providers/google'
 import { waitFor, fireEvent } from '@testing-library/react-native'
 
-import Main from '../components/Main'
+import Main from '../Main'
 import { useSecrets } from '../context/secrets.js'
 
 import { renderWithTheme } from './utils'
