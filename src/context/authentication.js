@@ -63,7 +63,10 @@ export function AuthenticationProvider({ children }) {
     })
   }, [])
 
-  const handleLogout = useCallback(() => firebase.auth().signOut(), [])
+  const handleLogout = useCallback(async () => {
+    await firebase.auth().signOut()
+    setUser(undefined)
+  }, [])
 
   const handleLogin = useCallback(() => promptAsync(), [promptAsync])
 
