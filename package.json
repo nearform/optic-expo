@@ -18,7 +18,7 @@
     "@otplib/plugin-base32-enc-dec": "^12.0.1",
     "@otplib/plugin-crypto-js": "^12.0.1",
     "@react-native-async-storage/async-storage": "^1.13.0",
-    "@react-native-community/masked-view": "0.1.10",
+    "@react-native-community/masked-view": "0.1.11",
     "@react-navigation/native": "5.9.4",
     "@react-navigation/stack": "5.14.4",
     "aes-js": "3.1.2",
