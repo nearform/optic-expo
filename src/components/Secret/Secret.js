@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { Divider, Button, Card, Avatar } from 'react-native-paper'
-import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
 
 import otpLib from '../../lib/otp'
 import theme from '../../lib/defaultTheme'
 import { Headline } from '../typography'
 
 import Menu from './Menu'
+import OTP from './OTP'
 
 const styles = StyleSheet.create({
   container: {
@@ -74,7 +74,7 @@ export default function Secret({ data, onGenerate, onDelete, onRevoke }) {
     }
     refreshOtp()
     return () => clearTimeout(timeout)
-  }, [data])
+  }, [data.secret])
 
   const handleGenerate = () => {
     onGenerate(data)
@@ -121,24 +121,7 @@ export default function Secret({ data, onGenerate, onDelete, onRevoke }) {
           )}
         />
         <Card.Content style={styles.cardContent}>
-          <View style={styles.row}>
-            <Text style={styles.label}>OTP</Text>
-            <View style={styles.otpRow}>
-              <Text style={styles.value}>{otp}</Text>
-              <CountdownCircleTimer
-                key={otp}
-                size={30}
-                strokeWidth={3}
-                isPlaying
-                duration={otpLib.timeRemaining()}
-                colors="#EB829C"
-              >
-                {({ remainingTime }) => (
-                  <Text style={styles.otp}>{remainingTime}</Text>
-                )}
-              </CountdownCircleTimer>
-            </View>
-          </View>
+          <OTP value={otp} />
           <Divider />
           {data.token && (
             <>
