@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { Divider, Button, Card, Avatar } from 'react-native-paper'
+import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
 
 import otpLib from '../../lib/otp'
 import theme from '../../lib/defaultTheme'
@@ -14,6 +15,9 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     color: theme.colors.text,
+  },
+  cardContent: {
+    paddingHorizontal: theme.spacing(1),
   },
   cardActions: {
     justifyContent: 'space-between',
@@ -30,6 +34,7 @@ const styles = StyleSheet.create({
   row: {
     flex: 1,
     marginTop: theme.spacing(2),
+    paddingHorizontal: theme.spacing(1),
   },
   label: {
     color: theme.colors.textSecondary,
@@ -42,9 +47,9 @@ const styles = StyleSheet.create({
     color: theme.colors.text,
     marginBottom: theme.spacing(2),
   },
-  valueSmall: {
-    fontSize: 16,
-  },
+  valueSmall: { fontSize: 16 },
+  otpRow: { flexDirection: 'row', justifyContent: 'space-between' },
+  otp: { fontSize: 12 },
 })
 
 const BUTTON_LABELS = {
@@ -115,19 +120,35 @@ export default function Secret({ data, onGenerate, onDelete, onRevoke }) {
             />
           )}
         />
-        <Card.Content>
+        <Card.Content style={styles.cardContent}>
           <View style={styles.row}>
             <Text style={styles.label}>OTP</Text>
-            <Text style={styles.value}>{otp}</Text>
+            <View style={styles.otpRow}>
+              <Text style={styles.value}>{otp}</Text>
+              <CountdownCircleTimer
+                key={otp}
+                size={30}
+                strokeWidth={3}
+                isPlaying
+                duration={otpLib.timeRemaining()}
+                colors="#EB829C"
+              >
+                {({ remainingTime }) => (
+                  <Text style={styles.otp}>{remainingTime}</Text>
+                )}
+              </CountdownCircleTimer>
+            </View>
           </View>
           <Divider />
           {data.token && (
-            <View style={styles.row}>
-              <Text style={styles.label}>TOKEN</Text>
-              <Text style={styles.value}>{data.token || '-'}</Text>
-            </View>
+            <>
+              <View style={styles.row}>
+                <Text style={styles.label}>TOKEN</Text>
+                <Text style={styles.value}>{data.token || '-'}</Text>
+              </View>
+              <Divider />
+            </>
           )}
-          <Divider />
           {expanded && (
             <>
               <View style={styles.row}>
