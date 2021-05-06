@@ -5,6 +5,8 @@ const theme = {
   colors: {
     ...DefaultTheme.colors,
     primary: '#2165E3',
+    text: '#6D6D68',
+    textSecondary: '#CCCCCC',
   },
   spacing: (multiplier = 1) => multiplier * 8,
 }

@@ -5,8 +5,8 @@ import { Provider as PaperProvider } from 'react-native-paper'
 
 import { AuthenticationProvider } from './context/authentication'
 import { SecretsProvider } from './context/secrets'
-import Main from './components/Main'
 import theme from './lib/defaultTheme'
+import Main from './Main'
 
 export default function App() {
   return (

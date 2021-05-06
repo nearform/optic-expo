@@ -11,18 +11,17 @@ import {
 } from '@expo-google-fonts/didact-gothic'
 import AppLoading from 'expo-app-loading'
 
-import theme from '../lib/defaultTheme'
-import routes from '../lib/routeDefinitions'
-import { useAuthentication } from '../context/authentication'
-import { useSecrets } from '../context/secrets'
-
+import theme from './lib/defaultTheme'
+import routes from './lib/routeDefinitions'
+import { useAuthentication } from './context/authentication'
+import { useSecrets } from './context/secrets'
 import Home from './screens/Home'
 import TypeNewSecretScreen from './screens/TypeNewSecretScreen'
 import ScanNewSecretScreen from './screens/ScanNewSecretScreen'
 import UploadNewSecretScreen from './screens/UploadNewSecretScreen'
-import Auth from './Auth'
-import HomeHeaderRight from './HomeHeaderRight'
-import DefaultHeaderLeft from './DefaultHeaderLeft'
+import Auth from './components/Auth'
+import HomeHeaderRight from './components/HomeHeaderRight'
+import DefaultHeaderLeft from './components/DefaultHeaderLeft'
 
 const Stack = createStackNavigator()
 
@@ -54,9 +53,9 @@ export default function Main() {
 
   const { isInitialized } = useSecrets()
 
-  const { user, handleLogin } = useAuthentication()
+  const { user, loading, handleLogin } = useAuthentication()
 
-  if (!hasDidactLoaded || !hasPoppinsLoaded || !isInitialized) {
+  if (!hasDidactLoaded || !hasPoppinsLoaded || !isInitialized || loading) {
     return <AppLoading />
   }
 

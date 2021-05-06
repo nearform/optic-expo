@@ -2,13 +2,13 @@ import React from 'react'
 import { StyleSheet, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import { useSecrets } from '../../context/secrets'
-import { useAuthentication } from '../../context/authentication'
-import SecretsService from '../../lib/secretsService'
-import routes from '../../lib/routeDefinitions'
-import EmptyTokensText from '../EmptyTokensText'
-import Actions from '../Actions'
-import Secret from '../Secret'
+import { useSecrets } from '../context/secrets'
+import { useAuthentication } from '../context/authentication'
+import SecretsService from '../lib/secretsService'
+import routes from '../lib/routeDefinitions'
+import EmptyTokensText from '../components/EmptyTokensText'
+import Actions from '../components/Actions'
+import Secret from '../components/Secret'
 
 const styles = StyleSheet.create({
   container: {
@@ -67,10 +67,11 @@ export default function Home() {
           />
         ))
       )}
+
       <Actions
-        onScanNewSecretScreen={() => navigate(routes.scan.name)}
-        onUploadNewSecretScreen={() => navigate(routes.upload.name)}
-        onTypeNewSecretScreen={() => navigate(routes.type.name)}
+        onScan={() => navigate(routes.scan.name)}
+        onUpload={() => navigate(routes.upload.name)}
+        onType={() => navigate(routes.type.name)}
       />
     </ScrollView>
   )
