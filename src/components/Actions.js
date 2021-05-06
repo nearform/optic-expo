@@ -23,6 +23,7 @@ export default function Actions({ onScan, onUpload, onType }) {
   return (
     <FAB.Group
       open={open}
+      accessibilityLabel="show-actions"
       icon={open ? 'close' : 'plus'}
       fabStyle={styles.primaryButton}
       actions={[
