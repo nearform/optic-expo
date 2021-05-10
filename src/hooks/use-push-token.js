@@ -33,6 +33,7 @@ async function getToken() {
 
   return token
 }
+
 export default function usePushToken() {
   const [token, setToken] = useState(null)
 
