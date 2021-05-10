@@ -39,8 +39,8 @@ export default function usePushToken() {
 
   useEffect(() => {
     const fn = async () => {
-      const aaa = await getToken()
-      setToken(aaa)
+      const expoToken = await getToken()
+      setToken(expoToken)
     }
 
     if (!token) fn()
