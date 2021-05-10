@@ -137,6 +137,7 @@ describe('Main', () => {
     expect(registerSubscriptionStub).toHaveBeenCalledWith({
       endpoint: 'http://dummy.com',
       token: 'dummy-expo-token',
+      type: 'expo',
     })
   })
 
