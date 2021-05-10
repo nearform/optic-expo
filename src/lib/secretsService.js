@@ -1,4 +1,6 @@
-const { API_URL } = process.env
+import Constants from 'expo-constants'
+
+const { apiUrl } = Constants.manifest.extra
 
 export default class SecretsService {
   constructor(user) {
@@ -6,7 +8,7 @@ export default class SecretsService {
   }
 
   async generateToken(secret) {
-    const response = await fetch(`${API_URL}/token/${secret._id}`, {
+    const response = await fetch(`${apiUrl}/token/${secret._id}`, {
       method: 'PUT',
       headers: {
         authorization: `Bearer ${this.userIdToken}`,
@@ -19,7 +21,7 @@ export default class SecretsService {
   }
 
   async revokeToken(secret) {
-    await fetch(`${API_URL}/token/${secret._id}`, {
+    await fetch(`${apiUrl}/token/${secret._id}`, {
       method: 'DELETE',
       headers: {
         authorization: `Bearer ${this.userIdToken}`,
@@ -28,22 +30,26 @@ export default class SecretsService {
   }
 
   async getServerPublicKey() {
-    const publicKeyResponse = await fetch(`${API_URL}/vapidPublicKey`) // Why not secure??
+    const publicKeyResponse = await fetch(`${apiUrl}/vapidPublicKey`) // Why not secure??
     return publicKeyResponse.text()
   }
 
   async registerSubscription(subscription) {
-    const response = await fetch(`${API_URL}/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${this.userIdToken}`,
-      },
-      body: JSON.stringify(subscription),
-    })
+    try {
+      const response = await fetch(`${apiUrl}/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          authorization: `Bearer ${this.userIdToken}`,
+        },
+        body: JSON.stringify(subscription),
+      })
 
-    if (!response.ok) {
-      throw new Error('Cannot send subscription to server')
+      if (!response.ok) {
+        throw new Error('Cannot send subscription to server')
+      }
+    } catch (err) {
+      console.log(err)
     }
   }
 }

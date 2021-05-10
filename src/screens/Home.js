@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { StyleSheet, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
@@ -9,6 +9,7 @@ import routes from '../lib/routeDefinitions'
 import EmptyTokensText from '../components/EmptyTokensText'
 import Actions from '../components/Actions'
 import Secret from '../components/Secret'
+import usePushToken from '../hooks/use-push-token'
 
 const styles = StyleSheet.create({
   container: {
@@ -22,8 +23,23 @@ export default function Home() {
   const { user } = useAuthentication()
   const { navigate } = useNavigation()
   const { secrets, update, remove } = useSecrets()
+  const expoToken = usePushToken()
 
-  const secretsService = new SecretsService(user)
+  // TODO: probably needs a refactor, a Class here isn't much useful
+  const secretsService = useMemo(() => new SecretsService(user), [user])
+
+  useEffect(() => {
+    if (!user) return
+
+    const register = async () => {
+      await secretsService.registerSubscription({
+        token: expoToken,
+        endpoint: 'http://dummy.com', // TODO: dummy endpoint, till backend is updated to make it optional
+      })
+    }
+
+    register()
+  }, [user, secretsService, expoToken])
 
   const handleGenerateToken = async secret => {
     try {
