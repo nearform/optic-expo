@@ -32,6 +32,7 @@ export default function Home() {
 
     const register = async () => {
       await api.registerSubscription({
+        type: 'expo',
         token: expoToken,
         endpoint: 'http://dummy.com', // TODO: dummy endpoint, till backend is updated to make it optional
       })
