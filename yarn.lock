@@ -9520,10 +9520,10 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
-react-native-countdown-circle-timer@^2.5.2:
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/react-native-countdown-circle-timer/-/react-native-countdown-circle-timer-2.5.2.tgz#09a5d2f51f5bffbd851cc2f3a97987d578c5a13f"
-  integrity sha512-hkhRj257jSzbjVbkaX0BVRC3JMWpbw57WhdoHf+6Q/dzjrCepXn4PnJ6/6Y6MfDMAQmw/HzhupUjUxFUdtfyOg==
+react-native-countdown-circle-timer@^2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/react-native-countdown-circle-timer/-/react-native-countdown-circle-timer-2.5.3.tgz#f4200dbd0b6747551cdb9f071d128602de656932"
+  integrity sha512-+L3PVJ+aPpL6FOOGELoG6LofQ5JsRmPfDOwxMi6S/SqEF9ZybjhwvR6Vv/FdQXtNpvBt7Yvw6KSFxLLbQmgQRA==
 
 react-native-gesture-handler@~1.10.2:
   version "1.10.3"
