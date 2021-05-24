@@ -3,8 +3,7 @@ import React from 'react'
 const nativeEvent = {
   bounds: {},
   cornerPoints: [],
-  data:
-    'otpauth://hotp/test?secret=mock-qr-secret&algorithm=SHA256&digits=6&period=30&counter=0',
+  data: 'otpauth://hotp/test?secret=mock-qr-secret&algorithm=SHA256&digits=6&period=30&counter=0',
   target: 329,
   type: 'org.iso.QRCode',
 }
