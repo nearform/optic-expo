@@ -1384,10 +1384,10 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/didact-gothic/-/didact-gothic-0.1.0.tgz#871ac5bc59b68a1df64057a63f451b1a5acdece9"
   integrity sha512-7j2+xqE5sGCjOUvIweCBscYOyv3WVd702K8bQFHh3GeOwcgBX5snUezSWR8bJJ7JzXALH/Mt7ufhV5LBUsxTWA==
 
-"@expo-google-fonts/poppins@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/poppins/-/poppins-0.1.0.tgz#aae4df9e80d68ec9dc6764e57dc931f1f64016cd"
-  integrity sha512-iC8ii7hYyK22N3ivvLyIspLQ0D4dn1mB+llhYnUCr/h/QfwUWyEosq1uWiwNC47yCedsiPiZ99vJSfpYRjBDrA==
+"@expo-google-fonts/poppins@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/poppins/-/poppins-0.2.0.tgz#f6df892909142740b53d3227cb5eb24990ece151"
+  integrity sha512-NIwmzadXGHmS7F7nznfpObVAAi4PdSvueLKnPN3ERG0yMYrC8svEP2IY25H4xLoIGBazgkN192ZkStM3PMYajA==
 
 "@expo/babel-preset-cli@0.2.18":
   version "0.2.18"
