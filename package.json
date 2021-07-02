@@ -31,7 +31,7 @@
     "expo-random": "~11.1.2",
     "expo-secure-store": "~10.1.0",
     "expo-status-bar": "~1.0.4",
-    "expo-web-browser": "~9.1.0",
+    "expo-web-browser": "~9.2.0",
     "firebase": "8.2.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
