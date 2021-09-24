@@ -1,5 +1,7 @@
 import Constants from 'expo-constants'
 
+import otpLib from './otp'
+
 const { apiUrl } = Constants.manifest.extra
 
 export default function apiFactory(opts) {
@@ -44,6 +46,25 @@ export default function apiFactory(opts) {
 
         if (!response.ok) {
           throw new Error('Cannot send subscription to server')
+        }
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    async respond(secret, uniqueId) {
+      try {
+        const response = await fetch(`${apiUrl}/respond`, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            approved: true,
+            uniqueId,
+            otp: otpLib.generate(secret),
+          }),
+        })
+
+        if (!response.ok) {
+          throw new Error('Could not respond to server')
         }
       } catch (err) {
         console.log(err)
