@@ -3,6 +3,7 @@ import firebase from 'firebase'
 import * as Google from 'expo-auth-session/providers/google'
 import { waitFor, fireEvent } from '@testing-library/react-native'
 
+import apiFactory from '../lib/api'
 import { useAuthentication } from '../context/authentication'
 import Main from '../Main'
 import { useSecrets } from '../context/secrets.js'
@@ -20,10 +21,18 @@ jest.mock('@expo-google-fonts/didact-gothic', () => ({
 jest.mock('expo-auth-session/providers/google')
 
 jest.mock('firebase')
+jest.mock('expo-constants', () => ({
+  manifest: { extra: { apiUrl: 'http://dummy.com/api' } },
+}))
+
+jest.mock('../lib/api.js')
+
 jest.mock('../context/authentication', () => ({
   ...jest.requireActual('../context/authentication'),
   useAuthentication: jest.fn(),
 }))
+
+jest.mock('../hooks/use-push-token', () => () => 'dummy-expo-token')
 
 jest.mock('../context/secrets.js', () => ({
   ...jest.requireActual('../context/secrets.js'),
@@ -37,6 +46,7 @@ describe('Main', () => {
   let request
   let promptAsync
   let handleLoginStub = jest.fn()
+  let registerSubscriptionStub = jest.fn()
 
   const mockUseAuthRequest = response => {
     return jest
@@ -60,6 +70,9 @@ describe('Main', () => {
       user: {}, // truthy
       loading: false,
       handleLogin: handleLoginStub,
+    })
+    apiFactory.mockReturnValue({
+      registerSubscription: registerSubscriptionStub,
     })
   })
 
@@ -85,6 +98,7 @@ describe('Main', () => {
 
     fireEvent.press(login)
     expect(handleLoginStub).toHaveBeenCalledTimes(1)
+    expect(registerSubscriptionStub).toHaveBeenCalledTimes(0)
   })
 
   it('should render correct initial state for authenticated users', async () => {
@@ -118,6 +132,13 @@ describe('Main', () => {
     getByA11yLabel('Scan QR Code')
     getByA11yLabel('Upload')
     getByA11yLabel('Add details manually')
+
+    expect(registerSubscriptionStub).toHaveBeenCalledTimes(1)
+    expect(registerSubscriptionStub).toHaveBeenCalledWith({
+      endpoint: 'http://dummy.com',
+      token: 'dummy-expo-token',
+      type: 'expo',
+    })
   })
 
   // TODO: bring it back when working on scan feature
