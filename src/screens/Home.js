@@ -1,5 +1,6 @@
-import React, { useEffect, useMemo } from 'react'
-import { StyleSheet, ScrollView } from 'react-native'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import * as Notifications from 'expo-notifications'
+import { StyleSheet, ScrollView, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import { useSecrets } from '../context/secrets'
@@ -19,27 +20,22 @@ const styles = StyleSheet.create({
   },
 })
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+})
+
 export default function Home() {
   const { user } = useAuthentication()
   const { navigate } = useNavigation()
   const { secrets, update, remove } = useSecrets()
   const expoToken = usePushToken()
+  const responseListener = useRef()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
-
-  useEffect(() => {
-    if (!user || !expoToken) return
-
-    const register = async () => {
-      await api.registerSubscription({
-        type: 'expo',
-        token: expoToken,
-        endpoint: 'http://dummy.com', // TODO: dummy endpoint, till backend is updated to make it optional
-      })
-    }
-
-    register()
-  }, [user, api, expoToken])
 
   const handleGenerateToken = async secret => {
     try {
@@ -67,6 +63,79 @@ export default function Home() {
       console.log(err)
     }
   }
+
+  const handlePasswordApproved = useCallback(
+    async (secret, uniqueId) => {
+      try {
+        await api.respond(secret, uniqueId)
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    [api]
+  )
+
+  const showRequestAlert = (issuer, account, onApprove) => {
+    Alert.alert(
+      'One Time Password requested',
+      `For secret issued by ${issuer} to ${account}`,
+      [
+        {
+          text: 'Reject',
+          style: 'cancel',
+        },
+        { text: 'Approve', onPress: onApprove },
+      ],
+      { cancelable: false }
+    )
+  }
+
+  const onNotification = useCallback(
+    async notificationData => {
+      const {
+        notification: {
+          request: {
+            content: { data },
+          },
+        },
+      } = notificationData
+      const { secretId, uniqueId } = data
+
+      const details = secrets.find(({ _id }) => _id === secretId)
+      if (!details) {
+        console.error(`Failed to find secret with id ${secretId}`)
+        return
+      }
+
+      const { secret, issuer, account } = details
+      showRequestAlert(issuer, account, () =>
+        handlePasswordApproved(secret, uniqueId)
+      )
+    },
+    [secrets, handlePasswordApproved]
+  )
+
+  useEffect(() => {
+    if (!user || !expoToken) return
+
+    const register = async () => {
+      await api.registerSubscription({
+        type: 'expo',
+        token: expoToken,
+      })
+    }
+
+    register()
+  }, [user, api, expoToken])
+
+  useEffect(() => {
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener(onNotification)
+
+    return () => {
+      Notifications.removeNotificationSubscription(responseListener.current)
+    }
+  }, [onNotification])
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

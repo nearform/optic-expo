@@ -135,7 +135,6 @@ describe('Main', () => {
 
     expect(registerSubscriptionStub).toHaveBeenCalledTimes(1)
     expect(registerSubscriptionStub).toHaveBeenCalledWith({
-      endpoint: 'http://dummy.com',
       token: 'dummy-expo-token',
       type: 'expo',
     })
