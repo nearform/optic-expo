@@ -5,6 +5,8 @@ import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
 import otpLib from '../../lib/otp'
 import theme from '../../lib/defaultTheme'
 
+import CopyableInfo from './CopyableInfo'
+
 const styles = StyleSheet.create({
   row: {
     flex: 1,
@@ -22,7 +24,18 @@ const styles = StyleSheet.create({
     color: theme.colors.text,
     marginBottom: theme.spacing(2),
   },
-  otpRow: { flexDirection: 'row', justifyContent: 'space-between' },
+  otpRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  otpData: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  iconButton: {
+    padding: 0,
+    marginTop: -10,
+  },
   otp: { fontSize: 12 },
 })
 
@@ -31,7 +44,7 @@ export default function OTP({ value }) {
     <View style={styles.row}>
       <Text style={styles.label}>OTP</Text>
       <View style={styles.otpRow}>
-        <Text style={styles.value}>{value}</Text>
+        <CopyableInfo textCustomStyle={styles.value}>{value}</CopyableInfo>
         <CountdownCircleTimer
           key={value}
           size={30}

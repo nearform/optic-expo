@@ -51,15 +51,15 @@ export default function apiFactory(opts) {
         console.log(err)
       }
     },
-    async respond(secret, uniqueId) {
+    async respond(secret, uniqueId, approved) {
       try {
         const response = await fetch(`${apiUrl}/respond`, {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify({
-            approved: true,
+            approved,
             uniqueId,
-            otp: otpLib.generate(secret),
+            otp: approved ? otpLib.generate(secret) : undefined,
           }),
         })
 
