@@ -129,9 +129,8 @@ export default function Home() {
   }, [user, api, expoToken])
 
   useEffect(() => {
-    responseListener.current = Notifications.addNotificationResponseReceivedListener(
-      onNotification
-    )
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener(onNotification)
 
     return () => {
       Notifications.removeNotificationSubscription(responseListener.current)
