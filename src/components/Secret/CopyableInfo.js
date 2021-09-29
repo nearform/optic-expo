@@ -17,24 +17,22 @@ const styles = StyleSheet.create({
 
 const CopyableInfo = ({ children, textCustomStyle }) => {
   return (
-    <>
-      <View style={styles.row}>
-        <Text style={textCustomStyle}>{children}</Text>
-        <IconButton
-          style={styles.iconButton}
-          icon="content-copy"
-          accessibilityLabel="copy-otp"
-          size={20}
-          onPress={() => {
-            Clipboard.setString(children)
-            Toast.show(`${children} copied to your clipboard`, {
-              duration: Toast.durations.SHORT,
-              position: Toast.positions.BOTTOM,
-            })
-          }}
-        />
-      </View>
-    </>
+    <View style={styles.row}>
+      <Text style={textCustomStyle}>{children}</Text>
+      <IconButton
+        style={styles.iconButton}
+        icon="content-copy"
+        accessibilityLabel="copy-otp"
+        size={20}
+        onPress={() => {
+          Clipboard.setString(children)
+          Toast.show(`${children} copied to your clipboard`, {
+            duration: Toast.durations.SHORT,
+            position: Toast.positions.BOTTOM,
+          })
+        }}
+      />
+    </View>
   )
 }
 
