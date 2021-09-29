@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconButton } from 'react-native-paper'
 import { StyleSheet, View, Text } from 'react-native'
-import Clipboard from 'expo-clipboard'
+import * as Clipboard from 'expo-clipboard'
 import Toast from 'react-native-root-toast'
 
 const styles = StyleSheet.create({
