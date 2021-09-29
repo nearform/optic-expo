@@ -8,6 +8,7 @@ import { Headline } from '../typography'
 
 import Menu from './Menu'
 import OTP from './OTP'
+import CopyableInfo from './CopyableInfo'
 
 const styles = StyleSheet.create({
   container: {
@@ -50,6 +51,10 @@ const styles = StyleSheet.create({
   valueSmall: { fontSize: 16 },
   otpRow: { flexDirection: 'row', justifyContent: 'space-between' },
   otp: { fontSize: 12 },
+  tokenRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 })
 
 const BUTTON_LABELS = {
@@ -127,7 +132,9 @@ export default function Secret({ data, onGenerate, onDelete, onRevoke }) {
             <>
               <View style={styles.row}>
                 <Text style={styles.label}>TOKEN</Text>
-                <Text style={styles.value}>{data.token || '-'}</Text>
+                <CopyableInfo textCustomStyle={styles.value}>
+                  {data.token || '-'}
+                </CopyableInfo>
               </View>
               <Divider />
             </>

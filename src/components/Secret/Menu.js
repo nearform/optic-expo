@@ -35,14 +35,6 @@ export default function ContextMenu({
         icon="minus"
         disabled={!onRevoke}
       />
-      <Divider />
-      <Menu.Item
-        onPress={() => {}}
-        title="Edit details"
-        icon="pencil"
-        disabled
-      />
-      <Divider />
       <Menu.Item onPress={onDelete} title="Delete secret" icon="delete" />
     </Menu>
   )

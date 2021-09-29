@@ -64,10 +64,10 @@ export default function Home() {
     }
   }
 
-  const handlePasswordApproved = useCallback(
-    async (secret, uniqueId) => {
+  const handlePasswordRequest = useCallback(
+    async (secret, uniqueId, approved) => {
       try {
-        await api.respond(secret, uniqueId)
+        await api.respond(secret, uniqueId, approved)
       } catch (err) {
         console.log(err)
       }
@@ -75,7 +75,7 @@ export default function Home() {
     [api]
   )
 
-  const showRequestAlert = (issuer, account, onApprove) => {
+  const showRequestAlert = (issuer, account, onApprove, onReject) => {
     Alert.alert(
       'One Time Password requested',
       `For secret issued by ${issuer} to ${account}`,
@@ -83,6 +83,7 @@ export default function Home() {
         {
           text: 'Reject',
           style: 'cancel',
+          onPress: onReject,
         },
         { text: 'Approve', onPress: onApprove },
       ],
@@ -108,11 +109,14 @@ export default function Home() {
       }
 
       const { secret, issuer, account } = details
-      showRequestAlert(issuer, account, () =>
-        handlePasswordApproved(secret, uniqueId)
+      showRequestAlert(
+        issuer,
+        account,
+        () => handlePasswordRequest(secret, uniqueId, true),
+        () => handlePasswordRequest(secret, uniqueId, false)
       )
     },
-    [secrets, handlePasswordApproved]
+    [secrets, handlePasswordRequest]
   )
 
   useEffect(() => {
