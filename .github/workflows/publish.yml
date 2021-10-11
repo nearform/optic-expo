@@ -19,4 +19,6 @@ jobs:
           expo-version: 4.x
           token: ${{ secrets.EXPO_TOKEN }}
       - run: yarn install
+      - name: .env creation
+        run: cp .env.sample .env
       - run: expo publish
