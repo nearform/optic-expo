@@ -23,13 +23,13 @@ const styles = StyleSheet.create({
     color: theme.colors.surface,
   },
   form: {
-    padding: theme.spacing(0.5),
+    padding: theme.spacing(2),
   },
   formTextInput: {
     marginTop: theme.spacing(0.5),
   },
   formButton: {
-    marginTop: theme.spacing(1.5),
+    marginTop: theme.spacing(3),
   },
 })
 
