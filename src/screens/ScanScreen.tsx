@@ -6,8 +6,8 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { useAuthentication } from '../context/authentication'
 import { useSecrets } from '../context/secrets'
 import { parse } from '../lib/qrParser'
-import { BodyText } from '../components/typography'
 import { MainStackParamList } from '../Main'
+import { Typography } from '../components/Typography'
 
 const styles = StyleSheet.create({
   container: {
@@ -100,11 +100,11 @@ export const ScanScreen: React.FC<ScanScreenProps> = ({ navigation }) => {
   }, [])
 
   if (permission === PERMISSION_STATES.undetermined) {
-    return <BodyText>{UI_STRINGS.undetermined}</BodyText>
+    return <Typography>{UI_STRINGS.undetermined}</Typography>
   }
 
   if (permission === PERMISSION_STATES.denied) {
-    return <BodyText>{UI_STRINGS.denied}</BodyText>
+    return <Typography>{UI_STRINGS.denied}</Typography>
   }
 
   return (

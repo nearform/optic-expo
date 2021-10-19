@@ -4,8 +4,8 @@ import { Divider, Button, Card, Avatar } from 'react-native-paper'
 
 import otpLib from '../../lib/otp'
 import theme from '../../lib/defaultTheme'
-import { Headline } from '../typography'
 import { Secret } from '../../types'
+import { Typography } from '../Typography'
 
 import { ContextMenu } from './ContextMenu'
 import { OTP } from './OTP'
@@ -14,9 +14,6 @@ import { CopyableInfo } from './CopyableInfo'
 const styles = StyleSheet.create({
   container: {
     margin: theme.spacing(2),
-  },
-  cardTitle: {
-    color: theme.colors.text,
   },
   cardContent: {
     paddingHorizontal: theme.spacing(1),
@@ -122,11 +119,7 @@ export const SecretCard: React.FC<SecretProps> = ({
     <View style={styles.container}>
       <Card>
         <Card.Title
-          title={
-            <Headline level={5} style={styles.cardTitle}>
-              {data.issuer}
-            </Headline>
-          }
+          title={<Typography variant="h5">{data.issuer}</Typography>}
           subtitle={data.account}
           left={props => <Avatar.Icon {...props} icon="key" />}
           right={() => (

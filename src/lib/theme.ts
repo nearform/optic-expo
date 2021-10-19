@@ -1,4 +1,4 @@
-import { TextStyle, Platform } from 'react-native'
+import { TextStyle } from 'react-native'
 import {
   DefaultTheme as PaperDefaultTheme,
   configureFonts,
@@ -70,6 +70,7 @@ export type TypographyVariant =
   | 'h5'
   | 'h6'
   | 'subtitle1'
+  | 'subtitle2'
   | 'body1'
   | 'body2'
   | 'button'
@@ -113,6 +114,11 @@ const typography: Record<TypographyVariant, TextStyle> = {
     fontWeight: '400',
     letterSpacing: 0.15,
   },
+  subtitle2: {
+    fontSize: 14,
+    fontWeight: '500',
+    letterSpacing: 0.15,
+  },
   body1: {
     fontSize: 16,
     fontWeight: '400',
@@ -124,8 +130,9 @@ const typography: Record<TypographyVariant, TextStyle> = {
     letterSpacing: 0.25,
   },
   button: {
-    fontSize: 16,
-    fontWeight: '400',
+    fontSize: 14,
+    fontWeight: '500',
+    textTransform: 'uppercase',
   },
   caption: {
     fontSize: 12,
@@ -134,8 +141,8 @@ const typography: Record<TypographyVariant, TextStyle> = {
   },
   overline: {
     fontSize: 10,
-    textTransform: 'uppercase',
     fontWeight: '400',
+    textTransform: 'uppercase',
   },
 }
 

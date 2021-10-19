@@ -5,7 +5,7 @@ import { Button } from 'react-native-paper'
 
 import theme from '../lib/defaultTheme'
 
-import { Headline, BodyText } from './typography'
+import { Typography } from './Typography'
 import Spacer from './Spacer'
 import Logo from './Logo'
 
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    color: theme.colors.surface,
     paddingHorizontal: theme.spacing(7),
   },
   button: {
@@ -50,11 +49,17 @@ export default function Auth({ handleLogin }) {
   return (
     <View style={styles.container}>
       <View>
-        <Headline style={styles.text} color={theme.colors.surface}>
+        <Typography
+          variant="h2"
+          style={styles.text}
+          color={theme.colors.surface}
+        >
           {UI_STRINGS.headline}
-        </Headline>
+        </Typography>
         <Spacer size={4} />
-        <BodyText style={styles.text}>{UI_STRINGS.subheading}</BodyText>
+        <Typography variant="body1" style={styles.text}>
+          {UI_STRINGS.subheading}
+        </Typography>
       </View>
       <Button
         style={styles.button}

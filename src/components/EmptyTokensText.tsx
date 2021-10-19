@@ -3,8 +3,8 @@ import { StyleSheet, View } from 'react-native'
 
 import theme from '../lib/defaultTheme'
 
-import { Headline, BodyText } from './typography'
 import Spacer from './Spacer'
+import { Typography } from './Typography'
 
 const UI_STRINGS = {
   heading: 'No Secrets',
@@ -23,11 +23,13 @@ const styles = StyleSheet.create({
 export default function EmptyTokensText() {
   return (
     <View style={styles.description}>
-      <Headline level="5" alpha={0.6}>
+      <Typography variant="h5" color={'#AAA' /* TODO: */}>
         {UI_STRINGS.heading}
-      </Headline>
+      </Typography>
       <Spacer size={2} />
-      <BodyText alpha={0.6}>{UI_STRINGS.description}</BodyText>
+      <Typography color={'#AAA' /* TODO: */}>
+        {UI_STRINGS.description}
+      </Typography>
       <Spacer size={2} />
     </View>
   )
