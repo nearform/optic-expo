@@ -5,10 +5,11 @@ import { Divider, Button, Card, Avatar } from 'react-native-paper'
 import otpLib from '../../lib/otp'
 import theme from '../../lib/defaultTheme'
 import { Headline } from '../typography'
+import { Secret } from '../../types'
 
-import Menu from './Menu'
-import OTP from './OTP'
-import CopyableInfo from './CopyableInfo'
+import { ContextMenu } from './ContextMenu'
+import { OTP } from './OTP'
+import { CopyableInfo } from './CopyableInfo'
 
 const styles = StyleSheet.create({
   container: {
@@ -62,17 +63,30 @@ const BUTTON_LABELS = {
   generateToken: 'Generate Token',
 }
 
-export default function Secret({ data, onGenerate, onDelete, onRevoke }) {
+type SecretProps = {
+  data: Secret
+  onGenerate: (_: Secret) => void
+  onDelete: (_: Secret) => void
+  onRevoke: (_: Secret) => void
+}
+
+export const SecretCard: React.FC<SecretProps> = ({
+  data,
+  onGenerate,
+  onDelete,
+  onRevoke,
+}) => {
   const [showMenu, setShowMenu] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const [generating, setGenerating] = useState(false)
-  const [otp, setOtp] = useState()
+  const [otp, setOtp] = useState('')
 
   useEffect(() => {
     if (!data.secret) return
     // do not fail if secret is missing
 
-    let timeout
+    let timeout: NodeJS.Timeout
+
     const refreshOtp = () => {
       setOtp(otpLib.generate(data.secret))
       timeout = setTimeout(refreshOtp, otpLib.timeRemaining() * 1000 + 100)
@@ -115,8 +129,8 @@ export default function Secret({ data, onGenerate, onDelete, onRevoke }) {
           }
           subtitle={data.account}
           left={props => <Avatar.Icon {...props} icon="key" />}
-          right={props => (
-            <Menu
+          right={() => (
+            <ContextMenu
               open={showMenu}
               onRefresh={data.token ? handleGenerate : undefined}
               onRevoke={data.token ? handleRevoke : undefined}
@@ -132,7 +146,7 @@ export default function Secret({ data, onGenerate, onDelete, onRevoke }) {
             <>
               <View style={styles.row}>
                 <Text style={styles.label}>TOKEN</Text>
-                <CopyableInfo textCustomStyle={styles.value}>
+                <CopyableInfo textStyle={styles.value}>
                   {data.token || '-'}
                 </CopyableInfo>
               </View>

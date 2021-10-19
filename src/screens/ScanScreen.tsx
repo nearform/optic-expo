@@ -1,13 +1,13 @@
 import React, { useEffect, useReducer } from 'react'
 import { View, StyleSheet, Button } from 'react-native'
-import { BarCodeScanner } from 'expo-barcode-scanner'
-import { useNavigation } from '@react-navigation/native'
+import { BarCodeScannedCallback, BarCodeScanner } from 'expo-barcode-scanner'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 import { useAuthentication } from '../context/authentication'
 import { useSecrets } from '../context/secrets'
 import { parse } from '../lib/qrParser'
-import routes from '../lib/routeDefinitions'
 import { BodyText } from '../components/typography'
+import { MainStackParamList } from '../Main'
 
 const styles = StyleSheet.create({
   container: {
@@ -57,11 +57,14 @@ function scanReducer(state, action) {
   }
 }
 
-export default function ScanNewSecretScreen() {
+type ScanScreenProps = {
+  navigation: StackNavigationProp<MainStackParamList, 'Scan'>
+}
+
+export const ScanScreen: React.FC<ScanScreenProps> = ({ navigation }) => {
   const [{ scan, permission }, dispatch] = useReducer(scanReducer, initialState)
   const { user } = useAuthentication()
   const { add } = useSecrets()
-  const { navigate } = useNavigation()
 
   async function requestPermissions() {
     try {
@@ -78,13 +81,13 @@ export default function ScanNewSecretScreen() {
     }
   }
 
-  async function handleBarcodeScan(barcodeScan) {
+  const handleBarcodeScan: BarCodeScannedCallback = async barcodeScan => {
     const { data } = barcodeScan
     dispatch({ type: ACTION_TYPES.SET_SCAN, value: SCAN_STATES.active })
     try {
       const { issuer, account, secret } = await parse(data)
       await add({ uid: user.uid, secret, account, issuer })
-      navigate(routes.home.name)
+      navigation.navigate('Home')
     } catch (error) {
       // TODO
       // Handle error UI state

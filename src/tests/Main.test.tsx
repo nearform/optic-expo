@@ -45,8 +45,8 @@ jest.mock('../context/secrets.js', () => ({
 describe('Main', () => {
   let request
   let promptAsync
-  let handleLoginStub = jest.fn()
-  let registerSubscriptionStub = jest.fn()
+  const handleLoginStub = jest.fn()
+  const registerSubscriptionStub = jest.fn()
 
   const mockUseAuthRequest = response => {
     return jest

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { TextInput, Button } from 'react-native-paper'
-import { useNavigation } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 import theme from '../lib/defaultTheme'
-import routes from '../lib/routeDefinitions'
 import { useAuthentication } from '../context/authentication'
 import { useSecrets } from '../context/secrets'
+import { MainStackParamList } from '../Main'
 
 const UI_STRINGS = {
   issuerTextInputLabel: 'Issuer',
@@ -33,17 +33,20 @@ const styles = StyleSheet.create({
   },
 })
 
-export default function TypeNewSecretScreen() {
+type TypeScreenProps = {
+  navigation: StackNavigationProp<MainStackParamList, 'Type'>
+}
+
+export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
   const { user } = useAuthentication()
   const { add } = useSecrets()
   const [issuer, setIssuer] = useState('')
   const [secret, setSecret] = useState('')
-  const [account, setAccount] = useState(user.displayName)
-  const { navigate } = useNavigation()
+  const [account, setAccount] = useState(user.name)
 
   const handleAddSecretButtonPress = async () => {
     await add({ uid: user.uid, secret, account, issuer })
-    navigate(routes.home.name)
+    navigation.navigate('Home')
   }
 
   return (

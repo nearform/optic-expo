@@ -4,23 +4,25 @@ import { FAB } from 'react-native-paper'
 
 import theme from '../lib/defaultTheme'
 
-const A11Y_LABELS = {
-  scan: 'Scan QR Code',
-  type: 'Add details manually',
-}
-
 const styles = StyleSheet.create({
   primaryButton: {
     backgroundColor: theme.colors.primary,
   },
 })
 
-export default function Actions({ onScan, onType }) {
-  const [open, setOpen] = useState(false)
-  const handleStateChange = ({ open: f }) => setOpen(f)
+const initialState = { open: false }
+
+type ActionsProps = {
+  onScan: () => void
+  onType: () => void
+}
+
+export const Actions: React.FC<ActionsProps> = ({ onScan, onType }) => {
+  const [{ open }, setOpen] = useState(initialState)
 
   return (
     <FAB.Group
+      visible
       open={open}
       accessibilityLabel="show-actions"
       icon={open ? 'close' : 'plus'}
@@ -28,16 +30,16 @@ export default function Actions({ onScan, onType }) {
       actions={[
         {
           icon: 'qrcode',
-          label: A11Y_LABELS.scan,
+          label: 'Scan QR Code',
           onPress: onScan,
         },
         {
           icon: 'pencil',
-          label: A11Y_LABELS.type,
+          label: 'Add details manually',
           onPress: onType,
         },
       ]}
-      onStateChange={handleStateChange}
+      onStateChange={setOpen}
     />
   )
 }

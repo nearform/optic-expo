@@ -15,14 +15,20 @@ import theme from './lib/defaultTheme'
 import routes from './lib/routeDefinitions'
 import { useAuthentication } from './context/authentication'
 import { useSecrets } from './context/secrets'
-import Home from './screens/Home'
-import TypeNewSecretScreen from './screens/TypeNewSecretScreen'
-import ScanNewSecretScreen from './screens/ScanNewSecretScreen'
+import { HomeScreen } from './screens/Home'
+import { TypeScreen } from './screens/TypeScreen'
+import { ScanScreen } from './screens/ScanScreen'
 import Auth from './components/Auth'
 import HomeHeaderRight from './components/HomeHeaderRight'
 import DefaultHeaderLeft from './components/DefaultHeaderLeft'
 
-const Stack = createStackNavigator()
+const MainStack = createStackNavigator()
+
+export type MainStackParamList = {
+  Home: undefined
+  Scan: undefined
+  Type: undefined
+}
 
 const UI_STRINGS = {
   routes: {
@@ -61,7 +67,7 @@ export default function Main() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator
+      <MainStack.Navigator
         {...{
           initialRouteName: routes.home.name,
           screenOptions: {
@@ -74,31 +80,31 @@ export default function Main() {
           },
         }}
       >
-        <Stack.Screen
+        <MainStack.Screen
           name={routes.home.name}
-          component={Home}
+          component={HomeScreen}
           options={{
             title: UI_STRINGS.routes.home.title,
             headerRight: HomeHeaderRight,
           }}
         />
-        <Stack.Screen
+        <MainStack.Screen
           name={routes.scan.name}
-          component={ScanNewSecretScreen}
+          component={ScanScreen}
           options={{
             title: UI_STRINGS.routes.scan.title,
             headerLeft: DefaultHeaderLeft,
           }}
         />
-        <Stack.Screen
+        <MainStack.Screen
           name={routes.type.name}
-          component={TypeNewSecretScreen}
+          component={TypeScreen}
           options={{
             title: UI_STRINGS.routes.type.title,
             headerLeft: DefaultHeaderLeft,
           }}
         />
-      </Stack.Navigator>
+      </MainStack.Navigator>
     </NavigationContainer>
   )
 }

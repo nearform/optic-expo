@@ -26,15 +26,41 @@ if (!firebase.apps.length) {
 
 WebBrowser.maybeCompleteAuthSession()
 
-const AuthenticationContext = createContext()
-
-export function useAuthentication() {
-  return useContext(AuthenticationContext)
+type User = {
+  name: string | null
+  uid: string
+  idToken: string
 }
 
-export function AuthenticationProvider({ children }) {
+type ContextType = {
+  loading: boolean
+  user: User | null
+  handleLogin: () => void
+  handleLogout: () => Promise<void>
+}
+
+const initialContext: ContextType = {
+  loading: true,
+  user: null,
+  handleLogin: () => {
+    // @todo
+  },
+  handleLogout: async () => {
+    // @todo
+  },
+}
+
+const AuthenticationContext = createContext<ContextType>(initialContext)
+
+type AuthenticationProviderProps = {
+  children: React.ReactNode
+}
+
+export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({
+  children,
+}) => {
   const [loading, setLoading] = useState(true)
-  const [user, setUser] = useState()
+  const [user, setUser] = useState<User | null>(null)
 
   const [, response, promptAsync] = Google.useIdTokenAuthRequest({
     clientId:
@@ -56,21 +82,24 @@ export function AuthenticationProvider({ children }) {
       if (!firebaseUser) return
 
       setUser({
-        name: firebaseUser.name,
+        name: firebaseUser.displayName,
         uid: firebaseUser.uid,
         idToken: await firebaseUser.getIdToken(),
       })
     })
   }, [])
 
-  const handleLogout = useCallback(async () => {
+  const handleLogin = useCallback<ContextType['handleLogin']>(
+    () => promptAsync(),
+    [promptAsync]
+  )
+
+  const handleLogout = useCallback<ContextType['handleLogout']>(async () => {
     await firebase.auth().signOut()
-    setUser(undefined)
+    setUser(null)
   }, [])
 
-  const handleLogin = useCallback(() => promptAsync(), [promptAsync])
-
-  const authValue = useMemo(
+  const value = useMemo<ContextType>(
     () => ({
       loading,
       user,
@@ -81,8 +110,12 @@ export function AuthenticationProvider({ children }) {
   )
 
   return (
-    <AuthenticationContext.Provider value={authValue}>
+    <AuthenticationContext.Provider value={value}>
       {children}
     </AuthenticationContext.Provider>
   )
+}
+
+export function useAuthentication() {
+  return useContext(AuthenticationContext)
 }

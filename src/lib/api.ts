@@ -1,5 +1,7 @@
 import Constants from 'expo-constants'
 
+import { Secret } from '../types'
+
 import otpLib from './otp'
 
 const { apiUrl } = Constants.manifest.extra
@@ -19,7 +21,7 @@ export default function apiFactory(opts) {
       return token
     },
 
-    async revokeToken(secret) {
+    async revokeToken(secret: Secret) {
       await fetch(`${apiUrl}/token/${secret._id}`, {
         method: 'DELETE',
         headers: {

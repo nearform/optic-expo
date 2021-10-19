@@ -1,13 +1,21 @@
 import React from 'react'
 import { Divider, Menu, IconButton } from 'react-native-paper'
 
-export default function ContextMenu({
+type ContextMenuProps = {
+  open: boolean
+  onToggle: () => void
+  onRefresh?: () => void
+  onRevoke?: () => void
+  onDelete: () => void
+}
+
+export const ContextMenu: React.FC<ContextMenuProps> = ({
   open,
   onToggle,
   onRefresh,
   onRevoke,
   onDelete,
-}) {
+}) => {
   return (
     <Menu
       visible={open}
@@ -17,7 +25,6 @@ export default function ContextMenu({
           icon="dots-vertical"
           accessibilityLabel="toggle-menu"
           size={24}
-          mode="contained"
           onPress={onToggle}
         />
       }

@@ -11,7 +11,9 @@
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
   },
   "exclude": [
     "node_modules",
@@ -19,5 +21,6 @@
     "metro.config.js",
     "jest.config.js"
   ],
-  "extends": "expo/tsconfig.base"
+  "extends": "expo/tsconfig.base",
+  "typeRoots": ["node_modules/@types", "src/types"],
 }

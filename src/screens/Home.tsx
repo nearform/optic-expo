@@ -1,16 +1,18 @@
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import * as Notifications from 'expo-notifications'
 import { StyleSheet, ScrollView, Alert } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { Subscription } from '@unimodules/react-native-adapter'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 import { useSecrets } from '../context/secrets'
 import { useAuthentication } from '../context/authentication'
 import apiFactory from '../lib/api'
-import routes from '../lib/routeDefinitions'
 import EmptyTokensText from '../components/EmptyTokensText'
 import Actions from '../components/Actions'
-import Secret from '../components/Secret'
+import { SecretCard } from '../components/SecretCard'
 import usePushToken from '../hooks/use-push-token'
+import { Secret } from '../types'
+import { MainStackParamList } from '../Main'
 
 const styles = StyleSheet.create({
   container: {
@@ -28,16 +30,19 @@ Notifications.setNotificationHandler({
   }),
 })
 
-export default function Home() {
+type HomeScreenProps = {
+  navigation: StackNavigationProp<MainStackParamList, 'Home'>
+}
+
+export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const { user } = useAuthentication()
-  const { navigate } = useNavigation()
   const { secrets, update, remove } = useSecrets()
   const expoToken = usePushToken()
-  const responseListener = useRef()
+  const responseListener = useRef<Subscription>()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
 
-  const handleGenerateToken = async secret => {
+  const handleGenerateToken = async (secret: Secret) => {
     try {
       const token = await api.generateToken(secret)
       await update({ ...secret, token })
@@ -46,16 +51,16 @@ export default function Home() {
     }
   }
 
-  const handleRevokeToken = async secret => {
+  const handleRevokeToken = async (secret: Secret) => {
     try {
-      const token = await api.revokeToken(secret)
-      await update({ ...secret, token })
+      await api.revokeToken(secret)
+      await update({ ...secret, token: null })
     } catch (err) {
       console.log(err)
     }
   }
 
-  const handleDeleteSecret = async secret => {
+  const handleDeleteSecret = async (secret: Secret) => {
     try {
       await api.revokeToken(secret)
       await remove(secret)
@@ -75,7 +80,12 @@ export default function Home() {
     [api]
   )
 
-  const showRequestAlert = (issuer, account, onApprove, onReject) => {
+  const showRequestAlert = (
+    issuer: string,
+    account: string,
+    onApprove,
+    onReject
+  ) => {
     Alert.alert(
       'One Time Password requested',
       `For secret issued by ${issuer} to ${account}`,
@@ -133,9 +143,8 @@ export default function Home() {
   }, [user, api, expoToken])
 
   useEffect(() => {
-    responseListener.current = Notifications.addNotificationResponseReceivedListener(
-      onNotification
-    )
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener(onNotification)
 
     return () => {
       Notifications.removeNotificationSubscription(responseListener.current)
@@ -148,7 +157,7 @@ export default function Home() {
         <EmptyTokensText />
       ) : (
         secrets.map(secret => (
-          <Secret
+          <SecretCard
             key={secret._id}
             data={secret}
             onGenerate={handleGenerateToken}
@@ -159,8 +168,8 @@ export default function Home() {
       )}
 
       <Actions
-        onScan={() => navigate(routes.scan.name)}
-        onType={() => navigate(routes.type.name)}
+        onScan={() => navigation.navigate('Scan')}
+        onType={() => navigation.navigate('Type')}
       />
     </ScrollView>
   )

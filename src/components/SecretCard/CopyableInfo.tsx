@@ -1,6 +1,6 @@
 import React from 'react'
 import { IconButton } from 'react-native-paper'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, StyleProp, TextStyle } from 'react-native'
 import * as Clipboard from 'expo-clipboard'
 import Toast from 'react-native-root-toast'
 
@@ -15,10 +15,18 @@ const styles = StyleSheet.create({
   },
 })
 
-const CopyableInfo = ({ children, textCustomStyle }) => {
+type CopyableInfoProps = {
+  children: string
+  textStyle: StyleProp<TextStyle>
+}
+
+export const CopyableInfo: React.FC<CopyableInfoProps> = ({
+  children,
+  textStyle,
+}) => {
   return (
     <View style={styles.row}>
-      <Text style={textCustomStyle}>{children}</Text>
+      <Text style={textStyle}>{children}</Text>
       <IconButton
         style={styles.iconButton}
         icon="content-copy"
@@ -35,5 +43,3 @@ const CopyableInfo = ({ children, textCustomStyle }) => {
     </View>
   )
 }
-
-export default CopyableInfo
