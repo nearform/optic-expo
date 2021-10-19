@@ -4,8 +4,8 @@ import { TextInput, Button } from 'react-native-paper'
 import { StackNavigationProp } from '@react-navigation/stack'
 
 import theme from '../lib/defaultTheme'
-import { useAuthentication } from '../context/authentication'
-import { useSecrets } from '../context/secrets'
+import { useAuth } from '../context/AuthContext'
+import { useSecrets } from '../context/SecretsContext'
 import { MainStackParamList } from '../Main'
 
 const UI_STRINGS = {
@@ -38,7 +38,7 @@ type TypeScreenProps = {
 }
 
 export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
-  const { user } = useAuthentication()
+  const { user } = useAuth()
   const { add } = useSecrets()
   const [issuer, setIssuer] = useState('')
   const [secret, setSecret] = useState('')

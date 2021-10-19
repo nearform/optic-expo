@@ -2,23 +2,20 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import {
-  useFonts as usePoppins,
-  Poppins_700Bold,
-} from '@expo-google-fonts/poppins'
-import {
-  useFonts as useDidactGothic,
-  DidactGothic_400Regular,
-} from '@expo-google-fonts/didact-gothic'
+  useFonts as useRoboto,
+  Roboto_300Light,
+  Roboto_400Regular,
+  Roboto_500Medium,
+  Roboto_700Bold,
+} from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading'
 
 import theme from './lib/defaultTheme'
-import routes from './lib/routeDefinitions'
-import { useAuthentication } from './context/authentication'
-import { useSecrets } from './context/secrets'
-import { HomeScreen } from './screens/Home'
+import { useAuth } from './context/AuthContext'
+import { HomeScreen } from './screens/HomeScreen'
 import { TypeScreen } from './screens/TypeScreen'
 import { ScanScreen } from './screens/ScanScreen'
-import Auth from './components/Auth'
+import { AuthScreen } from './screens/AuthScreen'
 import HomeHeaderRight from './components/HomeHeaderRight'
 import DefaultHeaderLeft from './components/DefaultHeaderLeft'
 
@@ -30,79 +27,51 @@ export type MainStackParamList = {
   Type: undefined
 }
 
-const UI_STRINGS = {
-  routes: {
-    home: {
-      title: 'Your Tokens',
-    },
-    scan: {
-      title: 'Scan QR Code',
-    },
-    type: {
-      title: 'New Secret',
-    },
-  },
-}
-
 export default function Main() {
-  const [hasPoppinsLoaded] = usePoppins({
-    Poppins_700Bold,
+  const [hasRobotoLoaded] = useRoboto({
+    Roboto_300Light,
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold,
   })
 
-  const [hasDidactLoaded] = useDidactGothic({
-    DidactGothic_400Regular,
-  })
+  const { user } = useAuth()
 
-  const { isInitialized } = useSecrets()
-
-  const { user, loading, handleLogin } = useAuthentication()
-
-  if (!hasDidactLoaded || !hasPoppinsLoaded || !isInitialized || loading) {
+  if (!hasRobotoLoaded) {
     return <AppLoading />
   }
 
   if (!user) {
-    return <Auth {...{ handleLogin }} />
+    return <AuthScreen />
   }
 
   return (
     <NavigationContainer>
       <MainStack.Navigator
-        {...{
-          initialRouteName: routes.home.name,
-          screenOptions: {
-            headerStyle: {
-              backgroundColor: theme.colors.primary,
-            },
-            headerTitleStyle: {
-              color: theme.colors.surface,
-            },
+        initialRouteName="Home"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: theme.colors.primary,
+          },
+          headerTitleStyle: {
+            color: theme.colors.surface,
           },
         }}
       >
         <MainStack.Screen
-          name={routes.home.name}
+          name="Home"
           component={HomeScreen}
-          options={{
-            title: UI_STRINGS.routes.home.title,
-            headerRight: HomeHeaderRight,
-          }}
+          options={{ title: 'Your Tokens', headerRight: HomeHeaderRight }}
         />
         <MainStack.Screen
-          name={routes.scan.name}
+          name="Scan"
           component={ScanScreen}
-          options={{
-            title: UI_STRINGS.routes.scan.title,
-            headerLeft: DefaultHeaderLeft,
-          }}
+          options={{ title: 'Scan QR Code', headerLeft: DefaultHeaderLeft }}
         />
         <MainStack.Screen
-          name={routes.type.name}
+          name="Type"
           component={TypeScreen}
-          options={{
-            title: UI_STRINGS.routes.type.title,
-            headerLeft: DefaultHeaderLeft,
-          }}
+          options={{ title: 'New Secret', headerLeft: DefaultHeaderLeft }}
         />
       </MainStack.Navigator>
     </NavigationContainer>

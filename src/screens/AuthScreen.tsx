@@ -4,10 +4,10 @@ import { Platform, View, StyleSheet, Image } from 'react-native'
 import { Button } from 'react-native-paper'
 
 import theme from '../lib/defaultTheme'
-
-import { Typography } from './Typography'
-import Spacer from './Spacer'
-import Logo from './Logo'
+import { useAuth } from '../context/AuthContext'
+import { Typography } from '../components/Typography'
+import Spacer from '../components/Spacer'
+import Logo from '../components/Logo'
 
 const UI_STRINGS = {
   headline: 'Optic',
@@ -33,7 +33,11 @@ const styles = StyleSheet.create({
   },
 })
 
-export default function Auth({ handleLogin }) {
+type AuthScreenProps = unknown
+
+export const AuthScreen: React.FC<AuthScreenProps> = () => {
+  const { handleLogin } = useAuth()
+
   useEffect(() => {
     if (Platform.OS === 'web') {
       return

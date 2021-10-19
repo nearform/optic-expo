@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { IconButton, Menu } from 'react-native-paper'
 
-import { useAuthentication } from '../context/authentication'
+import { useAuth } from '../context/AuthContext'
 import theme from '../lib/defaultTheme'
 
 const UI_STRINGS = {
@@ -14,7 +14,7 @@ const UI_STRINGS = {
 
 export default function HomeHeaderRight() {
   const [isMenuActive, setMenuActive] = useState(false)
-  const { handleLogout } = useAuthentication()
+  const { handleLogout } = useAuth()
 
   return (
     <Menu

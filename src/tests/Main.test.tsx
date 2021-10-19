@@ -4,9 +4,9 @@ import * as Google from 'expo-auth-session/providers/google'
 import { waitFor, fireEvent } from '@testing-library/react-native'
 
 import apiFactory from '../lib/api'
-import { useAuthentication } from '../context/authentication'
+import { useAuth } from '../context/AuthContext'
 import Main from '../Main'
-import { useSecrets } from '../context/secrets.js'
+import { useSecrets } from '../context/SecretsContext.js'
 
 import { renderWithTheme } from './utils'
 
@@ -66,7 +66,7 @@ describe('Main', () => {
     promptAsync = jest.fn()
     request = null
     mockFirebaseAuthRequest()
-    useAuthentication.mockReturnValue({
+    useAuth.mockReturnValue({
       user: {}, // truthy
       loading: false,
       handleLogin: handleLoginStub,
@@ -82,7 +82,7 @@ describe('Main', () => {
 
   it('should render correct initial state for unauthenticated users', () => {
     mockUseAuthRequest(null)
-    useAuthentication.mockReturnValue({
+    useAuth.mockReturnValue({
       user: null,
       loading: false,
       handleLogin: handleLoginStub,

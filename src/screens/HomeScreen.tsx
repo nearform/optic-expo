@@ -4,8 +4,8 @@ import { StyleSheet, ScrollView, Alert } from 'react-native'
 import { Subscription } from '@unimodules/react-native-adapter'
 import { StackNavigationProp } from '@react-navigation/stack'
 
-import { useSecrets } from '../context/secrets'
-import { useAuthentication } from '../context/authentication'
+import { useSecrets } from '../context/SecretsContext'
+import { useAuth } from '../context/AuthContext'
 import apiFactory from '../lib/api'
 import EmptyTokensText from '../components/EmptyTokensText'
 import { Actions } from '../components/Actions'
@@ -30,12 +30,33 @@ Notifications.setNotificationHandler({
   }),
 })
 
+const showRequestAlert = (
+  issuer: string,
+  account: string,
+  onApprove: () => void,
+  onReject: () => void
+) => {
+  Alert.alert(
+    'One Time Password requested',
+    `For secret issued by ${issuer} to ${account}`,
+    [
+      {
+        text: 'Reject',
+        style: 'cancel',
+        onPress: onReject,
+      },
+      { text: 'Approve', onPress: onApprove },
+    ],
+    { cancelable: false }
+  )
+}
+
 type HomeScreenProps = {
   navigation: StackNavigationProp<MainStackParamList, 'Home'>
 }
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
-  const { user } = useAuthentication()
+  const { user } = useAuth()
   const { secrets, update, remove } = useSecrets()
   const expoToken = usePushToken()
   const responseListener = useRef<Subscription>()
@@ -80,27 +101,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     [api]
   )
 
-  const showRequestAlert = (
-    issuer: string,
-    account: string,
-    onApprove: () => void,
-    onReject: () => void
-  ) => {
-    Alert.alert(
-      'One Time Password requested',
-      `For secret issued by ${issuer} to ${account}`,
-      [
-        {
-          text: 'Reject',
-          style: 'cancel',
-          onPress: onReject,
-        },
-        { text: 'Approve', onPress: onApprove },
-      ],
-      { cancelable: false }
-    )
-  }
-
   const onNotification = useCallback(
     async notificationData => {
       const {
@@ -110,6 +110,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
           },
         },
       } = notificationData
+
       const { secretId, uniqueId } = data
 
       const details = secrets.find(({ _id }) => _id === secretId)

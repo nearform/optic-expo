@@ -1,5 +1,4 @@
 import React, {
-  createContext,
   useState,
   useEffect,
   useMemo,
@@ -39,28 +38,17 @@ type ContextType = {
   handleLogout: () => Promise<void>
 }
 
-const initialContext: ContextType = {
-  loading: true,
-  user: null,
-  handleLogin: () => {
-    // @todo
-  },
-  handleLogout: async () => {
-    // @todo
-  },
-}
-
-const AuthenticationContext = createContext<ContextType>(initialContext)
+const AuthContext = React.createContext<ContextType | undefined>(undefined)
 
 type AuthenticationProviderProps = {
   children: React.ReactNode
 }
 
-export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({
+export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   children,
 }) => {
   const [loading, setLoading] = useState(true)
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<User>()
 
   const [, response, promptAsync] = Google.useIdTokenAuthRequest({
     clientId:
@@ -99,7 +87,7 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({
     setUser(null)
   }, [])
 
-  const value = useMemo<ContextType>(
+  const context = useMemo<ContextType>(
     () => ({
       loading,
       user,
@@ -109,13 +97,13 @@ export const AuthenticationProvider: React.FC<AuthenticationProviderProps> = ({
     [user, loading, handleLogout, handleLogin]
   )
 
-  return (
-    <AuthenticationContext.Provider value={value}>
-      {children}
-    </AuthenticationContext.Provider>
-  )
+  return <AuthContext.Provider value={context}>{children}</AuthContext.Provider>
 }
 
-export function useAuthentication() {
-  return useContext(AuthenticationContext)
+export function useAuth() {
+  const context = useContext(AuthContext)
+
+  if (!context) throw new Error('AuthContext must be used within AuthProvider')
+
+  return context
 }

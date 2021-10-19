@@ -3,8 +3,8 @@ import { View, StyleSheet, Button } from 'react-native'
 import { BarCodeScannedCallback, BarCodeScanner } from 'expo-barcode-scanner'
 import { StackNavigationProp } from '@react-navigation/stack'
 
-import { useAuthentication } from '../context/authentication'
-import { useSecrets } from '../context/secrets'
+import { useAuth } from '../context/AuthContext'
+import { useSecrets } from '../context/SecretsContext'
 import { parse } from '../lib/qrParser'
 import { MainStackParamList } from '../Main'
 import { Typography } from '../components/Typography'
@@ -63,7 +63,7 @@ type ScanScreenProps = {
 
 export const ScanScreen: React.FC<ScanScreenProps> = ({ navigation }) => {
   const [{ scan, permission }, dispatch] = useReducer(scanReducer, initialState)
-  const { user } = useAuthentication()
+  const { user } = useAuth()
   const { add } = useSecrets()
 
   async function requestPermissions() {

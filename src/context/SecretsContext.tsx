@@ -11,7 +11,6 @@ import secretsManager from '../lib/secretsManager'
 import { Secret } from '../types'
 
 type ContextType = {
-  isInitialized: boolean
   secrets: Secret[]
   add: (_: Secret) => Promise<void>
   update: (_: Secret) => Promise<void>
@@ -19,7 +18,6 @@ type ContextType = {
 }
 
 const initialContext: ContextType = {
-  isInitialized: false,
   secrets: [],
   add: async () => {
     // @todo
@@ -41,13 +39,11 @@ type SecretsProviderProps = {
 export const SecretsProvider: React.FC<SecretsProviderProps> = ({
   children,
 }) => {
-  const [isInitialized, setInitialization] = useState(false)
   const [secrets, setSecrets] = useState<Secret[]>([])
 
   useEffect(() => {
     async function initialize() {
       setSecrets(await secretsManager.getAll())
-      setInitialization(true)
     }
 
     initialize()
@@ -69,8 +65,8 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
   }, [])
 
   const value = useMemo<ContextType>(
-    () => ({ isInitialized, secrets, add, update, remove }),
-    [isInitialized, secrets, add, update, remove]
+    () => ({ secrets, add, update, remove }),
+    [secrets, add, update, remove]
   )
 
   return (
