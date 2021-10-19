@@ -5,9 +5,6 @@ export default {
   scan: {
     name: 'Scan',
   },
-  upload: {
-    name: 'Upload',
-  },
   type: {
     name: 'Type',
   },

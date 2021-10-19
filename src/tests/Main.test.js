@@ -130,7 +130,6 @@ describe('Main', () => {
     fireEvent.press(showActionsButton)
 
     getByA11yLabel('Scan QR Code')
-    getByA11yLabel('Upload')
     getByA11yLabel('Add details manually')
 
     expect(registerSubscriptionStub).toHaveBeenCalledTimes(1)

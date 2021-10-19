@@ -18,7 +18,6 @@ import { useSecrets } from './context/secrets'
 import Home from './screens/Home'
 import TypeNewSecretScreen from './screens/TypeNewSecretScreen'
 import ScanNewSecretScreen from './screens/ScanNewSecretScreen'
-import UploadNewSecretScreen from './screens/UploadNewSecretScreen'
 import Auth from './components/Auth'
 import HomeHeaderRight from './components/HomeHeaderRight'
 import DefaultHeaderLeft from './components/DefaultHeaderLeft'
@@ -32,9 +31,6 @@ const UI_STRINGS = {
     },
     scan: {
       title: 'Scan QR Code',
-    },
-    upload: {
-      title: 'Upload QR Code',
     },
     type: {
       title: 'New Secret',
@@ -91,14 +87,6 @@ export default function Main() {
           component={ScanNewSecretScreen}
           options={{
             title: UI_STRINGS.routes.scan.title,
-            headerLeft: DefaultHeaderLeft,
-          }}
-        />
-        <Stack.Screen
-          name={routes.upload.name}
-          component={UploadNewSecretScreen}
-          options={{
-            title: UI_STRINGS.routes.upload.title,
             headerLeft: DefaultHeaderLeft,
           }}
         />

@@ -133,8 +133,9 @@ export default function Home() {
   }, [user, api, expoToken])
 
   useEffect(() => {
-    responseListener.current =
-      Notifications.addNotificationResponseReceivedListener(onNotification)
+    responseListener.current = Notifications.addNotificationResponseReceivedListener(
+      onNotification
+    )
 
     return () => {
       Notifications.removeNotificationSubscription(responseListener.current)
@@ -159,7 +160,6 @@ export default function Home() {
 
       <Actions
         onScan={() => navigate(routes.scan.name)}
-        onUpload={() => navigate(routes.upload.name)}
         onType={() => navigate(routes.type.name)}
       />
     </ScrollView>

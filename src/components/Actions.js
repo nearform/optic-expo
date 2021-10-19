@@ -6,7 +6,6 @@ import theme from '../lib/defaultTheme'
 
 const A11Y_LABELS = {
   scan: 'Scan QR Code',
-  upload: 'Upload',
   type: 'Add details manually',
 }
 
@@ -16,7 +15,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export default function Actions({ onScan, onUpload, onType }) {
+export default function Actions({ onScan, onType }) {
   const [open, setOpen] = useState(false)
   const handleStateChange = ({ open: f }) => setOpen(f)
 
@@ -31,11 +30,6 @@ export default function Actions({ onScan, onUpload, onType }) {
           icon: 'qrcode',
           label: A11Y_LABELS.scan,
           onPress: onScan,
-        },
-        {
-          icon: 'upload',
-          label: A11Y_LABELS.upload,
-          onPress: onUpload,
         },
         {
           icon: 'pencil',
