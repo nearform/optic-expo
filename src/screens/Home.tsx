@@ -8,7 +8,7 @@ import { useSecrets } from '../context/secrets'
 import { useAuthentication } from '../context/authentication'
 import apiFactory from '../lib/api'
 import EmptyTokensText from '../components/EmptyTokensText'
-import Actions from '../components/Actions'
+import { Actions } from '../components/Actions'
 import { SecretCard } from '../components/SecretCard'
 import usePushToken from '../hooks/use-push-token'
 import { Secret } from '../types'
@@ -54,7 +54,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const handleRevokeToken = async (secret: Secret) => {
     try {
       await api.revokeToken(secret)
-      await update({ ...secret, token: null })
+      await update({ ...secret, token: undefined })
     } catch (err) {
       console.log(err)
     }
@@ -70,7 +70,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   }
 
   const handlePasswordRequest = useCallback(
-    async (secret, uniqueId, approved) => {
+    async (secret: string, uniqueId: string, approved: boolean) => {
       try {
         await api.respond(secret, uniqueId, approved)
       } catch (err) {
@@ -83,8 +83,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const showRequestAlert = (
     issuer: string,
     account: string,
-    onApprove,
-    onReject
+    onApprove: () => void,
+    onReject: () => void
   ) => {
     Alert.alert(
       'One Time Password requested',

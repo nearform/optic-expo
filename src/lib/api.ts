@@ -1,14 +1,18 @@
 import Constants from 'expo-constants'
 
-import { Secret } from '../types'
+import { Secret, Subscription } from '../types'
 
 import otpLib from './otp'
 
-const { apiUrl } = Constants.manifest.extra
+const { apiUrl } = Constants.manifest?.extra as { apiUrl: string }
 
-export default function apiFactory(opts) {
+type APIOptions = {
+  idToken: string
+}
+
+export default function apiFactory(opts: APIOptions) {
   return {
-    async generateToken(secret) {
+    async generateToken(secret: Secret) {
       const response = await fetch(`${apiUrl}/token/${secret._id}`, {
         method: 'PUT',
         headers: {
@@ -35,7 +39,7 @@ export default function apiFactory(opts) {
       return publicKeyResponse.text()
     },
 
-    async registerSubscription(subscription) {
+    async registerSubscription(subscription: Subscription) {
       try {
         const response = await fetch(`${apiUrl}/register`, {
           method: 'POST',
@@ -53,7 +57,7 @@ export default function apiFactory(opts) {
         console.log(err)
       }
     },
-    async respond(secret, uniqueId, approved) {
+    async respond(secret: string, uniqueId: string, approved: boolean) {
       try {
         const response = await fetch(`${apiUrl}/respond`, {
           method: 'POST',
