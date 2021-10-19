@@ -57,10 +57,13 @@ export function SecretsProvider({ children }) {
 
   return (
     <SecretsContext.Provider
-      value={useMemo(
-        () => ({ isInitialized, secrets, add, update, remove }),
-        [isInitialized, secrets, add, update, remove]
-      )}
+      value={useMemo(() => ({ isInitialized, secrets, add, update, remove }), [
+        isInitialized,
+        secrets,
+        add,
+        update,
+        remove,
+      ])}
     >
       {children}
     </SecretsContext.Provider>

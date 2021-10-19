@@ -12,10 +12,12 @@ export default class SecretsManager {
   }
 
   async initialize() {
-    const [getEncryptionPassphrase, setEncryptionPassphrase] =
-      (await SecureStore.isAvailableAsync())
-        ? [SecureStore.getItemAsync, SecureStore.setItemAsync]
-        : [AsyncStorage.getItem, AsyncStorage.setItem]
+    const [
+      getEncryptionPassphrase,
+      setEncryptionPassphrase,
+    ] = (await SecureStore.isAvailableAsync())
+      ? [SecureStore.getItemAsync, SecureStore.setItemAsync]
+      : [AsyncStorage.getItem, AsyncStorage.setItem]
 
     const encryptionPassphrase = await getEncryptionPassphrase(
       encryptionPassphraseStorageKey
