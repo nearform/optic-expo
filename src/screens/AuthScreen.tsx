@@ -3,7 +3,7 @@ import * as WebBrowser from 'expo-web-browser'
 import { Platform, View, StyleSheet, Image } from 'react-native'
 import { Button } from 'react-native-paper'
 
-import theme from '../lib/defaultTheme'
+import theme from '../lib/theme'
 import { useAuth } from '../context/AuthContext'
 import { Typography } from '../components/Typography'
 import Spacer from '../components/Spacer'
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   button: {
     textAlign: 'center',
     alignItems: 'center',
-    padding: theme.spacing(),
+    padding: theme.spacing(1),
   },
 })
 

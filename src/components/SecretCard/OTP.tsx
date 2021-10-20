@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native'
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
 
 import otpLib from '../../lib/otp'
-import theme from '../../lib/defaultTheme'
+import theme from '../../lib/theme'
 
 import { CopyableInfo } from './CopyableInfo'
 

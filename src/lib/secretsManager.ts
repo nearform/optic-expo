@@ -1,3 +1,4 @@
+import { Optional } from 'utility-types'
 import { v4 as uuid } from 'uuid'
 
 import { Secret } from '../types'
@@ -27,7 +28,7 @@ const get = async (id: string) => {
  * @param {Object} secret - secret to upsert
  * @returns {Object} the added/updated secret
  */
-const upsert = async (secret: Secret) => {
+const upsert = async (secret: Optional<Secret, '_id'>) => {
   const secrets = await getAll()
   let upserted = secrets.find(s => s._id === secret._id)
 

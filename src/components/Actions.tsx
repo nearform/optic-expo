@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { StyleSheet } from 'react-native'
 import { FAB } from 'react-native-paper'
 
-import theme from '../lib/defaultTheme'
+import theme from '../lib/theme'
 
 const styles = StyleSheet.create({
   primaryButton: {

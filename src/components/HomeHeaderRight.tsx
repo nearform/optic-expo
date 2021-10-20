@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { IconButton, Menu } from 'react-native-paper'
 
 import { useAuth } from '../context/AuthContext'
-import theme from '../lib/defaultTheme'
+import theme from '../lib/theme'
 
 const UI_STRINGS = {
   menu: {

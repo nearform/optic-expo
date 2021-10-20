@@ -3,17 +3,10 @@ import { StyleSheet, View } from 'react-native'
 import { TextInput, Button } from 'react-native-paper'
 import { StackNavigationProp } from '@react-navigation/stack'
 
-import theme from '../lib/defaultTheme'
+import theme from '../lib/theme'
 import { useAuth } from '../context/AuthContext'
 import { useSecrets } from '../context/SecretsContext'
 import { MainStackParamList } from '../Main'
-
-const UI_STRINGS = {
-  issuerTextInputLabel: 'Issuer',
-  secretTextInputLabel: 'Secret',
-  accountTextInput: 'Account',
-  addSecretButtonLabel: 'Add Secret',
-}
 
 const styles = StyleSheet.create({
   screen: {
@@ -54,7 +47,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
       <View style={styles.form}>
         <TextInput
           style={styles.formTextInput}
-          label={UI_STRINGS.issuerTextInputLabel}
+          label="Issuer"
           mode="outlined"
           value={issuer}
           onChangeText={setIssuer}
@@ -62,14 +55,14 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
         />
         <TextInput
           style={styles.formTextInput}
-          label={UI_STRINGS.secretTextInputLabel}
+          label="Secret"
           mode="outlined"
           value={secret}
           onChangeText={setSecret}
         />
         <TextInput
           style={styles.formTextInput}
-          label={UI_STRINGS.accountTextInput}
+          label="Account"
           mode="outlined"
           value={account}
           onChangeText={setAccount}
@@ -80,7 +73,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
           mode="contained"
           onPress={handleAddSecretButtonPress}
         >
-          {UI_STRINGS.addSecretButtonLabel}
+          Add Secret
         </Button>
       </View>
     </View>

@@ -4,7 +4,7 @@ import { Provider as PaperProvider } from 'react-native-paper'
 
 import { AuthProvider } from '../context/AuthContext'
 import { SecretsProvider } from '../context/SecretsContext'
-import theme from '../lib/defaultTheme'
+import theme from '../lib/theme'
 
 export function renderWithTheme({ ui }) {
   return render(

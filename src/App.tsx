@@ -6,7 +6,7 @@ import { RootSiblingParent } from 'react-native-root-siblings'
 
 import { AuthProvider } from './context/AuthContext'
 import { SecretsProvider } from './context/SecretsContext'
-import theme from './lib/defaultTheme'
+import theme from './lib/theme'
 import Main from './Main'
 
 export default function App() {

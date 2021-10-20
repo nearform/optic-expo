@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native'
 import { Divider, Button, Card, Avatar } from 'react-native-paper'
 
 import otpLib from '../../lib/otp'
-import theme from '../../lib/defaultTheme'
+import theme from '../../lib/theme'
 import { Secret } from '../../types'
 import { Typography } from '../Typography'
 

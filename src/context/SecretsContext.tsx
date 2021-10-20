@@ -12,7 +12,7 @@ import { Secret } from '../types'
 
 type ContextType = {
   secrets: Secret[]
-  add: (_: Secret) => Promise<void>
+  add: (_: Omit<Secret, '_id'>) => Promise<void>
   update: (_: Secret) => Promise<void>
   remove: (_: Secret) => Promise<void>
 }

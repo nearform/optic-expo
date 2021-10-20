@@ -10,7 +10,7 @@ import {
 } from '@expo-google-fonts/roboto'
 import AppLoading from 'expo-app-loading'
 
-import theme from './lib/defaultTheme'
+import theme from './lib/theme'
 import { useAuth } from './context/AuthContext'
 import { HomeScreen } from './screens/HomeScreen'
 import { TypeScreen } from './screens/TypeScreen'

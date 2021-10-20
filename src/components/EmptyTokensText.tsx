@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import theme from '../lib/defaultTheme'
+import theme from '../lib/theme'
 
 import Spacer from './Spacer'
 import { Typography } from './Typography'
