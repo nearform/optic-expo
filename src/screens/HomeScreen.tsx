@@ -120,6 +120,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       }
 
       const { secret, issuer, account } = details
+
       showRequestAlert(
         issuer,
         account,

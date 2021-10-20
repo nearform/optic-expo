@@ -9,6 +9,8 @@ import * as Google from 'expo-auth-session/providers/google'
 import firebase from 'firebase'
 import * as WebBrowser from 'expo-web-browser'
 
+import { User } from '../types'
+
 const firebaseConfig = {
   apiKey: 'AIzaSyBFiuUulmuQ7Pv1VvxpUQB01AWCEQhIToA',
   authDomain: 'npm-otp-f6bfc.firebaseapp.com',
@@ -24,12 +26,6 @@ if (!firebase.apps.length) {
 }
 
 WebBrowser.maybeCompleteAuthSession()
-
-type User = {
-  name: string | null
-  uid: string
-  idToken: string
-}
 
 type ContextType = {
   loading: boolean

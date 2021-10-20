@@ -10,7 +10,7 @@ import React, {
 import secretsManager from '../lib/secretsManager'
 import { Secret } from '../types'
 
-type ContextType = {
+export type ContextType = {
   secrets: Secret[]
   add: (_: Omit<Secret, '_id'>) => Promise<void>
   update: (_: Secret) => Promise<void>

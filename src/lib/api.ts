@@ -10,9 +10,16 @@ type APIOptions = {
   idToken: string
 }
 
-export default function apiFactory(opts: APIOptions) {
+export type API = {
+  generateToken: (_: Secret) => Promise<string>
+  revokeToken: (_: Secret) => Promise<void>
+  registerSubscription: (_: Subscription) => Promise<void>
+  respond: (_: string, __: string, ___: boolean) => Promise<void>
+}
+
+export default function apiFactory(opts: APIOptions): API {
   return {
-    async generateToken(secret: Secret) {
+    async generateToken(secret) {
       const response = await fetch(`${apiUrl}/token/${secret._id}`, {
         method: 'PUT',
         headers: {
@@ -25,7 +32,7 @@ export default function apiFactory(opts: APIOptions) {
       return token
     },
 
-    async revokeToken(secret: Secret) {
+    async revokeToken(secret) {
       await fetch(`${apiUrl}/token/${secret._id}`, {
         method: 'DELETE',
         headers: {
@@ -34,12 +41,7 @@ export default function apiFactory(opts: APIOptions) {
       })
     },
 
-    async getServerPublicKey() {
-      const publicKeyResponse = await fetch(`${apiUrl}/vapidPublicKey`) // Why not secure??
-      return publicKeyResponse.text()
-    },
-
-    async registerSubscription(subscription: Subscription) {
+    async registerSubscription(subscription) {
       try {
         const response = await fetch(`${apiUrl}/register`, {
           method: 'POST',
@@ -57,7 +59,8 @@ export default function apiFactory(opts: APIOptions) {
         console.log(err)
       }
     },
-    async respond(secret: string, uniqueId: string, approved: boolean) {
+
+    async respond(secret, uniqueId, approved) {
       try {
         const response = await fetch(`${apiUrl}/respond`, {
           method: 'POST',

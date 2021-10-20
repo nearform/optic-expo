@@ -2,13 +2,6 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import {
-  useFonts as useRoboto,
-  Roboto_300Light,
-  Roboto_400Regular,
-  Roboto_500Medium,
-  Roboto_700Bold,
-} from '@expo-google-fonts/roboto'
-import {
   useFonts as usePoppins,
   Poppins_700Bold,
 } from '@expo-google-fonts/poppins'
@@ -36,13 +29,6 @@ export type MainStackParamList = {
 }
 
 export default function Main() {
-  const [hasRobotoLoaded] = useRoboto({
-    Roboto_300Light,
-    Roboto_400Regular,
-    Roboto_500Medium,
-    Roboto_700Bold,
-  })
-
   const [hasPoppinsLoaded] = usePoppins({
     Poppins_700Bold,
   })
@@ -53,7 +39,7 @@ export default function Main() {
 
   const { user } = useAuth()
 
-  if (!hasRobotoLoaded || !hasPoppinsLoaded || !hasDidactLoaded) {
+  if (!hasPoppinsLoaded || !hasDidactLoaded) {
     return <AppLoading />
   }
 

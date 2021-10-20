@@ -11,3 +11,9 @@ export type Subscription = {
   type: 'expo'
   token: string
 }
+
+export type User = {
+  name: string | null
+  uid: string
+  idToken: string
+}
