@@ -51,6 +51,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
           textAlign="left"
           style={styles.formTextInput}
           label="Issuer"
+          accessibilityLabel="Issuer"
           mode="outlined"
           value={issuer}
           onChangeText={setIssuer}
@@ -60,6 +61,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
           textAlign="left"
           style={styles.formTextInput}
           label="Secret"
+          accessibilityLabel="Secret"
           mode="outlined"
           value={secret}
           onChangeText={setSecret}
@@ -68,11 +70,13 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
           textAlign="left"
           style={styles.formTextInput}
           label="Account"
+          accessibilityLabel="Account"
           mode="outlined"
           value={account}
           onChangeText={setAccount}
         />
         <Button
+          accessibilityLabel="Add secret"
           style={styles.formButton}
           icon="plus"
           mode="contained"
