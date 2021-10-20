@@ -1,66 +1,6 @@
 import { TextStyle } from 'react-native'
-import {
-  DefaultTheme as PaperDefaultTheme,
-  configureFonts,
-} from 'react-native-paper'
+import { DefaultTheme as PaperDefaultTheme } from 'react-native-paper'
 import { DefaultTheme as NavigationDefaultTheme } from '@react-navigation/native'
-
-const fontConfig = {
-  web: {
-    regular: {
-      fontFamily: 'Roboto',
-      fontWeight: '400' as const,
-    },
-    medium: {
-      fontFamily: 'Roboto',
-      fontWeight: '500' as const,
-    },
-    light: {
-      fontFamily: 'Roboto',
-      fontWeight: '300' as const,
-    },
-    thin: {
-      fontFamily: 'Roboto',
-      fontWeight: '100' as const,
-    },
-  },
-  ios: {
-    regular: {
-      fontFamily: 'Roboto',
-      fontWeight: '400' as const,
-    },
-    medium: {
-      fontFamily: 'Roboto',
-      fontWeight: '500' as const,
-    },
-    light: {
-      fontFamily: 'Roboto',
-      fontWeight: '300' as const,
-    },
-    thin: {
-      fontFamily: 'Roboto',
-      fontWeight: '100' as const,
-    },
-  },
-  android: {
-    regular: {
-      fontFamily: 'Roboto',
-      fontWeight: '400' as const,
-    },
-    medium: {
-      fontFamily: 'Roboto',
-      fontWeight: '500' as const,
-    },
-    light: {
-      fontFamily: 'Roboto',
-      fontWeight: '300' as const,
-    },
-    thin: {
-      fontFamily: 'Roboto',
-      fontWeight: '100' as const,
-    },
-  },
-}
 
 export type TypographyVariant =
   | 'h1'
@@ -79,34 +19,34 @@ export type TypographyVariant =
 
 const typography: Record<TypographyVariant, TextStyle> = {
   h1: {
+    fontFamily: 'Poppins_700Bold',
     fontSize: 96,
-    fontWeight: '300',
     letterSpacing: -1.5,
   },
   h2: {
+    fontFamily: 'Poppins_700Bold',
     fontSize: 60,
-    fontWeight: '300',
-    letterSpacing: -0.5,
+    letterSpacing: 0,
   },
   h3: {
+    fontFamily: 'Poppins_700Bold',
     fontSize: 48,
-    fontWeight: '900',
     letterSpacing: 0,
   },
   h4: {
+    fontFamily: 'Poppins_700Bold',
     fontSize: 34,
-    fontWeight: '300',
     letterSpacing: 0.25,
   },
   h5: {
+    fontFamily: 'Poppins_700Bold',
     fontSize: 24,
-    fontWeight: '300',
     lineHeight: 36,
     letterSpacing: 0,
   },
   h6: {
+    fontFamily: 'Poppins_700Bold',
     fontSize: 20,
-    fontWeight: '300',
     letterSpacing: 0.15,
   },
   subtitle1: {
@@ -120,11 +60,13 @@ const typography: Record<TypographyVariant, TextStyle> = {
     letterSpacing: 0.15,
   },
   body1: {
+    fontFamily: 'DidactGothic_400Regular',
     fontSize: 16,
     fontWeight: '400',
     letterSpacing: 0.5,
   },
   body2: {
+    fontFamily: 'DidactGothic_400Regular',
     fontSize: 14,
     fontWeight: '400',
     letterSpacing: 0.25,
@@ -157,7 +99,6 @@ const theme = {
     text: '#6D6D68',
     textSecondary: '#CCCCCC',
   },
-  fonts: configureFonts(fontConfig),
   typography,
   spacing: (mul: number) => mul * 8,
   alpha: (color: string, op: number) =>

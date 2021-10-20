@@ -6,14 +6,7 @@ import { Button } from 'react-native-paper'
 import theme from '../lib/theme'
 import { useAuth } from '../context/AuthContext'
 import { Typography } from '../components/Typography'
-import Spacer from '../components/Spacer'
 import Logo from '../components/Logo'
-
-const UI_STRINGS = {
-  headline: 'Optic',
-  subheading: 'Grant your favorite automated tools an OTP when they need it!',
-  button: 'Sign in with Google',
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -57,12 +50,16 @@ export const AuthScreen: React.FC<AuthScreenProps> = () => {
           variant="h2"
           style={styles.text}
           color={theme.colors.surface}
+          gutterBottom={4}
         >
-          {UI_STRINGS.headline}
+          Optic
         </Typography>
-        <Spacer size={4} />
-        <Typography variant="body1" style={styles.text}>
-          {UI_STRINGS.subheading}
+        <Typography
+          variant="body1"
+          style={styles.text}
+          color={theme.colors.surface}
+        >
+          Grant your favorite automated tools an OTP when they need it!
         </Typography>
       </View>
       <Button
@@ -78,7 +75,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = () => {
         onPress={handleLogin}
         color={theme.colors.surface}
       >
-        {UI_STRINGS.button}
+        Sign in with Google
       </Button>
       <Logo />
     </View>

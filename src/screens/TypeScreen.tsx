@@ -19,10 +19,12 @@ const styles = StyleSheet.create({
     padding: theme.spacing(2),
   },
   formTextInput: {
-    marginTop: theme.spacing(0.5),
+    marginBottom: theme.spacing(2),
   },
   formButton: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(1),
+    height: 50,
+    justifyContent: 'center',
   },
 })
 
@@ -46,6 +48,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
     <View style={styles.screen}>
       <View style={styles.form}>
         <TextInput
+          textAlign="left"
           style={styles.formTextInput}
           label="Issuer"
           mode="outlined"
@@ -54,6 +57,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
           autoFocus
         />
         <TextInput
+          textAlign="left"
           style={styles.formTextInput}
           label="Secret"
           mode="outlined"
@@ -61,6 +65,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
           onChangeText={setSecret}
         />
         <TextInput
+          textAlign="left"
           style={styles.formTextInput}
           label="Account"
           mode="outlined"
@@ -72,6 +77,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
           icon="plus"
           mode="contained"
           onPress={handleAddSecretButtonPress}
+          disabled={!(secret && account && issuer)}
         >
           Add Secret
         </Button>

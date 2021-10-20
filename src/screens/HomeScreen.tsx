@@ -7,7 +7,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { useSecrets } from '../context/SecretsContext'
 import { useAuth } from '../context/AuthContext'
 import apiFactory from '../lib/api'
-import EmptyTokensText from '../components/EmptyTokensText'
+import { NoSecrets } from '../components/NoSecrets'
 import { Actions } from '../components/Actions'
 import { SecretCard } from '../components/SecretCard'
 import usePushToken from '../hooks/use-push-token'
@@ -155,7 +155,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {secrets.length === 0 ? (
-        <EmptyTokensText />
+        <NoSecrets />
       ) : (
         secrets.map(secret => (
           <SecretCard

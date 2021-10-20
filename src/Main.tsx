@@ -8,6 +8,14 @@ import {
   Roboto_500Medium,
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto'
+import {
+  useFonts as usePoppins,
+  Poppins_700Bold,
+} from '@expo-google-fonts/poppins'
+import {
+  useFonts as useDidactGothic,
+  DidactGothic_400Regular,
+} from '@expo-google-fonts/didact-gothic'
 import AppLoading from 'expo-app-loading'
 
 import theme from './lib/theme'
@@ -35,9 +43,17 @@ export default function Main() {
     Roboto_700Bold,
   })
 
+  const [hasPoppinsLoaded] = usePoppins({
+    Poppins_700Bold,
+  })
+
+  const [hasDidactLoaded] = useDidactGothic({
+    DidactGothic_400Regular,
+  })
+
   const { user } = useAuth()
 
-  if (!hasRobotoLoaded) {
+  if (!hasRobotoLoaded || !hasPoppinsLoaded || !hasDidactLoaded) {
     return <AppLoading />
   }
 
