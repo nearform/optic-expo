@@ -3,6 +3,7 @@ import * as Notifications from 'expo-notifications'
 import { StyleSheet, ScrollView, Alert } from 'react-native'
 import { Subscription } from '@unimodules/react-native-adapter'
 import { StackNavigationProp } from '@react-navigation/stack'
+import { NotificationResponse } from 'expo-notifications'
 
 import { useSecrets } from '../context/SecretsContext'
 import { useAuth } from '../context/AuthContext'
@@ -13,6 +14,11 @@ import { SecretCard } from '../components/SecretCard'
 import usePushToken from '../hooks/use-push-token'
 import { Secret } from '../types'
 import { MainStackParamList } from '../Main'
+
+type NotificationData = {
+  secretId: string
+  uniqueId: string
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -102,18 +108,13 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   )
 
   const onNotification = useCallback(
-    async notificationData => {
-      const {
-        notification: {
-          request: {
-            content: { data },
-          },
-        },
-      } = notificationData
+    async (res: NotificationResponse) => {
+      const data = res.notification.request.content.data as NotificationData
 
       const { secretId, uniqueId } = data
 
       const details = secrets.find(({ _id }) => _id === secretId)
+
       if (!details) {
         console.error(`Failed to find secret with id ${secretId}`)
         return
@@ -121,12 +122,15 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
       const { secret, issuer, account } = details
 
-      showRequestAlert(
-        issuer,
-        account,
-        () => handlePasswordRequest(secret, uniqueId, true),
-        () => handlePasswordRequest(secret, uniqueId, false)
-      )
+      // Delay ensures the prompt is shown, else it's missed some time
+      setTimeout(() => {
+        showRequestAlert(
+          issuer,
+          account,
+          () => handlePasswordRequest(secret, uniqueId, true),
+          () => handlePasswordRequest(secret, uniqueId, false)
+        )
+      }, 100)
     },
     [secrets, handlePasswordRequest]
   )
