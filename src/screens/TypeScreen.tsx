@@ -50,7 +50,8 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
   const invalidSecret = !RFC4648_REGEX.test(
     secret.trim().replace(/ /g, '').toUpperCase()
   )
-  const disabled = invalidSecret || !secret || !account || !issuer
+  const disabled =
+    invalidSecret || !secret.trim() || !account.trim() || !issuer.trim()
 
   return (
     <View style={styles.screen}>
