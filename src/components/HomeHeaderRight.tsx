@@ -4,14 +4,6 @@ import { IconButton, Menu } from 'react-native-paper'
 import { useAuth } from '../context/AuthContext'
 import theme from '../lib/theme'
 
-const UI_STRINGS = {
-  menu: {
-    logoutButton: {
-      label: 'Logout',
-    },
-  },
-}
-
 export default function HomeHeaderRight() {
   const [isMenuActive, setMenuActive] = useState(false)
   const { handleLogout } = useAuth()
@@ -28,10 +20,7 @@ export default function HomeHeaderRight() {
         />
       }
     >
-      <Menu.Item
-        onPress={handleLogout}
-        title={UI_STRINGS.menu.logoutButton.label}
-      />
+      <Menu.Item onPress={handleLogout} title="Logout" />
     </Menu>
   )
 }
