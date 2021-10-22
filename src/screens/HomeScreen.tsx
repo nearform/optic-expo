@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import * as Notifications from 'expo-notifications'
-import { StyleSheet, ScrollView, Alert } from 'react-native'
+import { StyleSheet, ScrollView, Alert, View } from 'react-native'
 import { Subscription } from '@unimodules/react-native-adapter'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NotificationResponse } from 'expo-notifications'
@@ -26,6 +26,9 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'flex-start',
     width: '100%',
+  },
+  scrollView: {
+    flexGrow: 1,
   },
 })
 
@@ -160,26 +163,27 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   }, [onNotification])
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {secrets.length === 0 ? (
-        <NoSecrets />
-      ) : (
-        secrets.map(secret => (
-          <SecretCard
-            key={secret._id}
-            data={secret}
-            onGenerate={handleGenerateToken}
-            onRevoke={handleRevokeToken}
-            onDelete={handleDeleteSecret}
-          />
-        ))
-      )}
-
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        {secrets.length === 0 ? (
+          <NoSecrets />
+        ) : (
+          secrets.map(secret => (
+            <SecretCard
+              key={secret._id}
+              data={secret}
+              onGenerate={handleGenerateToken}
+              onRevoke={handleRevokeToken}
+              onDelete={handleDeleteSecret}
+            />
+          ))
+        )}
+      </ScrollView>
       <Actions
         onScan={() => navigation.navigate('Scan')}
         onType={() => navigation.navigate('Type')}
         visible={isFocused}
       />
-    </ScrollView>
+    </View>
   )
 }
