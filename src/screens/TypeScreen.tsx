@@ -7,6 +7,9 @@ import theme from '../lib/theme'
 import { useAuth } from '../context/AuthContext'
 import { useSecrets } from '../context/SecretsContext'
 import { MainStackParamList } from '../Main'
+import { Typography } from '../components/Typography'
+
+const RFC4648_REGEX = /^[ABCDEFGHIJKLMNOPQRSTUVWXYZ234567]*$/
 
 const styles = StyleSheet.create({
   screen: {
@@ -18,7 +21,7 @@ const styles = StyleSheet.create({
   form: {
     padding: theme.spacing(2),
   },
-  formTextInput: {
+  inputRow: {
     marginBottom: theme.spacing(2),
   },
   formButton: {
@@ -44,44 +47,62 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
     navigation.navigate('Home')
   }
 
+  const invalidSecret = !RFC4648_REGEX.test(
+    secret.trim().replace(/ /g, '').toUpperCase()
+  )
+  const disabled = invalidSecret || !secret || !account || !issuer
+
   return (
     <View style={styles.screen}>
       <View style={styles.form}>
-        <TextInput
-          textAlign="left"
-          style={styles.formTextInput}
-          label="Issuer"
-          accessibilityLabel="Issuer"
-          mode="outlined"
-          value={issuer}
-          onChangeText={setIssuer}
-          autoFocus
-        />
-        <TextInput
-          textAlign="left"
-          style={styles.formTextInput}
-          label="Secret"
-          accessibilityLabel="Secret"
-          mode="outlined"
-          value={secret}
-          onChangeText={setSecret}
-        />
-        <TextInput
-          textAlign="left"
-          style={styles.formTextInput}
-          label="Account"
-          accessibilityLabel="Account"
-          mode="outlined"
-          value={account}
-          onChangeText={setAccount}
-        />
+        <View style={styles.inputRow}>
+          <TextInput
+            textAlign="left"
+            label="Issuer"
+            accessibilityLabel="Issuer"
+            mode="outlined"
+            value={issuer}
+            onChangeText={setIssuer}
+            autoFocus
+          />
+        </View>
+
+        <View style={styles.inputRow}>
+          <TextInput
+            textAlign="left"
+            label="Secret"
+            accessibilityLabel="Secret"
+            mode="outlined"
+            value={secret}
+            onChangeText={setSecret}
+            error={invalidSecret}
+          />
+          {invalidSecret && (
+            <Typography variant="caption" color={theme.colors.error}>
+              Invalid secret
+            </Typography>
+          )}
+        </View>
+
+        <View style={styles.inputRow}>
+          <TextInput
+            textAlign="left"
+            style={styles.inputRow}
+            label="Account"
+            accessibilityLabel="Account"
+            mode="outlined"
+            value={account}
+            onChangeText={setAccount}
+          />
+        </View>
+
         <Button
           accessibilityLabel="Add secret"
           style={styles.formButton}
           icon="plus"
           mode="contained"
           onPress={handleAddSecretButtonPress}
-          disabled={!(secret && account && issuer)}
+          disabled={disabled}
         >
           Add Secret
         </Button>
