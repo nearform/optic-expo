@@ -11,7 +11,12 @@ export const authenticator = new Authenticator({
 
 export default {
   generate(secret) {
-    return authenticator.generate(secret)
+    try {
+      return authenticator.generate(secret)
+    } catch (err) {
+      console.error('failed to generate secret')
+      return '-'
+    }
   },
 
   timeRemaining() {
