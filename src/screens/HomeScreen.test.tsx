@@ -9,6 +9,10 @@ import { useSecrets } from '../context/SecretsContext'
 
 import { HomeScreen } from './HomeScreen'
 
+jest.mock('@react-navigation/core', () => ({
+  useIsFocused: jest.fn().mockReturnValue(true),
+}))
+
 jest.mock('expo-notifications', () => ({
   setNotificationHandler: jest.fn(),
   addNotificationResponseReceivedListener: jest.fn(),

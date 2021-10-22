@@ -4,6 +4,7 @@ import { StyleSheet, ScrollView, Alert } from 'react-native'
 import { Subscription } from '@unimodules/react-native-adapter'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { NotificationResponse } from 'expo-notifications'
+import { useIsFocused } from '@react-navigation/core'
 
 import { useSecrets } from '../context/SecretsContext'
 import { useAuth } from '../context/AuthContext'
@@ -65,6 +66,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const { user } = useAuth()
   const { secrets, update, remove } = useSecrets()
   const expoToken = usePushToken()
+  const isFocused = useIsFocused()
   const responseListener = useRef<Subscription>()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
@@ -176,6 +178,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       <Actions
         onScan={() => navigation.navigate('Scan')}
         onType={() => navigation.navigate('Type')}
+        visible={isFocused}
       />
     </ScrollView>
   )
