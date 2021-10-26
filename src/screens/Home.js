@@ -39,7 +39,7 @@ export default function Home() {
 
   const handleGenerateToken = async secret => {
     try {
-      const token = await api.generateToken(secret)
+      const token = await api.generateToken(secret, expoToken)
       await update({ ...secret, token })
     } catch (err) {
       console.log(err)

@@ -6,12 +6,14 @@ const { apiUrl } = Constants.manifest.extra
 
 export default function apiFactory(opts) {
   return {
-    async generateToken(secret) {
+    async generateToken(secret, expoToken) {
       const response = await fetch(`${apiUrl}/token/${secret._id}`, {
         method: 'PUT',
         headers: {
+          'Content-Type': 'application/json',
           authorization: `Bearer ${opts.idToken}`,
         },
+        body: JSON.stringify({ expoToken }),
       })
 
       const { token } = await response.json()
