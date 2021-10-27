@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as Notifications from 'expo-notifications'
 import { StyleSheet, ScrollView, Alert, View } from 'react-native'
 import { Subscription } from '@unimodules/react-native-adapter'
@@ -71,12 +71,13 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const expoToken = usePushToken()
   const isFocused = useIsFocused()
   const responseListener = useRef<Subscription>()
+  const [subscriptionId, setSubscriptionId] = useState<string>('')
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
 
   const handleGenerateToken = async (secret: Secret) => {
     try {
-      const token = await api.generateToken(secret, expoToken)
+      const token = await api.generateToken(secret, subscriptionId)
       await update({ ...secret, token })
     } catch (err) {
       console.log(err)
@@ -144,10 +145,11 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     if (!user || !expoToken) return
 
     const register = async () => {
-      await api.registerSubscription({
+      const id = await api.registerSubscription({
         type: 'expo',
         token: expoToken,
       })
+      setSubscriptionId(id)
     }
 
     register()
