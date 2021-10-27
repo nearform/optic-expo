@@ -11,7 +11,7 @@ type APIOptions = {
 }
 
 export type API = {
-  generateToken: (_: Secret) => Promise<string>
+  generateToken: (_: Secret, __: string) => Promise<string>
   revokeToken: (_: Secret) => Promise<void>
   registerSubscription: (_: Subscription) => Promise<void>
   respond: (_: string, __: string, ___: boolean) => Promise<void>

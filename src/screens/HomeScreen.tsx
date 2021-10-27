@@ -76,7 +76,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
   const handleGenerateToken = async (secret: Secret) => {
     try {
-      const token = await api.generateToken(secret)
+      const token = await api.generateToken(secret, expoToken)
       await update({ ...secret, token })
     } catch (err) {
       console.log(err)
