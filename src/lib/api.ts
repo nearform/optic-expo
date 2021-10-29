@@ -63,6 +63,7 @@ export default function apiFactory(opts: APIOptions): API {
         return data.subscriptionId
       } catch (err) {
         console.log(err)
+        throw err
       }
     },
 
