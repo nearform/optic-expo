@@ -11,20 +11,22 @@ type APIOptions = {
 }
 
 export type API = {
-  generateToken: (_: Secret) => Promise<string>
+  generateToken: (_: Secret, __: string) => Promise<string>
   revokeToken: (_: Secret) => Promise<void>
-  registerSubscription: (_: Subscription) => Promise<void>
+  registerSubscription: (_: Subscription) => Promise<string>
   respond: (_: string, __: string, ___: boolean) => Promise<void>
 }
 
 export default function apiFactory(opts: APIOptions): API {
   return {
-    async generateToken(secret) {
-      const response = await fetch(`${apiUrl}/token/${secret._id}`, {
+    async generateToken(secret, subscriptionId) {
+      const response = await fetch(`${apiUrl}/token`, {
         method: 'PUT',
         headers: {
+          'Content-Type': 'application/json',
           authorization: `Bearer ${opts.idToken}`,
         },
+        body: JSON.stringify({ secretId: secret._id, subscriptionId }),
       })
 
       const { token } = await response.json()
@@ -55,8 +57,13 @@ export default function apiFactory(opts: APIOptions): API {
         if (!response.ok) {
           throw new Error('Cannot send subscription to server')
         }
+
+        const data = await response.json()
+
+        return data.subscriptionId
       } catch (err) {
         console.log(err)
+        throw err
       }
     },
 
