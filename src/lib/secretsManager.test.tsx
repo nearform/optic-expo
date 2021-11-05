@@ -20,12 +20,15 @@ describe('secretsManager', () => {
   })
 
   it('saves', async () => {
-    const s = await secretsManager.upsert({
-      account: 'my-account',
-      issuer: 'some issuer',
-      secret: 'somesecret',
-      uid: '11',
-    })
+    const s = await secretsManager.upsert(
+      {
+        account: 'my-account',
+        issuer: 'some issuer',
+        secret: 'somesecret',
+        uid: '11',
+      },
+      '11'
+    )
 
     expect(s).toEqual({
       _id: 'uuid-1111',
@@ -37,12 +40,15 @@ describe('secretsManager', () => {
   })
 
   it('updates', async () => {
-    const s = await secretsManager.upsert({
-      account: 'my-account',
-      issuer: 'some issuer',
-      secret: 'newsecret',
-      uid: '11',
-    })
+    const s = await secretsManager.upsert(
+      {
+        account: 'my-account',
+        issuer: 'some issuer',
+        secret: 'newsecret',
+        uid: '11',
+      },
+      '11'
+    )
 
     expect(s).toEqual({
       _id: 'uuid-1111',
@@ -57,14 +63,17 @@ describe('secretsManager', () => {
     v4Mocked.mockReturnValueOnce('uuid-1111')
     v4Mocked.mockReturnValueOnce('uuid-2222')
 
-    const s1 = await secretsManager.upsert({
-      account: 'my-account',
-      issuer: 'some issuer',
-      secret: 'newsecret',
-      uid: '11',
-    })
+    const s1 = await secretsManager.upsert(
+      {
+        account: 'my-account',
+        issuer: 'some issuer',
+        secret: 'newsecret',
+        uid: '11',
+      },
+      '11'
+    )
 
-    expect(await secretsManager.get(s1._id)).toEqual({
+    expect(await secretsManager.get(s1._id, '11')).toEqual({
       _id: 'uuid-1111',
       account: 'my-account',
       issuer: 'some issuer',
@@ -72,12 +81,15 @@ describe('secretsManager', () => {
       uid: '11',
     })
 
-    await secretsManager.upsert({
-      account: 'account-2',
-      issuer: 'issuer-2',
-      secret: 'secret-2',
-      uid: '22',
-    })
+    await secretsManager.upsert(
+      {
+        account: 'account-2',
+        issuer: 'issuer-2',
+        secret: 'secret-2',
+        uid: '22',
+      },
+      '11'
+    )
 
     expect(await secretsManager.getAll()).toEqual([
       {
@@ -98,15 +110,18 @@ describe('secretsManager', () => {
   })
 
   it('removes', async () => {
-    const s = await secretsManager.upsert({
-      account: 'my-account',
-      issuer: 'some issuer',
-      secret: 'newsecret',
-      uid: '11',
-    })
+    const s = await secretsManager.upsert(
+      {
+        account: 'my-account',
+        issuer: 'some issuer',
+        secret: 'newsecret',
+        uid: '11',
+      },
+      '11'
+    )
 
     await secretsManager.remove(s._id)
 
-    expect(await secretsManager.get(s._id)).toEqual(undefined)
+    expect(await secretsManager.get(s._id, '111')).toEqual(undefined)
   })
 })

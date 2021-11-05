@@ -16,8 +16,13 @@ const getAll = async () => {
   return secrets
 }
 
-const get = async (id: string) => {
-  const secrets = await getAll()
+const getAllByUser = async (userId: string) => {
+  const secrets = (await storage.getObject<Secret[]>(secretStorageKey)) ?? []
+  return secrets.filter(s => s.uid === userId)
+}
+
+const get = async (id: string, userId: string) => {
+  const secrets = await getAllByUser(userId)
   return secrets.find(secret => secret._id === id)
 }
 
@@ -28,9 +33,9 @@ const get = async (id: string) => {
  * @param {Object} secret - secret to upsert
  * @returns {Object} the added/updated secret
  */
-const upsert = async (secret: Optional<Secret, '_id'>) => {
+const upsert = async (secret: Optional<Secret, '_id'>, userId: string) => {
   const secrets = await getAll()
-  let upserted = secrets.find(s => s._id === secret._id)
+  let upserted = secrets.find(s => s._id === secret._id && s.uid === userId)
 
   if (upserted) {
     Object.assign(upserted, secret)
@@ -64,4 +69,4 @@ const remove = async (secretId: string) => {
   }
 }
 
-export default { getAll, get, upsert, remove }
+export default { getAll, getAllByUser, get, upsert, remove }
