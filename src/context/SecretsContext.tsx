@@ -47,8 +47,10 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
   useEffect(() => {
     let mounted = true
     async function initialize() {
-      if (user && mounted) {
-        setSecrets(await secretsManager.getAllByUser(user.uid))
+      if (user) {
+        const secrets = await secretsManager.getAllByUser(user.uid)
+
+        if (mounted) setSecrets(secrets)
       }
     }
 
