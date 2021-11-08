@@ -50,7 +50,9 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
       if (user) {
         const secrets = await secretsManager.getAllByUser(user.uid)
 
-        if (mounted) setSecrets(secrets)
+        if (mounted) {
+          setSecrets(secrets)
+        }
       }
     }
 
