@@ -69,4 +69,4 @@ const remove = async (secretId: string) => {
   }
 }
 
-export default { getAll, getAllByUser, get, upsert, remove }
+export default { getAllByUser, get, upsert, remove }

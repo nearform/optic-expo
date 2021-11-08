@@ -88,10 +88,10 @@ describe('secretsManager', () => {
         secret: 'secret-2',
         uid: '22',
       },
-      '11'
+      '22'
     )
 
-    expect(await secretsManager.getAll()).toEqual([
+    expect(await secretsManager.getAllByUser('11')).toEqual([
       {
         _id: 'uuid-1111',
         account: 'my-account',
@@ -99,6 +99,9 @@ describe('secretsManager', () => {
         secret: 'newsecret',
         uid: '11',
       },
+    ])
+
+    expect(await secretsManager.getAllByUser('22')).toEqual([
       {
         _id: 'uuid-2222',
         account: 'account-2',
