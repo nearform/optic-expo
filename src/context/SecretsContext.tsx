@@ -10,6 +10,8 @@ import React, {
 import secretsManager from '../lib/secretsManager'
 import { Secret } from '../types'
 
+import { useAuth } from './AuthContext'
+
 export type ContextType = {
   secrets: Secret[]
   add: (_: Omit<Secret, '_id'>) => Promise<void>
@@ -40,29 +42,49 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
   children,
 }) => {
   const [secrets, setSecrets] = useState<Secret[]>([])
+  const { user } = useAuth()
 
   useEffect(() => {
+    let mounted = true
     async function initialize() {
-      setSecrets(await secretsManager.getAll())
+      if (user) {
+        const secrets = await secretsManager.getAllByUser(user.uid)
+
+        if (mounted) {
+          setSecrets(secrets)
+        }
+      }
     }
 
     initialize()
-  }, [])
+    return () => {
+      mounted = false
+    }
+  }, [user])
 
-  const add = useCallback<ContextType['add']>(async secret => {
-    await secretsManager.upsert(secret)
-    setSecrets(await secretsManager.getAll())
-  }, [])
+  const add = useCallback<ContextType['add']>(
+    async secret => {
+      await secretsManager.upsert(secret, user.uid)
+      setSecrets(await secretsManager.getAllByUser(user.uid))
+    },
+    [user]
+  )
 
-  const remove = useCallback<ContextType['remove']>(async secret => {
-    await secretsManager.remove(secret._id)
-    setSecrets(await secretsManager.getAll())
-  }, [])
+  const remove = useCallback<ContextType['remove']>(
+    async secret => {
+      await secretsManager.remove(secret._id)
+      setSecrets(await secretsManager.getAllByUser(user.uid))
+    },
+    [user]
+  )
 
-  const update = useCallback<ContextType['update']>(async secret => {
-    await secretsManager.upsert(secret)
-    setSecrets(await secretsManager.getAll())
-  }, [])
+  const update = useCallback<ContextType['update']>(
+    async secret => {
+      await secretsManager.upsert(secret, user.uid)
+      setSecrets(await secretsManager.getAllByUser(user.uid))
+    },
+    [user]
+  )
 
   const value = useMemo<ContextType>(
     () => ({ secrets, add, update, remove }),
