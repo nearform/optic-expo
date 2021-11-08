@@ -64,7 +64,7 @@ describe('HomeScreen', () => {
   it('register subscription on load', () => {
     setup()
 
-    expect(registerSubscriptionStub).toHaveBeenCalledTimes(2)
+    expect(registerSubscriptionStub).toHaveBeenCalledTimes(1)
     expect(registerSubscriptionStub).toHaveBeenCalledWith({
       token: 'dummy-expo-token',
       type: 'expo',
@@ -93,7 +93,6 @@ describe('HomeScreen', () => {
       add: jest.fn(),
       remove: jest.fn(),
       update: jest.fn(),
-      updateUserId: jest.fn(),
     })
 
     const view = setup()

@@ -10,12 +10,13 @@ import React, {
 import secretsManager from '../lib/secretsManager'
 import { Secret } from '../types'
 
+import { useAuth } from './AuthContext'
+
 export type ContextType = {
   secrets: Secret[]
   add: (_: Omit<Secret, '_id'>) => Promise<void>
   update: (_: Secret) => Promise<void>
   remove: (_: Secret) => Promise<void>
-  updateUserId: (_: string) => void
 }
 
 const initialContext: ContextType = {
@@ -27,9 +28,6 @@ const initialContext: ContextType = {
     // @todo
   },
   remove: async () => {
-    // @todo
-  },
-  updateUserId: async () => {
     // @todo
   },
 }
@@ -44,52 +42,49 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
   children,
 }) => {
   const [secrets, setSecrets] = useState<Secret[]>([])
-  const [userId, setUserId] = useState<string>('')
+  const { user } = useAuth()
 
   useEffect(() => {
+    let mounted = true
     async function initialize() {
-      if (userId) {
-        setSecrets(await secretsManager.getAllByUser(userId))
+      if (user && mounted) {
+        setSecrets(await secretsManager.getAllByUser(user.uid))
       }
     }
 
     initialize()
-  }, [userId])
+    return () => {
+      mounted = false
+    }
+  }, [user])
 
   const add = useCallback<ContextType['add']>(
     async secret => {
-      await secretsManager.upsert(secret, userId)
-      setSecrets(await secretsManager.getAllByUser(userId))
+      await secretsManager.upsert(secret, user.uid)
+      setSecrets(await secretsManager.getAllByUser(user.uid))
     },
-    [userId]
+    [user]
   )
 
   const remove = useCallback<ContextType['remove']>(
     async secret => {
       await secretsManager.remove(secret._id)
-      setSecrets(await secretsManager.getAllByUser(userId))
+      setSecrets(await secretsManager.getAllByUser(user.uid))
     },
-    [userId]
+    [user]
   )
 
   const update = useCallback<ContextType['update']>(
     async secret => {
-      await secretsManager.upsert(secret, userId)
-      setSecrets(await secretsManager.getAllByUser(userId))
+      await secretsManager.upsert(secret, user.uid)
+      setSecrets(await secretsManager.getAllByUser(user.uid))
     },
-    [userId]
-  )
-
-  const updateUserId = useCallback<ContextType['updateUserId']>(
-    async userId => {
-      setUserId(userId)
-    },
-    []
+    [user]
   )
 
   const value = useMemo<ContextType>(
-    () => ({ secrets, add, update, remove, updateUserId }),
-    [secrets, add, update, remove, updateUserId]
+    () => ({ secrets, add, update, remove }),
+    [secrets, add, update, remove]
   )
 
   return (

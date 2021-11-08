@@ -4,6 +4,5 @@ export const useSecrets = jest.fn(() => {
     add: jest.fn(),
     update: jest.fn(),
     remove: jest.fn(),
-    updateUserId: jest.fn(),
   }
 })

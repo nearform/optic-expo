@@ -67,7 +67,7 @@ type HomeScreenProps = {
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const { user } = useAuth()
-  const { secrets, update, remove, updateUserId } = useSecrets()
+  const { secrets, update, remove } = useSecrets()
   const expoToken = usePushToken()
   const isFocused = useIsFocused()
   const responseListener = useRef<Subscription>()
@@ -144,8 +144,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   useEffect(() => {
     if (!user || !expoToken) return
 
-    updateUserId(user.uid)
-
     const register = async () => {
       const id = await api.registerSubscription({
         type: 'expo',
@@ -155,7 +153,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     }
 
     register()
-  }, [user, api, expoToken, updateUserId])
+  }, [user, api, expoToken])
 
   useEffect(() => {
     responseListener.current =
