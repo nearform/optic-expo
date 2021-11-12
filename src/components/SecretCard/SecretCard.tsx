@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { Divider, Button, Card, Avatar } from 'react-native-paper'
+import Animated, {
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+  withSpring,
+} from 'react-native-reanimated'
 
 import otpLib from '../../lib/otp'
 import theme from '../../lib/theme'
@@ -67,6 +73,20 @@ type SecretProps = {
   onRevoke: (_: Secret) => void
 }
 
+function useTransition(active: boolean) {
+  const opacity = useSharedValue(0)
+  useEffect(() => {
+    opacity.value = active ? 1 : 0
+  }, [active, opacity])
+  const opacityTransition = useDerivedValue(() => withSpring(opacity.value))
+  return useAnimatedStyle(() => {
+    return {
+      opacity: opacityTransition.value,
+      transform: [{ scaleY: opacityTransition.value }],
+    }
+  })
+}
+
 export const SecretCard: React.FC<SecretProps> = ({
   data,
   onGenerate,
@@ -115,6 +135,8 @@ export const SecretCard: React.FC<SecretProps> = ({
   const handleToggleExpand = () => setExpanded(!expanded)
   const handleToggleMenu = () => setShowMenu(!showMenu)
 
+  const secretStyle = useTransition(expanded)
+
   return (
     <View style={styles.container}>
       <Card>
@@ -147,7 +169,7 @@ export const SecretCard: React.FC<SecretProps> = ({
             </>
           )}
           {expanded && (
-            <>
+            <Animated.View style={secretStyle}>
               <View style={styles.row}>
                 <Text style={styles.label}>SECRET</Text>
                 <Text style={[styles.value, styles.valueSmall]}>
@@ -155,7 +177,7 @@ export const SecretCard: React.FC<SecretProps> = ({
                 </Text>
               </View>
               <Divider />
-            </>
+            </Animated.View>
           )}
         </Card.Content>
         <Card.Actions style={styles.cardActions}>
