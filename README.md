@@ -9,3 +9,6 @@ Optic is an app that helps you securely generate OTP tokens for 2FA protected np
 1. `git clone https://github.com/nearform/optic-expo.git && cd optic-expo`
 2. `yarn`
 3. `yarn start`
+
+## Figma Design
+The figma designs can be found [here](https://www.figma.com/file/weYT5rBr86ouDu3GziZGN2/Optic)
