@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, View, Text } from 'react-native'
-import { Divider, Button, Card, Avatar } from 'react-native-paper'
+import { StyleSheet, Text, View } from 'react-native'
+import { Avatar, Button, Card, Divider } from 'react-native-paper'
+import Animated from 'react-native-reanimated'
 
 import otpLib from '../../lib/otp'
 import theme from '../../lib/theme'
 import { Secret } from '../../types'
 import { Typography } from '../Typography'
+import useAnimatedTransition from '../../hooks/use-animated-transition'
 
 import { ContextMenu } from './ContextMenu'
 import { OTP } from './OTP'
@@ -115,6 +117,8 @@ export const SecretCard: React.FC<SecretProps> = ({
   const handleToggleExpand = () => setExpanded(!expanded)
   const handleToggleMenu = () => setShowMenu(!showMenu)
 
+  const secretAnimationStyle = useAnimatedTransition(expanded, 64)
+
   return (
     <View style={styles.container}>
       <Card>
@@ -146,17 +150,15 @@ export const SecretCard: React.FC<SecretProps> = ({
               <Divider />
             </>
           )}
-          {expanded && (
-            <>
-              <View style={styles.row}>
-                <Text style={styles.label}>SECRET</Text>
-                <Text style={[styles.value, styles.valueSmall]}>
-                  {data.secret}
-                </Text>
-              </View>
-              <Divider />
-            </>
-          )}
+          <Animated.View style={secretAnimationStyle}>
+            <View style={styles.row}>
+              <Text style={styles.label}>SECRET</Text>
+              <Text style={[styles.value, styles.valueSmall]}>
+                {data.secret}
+              </Text>
+            </View>
+            <Divider />
+          </Animated.View>
         </Card.Content>
         <Card.Actions style={styles.cardActions}>
           <View style={styles.leftActions}>
