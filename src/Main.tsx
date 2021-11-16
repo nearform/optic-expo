@@ -30,6 +30,7 @@ export type MainStackParamList = {
   Type: undefined
   Token: {
     secret: Secret
+    token?: string
   }
 }
 

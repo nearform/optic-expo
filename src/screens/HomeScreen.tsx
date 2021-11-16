@@ -66,7 +66,7 @@ type HomeScreenProps = {
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const { user } = useAuth()
-  const { secrets, update, remove } = useSecrets()
+  const { secrets, remove } = useSecrets()
   const isFocused = useIsFocused()
   const responseListener = useRef<Subscription>()
 
@@ -77,6 +77,16 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       secret,
     })
   }
+
+  const handleViewToken = useCallback(
+    (secret: Secret, token: string) => {
+      navigation.navigate('Token', {
+        secret,
+        token,
+      })
+    },
+    [navigation]
+  )
 
   const handleDeleteSecret = async (secret: Secret) => {
     try {
@@ -147,6 +157,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
               data={secret}
               onAddToken={() => handleAddToken(secret)}
               onDelete={handleDeleteSecret}
+              onViewToken={token => handleViewToken(secret, token)}
             />
           ))
         )}

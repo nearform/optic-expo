@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Avatar, Button, Card, Divider } from 'react-native-paper'
 import Animated from 'react-native-reanimated'
 
@@ -11,7 +11,6 @@ import useAnimatedTransition from '../../hooks/use-animated-transition'
 
 import { ContextMenu } from './ContextMenu'
 import { OTP } from './OTP'
-import { CopyableInfo } from './CopyableInfo'
 
 const styles = StyleSheet.create({
   container: {
@@ -65,12 +64,14 @@ const BUTTON_LABELS = {
 type SecretProps = {
   data: Secret
   onAddToken: () => void
+  onViewToken: (token: string) => void
   onDelete: (_: Secret) => void
 }
 
 export const SecretCard: React.FC<SecretProps> = ({
   data,
   onAddToken,
+  onViewToken,
   onDelete,
 }) => {
   const [showMenu, setShowMenu] = useState(false)
@@ -121,28 +122,17 @@ export const SecretCard: React.FC<SecretProps> = ({
         <Card.Content style={styles.cardContent}>
           <OTP value={otp} />
           <Divider />
-          {
-            data.tokens &&
-              data.tokens.map(data => (
-                <View key={data.token} style={styles.row}>
-                  <Text>{data.note}</Text>
-                  <CopyableInfo textStyle={styles.value}>
-                    {data.token}
-                  </CopyableInfo>
-                </View>
-              ))
-            // data.tokens.map((data) => (<><View style={styles.row}><Text style={styles.label}>Token</Text></View>
-            // </>)
-            // (<>
-            //   <View style={styles.row}>
-            //     {/*<Text style={styles.label}>TOKEN</Text>*/}
-            //     {/*<CopyableInfo textStyle={styles.value}>*/}
-            //     {/*  {data.token || "-"}*/}
-            //     {/*</CopyableInfo>*/}
-            //   </View>
-            //   <Divider />
-            // </>)
-          }
+          {data.tokens &&
+            data.tokens.map(data => (
+              <>
+                <TouchableOpacity onPress={() => onViewToken(data.token)}>
+                  <View style={styles.row}>
+                    <Text style={styles.value}>{data.note}</Text>
+                  </View>
+                </TouchableOpacity>
+                <Divider />
+              </>
+            ))}
           <Animated.View style={secretAnimationStyle}>
             <View style={styles.row}>
               <Text style={styles.label}>SECRET</Text>
