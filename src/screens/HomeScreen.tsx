@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import * as Notifications from 'expo-notifications'
-import { StyleSheet, ScrollView, Alert, View } from 'react-native'
+import { NotificationResponse } from 'expo-notifications'
+import { Alert, ScrollView, StyleSheet, View } from 'react-native'
 import { Subscription } from '@unimodules/react-native-adapter'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { NotificationResponse } from 'expo-notifications'
 import { useIsFocused } from '@react-navigation/core'
 
 import { useSecrets } from '../context/SecretsContext'
@@ -12,7 +12,6 @@ import apiFactory from '../lib/api'
 import { NoSecrets } from '../components/NoSecrets'
 import { Actions } from '../components/Actions'
 import { SecretCard } from '../components/SecretCard'
-import usePushToken from '../hooks/use-push-token'
 import { Secret } from '../types'
 import { MainStackParamList } from '../Main'
 
@@ -68,20 +67,13 @@ type HomeScreenProps = {
 export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const { user } = useAuth()
   const { secrets, update, remove } = useSecrets()
-  const expoToken = usePushToken()
   const isFocused = useIsFocused()
   const responseListener = useRef<Subscription>()
-  const [subscriptionId, setSubscriptionId] = useState<string>('')
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
 
-  const handleGenerateToken = async (secret: Secret) => {
-    try {
-      const token = await api.generateToken(secret, subscriptionId)
-      await update({ ...secret, token })
-    } catch (err) {
-      console.log(err)
-    }
+  const handleCreateToken = () => {
+    navigation.navigate('Token')
   }
 
   const handleRevokeToken = async (secret: Secret) => {
@@ -142,20 +134,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   )
 
   useEffect(() => {
-    if (!user || !expoToken) return
-
-    const register = async () => {
-      const id = await api.registerSubscription({
-        type: 'expo',
-        token: expoToken,
-      })
-      setSubscriptionId(id)
-    }
-
-    register()
-  }, [user, api, expoToken])
-
-  useEffect(() => {
     responseListener.current =
       Notifications.addNotificationResponseReceivedListener(onNotification)
 
@@ -174,7 +152,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
             <SecretCard
               key={secret._id}
               data={secret}
-              onGenerate={handleGenerateToken}
+              onGenerate={handleCreateToken}
               onRevoke={handleRevokeToken}
               onDelete={handleDeleteSecret}
             />
