@@ -195,6 +195,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             Array [
                               Object {
                                 "minHeight": 30,
+                                "paddingRight": 16,
                               },
                               Object {
                                 "marginBottom": 0,
@@ -271,6 +272,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               Object {
                                 "marginVertical": 0,
                                 "minHeight": 20,
+                                "paddingRight": 16,
                               },
                               undefined,
                             ],
@@ -1201,6 +1203,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             Array [
                               Object {
                                 "minHeight": 30,
+                                "paddingRight": 16,
                               },
                               Object {
                                 "marginBottom": 0,
@@ -1277,6 +1280,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               Object {
                                 "marginVertical": 0,
                                 "minHeight": 20,
+                                "paddingRight": 16,
                               },
                               undefined,
                             ],
