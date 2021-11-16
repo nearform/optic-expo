@@ -5,9 +5,8 @@ import { Subscription } from '@unimodules/react-native-adapter'
 
 import apiFactory, { API } from '../lib/api'
 import { getMockedNavigation, renderWithTheme } from '../../test/utils'
-import { useSecrets } from '../context/SecretsContext'
 
-import { HomeScreen } from './HomeScreen'
+import { TokenScreen } from './TokenScreen'
 
 jest.mock('@react-navigation/core', () => ({
   useIsFocused: jest.fn().mockReturnValue(true),
@@ -27,13 +26,12 @@ jest.mock('../lib/otp', () => ({
 
 jest.mock('../hooks/use-push-token', () => () => 'dummy-expo-token')
 
-const useSecretsMocked = mocked(useSecrets)
 const apiFactoryMocked = mocked(apiFactory)
 const addNotificationResponseReceivedListenerMocked = mocked(
   Notification.addNotificationResponseReceivedListener
 )
 
-describe('HomeScreen', () => {
+describe('TokenScreen', () => {
   const registerSubscriptionStub = jest.fn()
 
   beforeEach(() => {
@@ -51,41 +49,20 @@ describe('HomeScreen', () => {
   })
 
   const setup = () => {
-    const navigation = getMockedNavigation()
-    return renderWithTheme(<HomeScreen navigation={navigation} />)
+    const navigation: any = getMockedNavigation<'Token'>()
+    const route: any = { params: { token: 'a-token', secret: {} } }
+    return renderWithTheme(
+      <TokenScreen navigation={navigation} route={route} />
+    )
   }
 
-  it('should match snapshot when there are no secrets', () => {
-    const view = setup()
-    expect(view).toMatchSnapshot()
-  })
+  it('register subscription on load', () => {
+    setup()
 
-  it('renders secret cards when available', () => {
-    useSecretsMocked.mockReturnValue({
-      secrets: [
-        {
-          _id: '111',
-          account: 'Account 1',
-          issuer: 'Some issuer',
-          secret: 'mysecret',
-          uid: '222',
-          tokens: [{ token: 'some-token', note: 'Some note' }],
-        },
-        {
-          _id: '222',
-          account: 'Account 1',
-          issuer: 'Some issuer',
-          secret: 'myanothersecret',
-          uid: '222',
-        },
-      ],
-      add: jest.fn(),
-      remove: jest.fn(),
-      update: jest.fn(),
+    expect(registerSubscriptionStub).toHaveBeenCalledTimes(1)
+    expect(registerSubscriptionStub).toHaveBeenCalledWith({
+      token: 'dummy-expo-token',
+      type: 'expo',
     })
-
-    const view = setup()
-
-    expect(view).toMatchSnapshot()
   })
 })

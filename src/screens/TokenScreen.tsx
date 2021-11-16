@@ -97,9 +97,8 @@ export const TokenScreen = ({ route, navigation }: Props) => {
   //   }
   // }
   //
+
   useEffect(() => {
-    console.log(user, 'user')
-    console.log(expoToken, 'expoToken')
     if (!user || !expoToken) return
 
     const register = async () => {
@@ -107,7 +106,6 @@ export const TokenScreen = ({ route, navigation }: Props) => {
         type: 'expo',
         token: expoToken,
       })
-      console.log(id, 'id')
       setSubscriptionId(id)
     }
 
