@@ -20,6 +20,7 @@ import { AuthScreen } from './screens/AuthScreen'
 import HomeHeaderRight from './components/HomeHeaderRight'
 import DefaultHeaderLeft from './components/DefaultHeaderLeft'
 import { TokenScreen } from './screens/TokenScreen'
+import { Secret } from './types'
 
 const MainStack = createStackNavigator()
 
@@ -27,7 +28,9 @@ export type MainStackParamList = {
   Home: undefined
   Scan: undefined
   Type: undefined
-  Token: undefined
+  Token: {
+    secret: Secret
+  }
 }
 
 export default function Main() {
@@ -70,7 +73,7 @@ export default function Main() {
         <MainStack.Screen
           name="Token"
           component={TokenScreen}
-          options={{ title: 'Token', headerRight: DefaultHeaderLeft }}
+          options={{ title: 'Token', headerLeft: DefaultHeaderLeft }}
         />
         <MainStack.Screen
           name="Scan"

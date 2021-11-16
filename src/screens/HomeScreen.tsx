@@ -72,17 +72,10 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
 
-  const handleCreateToken = () => {
-    navigation.navigate('Token')
-  }
-
-  const handleRevokeToken = async (secret: Secret) => {
-    try {
-      await api.revokeToken(secret)
-      await update({ ...secret, token: undefined })
-    } catch (err) {
-      console.log(err)
-    }
+  const handleAddToken = (secret: Secret) => {
+    navigation.navigate('Token', {
+      secret,
+    })
   }
 
   const handleDeleteSecret = async (secret: Secret) => {
@@ -152,8 +145,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
             <SecretCard
               key={secret._id}
               data={secret}
-              onGenerate={handleCreateToken}
-              onRevoke={handleRevokeToken}
+              onAddToken={() => handleAddToken(secret)}
               onDelete={handleDeleteSecret}
             />
           ))

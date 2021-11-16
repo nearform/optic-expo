@@ -59,26 +59,25 @@ const styles = StyleSheet.create({
 
 const BUTTON_LABELS = {
   showSecret: 'SECRET',
-  generateToken: 'Generate Token',
+  addToken: 'Add Token',
 }
 
 type SecretProps = {
   data: Secret
-  onGenerate: (_: Secret) => void
+  onAddToken: () => void
   onDelete: (_: Secret) => void
-  onRevoke: (_: Secret) => void
 }
 
 export const SecretCard: React.FC<SecretProps> = ({
   data,
-  onGenerate,
+  onAddToken,
   onDelete,
-  onRevoke,
 }) => {
   const [showMenu, setShowMenu] = useState(false)
   const [expanded, setExpanded] = useState(false)
-  const [generating, setGenerating] = useState(false)
   const [otp, setOtp] = useState('')
+
+  console.log({ data })
 
   useEffect(() => {
     if (!data.secret) return
@@ -94,23 +93,8 @@ export const SecretCard: React.FC<SecretProps> = ({
     return () => clearTimeout(timeout)
   }, [data.secret])
 
-  const handleGenerate = () => {
-    onGenerate(data)
-    setGenerating(true)
-    setShowMenu(false)
-  }
-
-  useEffect(() => {
-    setGenerating(false)
-  }, [data.token])
-
   const handleDelete = () => {
     onDelete(data)
-    setShowMenu(false)
-  }
-
-  const handleRevoke = () => {
-    onRevoke(data)
     setShowMenu(false)
   }
 
@@ -129,8 +113,6 @@ export const SecretCard: React.FC<SecretProps> = ({
           right={() => (
             <ContextMenu
               open={showMenu}
-              onRefresh={data.token ? handleGenerate : undefined}
-              onRevoke={data.token ? handleRevoke : undefined}
               onDelete={handleDelete}
               onToggle={handleToggleMenu}
             />
@@ -139,17 +121,28 @@ export const SecretCard: React.FC<SecretProps> = ({
         <Card.Content style={styles.cardContent}>
           <OTP value={otp} />
           <Divider />
-          {data.token && (
-            <>
-              <View style={styles.row}>
-                <Text style={styles.label}>TOKEN</Text>
-                <CopyableInfo textStyle={styles.value}>
-                  {data.token || '-'}
-                </CopyableInfo>
-              </View>
-              <Divider />
-            </>
-          )}
+          {
+            data.tokens &&
+              data.tokens.map(data => (
+                <View key={data.token} style={styles.row}>
+                  <Text>{data.note}</Text>
+                  <CopyableInfo textStyle={styles.value}>
+                    {data.token}
+                  </CopyableInfo>
+                </View>
+              ))
+            // data.tokens.map((data) => (<><View style={styles.row}><Text style={styles.label}>Token</Text></View>
+            // </>)
+            // (<>
+            //   <View style={styles.row}>
+            //     {/*<Text style={styles.label}>TOKEN</Text>*/}
+            //     {/*<CopyableInfo textStyle={styles.value}>*/}
+            //     {/*  {data.token || "-"}*/}
+            //     {/*</CopyableInfo>*/}
+            //   </View>
+            //   <Divider />
+            // </>)
+          }
           <Animated.View style={secretAnimationStyle}>
             <View style={styles.row}>
               <Text style={styles.label}>SECRET</Text>
@@ -171,17 +164,9 @@ export const SecretCard: React.FC<SecretProps> = ({
             </Button>
           </View>
           <View style={styles.rightActions}>
-            {!data.token && (
-              <Button
-                onPress={handleGenerate}
-                mode="contained"
-                icon="plus"
-                loading={generating}
-                disabled={generating}
-              >
-                {BUTTON_LABELS.generateToken}
-              </Button>
-            )}
+            <Button onPress={onAddToken} mode="contained" icon="plus">
+              {BUTTON_LABELS.addToken}
+            </Button>
           </View>
         </Card.Actions>
       </Card>
