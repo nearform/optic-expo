@@ -69,7 +69,6 @@ export const TokenScreen = ({ route, navigation }: Props) => {
         note,
       }
       const existingTokens = secret.tokens ? secret.tokens : []
-      console.log(token, 'newToken')
 
       await update({
         ...secret,

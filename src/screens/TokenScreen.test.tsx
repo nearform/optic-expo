@@ -2,9 +2,13 @@ import React from 'react'
 import { mocked } from 'ts-jest/utils'
 import * as Notification from 'expo-notifications'
 import { Subscription } from '@unimodules/react-native-adapter'
+import { fireEvent } from '@testing-library/react-native'
+import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import apiFactory, { API } from '../lib/api'
 import { getMockedNavigation, renderWithTheme } from '../../test/utils'
+import { Secret } from '../types'
+import { MainStackParamList } from '../Main'
 
 import { TokenScreen } from './TokenScreen'
 
@@ -32,11 +36,21 @@ const addNotificationResponseReceivedListenerMocked = mocked(
 )
 
 describe('TokenScreen', () => {
+  const secret: Secret = {
+    _id: 'id',
+    secret: 'secret',
+    uid: 'uid',
+    tokens: [{ note: 'My note', token: '' }],
+    account: 'account',
+    issuer: '',
+  }
   const registerSubscriptionStub = jest.fn()
+  const generateTokenStub = jest.fn()
 
   beforeEach(() => {
     apiFactoryMocked.mockReturnValue({
       registerSubscription: registerSubscriptionStub,
+      generateToken: generateTokenStub,
     } as unknown as API)
 
     addNotificationResponseReceivedListenerMocked.mockReturnValue(
@@ -48,21 +62,31 @@ describe('TokenScreen', () => {
     jest.clearAllMocks()
   })
 
-  const setup = () => {
-    const navigation: any = getMockedNavigation<'Token'>()
-    const route: any = { params: { token: 'a-token', secret: {} } }
-    return renderWithTheme(
-      <TokenScreen navigation={navigation} route={route} />
-    )
+  const setup = (token?: string) => {
+    const props = {
+      navigation: getMockedNavigation<'Token'>(),
+      route: { params: { token, secret } },
+    } as unknown as NativeStackScreenProps<MainStackParamList, 'Token'>
+
+    return renderWithTheme(<TokenScreen {...props} />)
   }
 
   it('register subscription on load', () => {
     setup()
-
     expect(registerSubscriptionStub).toHaveBeenCalledTimes(1)
     expect(registerSubscriptionStub).toHaveBeenCalledWith({
       token: 'dummy-expo-token',
       type: 'expo',
     })
+  })
+
+  it('generates a token when note inputted', async () => {
+    const { getByA11yLabel, getByText } = setup()
+
+    const noteInput = getByA11yLabel('Note')
+    fireEvent.changeText(noteInput, 'My note')
+    fireEvent.press(getByText('Generate Token'))
+    expect(generateTokenStub).toBeCalledTimes(1)
+    expect(generateTokenStub).toBeCalledWith(secret, '')
   })
 })
