@@ -21,6 +21,7 @@ import HomeHeaderRight from './components/HomeHeaderRight'
 import DefaultHeaderLeft from './components/DefaultHeaderLeft'
 import { TokenScreen } from './screens/TokenScreen'
 import { Secret } from './types'
+import { OtpRequestScreen } from './screens/OtpRequestScreen'
 
 const MainStack = createStackNavigator()
 
@@ -31,6 +32,11 @@ export type MainStackParamList = {
   Token: {
     secret: Secret
     token?: string
+  }
+  OtpRequest: {
+    secret: Secret
+    token: string
+    uniqueId: string
   }
 }
 
@@ -75,6 +81,11 @@ export default function Main() {
           name="Token"
           component={TokenScreen}
           options={{ title: 'Token', headerLeft: DefaultHeaderLeft }}
+        />
+        <MainStack.Screen
+          name="OtpRequest"
+          component={OtpRequestScreen}
+          options={{ title: 'OTP Request', headerLeft: DefaultHeaderLeft }}
         />
         <MainStack.Screen
           name="Scan"

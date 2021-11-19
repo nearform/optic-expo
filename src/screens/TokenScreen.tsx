@@ -97,6 +97,40 @@ export const TokenScreen = ({ route, navigation }: Props) => {
   // }
   //
 
+  const handleRefreshToken = async () => {
+    try {
+      const refreshedToken = await api.generateToken(
+        secret,
+        subscriptionId,
+        token
+      )
+      // const newToken = {
+      //   token: refreshedToken,
+      //   note,
+      // }
+      // TODO update item in place
+      // const existingTokens = secret.tokens ? secret.tokens : []
+      //
+      // await update({
+      //   ...secret,
+      //   tokens: [newToken, ...existingTokens],
+      // })
+
+      navigation.navigate('Token', {
+        secret,
+        token: refreshedToken,
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleRevokeToken = async () => {
+    // try {
+    //   await api.revokeToken()
+    // }
+  }
+
   useEffect(() => {
     if (!user || !expoToken) return
 
@@ -121,6 +155,22 @@ export const TokenScreen = ({ route, navigation }: Props) => {
           <Card.Content>
             <CopyableInfo textStyle={styles.value}>{token || '-'}</CopyableInfo>
           </Card.Content>
+          <Button
+            style={styles.formButton}
+            icon="plus"
+            mode="contained"
+            onPress={handleRefreshToken}
+          >
+            Refresh Token
+          </Button>
+          <Button
+            style={styles.formButton}
+            icon="plus"
+            mode="contained"
+            onPress={handleRevokeToken}
+          >
+            Revoke Token
+          </Button>
         </Card>
       ) : (
         <View style={styles.form}>
