@@ -80,7 +80,7 @@ export default function Main() {
         <MainStack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'Your TokensView', headerRight: HomeHeaderRight }}
+          options={{ title: 'Your Tokens', headerRight: HomeHeaderRight }}
         />
         <MainStack.Screen
           name="TokensList"

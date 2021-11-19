@@ -11,7 +11,7 @@ import useAnimatedTransition from '../../hooks/use-animated-transition'
 
 import { ContextMenu } from './ContextMenu'
 import { OTP } from './OTP'
-import { TokensView } from './TokensView'
+import { TokensInfo } from './TokensInfo'
 
 const styles = StyleSheet.create({
   container: {
@@ -79,8 +79,6 @@ export const SecretCard: React.FC<SecretProps> = ({
   const [expanded, setExpanded] = useState(false)
   const [otp, setOtp] = useState('')
 
-  console.log({ data })
-
   useEffect(() => {
     if (!data.secret) return
     // do not fail if secret is missing
@@ -124,7 +122,7 @@ export const SecretCard: React.FC<SecretProps> = ({
           <OTP value={otp} />
           <Divider />
           {data.tokens && (
-            <TokensView count={data.tokens.length} onPress={onViewTokens} />
+            <TokensInfo count={data.tokens.length} onPress={onViewTokens} />
           )}
           <Animated.View style={secretAnimationStyle}>
             <View style={styles.row}>
