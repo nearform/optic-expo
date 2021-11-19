@@ -1,29 +1,31 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import React, { useCallback, useMemo } from 'react'
-import { Button, Card } from 'react-native-paper'
+import { Avatar, Button, Card } from 'react-native-paper'
 
 import theme from '../lib/theme'
 import { MainStackParamList } from '../Main'
 import { useAuth } from '../context/AuthContext'
 import apiFactory from '../lib/api'
 import { Typography } from '../components/Typography'
-import { CopyableInfo } from '../components/SecretCard/CopyableInfo'
 
 const styles = StyleSheet.create({
   screen: {
-    width: '100%',
+    margin: theme.spacing(2),
+  },
+  cardContent: {
+    paddingHorizontal: theme.spacing(1),
+  },
+  cardActions: {
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    alignItems: 'stretch',
   },
   form: {
     padding: theme.spacing(2),
   },
-  inputRow: {
-    marginBottom: theme.spacing(2),
-  },
-  formButton: {
-    marginTop: theme.spacing(1),
-    height: 50,
-    justifyContent: 'center',
+  button: {
+    marginTop: theme.spacing(2),
   },
   row: {
     flex: 1,
@@ -69,24 +71,45 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   return (
     <View style={styles.screen}>
       <Card>
-        <Card.Title title={<Typography variant="h5">{note}</Typography>} />
-        <Card.Content>
-          <CopyableInfo textStyle={styles.value}>{token || '-'}</CopyableInfo>
+        <Card.Title
+          title={<Typography variant="h5">{secret.issuer}</Typography>}
+          subtitle={secret.account}
+          left={props => <Avatar.Icon {...props} icon="key" />}
+        />
+        <Card.Content style={styles.cardContent}>
+          <View>
+            <View>
+              <Text>Token</Text>
+            </View>
+            <View>
+              <Text>{token}</Text>
+            </View>
+          </View>
+          <View>
+            <View>
+              <Text>Description</Text>
+            </View>
+            <View>
+              <Text>{note}</Text>
+            </View>
+          </View>
         </Card.Content>
-        <Button
-          style={styles.formButton}
-          mode="contained"
-          onPress={handleRejectToken}
-        >
-          Reject
-        </Button>
-        <Button
-          style={styles.formButton}
-          mode="contained"
-          onPress={handleApproveToken}
-        >
-          Approve
-        </Button>
+        <Card.Actions style={styles.cardActions}>
+          <Button
+            style={styles.button}
+            mode="outlined"
+            onPress={handleRejectToken}
+          >
+            Reject
+          </Button>
+          <Button
+            style={styles.button}
+            mode="contained"
+            onPress={handleApproveToken}
+          >
+            Approve
+          </Button>
+        </Card.Actions>
       </Card>
     </View>
   )
