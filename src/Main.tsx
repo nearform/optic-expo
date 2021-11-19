@@ -10,6 +10,7 @@ import {
   DidactGothic_400Regular,
 } from '@expo-google-fonts/didact-gothic'
 import AppLoading from 'expo-app-loading'
+import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import theme from './lib/theme'
 import { useAuth } from './context/AuthContext'
@@ -22,6 +23,7 @@ import DefaultHeaderLeft from './components/DefaultHeaderLeft'
 import { TokenScreen } from './screens/TokenScreen'
 import { Secret } from './types'
 import { OtpRequestScreen } from './screens/OtpRequestScreen'
+import { TokensListScreen } from './screens/TokensListScreen'
 
 const MainStack = createStackNavigator()
 
@@ -32,6 +34,9 @@ export type MainStackParamList = {
   Token: {
     secret: Secret
     token?: string
+  }
+  TokensList: {
+    secret: Secret
   }
   OtpRequest: {
     secret: Secret
@@ -75,7 +80,21 @@ export default function Main() {
         <MainStack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'Your Tokens', headerRight: HomeHeaderRight }}
+          options={{ title: 'Your TokensView', headerRight: HomeHeaderRight }}
+        />
+        <MainStack.Screen
+          name="TokensList"
+          component={TokensListScreen}
+          options={({
+            route: {
+              params: {
+                secret: { issuer },
+              },
+            },
+          }: NativeStackScreenProps<MainStackParamList, 'TokensList'>) => ({
+            title: issuer,
+            headerLeft: DefaultHeaderLeft,
+          })}
         />
         <MainStack.Screen
           name="Token"

@@ -58,11 +58,10 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     })
   }
 
-  const handleViewToken = useCallback(
-    (secret: Secret, token: string) => {
-      navigation.navigate('Token', {
+  const handleViewTokens = useCallback(
+    (secret: Secret) => {
+      navigation.navigate('TokensList', {
         secret,
-        token,
       })
     },
     [navigation]
@@ -121,7 +120,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
               data={secret}
               onAddToken={() => handleAddToken(secret)}
               onDelete={handleDeleteSecret}
-              onViewToken={token => handleViewToken(secret, token)}
+              onViewTokens={() => handleViewTokens(secret)}
             />
           ))
         )}
