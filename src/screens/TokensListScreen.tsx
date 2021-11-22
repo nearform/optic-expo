@@ -68,8 +68,6 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
   const isFocused = useIsFocused()
   const shouldShowFab = isFocused && !searchFocused
 
-  const showSearchArea = tokensCount > 1
-
   const filteredTokens = useMemo(() => {
     if (search.length > 1) {
       return tokens.filter(({ note }) =>
@@ -87,13 +85,15 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.tokensCount}>
-          <Text style={styles.tokensCountLabel}>{tokensCount}</Text>{' '}
-          <Text style={styles.tokensCountValue}>
-            {tokensCount === 1 ? 'TOKEN' : 'TOKENS'}
+        {tokensCount > 1 && (
+          <Text style={styles.tokensCount}>
+            <Text style={styles.tokensCountLabel}>{tokensCount}</Text>{' '}
+            <Text style={styles.tokensCountValue}>
+              {tokensCount === 1 ? 'TOKEN' : 'TOKENS'}
+            </Text>
           </Text>
-        </Text>
-        {showSearchArea && (
+        )}
+        {tokensCount > 1 && (
           <View style={styles.searchArea}>
             <TextInput
               textAlign="left"
