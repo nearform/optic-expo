@@ -2,6 +2,7 @@ import { StyleSheet, View, Text } from 'react-native'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import React, { useCallback, useMemo } from 'react'
 import { Avatar, Button, Card } from 'react-native-paper'
+import Toast from 'react-native-root-toast'
 
 import theme from '../lib/theme'
 import { MainStackParamList } from '../Main'
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
 type Props = NativeStackScreenProps<MainStackParamList, 'OtpRequest'>
 
 export const OtpRequestScreen = ({ route, navigation }: Props) => {
-  const { navigate } = navigation
+  const { goBack, canGoBack, navigate } = navigation
   const { user } = useAuth()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
@@ -56,17 +57,24 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const note = secret.tokens.find(item => item.token === token)?.note
 
   const handleRejectToken = useCallback(async () => {
-    console.log('Reject')
-    api.respond(secret.secret, uniqueId, false)
-    navigate('Home')
-    // TODO show notification
-  }, [api, navigate, secret.secret, uniqueId])
+    await api.respond(secret.secret, uniqueId, false)
+    Toast.show('OTP request rejected')
+    if (canGoBack()) {
+      goBack()
+    } else {
+      navigate('Home')
+    }
+  }, [api, canGoBack, goBack, navigate, secret.secret, uniqueId])
 
   const handleApproveToken = useCallback(async () => {
-    api.respond(secret.secret, uniqueId, true)
-    navigate('Home')
-    // TODO show notification
-  }, [api, navigate, secret.secret, uniqueId])
+    await api.respond(secret.secret, uniqueId, true)
+    Toast.show('OTP request approved')
+    if (canGoBack()) {
+      goBack()
+    } else {
+      navigate('Home')
+    }
+  }, [api, canGoBack, goBack, navigate, secret.secret, uniqueId])
 
   return (
     <View style={styles.screen}>
