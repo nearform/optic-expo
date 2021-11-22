@@ -31,7 +31,12 @@ const styles = StyleSheet.create({
 type Props = NativeStackScreenProps<MainStackParamList, 'CreateToken'>
 
 export const CreateTokenScreen = ({ route, navigation }: Props) => {
-  const { secret } = route.params
+  const { secretId } = route.params
+  const { secrets } = useSecrets()
+  const secret = useMemo(
+    () => secrets.find(item => item._id === secretId),
+    [secretId, secrets]
+  )
   const { user } = useAuth()
   const [subscriptionId, setSubscriptionId] = useState<string>('')
   const [note, setNote] = useState('')
@@ -52,6 +57,9 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
   }, [isFocused])
 
   const handleGenerateToken = async () => {
+    if (!secret) {
+      return
+    }
     try {
       const token = await api.generateToken(secret, subscriptionId)
       const newToken = {
@@ -66,7 +74,7 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
 
       await update(secretUpdated)
 
-      navigation.navigate('Token', {
+      navigation.replace('Token', {
         secret: secretUpdated,
         token,
       })

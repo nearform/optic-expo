@@ -33,14 +33,15 @@ export type MainStackParamList = {
   Scan: undefined
   Type: undefined
   CreateToken: {
-    secret: Secret
+    secretId: string
   }
   Token: {
     secret: Secret
     token?: string
   }
   TokensList: {
-    secret: Secret
+    secretId: string
+    issuer: string
   }
   OtpRequest: {
     secret: Secret
@@ -91,9 +92,7 @@ export default function Main() {
           component={TokensListScreen}
           options={({
             route: {
-              params: {
-                secret: { issuer },
-              },
+              params: { issuer },
             },
           }: NativeStackScreenProps<MainStackParamList, 'TokensList'>) => ({
             title: issuer,

@@ -54,14 +54,16 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
   const handleAddToken = (secret: Secret) => {
     navigation.navigate('CreateToken', {
-      secret,
+      secretId: secret._id,
     })
   }
 
   const handleViewTokens = useCallback(
     (secret: Secret) => {
       navigation.navigate('TokensList', {
-        secret,
+        secretId: secret._id,
+        // Included here to make it easier to show in react navigation title
+        issuer: secret.issuer,
       })
     },
     [navigation]
