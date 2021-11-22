@@ -9,9 +9,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  iconButton: {
-    padding: 0,
-    marginTop: -10,
+  textContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 })
 
@@ -26,9 +27,10 @@ export const CopyableInfo: React.FC<CopyableInfoProps> = ({
 }) => {
   return (
     <View style={styles.row}>
-      <Text style={textStyle}>{children}</Text>
+      <View style={styles.textContainer}>
+        <Text style={textStyle}>{children}</Text>
+      </View>
       <IconButton
-        style={styles.iconButton}
         icon="content-copy"
         accessibilityLabel="copy-otp"
         size={20}

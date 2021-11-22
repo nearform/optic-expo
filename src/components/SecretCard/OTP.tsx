@@ -22,19 +22,15 @@ const styles = StyleSheet.create({
     fontFamily: 'monospace',
     fontSize: 24,
     color: theme.colors.text,
-    marginBottom: theme.spacing(2),
   },
   otpRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginBottom: theme.spacing(2),
   },
   otpData: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  iconButton: {
-    padding: 0,
-    marginTop: -10,
   },
   otp: { fontSize: 12 },
 })
