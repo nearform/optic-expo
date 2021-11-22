@@ -53,7 +53,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
 
   const handleAddToken = (secret: Secret) => {
-    navigation.navigate('Token', {
+    navigation.navigate('CreateToken', {
       secret,
     })
   }

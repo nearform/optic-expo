@@ -121,7 +121,7 @@ export const SecretCard: React.FC<SecretProps> = ({
         <Card.Content style={styles.cardContent}>
           <OTP value={otp} />
           <Divider />
-          {data.tokens && (
+          {data.tokens && data.tokens.length > 0 && (
             <TokensInfo count={data.tokens.length} onPress={onViewTokens} />
           )}
           <Animated.View style={secretAnimationStyle}>

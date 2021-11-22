@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Button, Card, TextInput } from 'react-native-paper'
+import { Button, TextInput } from 'react-native-paper'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
+import Toast from 'react-native-root-toast'
 
 import { useAuth } from '../context/AuthContext'
 import apiFactory from '../lib/api'
@@ -13,35 +14,19 @@ import { Typography } from '../components/Typography'
 import { CopyableInfo } from '../components/SecretCard/CopyableInfo'
 
 const styles = StyleSheet.create({
-  screen: {
-    width: '100%',
-  },
-  form: {
+  container: {
     padding: theme.spacing(2),
   },
-  inputRow: {
-    marginBottom: theme.spacing(2),
+  section: {
+    marginVertical: theme.spacing(2),
   },
-  formButton: {
-    marginTop: theme.spacing(1),
-    height: 50,
-    justifyContent: 'center',
-  },
-  row: {
-    flex: 1,
-    marginTop: theme.spacing(2),
-    paddingHorizontal: theme.spacing(1),
-  },
-  label: {
-    color: theme.colors.textSecondary,
-    marginRight: theme.spacing(1),
-    fontSize: 10,
-  },
-  value: {
+  tokenText: {
     fontFamily: 'monospace',
     fontSize: 24,
     color: theme.colors.text,
-    marginBottom: theme.spacing(2),
+  },
+  refreshButton: {
+    marginBottom: theme.spacing(1),
   },
 })
 
@@ -52,50 +37,29 @@ export const TokenScreen = ({ route, navigation }: Props) => {
   const existingNote =
     secret.tokens?.find(item => item.token === token)?.note || ''
   const { user } = useAuth()
-  const [subscriptionId, setSubscriptionId] = useState<string>(existingNote)
-  const [note, setNote] = useState('')
+  const [subscriptionId, setSubscriptionId] = useState<string>('')
+  const [note, setNote] = useState(existingNote)
   const { update } = useSecrets()
   const expoToken = usePushToken()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
 
-  const disabled = note.length < 3
+  // TODO should update note as user types (and debounce maybe)
 
-  const handleGenerateToken = async () => {
+  const handleRevokeToken = async () => {
     try {
-      const token = await api.generateToken(secret, subscriptionId)
-      const newToken = {
-        token,
-        note,
-      }
-      const existingTokens = secret.tokens ? secret.tokens : []
-
+      await api.revokeToken(token)
       await update({
         ...secret,
-        tokens: [newToken, ...existingTokens],
+        tokens: secret.tokens.filter(data => data.token !== token),
       })
-
-      navigation.navigate('Token', {
-        secret,
-        token,
-      })
+      navigation.goBack()
+      Toast.show('Token successfully revoked')
     } catch (err) {
+      Toast.show(`There was an error revoking token: ${token}`)
       console.log(err)
     }
   }
-
-  // const handleRevokeToken = async (secret: Secret, token: string) => {
-  //   try {
-  //     await api.revokeToken(secret)
-  //     await update({
-  //       ...secret,
-  //       tokens: secret.tokens.filter(data => data.token !== token),
-  //     })
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-  //
 
   const handleRefreshToken = async () => {
     try {
@@ -104,31 +68,36 @@ export const TokenScreen = ({ route, navigation }: Props) => {
         subscriptionId,
         token
       )
-      // const newToken = {
-      //   token: refreshedToken,
-      //   note,
-      // }
-      // TODO update item in place
-      // const existingTokens = secret.tokens ? secret.tokens : []
-      //
-      // await update({
-      //   ...secret,
-      //   tokens: [newToken, ...existingTokens],
-      // })
+      const newToken = {
+        token: refreshedToken,
+        note,
+      }
+      const tokens = secret.tokens ? [...secret.tokens] : []
+      const existingItemIndex = tokens.findIndex(item => item.token === token)
 
-      navigation.navigate('Token', {
-        secret,
+      if (existingItemIndex === -1) {
+        tokens.push(newToken)
+      } else {
+        tokens[existingItemIndex] = newToken
+      }
+
+      const secretUpdated = {
+        ...secret,
+        tokens,
+      }
+
+      await update(secretUpdated)
+
+      // Navigate to the new token screen
+      navigation.replace('Token', {
+        secret: secretUpdated,
         token: refreshedToken,
       })
+      Toast.show('Token successfully refreshed')
     } catch (err) {
+      Toast.show(`There was an error refreshing token: ${token}`)
       console.log(err)
     }
-  }
-
-  const handleRevokeToken = async () => {
-    // try {
-    //   await api.revokeToken()
-    // }
   }
 
   useEffect(() => {
@@ -146,57 +115,43 @@ export const TokenScreen = ({ route, navigation }: Props) => {
   }, [user, api, expoToken])
 
   return (
-    <View style={styles.screen}>
-      {token ? (
-        <Card>
-          <Card.Title
-            title={<Typography variant="h5">{existingNote}</Typography>}
-          />
-          <Card.Content>
-            <CopyableInfo textStyle={styles.value}>{token || '-'}</CopyableInfo>
-          </Card.Content>
-          <Button
-            style={styles.formButton}
-            icon="plus"
-            mode="contained"
-            onPress={handleRefreshToken}
-          >
-            Refresh Token
-          </Button>
-          <Button
-            style={styles.formButton}
-            icon="plus"
-            mode="contained"
-            onPress={handleRevokeToken}
-          >
-            Revoke Token
-          </Button>
-        </Card>
-      ) : (
-        <View style={styles.form}>
-          <View style={styles.inputRow}>
-            <TextInput
-              textAlign="left"
-              label="Note"
-              accessibilityLabel="Note"
-              placeholder="Note about where token will be used"
-              mode="outlined"
-              value={note}
-              onChangeText={setNote}
-              autoFocus
-            />
-          </View>
-          <Button
-            style={styles.formButton}
-            icon="plus"
-            mode="contained"
-            onPress={handleGenerateToken}
-            disabled={disabled}
-          >
-            Generate Token
-          </Button>
-        </View>
-      )}
+    <View style={styles.container}>
+      <View style={styles.section}>
+        <Typography variant="overline">TOKEN</Typography>
+        <CopyableInfo textStyle={styles.tokenText}>{token || '-'}</CopyableInfo>
+      </View>
+      <View style={styles.section}>
+        <TextInput
+          label="Description"
+          value={note}
+          onChangeText={setNote}
+          mode="outlined"
+          multiline
+        />
+      </View>
+      <View style={styles.section}>
+        <Button
+          style={styles.refreshButton}
+          icon="refresh"
+          mode="contained"
+          onPress={handleRefreshToken}
+        >
+          Refresh Token
+        </Button>
+        <Typography variant="body2">
+          If you renew the token, you’ll need to update it where you’re using it
+          to request OTP from command-line.
+        </Typography>
+      </View>
+      <View style={styles.section}>
+        <Button
+          icon="delete-forever"
+          mode="outlined"
+          onPress={handleRevokeToken}
+        >
+          Revoke Token
+        </Button>
+      </View>
     </View>
   )
 }

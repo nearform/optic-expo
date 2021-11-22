@@ -1,7 +1,8 @@
 import { StyleSheet, View, ScrollView } from 'react-native'
-import React, { useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import { TextInput, Text, Divider, FAB, Portal, List } from 'react-native-paper'
+import { useIsFocused } from '@react-navigation/core'
 
 import { MainStackParamList } from '../Main'
 import theme from '../lib/theme'
@@ -58,10 +59,14 @@ const styles = StyleSheet.create({
 type Props = NativeStackScreenProps<MainStackParamList, 'TokensList'>
 
 export const TokensListScreen = ({ route, navigation }: Props) => {
+  const { navigate } = navigation
   const { secret } = route.params
   const { tokens } = secret
   const tokensCount = tokens.length
   const [search, setSearch] = useState('')
+  const [searchFocused, setSearchFocused] = useState(false)
+  const isFocused = useIsFocused()
+  const shouldShowFab = isFocused && !searchFocused
 
   const showSearchArea = tokensCount > 1
 
@@ -74,6 +79,10 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
       return tokens
     }
   }, [search, tokens])
+
+  const handleCreateToken = useCallback(() => {
+    navigate('CreateToken', { secret })
+  }, [navigate, secret])
 
   return (
     <>
@@ -95,8 +104,9 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
               mode="outlined"
               value={search}
               onChangeText={setSearch}
-              autoFocus
               right={<TextInput.Icon name="magnify" />}
+              onFocus={() => setSearchFocused(true)}
+              onBlur={() => setSearchFocused(false)}
             />
           </View>
         )}
@@ -129,7 +139,14 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
         </ScrollView>
       </View>
       <Portal>
-        <FAB label="Create Token" icon="plus" small style={styles.fab} />
+        <FAB
+          visible={shouldShowFab}
+          label="Create Token"
+          icon="plus"
+          small
+          style={styles.fab}
+          onPress={handleCreateToken}
+        />
       </Portal>
     </>
   )

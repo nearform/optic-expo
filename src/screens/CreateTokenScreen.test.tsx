@@ -10,7 +10,7 @@ import { getMockedNavigation, renderWithTheme } from '../../test/utils'
 import { Secret } from '../types'
 import { MainStackParamList } from '../Main'
 
-import { TokenScreen } from './TokenScreen'
+import { CreateTokenScreen } from './CreateTokenScreen'
 
 jest.mock('@react-navigation/core', () => ({
   useIsFocused: jest.fn().mockReturnValue(true),
@@ -35,7 +35,7 @@ const addNotificationResponseReceivedListenerMocked = mocked(
   Notification.addNotificationResponseReceivedListener
 )
 
-describe('TokenScreen', () => {
+describe('CreateTokenScreen', () => {
   const secret: Secret = {
     _id: 'id',
     secret: 'secret',
@@ -62,16 +62,16 @@ describe('TokenScreen', () => {
     jest.clearAllMocks()
   })
 
-  const setup = (token?: string) => {
+  const setup = () => {
     const props = {
       navigation: getMockedNavigation<'Token'>(),
-      route: { params: { token, secret } },
-    } as unknown as NativeStackScreenProps<MainStackParamList, 'Token'>
+      route: { params: { secret } },
+    } as unknown as NativeStackScreenProps<MainStackParamList, 'CreateToken'>
 
-    return renderWithTheme(<TokenScreen {...props} />)
+    return renderWithTheme(<CreateTokenScreen {...props} />)
   }
 
-  it('register subscription on load', () => {
+  it('registers subscription on load', () => {
     setup()
     expect(registerSubscriptionStub).toHaveBeenCalledTimes(1)
     expect(registerSubscriptionStub).toHaveBeenCalledWith({
@@ -83,9 +83,9 @@ describe('TokenScreen', () => {
   it('generates a token when note inputted', async () => {
     const { getByA11yLabel, getByText } = setup()
 
-    const noteInput = getByA11yLabel('Note')
+    const noteInput = getByA11yLabel('Description')
     fireEvent.changeText(noteInput, 'My note')
-    fireEvent.press(getByText('Generate Token'))
+    fireEvent.press(getByText('Create Token'))
     expect(generateTokenStub).toBeCalledTimes(1)
     expect(generateTokenStub).toBeCalledWith(secret, '')
   })

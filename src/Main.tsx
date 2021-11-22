@@ -24,6 +24,7 @@ import { TokenScreen } from './screens/TokenScreen'
 import { Secret } from './types'
 import { OtpRequestScreen } from './screens/OtpRequestScreen'
 import { TokensListScreen } from './screens/TokensListScreen'
+import { CreateTokenScreen } from './screens/CreateTokenScreen'
 
 const MainStack = createStackNavigator()
 
@@ -31,6 +32,9 @@ export type MainStackParamList = {
   Home: undefined
   Scan: undefined
   Type: undefined
+  CreateToken: {
+    secret: Secret
+  }
   Token: {
     secret: Secret
     token?: string
@@ -95,6 +99,11 @@ export default function Main() {
             title: issuer,
             headerLeft: DefaultHeaderLeft,
           })}
+        />
+        <MainStack.Screen
+          name="CreateToken"
+          component={CreateTokenScreen}
+          options={{ title: 'Create token', headerLeft: DefaultHeaderLeft }}
         />
         <MainStack.Screen
           name="Token"
