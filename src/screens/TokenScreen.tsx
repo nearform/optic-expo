@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { Alert, StyleSheet, View } from 'react-native'
 import { Button, TextInput } from 'react-native-paper'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import Toast from 'react-native-root-toast'
@@ -36,6 +36,36 @@ const styles = StyleSheet.create({
     marginBottom: theme.spacing(1),
   },
 })
+
+const showRevokeConfirmAlert = (onConfirm: () => void) => {
+  Alert.alert(
+    'Revoke Token',
+    'This will permanently remove the token. Are you sure you want to continue?',
+    [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+      { text: 'Revoke', onPress: onConfirm },
+    ],
+    { cancelable: true }
+  )
+}
+
+const showRefreshConfirmAlert = (onConfirm: () => void) => {
+  Alert.alert(
+    'Refresh Token',
+    'This will generate a new token. Are you sure you want to continue?',
+    [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+      { text: 'Refresh', onPress: onConfirm },
+    ],
+    { cancelable: true }
+  )
+}
 
 type Props = NativeStackScreenProps<MainStackParamList, 'Token'>
 
@@ -141,7 +171,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
           style={styles.refreshButton}
           icon="refresh"
           mode="contained"
-          onPress={handleRefreshToken}
+          onPress={() => showRefreshConfirmAlert(handleRefreshToken)}
         >
           Refresh Token
         </Button>
@@ -154,7 +184,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
         <Button
           icon="delete-forever"
           mode="outlined"
-          onPress={handleRevokeToken}
+          onPress={() => showRevokeConfirmAlert(handleRevokeToken)}
         >
           Revoke Token
         </Button>
