@@ -1,7 +1,7 @@
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import React, { useCallback, useMemo } from 'react'
-import { Avatar, Button, Card } from 'react-native-paper'
+import { Avatar, Button } from 'react-native-paper'
 import Toast from 'react-native-root-toast'
 
 import theme from '../lib/theme'
@@ -11,38 +11,33 @@ import apiFactory from '../lib/api'
 import { Typography } from '../components/Typography'
 
 const styles = StyleSheet.create({
-  screen: {
-    margin: theme.spacing(2),
+  container: {
+    paddingHorizontal: theme.spacing(3),
+    paddingTop: theme.spacing(4),
   },
-  cardContent: {
-    paddingHorizontal: theme.spacing(1),
+  provider: {
+    flexDirection: 'row',
+    marginBottom: theme.spacing(4),
   },
-  cardActions: {
-    justifyContent: 'space-between',
-    flexDirection: 'column',
-    alignItems: 'stretch',
+  providerIcon: {
+    marginRight: theme.spacing(2),
   },
-  form: {
-    padding: theme.spacing(2),
+  token: {
+    marginBottom: theme.spacing(4),
   },
-  button: {
-    marginTop: theme.spacing(2),
-  },
-  row: {
-    flex: 1,
-    marginTop: theme.spacing(2),
-    paddingHorizontal: theme.spacing(1),
-  },
-  label: {
-    color: theme.colors.textSecondary,
-    marginRight: theme.spacing(1),
-    fontSize: 10,
-  },
-  value: {
+  tokenValue: {
     fontFamily: 'monospace',
     fontSize: 24,
     color: theme.colors.text,
-    marginBottom: theme.spacing(2),
+  },
+  description: {
+    marginBottom: theme.spacing(3),
+  },
+  descriptionLabel: {
+    marginBottom: theme.spacing(1),
+  },
+  button: {
+    marginTop: theme.spacing(2),
   },
 })
 
@@ -77,48 +72,45 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   }, [api, canGoBack, goBack, navigate, secret.secret, uniqueId])
 
   return (
-    <View style={styles.screen}>
-      <Card>
-        <Card.Title
-          title={<Typography variant="h5">{secret.issuer}</Typography>}
-          subtitle={secret.account}
-          left={props => <Avatar.Icon {...props} icon="key" />}
+    <View style={styles.container}>
+      <View style={styles.provider}>
+        <Avatar.Icon
+          style={styles.providerIcon}
+          icon="key"
+          size={theme.spacing(5)}
+          color="white"
         />
-        <Card.Content style={styles.cardContent}>
-          <View>
-            <View>
-              <Text>Token</Text>
-            </View>
-            <View>
-              <Text>{token}</Text>
-            </View>
-          </View>
-          <View>
-            <View>
-              <Text>Description</Text>
-            </View>
-            <View>
-              <Text>{note}</Text>
-            </View>
-          </View>
-        </Card.Content>
-        <Card.Actions style={styles.cardActions}>
-          <Button
-            style={styles.button}
-            mode="outlined"
-            onPress={handleRejectToken}
-          >
-            Reject
-          </Button>
-          <Button
-            style={styles.button}
-            mode="contained"
-            onPress={handleApproveToken}
-          >
-            Approve
-          </Button>
-        </Card.Actions>
-      </Card>
+        <View>
+          <Typography variant="h6">{secret.issuer}</Typography>
+          <Typography variant="body2">{secret.account}</Typography>
+        </View>
+      </View>
+      <View style={styles.token}>
+        <Typography variant="overline">Token</Typography>
+        <Typography style={styles.tokenValue}>{token}</Typography>
+      </View>
+      <View style={styles.description}>
+        <Typography style={styles.descriptionLabel} variant="subtitle2">
+          Description
+        </Typography>
+        <Typography variant="body1">{note}</Typography>
+      </View>
+      <View>
+        <Button
+          style={styles.button}
+          mode="outlined"
+          onPress={handleRejectToken}
+        >
+          Reject
+        </Button>
+        <Button
+          style={styles.button}
+          mode="contained"
+          onPress={handleApproveToken}
+        >
+          Approve
+        </Button>
+      </View>
     </View>
   )
 }
