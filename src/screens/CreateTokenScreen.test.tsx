@@ -12,6 +12,15 @@ import { MainStackParamList } from '../Main'
 
 import { CreateTokenScreen } from './CreateTokenScreen'
 
+const secret: Secret = {
+  _id: 'id',
+  secret: 'secret',
+  uid: 'uid',
+  tokens: [{ note: 'My note', token: '' }],
+  account: 'account',
+  issuer: '',
+}
+
 jest.mock('@react-navigation/core', () => ({
   useIsFocused: jest.fn().mockReturnValue(true),
 }))
@@ -30,27 +39,28 @@ jest.mock('../lib/otp', () => ({
 
 jest.mock('../hooks/use-push-token', () => () => 'dummy-expo-token')
 
+jest.mock('../context/SecretsContext', () => ({
+  useSecrets: () => ({
+    secrets: [secret],
+    add: jest.fn(),
+    update: jest.fn(),
+    remove: jest.fn(),
+  }),
+}))
+
 const apiFactoryMocked = mocked(apiFactory)
 const addNotificationResponseReceivedListenerMocked = mocked(
   Notification.addNotificationResponseReceivedListener
 )
 
 describe('CreateTokenScreen', () => {
-  const secret: Secret = {
-    _id: 'id',
-    secret: 'secret',
-    uid: 'uid',
-    tokens: [{ note: 'My note', token: '' }],
-    account: 'account',
-    issuer: '',
-  }
   const registerSubscriptionStub = jest.fn()
-  const generateTokenStub = jest.fn()
+  const apiGenerateTokenStub = jest.fn()
 
   beforeEach(() => {
     apiFactoryMocked.mockReturnValue({
       registerSubscription: registerSubscriptionStub,
-      generateToken: generateTokenStub,
+      generateToken: apiGenerateTokenStub,
     } as unknown as API)
 
     addNotificationResponseReceivedListenerMocked.mockReturnValue(
@@ -64,8 +74,8 @@ describe('CreateTokenScreen', () => {
 
   const setup = () => {
     const props = {
-      navigation: getMockedNavigation<'Token'>(),
-      route: { params: { secret } },
+      navigation: getMockedNavigation<'CreateToken'>(),
+      route: { params: { secretId: secret._id } },
     } as unknown as NativeStackScreenProps<MainStackParamList, 'CreateToken'>
 
     return renderWithTheme(<CreateTokenScreen {...props} />)
@@ -80,13 +90,13 @@ describe('CreateTokenScreen', () => {
     })
   })
 
-  it('generates a token when note inputted', async () => {
+  it('generates a token when note inputted', () => {
     const { getByA11yLabel, getByText } = setup()
 
     const noteInput = getByA11yLabel('Description')
     fireEvent.changeText(noteInput, 'My note')
     fireEvent.press(getByText('Create Token'))
-    expect(generateTokenStub).toBeCalledTimes(1)
-    expect(generateTokenStub).toBeCalledWith(secret, '')
+    expect(apiGenerateTokenStub).toBeCalledTimes(1)
+    expect(apiGenerateTokenStub).toBeCalledWith(secret, '')
   })
 })

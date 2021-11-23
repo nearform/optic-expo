@@ -664,15 +664,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     }
                   }
                 >
-                  <View
-                    style={
-                      Object {
-                        "color": "rgba(0, 0, 0, 0.6)",
-                        "fontSize": 10,
-                        "marginRight": 8,
-                      }
-                    }
-                  >
+                  <View>
                     <Text
                       style={
                         Array [
@@ -697,7 +689,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               "display": "flex",
                               "marginBottom": 0,
                             },
-                            undefined,
+                            Object {
+                              "color": "rgba(0, 0, 0, 0.6)",
+                              "fontSize": 10,
+                              "marginRight": 8,
+                              "paddingBottom": 4,
+                            },
                           ],
                         ]
                       }
