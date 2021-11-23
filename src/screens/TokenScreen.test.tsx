@@ -53,19 +53,32 @@ describe('TokenScreen', () => {
     return renderWithTheme(<TokenScreen {...props} />)
   }
 
-  it('saves note in the background', () => {
+  it('saves description in the background', () => {
     // Using fake timer as description saving is debounced
     jest.useFakeTimers()
     const { getByA11yLabel } = setup()
+    const inputtedDescriptionText = 'a description'
 
     const descriptionInput = getByA11yLabel('Description')
-    fireEvent.changeText(descriptionInput, 'a new note')
+    fireEvent.changeText(descriptionInput, inputtedDescriptionText)
     jest.runAllTimers()
 
     expect(updateSecretStub).toBeCalledTimes(1)
     expect(updateSecretStub).toBeCalledWith({
       ...secret,
-      tokens: [{ ...secret.tokens[0], note: 'a new note' }],
+      tokens: [{ ...secret.tokens[0], note: inputtedDescriptionText }],
     })
+  })
+
+  it("doesn't save description if it's empty", () => {
+    // Using fake timer as description saving is debounced
+    jest.useFakeTimers()
+    const { getByA11yLabel } = setup()
+
+    const descriptionInput = getByA11yLabel('Description')
+    fireEvent.changeText(descriptionInput, '')
+    jest.runAllTimers()
+
+    expect(updateSecretStub).toBeCalledTimes(0)
   })
 })

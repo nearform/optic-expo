@@ -160,7 +160,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
         return
       }
       const { note: existingNote } = tokens[existingItemIndex]
-      if (note === existingNote) {
+      if (note === existingNote || note.length < 3) {
         return
       }
       tokens[existingItemIndex] = { token, note }
