@@ -15,15 +15,22 @@ import { CopyableInfo } from '../components/SecretCard/CopyableInfo'
 
 const styles = StyleSheet.create({
   container: {
-    padding: theme.spacing(2),
+    paddingHorizontal: theme.spacing(3),
+    paddingTop: theme.spacing(4),
   },
-  section: {
-    marginVertical: theme.spacing(2),
+  token: {
+    marginBottom: theme.spacing(4),
   },
   tokenText: {
     fontFamily: 'monospace',
     fontSize: 24,
     color: theme.colors.text,
+  },
+  description: {
+    marginBottom: theme.spacing(4),
+  },
+  refresh: {
+    marginBottom: theme.spacing(4),
   },
   refreshButton: {
     marginBottom: theme.spacing(1),
@@ -116,11 +123,11 @@ export const TokenScreen = ({ route, navigation }: Props) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.section}>
+      <View style={styles.token}>
         <Typography variant="overline">TOKEN</Typography>
         <CopyableInfo textStyle={styles.tokenText}>{token || '-'}</CopyableInfo>
       </View>
-      <View style={styles.section}>
+      <View style={styles.description}>
         <TextInput
           label="Description"
           value={note}
@@ -129,7 +136,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
           multiline
         />
       </View>
-      <View style={styles.section}>
+      <View style={styles.refresh}>
         <Button
           style={styles.refreshButton}
           icon="refresh"
@@ -143,7 +150,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
           to request OTP from command-line.
         </Typography>
       </View>
-      <View style={styles.section}>
+      <View>
         <Button
           icon="delete-forever"
           mode="outlined"

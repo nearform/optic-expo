@@ -15,7 +15,7 @@ import { Typography } from '../components/Typography'
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: theme.spacing(2),
+    paddingHorizontal: theme.spacing(3),
     paddingTop: theme.spacing(4),
   },
   description: {
@@ -52,14 +52,11 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
 
   useEffect(() => {
     if (isFocused) {
-      ref.current.focus()
+      ref.current && ref.current.focus()
     }
   }, [isFocused])
 
   const handleGenerateToken = async () => {
-    if (!secret) {
-      return
-    }
     try {
       const token = await api.generateToken(secret, subscriptionId)
       const newToken = {
@@ -98,6 +95,10 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
 
     register()
   }, [user, api, expoToken])
+
+  if (!secret) {
+    return null
+  }
 
   return (
     <View style={styles.container}>
