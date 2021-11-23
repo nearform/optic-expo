@@ -13,6 +13,8 @@ import theme from '../lib/theme'
 import { Typography } from '../components/Typography'
 import { CopyableInfo } from '../components/SecretCard/CopyableInfo'
 
+const SAVE_UPDATED_DESCRIPTION_DELAY = 1000
+
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: theme.spacing(3),
@@ -43,10 +45,10 @@ const showRevokeConfirmAlert = (onConfirm: () => void) => {
     'This will permanently remove the token. Are you sure you want to continue?',
     [
       {
-        text: 'Cancel',
+        text: 'CANCEL',
         style: 'cancel',
       },
-      { text: 'Revoke', onPress: onConfirm },
+      { text: 'REVOKE', onPress: onConfirm },
     ],
     { cancelable: true }
   )
@@ -58,10 +60,10 @@ const showRefreshConfirmAlert = (onConfirm: () => void) => {
     'This will generate a new token. Are you sure you want to continue?',
     [
       {
-        text: 'Cancel',
+        text: 'CANCEL',
         style: 'cancel',
       },
-      { text: 'Refresh', onPress: onConfirm },
+      { text: 'REFRESH', onPress: onConfirm },
     ],
     { cancelable: true }
   )
@@ -80,8 +82,6 @@ export const TokenScreen = ({ route, navigation }: Props) => {
   const expoToken = usePushToken()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
-
-  // TODO should update note as user types (and debounce maybe)
 
   const handleRevokeToken = async () => {
     try {
@@ -151,6 +151,31 @@ export const TokenScreen = ({ route, navigation }: Props) => {
     register()
   }, [user, api, expoToken])
 
+  // Keep the note for the token up to date
+  useEffect(() => {
+    const updateNote = async () => {
+      const tokens = secret.tokens ? [...secret.tokens] : []
+      const existingItemIndex = tokens.findIndex(item => item.token === token)
+      if (existingItemIndex === -1) {
+        return
+      }
+      const { note: existingNote } = tokens[existingItemIndex]
+      if (note === existingNote) {
+        return
+      }
+      tokens[existingItemIndex] = { token, note }
+      await update({
+        ...secret,
+        tokens,
+      })
+      Toast.show('Token description updated')
+    }
+    const timeoutId = setTimeout(updateNote, SAVE_UPDATED_DESCRIPTION_DELAY)
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  }, [note, secret, token, update])
+
   return (
     <View style={styles.container}>
       <View style={styles.token}>
@@ -160,6 +185,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
       <View style={styles.description}>
         <TextInput
           label="Description"
+          accessibilityLabel="Description"
           value={note}
           onChangeText={setNote}
           mode="outlined"
@@ -173,7 +199,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
           mode="contained"
           onPress={() => showRefreshConfirmAlert(handleRefreshToken)}
         >
-          Refresh Token
+          REFRESH TOKEN
         </Button>
         <Typography variant="body2">
           If you renew the token, you’ll need to update it where you’re using it
@@ -186,7 +212,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
           mode="outlined"
           onPress={() => showRevokeConfirmAlert(handleRevokeToken)}
         >
-          Revoke Token
+          REVOKE TOKEN
         </Button>
       </View>
     </View>

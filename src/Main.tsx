@@ -37,7 +37,7 @@ export type MainStackParamList = {
   }
   Token: {
     secret: Secret
-    token?: string
+    token: string
   }
   TokensList: {
     secretId: string
