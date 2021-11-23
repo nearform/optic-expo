@@ -46,7 +46,6 @@ export default function apiFactory(opts: APIOptions): API {
         },
       })
     },
-    // TODO needs to revoke by token and not just secret
     async revokeToken(token) {
       await fetch(`${apiUrl}/token/${token}`, {
         method: 'DELETE',
