@@ -14,5 +14,10 @@ export function getMockedNavigation<
   P extends keyof MainStackParamList = 'Home',
   T = StackNavigationProp<MainStackParamList, P>
 >(fns?: T) {
-  return { navigate: jest.fn(), ...fns } as T
+  return {
+    navigate: jest.fn(),
+    goBack: jest.fn(),
+    replace: jest.fn(),
+    ...fns,
+  } as T
 }

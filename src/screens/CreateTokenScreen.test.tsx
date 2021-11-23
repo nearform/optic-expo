@@ -39,14 +39,17 @@ jest.mock('../lib/otp', () => ({
 
 jest.mock('../hooks/use-push-token', () => () => 'dummy-expo-token')
 
-jest.mock('../context/SecretsContext', () => ({
-  useSecrets: () => ({
-    secrets: [secret],
-    add: jest.fn(),
-    update: jest.fn(),
-    remove: jest.fn(),
-  }),
-}))
+jest.mock('../context/SecretsContext', () => {
+  return {
+    useSecrets: () => ({
+      secrets: [secret],
+      add: jest.fn(),
+      update: jest.fn(),
+      remove: jest.fn(),
+    }),
+    useSecretSelector: () => secret,
+  }
+})
 
 const apiFactoryMocked = mocked(apiFactory)
 const addNotificationResponseReceivedListenerMocked = mocked(

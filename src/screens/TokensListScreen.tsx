@@ -6,7 +6,7 @@ import { useIsFocused } from '@react-navigation/core'
 
 import { MainStackParamList } from '../Main'
 import theme from '../lib/theme'
-import { useSecrets } from '../context/SecretsContext'
+import { useSecretSelector } from '../hooks/use-secret-selector'
 
 const styles = StyleSheet.create({
   container: {
@@ -62,11 +62,7 @@ type Props = NativeStackScreenProps<MainStackParamList, 'TokensList'>
 export const TokensListScreen = ({ route, navigation }: Props) => {
   const { navigate } = navigation
   const { secretId } = route.params
-  const { secrets } = useSecrets()
-  const secret = useMemo(
-    () => secrets.find(item => item._id === secretId),
-    [secretId, secrets]
-  )
+  const secret = useSecretSelector(secretId)
   const tokens = useMemo(() => (secret ? secret.tokens : []), [secret])
   const tokensCount = tokens.length
   const [search, setSearch] = useState('')
@@ -125,8 +121,7 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
               <List.Item
                 key={token}
                 onPress={() =>
-                  secret &&
-                  navigation.navigate('Token', { secret: secret, token })
+                  navigation.navigate('Token', { secretId, token })
                 }
                 style={styles.tokenItem}
                 title={token}

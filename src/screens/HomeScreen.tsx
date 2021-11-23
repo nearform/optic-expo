@@ -81,7 +81,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const onNotification = useCallback(
     async (res: NotificationResponse) => {
       const data = res.notification.request.content.data as NotificationData
-      console.log({ data }, 'notification')
 
       const { secretId, uniqueId, token } = data
 
@@ -94,7 +93,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
       navigation.navigate('OtpRequest', {
         token,
-        secret,
+        secretId,
         uniqueId,
       })
     },

@@ -52,6 +52,7 @@ describe('TokenScreen', () => {
       update: updateSecretStub,
       remove: jest.fn(),
     })
+
     apiFactoryMocked.mockReturnValue({
       generateToken: apiGenerateTokenStub,
       revokeToken: apiRevokeTokenStub,
@@ -61,7 +62,9 @@ describe('TokenScreen', () => {
   const setup = () => {
     const props = {
       navigation: getMockedNavigation<'Token'>(),
-      route: { params: { secret: secret, token: secret.tokens[0].token } },
+      route: {
+        params: { secretId: secret._id, token: secret.tokens[0].token },
+      },
     } as unknown as NativeStackScreenProps<MainStackParamList, 'Token'>
 
     return renderWithTheme(<TokenScreen {...props} />)

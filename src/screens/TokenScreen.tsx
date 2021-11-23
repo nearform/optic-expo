@@ -12,6 +12,8 @@ import { MainStackParamList } from '../Main'
 import theme from '../lib/theme'
 import { Typography } from '../components/Typography'
 import { CopyableInfo } from '../components/SecretCard/CopyableInfo'
+import { useSecretSelector } from '../hooks/use-secret-selector'
+import { useTokenDataSelector } from '../hooks/use-token-data-selector'
 
 const SAVE_UPDATED_DESCRIPTION_DELAY = 1000
 
@@ -72,9 +74,11 @@ const showRefreshConfirmAlert = (onConfirm: () => void) => {
 type Props = NativeStackScreenProps<MainStackParamList, 'Token'>
 
 export const TokenScreen = ({ route, navigation }: Props) => {
-  const { secret, token } = route.params
-  const existingDescription =
-    secret.tokens?.find(item => item.token === token)?.description || ''
+  const { secretId, token } = route.params
+  const secret = useSecretSelector(secretId)
+  const tokens = secret?.tokens ? secret.tokens : []
+  const tokenData = useTokenDataSelector(secretId, token)
+  const existingDescription = tokenData?.description || ''
   const { user } = useAuth()
   const [subscriptionId, setSubscriptionId] = useState<string>('')
   const [description, setDescription] = useState(existingDescription)
@@ -88,7 +92,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
       await api.revokeToken(token)
       await update({
         ...secret,
-        tokens: secret.tokens.filter(data => data.token !== token),
+        tokens: tokens.filter(data => data.token !== token),
       })
       navigation.goBack()
       Toast.show('Token successfully revoked')
@@ -109,25 +113,25 @@ export const TokenScreen = ({ route, navigation }: Props) => {
         token: refreshedToken,
         description,
       }
-      const tokens = secret.tokens ? [...secret.tokens] : []
+      const tokensCopy = [...tokens]
       const existingItemIndex = tokens.findIndex(item => item.token === token)
 
       if (existingItemIndex === -1) {
-        tokens.push(newToken)
+        tokensCopy.push(newToken)
       } else {
-        tokens[existingItemIndex] = newToken
+        tokensCopy[existingItemIndex] = newToken
       }
 
       const secretUpdated = {
         ...secret,
-        tokens,
+        tokens: tokensCopy,
       }
 
       await update(secretUpdated)
 
       // Navigate to the new token screen
       navigation.replace('Token', {
-        secret: secretUpdated,
+        secretId: secretId,
         token: refreshedToken,
       })
       Toast.show('Token successfully refreshed')

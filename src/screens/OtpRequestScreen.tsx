@@ -9,6 +9,8 @@ import { MainStackParamList } from '../Main'
 import { useAuth } from '../context/AuthContext'
 import apiFactory from '../lib/api'
 import { Typography } from '../components/Typography'
+import { useTokenDataSelector } from '../hooks/use-token-data-selector'
+import { useSecretSelector } from '../hooks/use-secret-selector'
 
 const styles = StyleSheet.create({
   container: {
@@ -48,10 +50,10 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const { user } = useAuth()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
-  const { token, secret, uniqueId } = route.params
-  const description = secret.tokens.find(
-    item => item.token === token
-  )?.description
+  const { token, secretId, uniqueId } = route.params
+  const secret = useSecretSelector(secretId)
+  const tokenData = useTokenDataSelector(token, secretId)
+  const description = tokenData ? tokenData.description : ''
 
   const handleRejectToken = useCallback(async () => {
     await api.respond(secret.secret, uniqueId, false)

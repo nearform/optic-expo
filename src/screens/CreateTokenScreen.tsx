@@ -12,6 +12,7 @@ import usePushToken from '../hooks/use-push-token'
 import { MainStackParamList } from '../Main'
 import theme from '../lib/theme'
 import { Typography } from '../components/Typography'
+import { useSecretSelector } from '../hooks/use-secret-selector'
 
 const styles = StyleSheet.create({
   container: {
@@ -32,11 +33,7 @@ type Props = NativeStackScreenProps<MainStackParamList, 'CreateToken'>
 
 export const CreateTokenScreen = ({ route, navigation }: Props) => {
   const { secretId } = route.params
-  const { secrets } = useSecrets()
-  const secret = useMemo(
-    () => secrets.find(item => item._id === secretId),
-    [secretId, secrets]
-  )
+  const secret = useSecretSelector(secretId)
   const { user } = useAuth()
   const [subscriptionId, setSubscriptionId] = useState<string>('')
   const [description, setDescription] = useState('')
@@ -72,13 +69,13 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
       await update(secretUpdated)
 
       navigation.replace('Token', {
-        secret: secretUpdated,
+        secretId,
         token,
       })
       Toast.show('Token successfully created')
     } catch (err) {
       Toast.show('An error occurred creating the token')
-      console.log(err)
+      console.error(err)
     }
   }
 

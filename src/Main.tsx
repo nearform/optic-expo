@@ -21,7 +21,6 @@ import { AuthScreen } from './screens/AuthScreen'
 import HomeHeaderRight from './components/HomeHeaderRight'
 import DefaultHeaderLeft from './components/DefaultHeaderLeft'
 import { TokenScreen } from './screens/TokenScreen'
-import { Secret } from './types'
 import { OtpRequestScreen } from './screens/OtpRequestScreen'
 import { TokensListScreen } from './screens/TokensListScreen'
 import { CreateTokenScreen } from './screens/CreateTokenScreen'
@@ -36,7 +35,7 @@ export type MainStackParamList = {
     secretId: string
   }
   Token: {
-    secret: Secret
+    secretId: string
     token: string
   }
   TokensList: {
@@ -44,7 +43,7 @@ export type MainStackParamList = {
     issuer: string
   }
   OtpRequest: {
-    secret: Secret
+    secretId: string
     token: string
     uniqueId: string
   }
