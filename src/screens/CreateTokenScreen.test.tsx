@@ -16,7 +16,7 @@ const secret: Secret = {
   _id: 'id',
   secret: 'secret',
   uid: 'uid',
-  tokens: [{ note: 'My note', token: '' }],
+  tokens: [],
   account: 'account',
   issuer: '',
 }
@@ -90,11 +90,11 @@ describe('CreateTokenScreen', () => {
     })
   })
 
-  it('generates a token when note inputted', () => {
+  it('generates a token when description inputted', () => {
     const { getByA11yLabel, getByText } = setup()
 
-    const noteInput = getByA11yLabel('Description')
-    fireEvent.changeText(noteInput, 'My note')
+    const descriptionInput = getByA11yLabel('Description')
+    fireEvent.changeText(descriptionInput, 'A description')
     fireEvent.press(getByText('Create Token'))
     expect(apiGenerateTokenStub).toBeCalledTimes(1)
     expect(apiGenerateTokenStub).toBeCalledWith(secret, '')

@@ -69,7 +69,7 @@ describe('HomeScreen', () => {
           issuer: 'Some issuer',
           secret: 'mysecret',
           uid: '222',
-          tokens: [{ token: 'some-token', note: 'Some note' }],
+          tokens: [{ token: 'some-token', description: 'A description' }],
         },
         {
           _id: '222',

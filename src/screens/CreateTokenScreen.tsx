@@ -39,13 +39,13 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
   )
   const { user } = useAuth()
   const [subscriptionId, setSubscriptionId] = useState<string>('')
-  const [note, setNote] = useState('')
+  const [description, setDescription] = useState('')
   const { update } = useSecrets()
   const expoToken = usePushToken()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
 
-  const disabled = note.length < 3
+  const disabled = description.length < 3
 
   const isFocused = useIsFocused()
   const ref = useRef(null)
@@ -61,7 +61,7 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
       const token = await api.generateToken(secret, subscriptionId)
       const newToken = {
         token,
-        note,
+        description,
       }
       const existingTokens = secret.tokens ? secret.tokens : []
       const secretUpdated = {
@@ -116,8 +116,8 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
           placeholder="Description"
           placeholderTextColor={theme.colors.disabled}
           mode="outlined"
-          value={note}
-          onChangeText={setNote}
+          value={description}
+          onChangeText={setDescription}
           multiline
         />
       </View>

@@ -1,6 +1,6 @@
 export type Token = {
   token: string
-  note: string
+  description: string
 }
 
 export type Secret = {

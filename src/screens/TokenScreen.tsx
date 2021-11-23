@@ -73,11 +73,11 @@ type Props = NativeStackScreenProps<MainStackParamList, 'Token'>
 
 export const TokenScreen = ({ route, navigation }: Props) => {
   const { secret, token } = route.params
-  const existingNote =
-    secret.tokens?.find(item => item.token === token)?.note || ''
+  const existingDescription =
+    secret.tokens?.find(item => item.token === token)?.description || ''
   const { user } = useAuth()
   const [subscriptionId, setSubscriptionId] = useState<string>('')
-  const [note, setNote] = useState(existingNote)
+  const [description, setDescription] = useState(existingDescription)
   const { update } = useSecrets()
   const expoToken = usePushToken()
 
@@ -107,7 +107,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
       )
       const newToken = {
         token: refreshedToken,
-        note,
+        description,
       }
       const tokens = secret.tokens ? [...secret.tokens] : []
       const existingItemIndex = tokens.findIndex(item => item.token === token)
@@ -151,30 +151,33 @@ export const TokenScreen = ({ route, navigation }: Props) => {
     register()
   }, [user, api, expoToken])
 
-  // Keep the note for the token up to date
+  // Keep the description for the token up to date
   useEffect(() => {
-    const updateNote = async () => {
+    const updateDescription = async () => {
       const tokens = secret.tokens ? [...secret.tokens] : []
       const existingItemIndex = tokens.findIndex(item => item.token === token)
       if (existingItemIndex === -1) {
         return
       }
-      const { note: existingNote } = tokens[existingItemIndex]
-      if (note === existingNote || note.length < 3) {
+      const { description: existingDescription } = tokens[existingItemIndex]
+      if (description === existingDescription || description.length < 3) {
         return
       }
-      tokens[existingItemIndex] = { token, note }
+      tokens[existingItemIndex] = { token, description: description }
       await update({
         ...secret,
         tokens,
       })
       Toast.show('Token description updated')
     }
-    const timeoutId = setTimeout(updateNote, SAVE_UPDATED_DESCRIPTION_DELAY)
+    const timeoutId = setTimeout(
+      updateDescription,
+      SAVE_UPDATED_DESCRIPTION_DELAY
+    )
     return () => {
       clearTimeout(timeoutId)
     }
-  }, [note, secret, token, update])
+  }, [description, secret, token, update])
 
   return (
     <View style={styles.container}>
@@ -186,8 +189,8 @@ export const TokenScreen = ({ route, navigation }: Props) => {
         <TextInput
           label="Description"
           accessibilityLabel="Description"
-          value={note}
-          onChangeText={setNote}
+          value={description}
+          onChangeText={setDescription}
           mode="outlined"
           multiline
         />

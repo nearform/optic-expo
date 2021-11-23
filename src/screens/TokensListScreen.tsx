@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     color: theme.colors.text,
     marginBottom: theme.spacing(1),
   },
-  tokenNoteText: {
+  tokenDescriptionText: {
     ...theme.typography.body2,
     color: theme.colors.text,
     marginHorizontal: 0,
@@ -76,8 +76,8 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
 
   const filteredTokens = useMemo(() => {
     if (search.length > 1) {
-      return tokens.filter(({ note }) =>
-        note.toLowerCase().includes(search.toLowerCase())
+      return tokens.filter(({ description }) =>
+        description.toLowerCase().includes(search.toLowerCase())
       )
     } else {
       return tokens
@@ -120,7 +120,7 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
           style={styles.scrollView}
           contentContainerStyle={{ paddingBottom: 180 }}
         >
-          {filteredTokens.map(({ token, note }) => (
+          {filteredTokens.map(({ token, description }) => (
             <>
               <List.Item
                 key={token}
@@ -131,8 +131,8 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
                 style={styles.tokenItem}
                 title={token}
                 titleStyle={styles.tokenValueText}
-                description={note}
-                descriptionStyle={styles.tokenNoteText}
+                description={description}
+                descriptionStyle={styles.tokenDescriptionText}
                 descriptionNumberOfLines={1}
                 right={({ style, ...props }) => (
                   <List.Icon

@@ -18,7 +18,7 @@ const secret: Secret = {
   uid: 'uid',
   tokens: [
     {
-      note: 'A description',
+      description: 'A description',
       token: 'a-token',
     },
   ],
@@ -92,7 +92,7 @@ describe('TokenScreen', () => {
     expect(updateSecretStub).toBeCalledTimes(1)
     expect(updateSecretStub).toBeCalledWith({
       ...secret,
-      tokens: [{ ...secret.tokens[0], note: inputtedDescriptionText }],
+      tokens: [{ ...secret.tokens[0], description: inputtedDescriptionText }],
     })
   })
 

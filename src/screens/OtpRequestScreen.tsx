@@ -49,7 +49,9 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
   const { token, secret, uniqueId } = route.params
-  const note = secret.tokens.find(item => item.token === token)?.note
+  const description = secret.tokens.find(
+    item => item.token === token
+  )?.description
 
   const handleRejectToken = useCallback(async () => {
     await api.respond(secret.secret, uniqueId, false)
@@ -93,7 +95,7 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
         <Typography style={styles.descriptionLabel} variant="subtitle2">
           Description
         </Typography>
-        <Typography variant="body1">{note}</Typography>
+        <Typography variant="body1">{description}</Typography>
       </View>
       <View>
         <Button
