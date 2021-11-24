@@ -24,3 +24,9 @@ jobs:
       - run: yarn lint
       - run: yarn typecheck
       - run: yarn test
+
+  deploy-expo-preview:
+    name: deploy expo preview
+    if: github.event_name == 'pull_request'
+    needs: [build]
+    uses: nearform/optic-expo/.github/workflows/deploy-expo-preview.yml@chore/expo-preview
