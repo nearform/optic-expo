@@ -1,6 +1,11 @@
 name: deploy-expo-preview
 
-on: workflow_call
+on:
+  workflow_call:
+    secrets:
+      expo-token:
+        description: 'expo token to use to publish preview'
+        required: true
 
 jobs:
   deploy-expo-preview:
@@ -27,7 +32,7 @@ jobs:
         with:
           expo-cache: true
           expo-version: 4.x
-          expo-token: ${{ secrets.EXPO_TOKEN }}
+          expo-token: ${{ secrets.expo-token }}
       - name: Install dependencies
         run: yarn install
       - name: Publish to Expo & create a QR code
