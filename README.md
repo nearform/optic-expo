@@ -15,6 +15,6 @@ Optic is an app that helps you securely generate OTP tokens for 2FA protected np
 
 The figma designs can be found [here](https://www.figma.com/file/xsPf6IIM9AevLN5gZlXM4q/Optic-(Copy))
 
-## Architecture
+## Sequence diagram
 
 [![](docs/images/architecture.png)](https://docs.google.com/presentation/d/16038cTBefSKQezJk0IZKNXnSqaG2PnU07Sb2_qIkNe8/edit?usp=sharing)
