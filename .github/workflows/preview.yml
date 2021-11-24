@@ -7,6 +7,8 @@ on:
       - 'app.json'
       - '**/*.js'
       - '**/*.ts'
+      - '**/*.jsx'
+      - '**/*.tsx'
 jobs:
   preview:
     name: Create preview

@@ -64,7 +64,7 @@ export default function Main() {
           name="Home"
           component={HomeScreen}
           options={{
-            title: 'Your Tokens change',
+            title: 'Your Tokens change 2',
             headerRight: HomeHeaderRight,
           }}
         />
