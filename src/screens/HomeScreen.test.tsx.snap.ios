@@ -114,42 +114,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       ]
                     }
                   >
-                    <Text
-                      accessibilityElementsHidden={true}
-                      allowFontScaling={false}
-                      importantForAccessibility="no-hide-descendants"
-                      pointerEvents="none"
-                      selectable={false}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#ffffff",
-                            "fontSize": 24,
-                          },
-                          Array [
-                            Object {
-                              "lineHeight": 24,
-                              "transform": Array [
-                                Object {
-                                  "scaleX": 1,
-                                },
-                              ],
-                            },
-                            Object {
-                              "backgroundColor": "transparent",
-                            },
-                          ],
-                          Object {
-                            "fontFamily": "material-community",
-                            "fontStyle": "normal",
-                            "fontWeight": "normal",
-                          },
-                          Object {},
-                        ]
-                      }
-                    >
-                      󰌆
-                    </Text>
+                    <Text />
                   </View>
                 </View>
                 <View
@@ -337,42 +302,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       }
                     >
                       <View>
-                        <Text
-                          accessibilityElementsHidden={true}
-                          allowFontScaling={false}
-                          importantForAccessibility="no-hide-descendants"
-                          pointerEvents="none"
-                          selectable={false}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#6D6D68",
-                                "fontSize": 24,
-                              },
-                              Array [
-                                Object {
-                                  "lineHeight": 24,
-                                  "transform": Array [
-                                    Object {
-                                      "scaleX": 1,
-                                    },
-                                  ],
-                                },
-                                Object {
-                                  "backgroundColor": "transparent",
-                                },
-                              ],
-                              Object {
-                                "fontFamily": "material-community",
-                                "fontStyle": "normal",
-                                "fontWeight": "normal",
-                              },
-                              Object {},
-                            ]
-                          }
-                        >
-                          󰇙
-                        </Text>
+                        <Text />
                       </View>
                     </View>
                   </View>
@@ -498,42 +428,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         }
                       >
                         <View>
-                          <Text
-                            accessibilityElementsHidden={true}
-                            allowFontScaling={false}
-                            importantForAccessibility="no-hide-descendants"
-                            pointerEvents="none"
-                            selectable={false}
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#6D6D68",
-                                  "fontSize": 20,
-                                },
-                                Array [
-                                  Object {
-                                    "lineHeight": 20,
-                                    "transform": Array [
-                                      Object {
-                                        "scaleX": 1,
-                                      },
-                                    ],
-                                  },
-                                  Object {
-                                    "backgroundColor": "transparent",
-                                  },
-                                ],
-                                Object {
-                                  "fontFamily": "material-community",
-                                  "fontStyle": "normal",
-                                  "fontWeight": "normal",
-                                },
-                                Object {},
-                              ]
-                            }
-                          >
-                            󰆏
-                          </Text>
+                          <Text />
                         </View>
                       </View>
                     </View>
@@ -776,42 +671,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               }
                             }
                           >
-                            <Text
-                              accessibilityElementsHidden={true}
-                              allowFontScaling={false}
-                              importantForAccessibility="no-hide-descendants"
-                              pointerEvents="none"
-                              selectable={false}
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#2165E3",
-                                    "fontSize": 16,
-                                  },
-                                  Array [
-                                    Object {
-                                      "lineHeight": 16,
-                                      "transform": Array [
-                                        Object {
-                                          "scaleX": 1,
-                                        },
-                                      ],
-                                    },
-                                    Object {
-                                      "backgroundColor": "transparent",
-                                    },
-                                  ],
-                                  Object {
-                                    "fontFamily": "material-community",
-                                    "fontStyle": "normal",
-                                    "fontWeight": "normal",
-                                  },
-                                  Object {},
-                                ]
-                              }
-                            >
-                              󰅂
-                            </Text>
+                            <Text />
                           </View>
                           <Text
                             numberOfLines={1}
@@ -1030,42 +890,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             }
                           }
                         >
-                          <Text
-                            accessibilityElementsHidden={true}
-                            allowFontScaling={false}
-                            importantForAccessibility="no-hide-descendants"
-                            pointerEvents="none"
-                            selectable={false}
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#2165E3",
-                                  "fontSize": 16,
-                                },
-                                Array [
-                                  Object {
-                                    "lineHeight": 16,
-                                    "transform": Array [
-                                      Object {
-                                        "scaleX": 1,
-                                      },
-                                    ],
-                                  },
-                                  Object {
-                                    "backgroundColor": "transparent",
-                                  },
-                                ],
-                                Object {
-                                  "fontFamily": "material-community",
-                                  "fontStyle": "normal",
-                                  "fontWeight": "normal",
-                                },
-                                Object {},
-                              ]
-                            }
-                          >
-                            󰈈
-                          </Text>
+                          <Text />
                         </View>
                         <Text
                           numberOfLines={1}
@@ -1189,42 +1014,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             }
                           }
                         >
-                          <Text
-                            accessibilityElementsHidden={true}
-                            allowFontScaling={false}
-                            importantForAccessibility="no-hide-descendants"
-                            pointerEvents="none"
-                            selectable={false}
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#ffffff",
-                                  "fontSize": 16,
-                                },
-                                Array [
-                                  Object {
-                                    "lineHeight": 16,
-                                    "transform": Array [
-                                      Object {
-                                        "scaleX": 1,
-                                      },
-                                    ],
-                                  },
-                                  Object {
-                                    "backgroundColor": "transparent",
-                                  },
-                                ],
-                                Object {
-                                  "fontFamily": "material-community",
-                                  "fontStyle": "normal",
-                                  "fontWeight": "normal",
-                                },
-                                Object {},
-                              ]
-                            }
-                          >
-                            󰐕
-                          </Text>
+                          <Text />
                         </View>
                         <Text
                           numberOfLines={1}
@@ -1361,42 +1151,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       ]
                     }
                   >
-                    <Text
-                      accessibilityElementsHidden={true}
-                      allowFontScaling={false}
-                      importantForAccessibility="no-hide-descendants"
-                      pointerEvents="none"
-                      selectable={false}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#ffffff",
-                            "fontSize": 24,
-                          },
-                          Array [
-                            Object {
-                              "lineHeight": 24,
-                              "transform": Array [
-                                Object {
-                                  "scaleX": 1,
-                                },
-                              ],
-                            },
-                            Object {
-                              "backgroundColor": "transparent",
-                            },
-                          ],
-                          Object {
-                            "fontFamily": "material-community",
-                            "fontStyle": "normal",
-                            "fontWeight": "normal",
-                          },
-                          Object {},
-                        ]
-                      }
-                    >
-                      󰌆
-                    </Text>
+                    <Text />
                   </View>
                 </View>
                 <View
@@ -1584,42 +1339,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       }
                     >
                       <View>
-                        <Text
-                          accessibilityElementsHidden={true}
-                          allowFontScaling={false}
-                          importantForAccessibility="no-hide-descendants"
-                          pointerEvents="none"
-                          selectable={false}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#6D6D68",
-                                "fontSize": 24,
-                              },
-                              Array [
-                                Object {
-                                  "lineHeight": 24,
-                                  "transform": Array [
-                                    Object {
-                                      "scaleX": 1,
-                                    },
-                                  ],
-                                },
-                                Object {
-                                  "backgroundColor": "transparent",
-                                },
-                              ],
-                              Object {
-                                "fontFamily": "material-community",
-                                "fontStyle": "normal",
-                                "fontWeight": "normal",
-                              },
-                              Object {},
-                            ]
-                          }
-                        >
-                          󰇙
-                        </Text>
+                        <Text />
                       </View>
                     </View>
                   </View>
@@ -1745,42 +1465,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         }
                       >
                         <View>
-                          <Text
-                            accessibilityElementsHidden={true}
-                            allowFontScaling={false}
-                            importantForAccessibility="no-hide-descendants"
-                            pointerEvents="none"
-                            selectable={false}
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#6D6D68",
-                                  "fontSize": 20,
-                                },
-                                Array [
-                                  Object {
-                                    "lineHeight": 20,
-                                    "transform": Array [
-                                      Object {
-                                        "scaleX": 1,
-                                      },
-                                    ],
-                                  },
-                                  Object {
-                                    "backgroundColor": "transparent",
-                                  },
-                                ],
-                                Object {
-                                  "fontFamily": "material-community",
-                                  "fontStyle": "normal",
-                                  "fontWeight": "normal",
-                                },
-                                Object {},
-                              ]
-                            }
-                          >
-                            󰆏
-                          </Text>
+                          <Text />
                         </View>
                       </View>
                     </View>
@@ -2049,42 +1734,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             }
                           }
                         >
-                          <Text
-                            accessibilityElementsHidden={true}
-                            allowFontScaling={false}
-                            importantForAccessibility="no-hide-descendants"
-                            pointerEvents="none"
-                            selectable={false}
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#2165E3",
-                                  "fontSize": 16,
-                                },
-                                Array [
-                                  Object {
-                                    "lineHeight": 16,
-                                    "transform": Array [
-                                      Object {
-                                        "scaleX": 1,
-                                      },
-                                    ],
-                                  },
-                                  Object {
-                                    "backgroundColor": "transparent",
-                                  },
-                                ],
-                                Object {
-                                  "fontFamily": "material-community",
-                                  "fontStyle": "normal",
-                                  "fontWeight": "normal",
-                                },
-                                Object {},
-                              ]
-                            }
-                          >
-                            󰈈
-                          </Text>
+                          <Text />
                         </View>
                         <Text
                           numberOfLines={1}
@@ -2208,42 +1858,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             }
                           }
                         >
-                          <Text
-                            accessibilityElementsHidden={true}
-                            allowFontScaling={false}
-                            importantForAccessibility="no-hide-descendants"
-                            pointerEvents="none"
-                            selectable={false}
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#ffffff",
-                                  "fontSize": 16,
-                                },
-                                Array [
-                                  Object {
-                                    "lineHeight": 16,
-                                    "transform": Array [
-                                      Object {
-                                        "scaleX": 1,
-                                      },
-                                    ],
-                                  },
-                                  Object {
-                                    "backgroundColor": "transparent",
-                                  },
-                                ],
-                                Object {
-                                  "fontFamily": "material-community",
-                                  "fontStyle": "normal",
-                                  "fontWeight": "normal",
-                                },
-                                Object {},
-                              ]
-                            }
-                          >
-                            󰐕
-                          </Text>
+                          <Text />
                         </View>
                         <Text
                           numberOfLines={1}

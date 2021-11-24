@@ -20,7 +20,7 @@ jest.mock('react-native-reanimated', () => {
 jest.useFakeTimers()
 
 // This is mocked to silence the warning: Animated: `useNativeDriver` is not supported
-jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper')
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
 jest.mock('@expo-google-fonts/poppins', () => ({
   useFonts: jest.fn().mockReturnValue([true]),
