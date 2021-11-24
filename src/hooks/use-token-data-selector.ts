@@ -6,7 +6,7 @@ export function useTokenDataSelector(secretId: string, token: string) {
   const secret = useSecretSelector(secretId)
 
   return useMemo(() => {
-    const tokens = secret?.tokens ? secret.tokens : []
+    const tokens = secret ? secret.tokens : []
     return tokens.find(item => item.token === token)
   }, [secret, token])
 }

@@ -52,7 +52,7 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
   const { token, secretId, uniqueId } = route.params
   const secret = useSecretSelector(secretId)
-  const tokenData = useTokenDataSelector(token, secretId)
+  const tokenData = useTokenDataSelector(secretId, token)
   const description = tokenData ? tokenData.description : ''
 
   const handleRejectToken = useCallback(async () => {
