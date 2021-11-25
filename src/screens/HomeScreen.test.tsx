@@ -1,7 +1,7 @@
 import React from 'react'
 import { mocked } from 'ts-jest/utils'
 import * as Notification from 'expo-notifications'
-import { Subscription } from '@unimodules/react-native-adapter'
+import { Subscription } from 'expo-modules-core'
 
 import apiFactory, { API } from '../lib/api'
 import { getMockedNavigation, renderWithTheme } from '../../test/utils'
