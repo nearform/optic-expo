@@ -1,7 +1,7 @@
 import React from 'react'
 import { mocked } from 'ts-jest/utils'
 import * as Notification from 'expo-notifications'
-import { Subscription } from '@unimodules/react-native-adapter'
+import { Subscription } from 'expo-modules-core'
 import { fireEvent } from '@testing-library/react-native'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
