@@ -1,4 +1,4 @@
-name: optic-expo-ci
+name: ci
 
 on:
   push:
