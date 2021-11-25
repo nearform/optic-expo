@@ -8,7 +8,7 @@ on:
 jobs:
   publish:
     name: deploy expo preview
-    uses: nearform/optic-expo/.github/workflows/expo-cd.yml@master
+    uses: nearform/optic-expo/.github/workflows/expo-publish.yml@master
     with:
       channel: default
     secrets:

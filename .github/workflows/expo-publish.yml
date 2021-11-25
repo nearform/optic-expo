@@ -1,4 +1,4 @@
-name: deploy-expo-preview
+name: expo-publish
 
 on:
   workflow_call:
