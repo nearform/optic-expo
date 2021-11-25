@@ -1,0 +1,15 @@
+name: publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    name: deploy expo preview
+    uses: nearform/optic-expo/.github/workflows/expo-cd.yml@master
+    with:
+      channel: default
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}

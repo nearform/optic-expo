@@ -6,6 +6,10 @@ on:
       expo-token:
         description: 'expo token to use to publish preview'
         required: true
+    inputs:
+      channel:
+        required: true
+        type: string
 
 jobs:
   deploy-expo-preview:
@@ -28,11 +32,11 @@ jobs:
       - name: .env creation
         run: cp .env.sample .env
       - name: Publish to Expo
-        run: expo publish --release-channel=pr-${{ github.event.number }}
-      - name: Comment deployment link
+        run: expo publish --release-channel=${{ inputs.channel }}
+      - name: Pr Comment deployment link
+        if: github.event_name == 'pull_request'
         uses: unsplash/comment-on-pr@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           msg: App is ready for review, you can [see it here](https://expo.dev/@nearform/optic-expo?release-channel=pr-${{ github.event.number }}).
-

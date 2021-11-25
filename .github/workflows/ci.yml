@@ -27,8 +27,10 @@ jobs:
 
   deploy-expo-preview:
     name: deploy expo preview
-    if: github.event_name == 'pull_request'
     needs: [build]
-    uses: nearform/optic-expo/.github/workflows/deploy-expo-preview.yml@chore/expo-preview
+    if: github.event_name == 'pull_request'
+    uses: nearform/optic-expo/.github/workflows/expo-cd.yml@chore/expo-preview
+    with:
+      channel: pr-${{ github.event.number }}
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
