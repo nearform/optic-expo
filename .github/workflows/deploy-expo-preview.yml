@@ -10,16 +10,6 @@ on:
 jobs:
   deploy-expo-preview:
     runs-on: ubuntu-latest
-    env:
-      API_URL: https://optic-zf3votdk5a-ew.a.run.app/api
-      API_KEY: AIzaSyBFiuUulmuQ7Pv1VvxpUQB01AWCEQhIToA
-      AUTH_DOMAIN: npm-otp-f6bfc.firebaseapp.com
-      DATABASE_URL: https://npm-otp-f6bfc.firebaseio.com
-      PROJECT_ID: npm-otp-f6bfc
-      STORAGE_BUCKET: npm-otp-f6bfc.appspot.com
-      MESSAGING_SENDER_ID: 230076165693
-      APP_ID: 1:230076165693:web:a04f9ad6f64be8ec248454
-      CLIENT_ID: 230076165693-0mj3vb13158tnru89f1re89m9o94g8e7.apps.googleusercontent.com
     steps:
       - name: Set up repository
         uses: actions/checkout@v2
@@ -35,19 +25,14 @@ jobs:
           expo-token: ${{ secrets.expo-token }}
       - name: Install dependencies
         run: yarn install
-      - name: Publish to Expo & create a QR code
-        uses: expo/expo-preview-action@v1
-        with:
-          channel: pr-${{ github.event.number }}
-        id: preview
+      - name: .env creation
+        run: cp .env.sample .env
+      - name: Publish to Expo
+        run: expo publish --release-channel=pr-${{ github.event.number }}
       - name: Comment deployment link
         uses: unsplash/comment-on-pr@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          msg: >
-            Awesome! You can [preview the PR here](${{ steps.preview.outputs.EXPO_QR_CODE_URL }}).<br><br>
-            <a href="${{ steps.publish.outputs.EXPO_QR_CODE_URL }}"><img src="${{ steps.preview.outputs.EXPO_QR_CODE_URL }}" height="512px" width="512px"></a>
-            <br><br>
-            ${{ steps.publish.outputs.EXPO_NEW_BUILD_IS_REQUIRED_MESSAGE }}
+          msg: App is ready for review, you can [see it here](https://expo.dev/@nearform/optic-expo?release-channel=pr-${{ github.event.number }}).
 
