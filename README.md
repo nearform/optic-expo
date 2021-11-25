@@ -5,6 +5,11 @@
 
 Optic is an app that helps you securely generate OTP tokens for 2FA protected npm accounts. It allows auto-publish npm packages using CI.
 
+## Requirements
+
+- Node LTS
+- yarn
+
 ## Setup
 
 1. `cp .env.sample .env`
