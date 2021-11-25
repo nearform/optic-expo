@@ -1,4 +1,4 @@
-name: publish
+name: cd
 
 on:
   push:
@@ -9,7 +9,5 @@ jobs:
   publish:
     name: publish to expo
     uses: nearform/optic-expo/.github/workflows/expo-publish.yml@chore/expo-preview
-    with:
-      channel: default
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
