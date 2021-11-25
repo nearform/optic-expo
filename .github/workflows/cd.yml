@@ -1,0 +1,13 @@
+name: cd
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    name: publish to expo
+    uses: nearform/optic-expo/.github/workflows/expo-publish.yml@master
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}

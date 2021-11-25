@@ -1,4 +1,4 @@
-name: optic-expo-ci
+name: ci
 
 on:
   push:
@@ -24,3 +24,13 @@ jobs:
       - run: yarn lint
       - run: yarn typecheck
       - run: yarn test
+
+  deploy-expo-preview:
+    name: deploy expo preview
+    needs: [build]
+    if: github.event_name == 'pull_request'
+    uses: nearform/optic-expo/.github/workflows/expo-publish.yml@master
+    with:
+      channel: pr-${{ github.event.number }}
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}
