@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import * as Notifications from 'expo-notifications'
 import { NotificationResponse } from 'expo-notifications'
 import { ScrollView, StyleSheet, View } from 'react-native'
-import { Subscription } from '@unimodules/react-native-adapter'
+import { Subscription } from 'expo-modules-core'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { useIsFocused } from '@react-navigation/core'
 
