@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish:
-    name: deploy expo preview
+    name: publish to expo
     uses: nearform/optic-expo/.github/workflows/expo-publish.yml@chore/expo-preview
     with:
       channel: default
