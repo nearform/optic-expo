@@ -22,7 +22,7 @@ jobs:
 
   deploy-expo-preview:
     needs: [build]
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]'
     uses: nearform/optic-expo/.github/workflows/expo-publish.yml@master
     with:
       channel: pr-${{ github.event.number }}
