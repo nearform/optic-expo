@@ -96,8 +96,6 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
     navigate('CreateToken', { secretId })
   }, [navigate, secretId])
 
-  console.log({ filteredTokens })
-
   return (
     <>
       <View style={styles.container}>
