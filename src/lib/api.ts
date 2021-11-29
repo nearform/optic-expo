@@ -34,6 +34,10 @@ export default function apiFactory(opts: APIOptions): API {
         }),
       })
 
+      if (!response.ok) {
+        throw new Error('There was an issue connecting to the server')
+      }
+
       const { token } = await response.json()
 
       return token

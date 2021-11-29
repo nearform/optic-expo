@@ -74,7 +74,7 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
       })
       Toast.show('Token successfully created')
     } catch (err) {
-      Toast.show('An error occurred creating the token')
+      Toast.show('An error occurred generating the token')
       console.error(err)
     }
   }
