@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { Avatar, Button } from 'react-native-paper'
 import Toast from 'react-native-root-toast'
 
@@ -11,6 +11,7 @@ import apiFactory from '../lib/api'
 import { Typography } from '../components/Typography'
 import { useTokenDataSelector } from '../hooks/use-token-data-selector'
 import { useSecretSelector } from '../hooks/use-secret-selector'
+import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
 
 const styles = StyleSheet.create({
   container: {
@@ -50,7 +51,10 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const tokenData = useTokenDataSelector(secretId, token)
   const description = tokenData ? tokenData.description : ''
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const handleRejectToken = useCallback(async () => {
+    setIsLoading(true)
     await api.respond(secret.secret, uniqueId, false)
     Toast.show('OTP request rejected')
     if (canGoBack()) {
@@ -58,9 +62,11 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
     } else {
       navigate('Home')
     }
+    setIsLoading(false)
   }, [api, canGoBack, goBack, navigate, secret.secret, uniqueId])
 
   const handleApproveToken = useCallback(async () => {
+    setIsLoading(true)
     await api.respond(secret.secret, uniqueId, true)
     Toast.show('OTP request approved')
     if (canGoBack()) {
@@ -68,48 +74,52 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
     } else {
       navigate('Home')
     }
+    setIsLoading(false)
   }, [api, canGoBack, goBack, navigate, secret.secret, uniqueId])
 
   return (
-    <View style={styles.container}>
-      <View style={styles.provider}>
-        <Avatar.Icon
-          style={styles.providerIcon}
-          icon="key"
-          size={theme.spacing(5)}
-          color="white"
-        />
+    <>
+      <View style={styles.container}>
+        <View style={styles.provider}>
+          <Avatar.Icon
+            style={styles.providerIcon}
+            icon="key"
+            size={theme.spacing(5)}
+            color="white"
+          />
+          <View>
+            <Typography variant="h6">{secret.issuer}</Typography>
+            <Typography variant="body2">{secret.account}</Typography>
+          </View>
+        </View>
+        <View style={styles.token}>
+          <Typography variant="overline">Token</Typography>
+          <Typography variant="code">{token}</Typography>
+        </View>
+        <View style={styles.description}>
+          <Typography style={styles.descriptionLabel} variant="subtitle2">
+            Description
+          </Typography>
+          <Typography variant="body1">{description}</Typography>
+        </View>
         <View>
-          <Typography variant="h6">{secret.issuer}</Typography>
-          <Typography variant="body2">{secret.account}</Typography>
+          <Button
+            style={styles.button}
+            mode="outlined"
+            onPress={handleRejectToken}
+          >
+            Reject
+          </Button>
+          <Button
+            style={styles.button}
+            mode="contained"
+            onPress={handleApproveToken}
+          >
+            Approve
+          </Button>
         </View>
       </View>
-      <View style={styles.token}>
-        <Typography variant="overline">Token</Typography>
-        <Typography variant="code">{token}</Typography>
-      </View>
-      <View style={styles.description}>
-        <Typography style={styles.descriptionLabel} variant="subtitle2">
-          Description
-        </Typography>
-        <Typography variant="body1">{description}</Typography>
-      </View>
-      <View>
-        <Button
-          style={styles.button}
-          mode="outlined"
-          onPress={handleRejectToken}
-        >
-          Reject
-        </Button>
-        <Button
-          style={styles.button}
-          mode="contained"
-          onPress={handleApproveToken}
-        >
-          Approve
-        </Button>
-      </View>
-    </View>
+      {isLoading && <LoadingSpinnerOverlay />}
+    </>
   )
 }

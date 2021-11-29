@@ -13,6 +13,7 @@ import { MainStackParamList } from '../Main'
 import theme from '../lib/theme'
 import { Typography } from '../components/Typography'
 import { useSecretSelector } from '../hooks/use-secret-selector'
+import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
 
 const styles = StyleSheet.create({
   container: {
@@ -47,6 +48,8 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
   const isFocused = useIsFocused()
   const ref = useRef(null)
 
+  const [isGenerating, setIsGenerating] = useState(false)
+
   useEffect(() => {
     if (isFocused) {
       ref.current && ref.current.focus()
@@ -54,6 +57,7 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
   }, [isFocused])
 
   const handleGenerateToken = async () => {
+    setIsGenerating(true)
     try {
       const token = await api.generateToken(secret, subscriptionId)
       const newToken = {
@@ -77,6 +81,7 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
       Toast.show('An error occurred generating the token')
       console.error(err)
     }
+    setIsGenerating(false)
   }
 
   useEffect(() => {
@@ -98,35 +103,38 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
   }
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Typography variant="h6">
-          Insert a description for this token
-        </Typography>
+    <>
+      <View style={styles.container}>
+        <View>
+          <Typography variant="h6">
+            Insert a description for this token
+          </Typography>
+        </View>
+        <View style={styles.description}>
+          <TextInput
+            ref={ref}
+            textAlign="left"
+            label="Description"
+            accessibilityLabel="Description"
+            placeholder="Description"
+            placeholderTextColor={theme.colors.disabled}
+            mode="outlined"
+            value={description}
+            onChangeText={setDescription}
+            multiline
+          />
+        </View>
+        <Button
+          style={styles.button}
+          icon="plus"
+          mode="contained"
+          onPress={handleGenerateToken}
+          disabled={disabled}
+        >
+          Create Token
+        </Button>
       </View>
-      <View style={styles.description}>
-        <TextInput
-          ref={ref}
-          textAlign="left"
-          label="Description"
-          accessibilityLabel="Description"
-          placeholder="Description"
-          placeholderTextColor={theme.colors.disabled}
-          mode="outlined"
-          value={description}
-          onChangeText={setDescription}
-          multiline
-        />
-      </View>
-      <Button
-        style={styles.button}
-        icon="plus"
-        mode="contained"
-        onPress={handleGenerateToken}
-        disabled={disabled}
-      >
-        Create Token
-      </Button>
-    </View>
+      {isGenerating && <LoadingSpinnerOverlay />}
+    </>
   )
 }
