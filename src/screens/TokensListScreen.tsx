@@ -1,5 +1,5 @@
 import { StyleSheet, View, ScrollView } from 'react-native'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { Fragment, useCallback, useMemo, useState } from 'react'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import { TextInput, Text, Divider, FAB, Portal, List } from 'react-native-paper'
 import { useIsFocused } from '@react-navigation/core'
@@ -96,6 +96,8 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
     navigate('CreateToken', { secretId })
   }, [navigate, secretId])
 
+  console.log({ filteredTokens })
+
   return (
     <>
       <View style={styles.container}>
@@ -139,9 +141,8 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
             contentContainerStyle={{ paddingBottom: 180 }}
           >
             {filteredTokens.map(({ token, description }) => (
-              <>
+              <Fragment key={token}>
                 <List.Item
-                  key={token}
                   onPress={() =>
                     navigation.navigate('Token', { secretId, token })
                   }
@@ -160,7 +161,7 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
                   )}
                 />
                 <Divider />
-              </>
+              </Fragment>
             ))}
           </ScrollView>
         )}
