@@ -88,6 +88,10 @@ export const TokenScreen = ({ route, navigation }: Props) => {
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
 
   const handleRevokeToken = async () => {
+    if (!subscriptionId) {
+      Toast.show(`Server connection required to revoke token`)
+      return
+    }
     try {
       await api.revokeToken(token)
       await update({
@@ -103,6 +107,11 @@ export const TokenScreen = ({ route, navigation }: Props) => {
   }
 
   const handleRefreshToken = async () => {
+    if (!subscriptionId) {
+      Toast.show(`Server connection required to refresh token`)
+      return
+    }
+
     try {
       const refreshedToken = await api.generateToken(
         secret,
