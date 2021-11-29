@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import React from 'react'
-import { fireEvent } from '@testing-library/react-native'
+import { fireEvent, waitFor } from '@testing-library/react-native'
 import { mocked } from 'ts-jest/utils'
 import { Alert } from 'react-native'
 
@@ -27,7 +27,7 @@ const secret: Secret = {
 }
 
 jest.mock('../lib/api')
-jest.mock('../hooks/use-push-token')
+jest.mock('../hooks/use-push-token', () => () => 'dummy-expo-token')
 jest.mock('../context/SecretsContext')
 
 const useSecretsMocked = mocked(useSecrets)
@@ -44,6 +44,7 @@ describe('TokenScreen', () => {
   const updateSecretStub = jest.fn()
   const apiGenerateTokenStub = jest.fn()
   const apiRevokeTokenStub = jest.fn()
+  const registerSubscriptionStub = jest.fn().mockResolvedValue('a-sub')
 
   beforeEach(() => {
     useSecretsMocked.mockReturnValue({
@@ -56,6 +57,7 @@ describe('TokenScreen', () => {
     apiFactoryMocked.mockReturnValue({
       generateToken: apiGenerateTokenStub,
       revokeToken: apiRevokeTokenStub,
+      registerSubscription: registerSubscriptionStub,
     } as unknown as API)
   })
 
@@ -70,22 +72,35 @@ describe('TokenScreen', () => {
     return renderWithTheme(<TokenScreen {...props} />)
   }
 
-  it('refreshes token', () => {
+  it('refreshes token', async () => {
     const { getByText } = setup()
+    await waitFor(() => {
+      expect(registerSubscriptionStub).toBeCalled()
+    })
     fireEvent.press(getByText('REFRESH TOKEN'))
     expect(apiGenerateTokenStub).toBeCalledTimes(1)
   })
 
-  it('revokes token', () => {
+  it('revokes token', async () => {
     const { getByText } = setup()
+    await waitFor(() => {
+      expect(registerSubscriptionStub).toBeCalled()
+    })
     fireEvent.press(getByText('REVOKE TOKEN'))
     expect(apiRevokeTokenStub).toBeCalledTimes(1)
   })
 
-  it('saves description in the background', () => {
+  it('saves description in the background', async () => {
     updateSecretStub.mockReset()
-    // Using fake timer as description saving is debounced
     const { getByA11yLabel } = setup()
+
+    await waitFor(() => {
+      expect(registerSubscriptionStub).toBeCalled()
+    })
+
+    // Using fake timer as description saving is debounced
+    jest.useFakeTimers()
+
     const inputtedDescriptionText = 'An updated description'
 
     const descriptionInput = getByA11yLabel('Description')
@@ -100,12 +115,19 @@ describe('TokenScreen', () => {
   })
 
   it("doesn't save description if it's empty", () => {
+    jest.useFakeTimers()
+    registerSubscriptionStub.mockReset()
     updateSecretStub.mockReset()
     // Using fake timer as description saving is debounced
     const { getByA11yLabel } = setup()
 
+    waitFor(() => {
+      expect(registerSubscriptionStub).toBeCalledTimes(1)
+    })
+
     const descriptionInput = getByA11yLabel('Description')
     fireEvent.changeText(descriptionInput, '')
+
     jest.runOnlyPendingTimers()
 
     expect(updateSecretStub).toBeCalledTimes(0)
