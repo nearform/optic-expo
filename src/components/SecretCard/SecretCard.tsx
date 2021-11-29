@@ -43,9 +43,6 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
   value: {
-    fontFamily: 'monospace',
-    fontSize: 24,
-    color: theme.colors.text,
     marginBottom: theme.spacing(2),
   },
   valueSmall: { fontSize: 16 },
@@ -126,9 +123,12 @@ export const SecretCard: React.FC<SecretProps> = ({
           <Animated.View style={secretAnimationStyle}>
             <View style={styles.row}>
               <Text style={styles.label}>SECRET</Text>
-              <Text style={[styles.value, styles.valueSmall]}>
+              <Typography
+                variant="code"
+                style={[styles.value, styles.valueSmall]}
+              >
                 {data.secret}
-              </Text>
+              </Typography>
             </View>
             <Divider />
           </Animated.View>

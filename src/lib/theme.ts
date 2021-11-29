@@ -16,6 +16,7 @@ export type TypographyVariant =
   | 'button'
   | 'caption'
   | 'overline'
+  | 'code'
 
 const typography: Record<TypographyVariant, TextStyle> = {
   h1: {
@@ -86,6 +87,10 @@ const typography: Record<TypographyVariant, TextStyle> = {
     fontWeight: '400',
     textTransform: 'uppercase',
     letterSpacing: 1.1,
+  },
+  code: {
+    fontFamily: 'RobotoMono_400Regular',
+    fontSize: 24,
   },
 }
 

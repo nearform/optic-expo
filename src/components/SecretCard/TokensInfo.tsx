@@ -19,11 +19,6 @@ const styles = StyleSheet.create({
     paddingBottom: theme.spacing(0.5),
     fontSize: 10,
   },
-  tokensCountValue: {
-    fontFamily: 'monospace',
-    fontSize: 24,
-    color: theme.colors.text,
-  },
   seeTokensText: {
     color: theme.colors.primary,
     fontWeight: 'bold',
@@ -46,7 +41,7 @@ export const TokensInfo = ({ count, onPress }: Props) => {
           <Typography style={styles.tokensCountLabel} variant="overline">
             TOKENS
           </Typography>
-          <Text style={styles.tokensCountValue}>{count}</Text>
+          <Typography variant="code">{count}</Typography>
         </View>
         <View>
           <Button

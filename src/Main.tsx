@@ -9,6 +9,10 @@ import {
   useFonts as useDidactGothic,
   DidactGothic_400Regular,
 } from '@expo-google-fonts/didact-gothic'
+import {
+  useFonts as useRobotoMono,
+  RobotoMono_400Regular,
+} from '@expo-google-fonts/roboto-mono'
 import AppLoading from 'expo-app-loading'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
@@ -58,9 +62,13 @@ export default function Main() {
     DidactGothic_400Regular,
   })
 
+  const [hasRobotoMonoLoaded] = useRobotoMono({
+    RobotoMono_400Regular,
+  })
+
   const { user } = useAuth()
 
-  if (!hasPoppinsLoaded || !hasDidactLoaded) {
+  if (!hasPoppinsLoaded || !hasDidactLoaded || !hasRobotoMonoLoaded) {
     return <AppLoading />
   }
 

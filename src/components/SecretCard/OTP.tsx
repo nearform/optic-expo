@@ -4,6 +4,7 @@ import { CountdownCircleTimer } from 'react-native-countdown-circle-timer'
 
 import otpLib from '../../lib/otp'
 import theme from '../../lib/theme'
+import { Typography } from '../Typography'
 
 import { CopyableInfo } from './CopyableInfo'
 
@@ -17,11 +18,6 @@ const styles = StyleSheet.create({
     color: theme.colors.textSecondary,
     marginRight: theme.spacing(1),
     fontSize: 10,
-  },
-  value: {
-    fontFamily: 'monospace',
-    fontSize: 24,
-    color: theme.colors.text,
   },
   otpRow: {
     flexDirection: 'row',
@@ -44,7 +40,7 @@ export const OTP: React.FC<OTPProps> = ({ value }) => {
     <View style={styles.row}>
       <Text style={styles.label}>OTP</Text>
       <View style={styles.otpRow}>
-        <CopyableInfo textStyle={styles.value}>{value}</CopyableInfo>
+        <CopyableInfo typographyVariant="code">{value}</CopyableInfo>
         <CountdownCircleTimer
           key={value}
           size={30}
@@ -55,7 +51,9 @@ export const OTP: React.FC<OTPProps> = ({ value }) => {
           colors="#EB829C"
         >
           {({ remainingTime }) => (
-            <Text style={styles.otp}>{remainingTime}</Text>
+            <Typography style={styles.otp} variant="code">
+              {remainingTime}
+            </Typography>
           )}
         </CountdownCircleTimer>
       </View>

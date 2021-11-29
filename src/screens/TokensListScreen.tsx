@@ -37,8 +37,6 @@ const styles = StyleSheet.create({
     marginBottom: theme.spacing(2),
   },
   tokensCountLabel: {
-    fontFamily: 'monospace',
-    fontSize: 24,
     marginRight: theme.spacing(2),
   },
   tokensCountValue: theme.typography.overline,
@@ -50,9 +48,7 @@ const styles = StyleSheet.create({
     marginLeft: -8,
   },
   tokenValueText: {
-    fontFamily: 'monospace',
-    fontSize: 24,
-    color: theme.colors.text,
+    ...theme.typography.code,
     marginBottom: theme.spacing(1),
   },
   tokenDescriptionText: {
@@ -102,7 +98,9 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
         {tokensCount > 1 && (
           <>
             <Text style={styles.tokensCount}>
-              <Text style={styles.tokensCountLabel}>{tokensCount}</Text>{' '}
+              <Typography variant="code" style={styles.tokensCountLabel}>
+                {tokensCount}
+              </Typography>{' '}
               <Text style={styles.tokensCountValue}>
                 {tokensCount === 1 ? 'TOKEN' : 'TOKENS'}
               </Text>

@@ -25,11 +25,6 @@ const styles = StyleSheet.create({
   token: {
     marginBottom: theme.spacing(4),
   },
-  tokenText: {
-    fontFamily: 'monospace',
-    fontSize: 24,
-    color: theme.colors.text,
-  },
   description: {
     marginBottom: theme.spacing(4),
   },
@@ -196,7 +191,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
     <View style={styles.container}>
       <View style={styles.token}>
         <Typography variant="overline">TOKEN</Typography>
-        <CopyableInfo textStyle={styles.tokenText}>{token || '-'}</CopyableInfo>
+        <CopyableInfo typographyVariant="code">{token || '-'}</CopyableInfo>
       </View>
       <View style={styles.description}>
         <TextInput

@@ -27,11 +27,6 @@ const styles = StyleSheet.create({
   token: {
     marginBottom: theme.spacing(4),
   },
-  tokenValue: {
-    fontFamily: 'monospace',
-    fontSize: 24,
-    color: theme.colors.text,
-  },
   description: {
     marginBottom: theme.spacing(3),
   },
@@ -91,7 +86,7 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
       </View>
       <View style={styles.token}>
         <Typography variant="overline">Token</Typography>
-        <Typography style={styles.tokenValue}>{token}</Typography>
+        <Typography variant="code">{token}</Typography>
       </View>
       <View style={styles.description}>
         <Typography style={styles.descriptionLabel} variant="subtitle2">

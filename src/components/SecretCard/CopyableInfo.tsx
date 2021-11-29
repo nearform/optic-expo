@@ -1,8 +1,11 @@
 import React from 'react'
 import { IconButton } from 'react-native-paper'
-import { StyleSheet, View, Text, StyleProp, TextStyle } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import * as Clipboard from 'expo-clipboard'
 import Toast from 'react-native-root-toast'
+
+import { TypographyVariant } from '../../lib/theme'
+import { Typography } from '../Typography'
 
 const styles = StyleSheet.create({
   row: {
@@ -18,17 +21,17 @@ const styles = StyleSheet.create({
 
 type CopyableInfoProps = {
   children: string
-  textStyle: StyleProp<TextStyle>
+  typographyVariant: TypographyVariant
 }
 
 export const CopyableInfo: React.FC<CopyableInfoProps> = ({
   children,
-  textStyle,
+  typographyVariant,
 }) => {
   return (
     <View style={styles.row}>
       <View style={styles.textContainer}>
-        <Text style={textStyle}>{children}</Text>
+        <Typography variant={typographyVariant}>{children}</Typography>
       </View>
       <IconButton
         icon="content-copy"
