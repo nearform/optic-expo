@@ -367,11 +367,29 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <Text
                           style={
-                            Object {
-                              "color": "#6D6D68",
-                              "fontFamily": "monospace",
-                              "fontSize": 24,
-                            }
+                            Array [
+                              Object {
+                                "color": "#6D6D68",
+                                "fontFamily": "System",
+                                "fontWeight": "400",
+                              },
+                              Object {
+                                "textAlign": "left",
+                              },
+                              Array [
+                                Object {
+                                  "fontFamily": "RobotoMono_400Regular",
+                                  "fontSize": 24,
+                                },
+                                Object {
+                                  "alignItems": "center",
+                                  "color": "#6D6D68",
+                                  "display": "flex",
+                                  "marginBottom": 0,
+                                },
+                                undefined,
+                              ],
+                            ]
                           }
                         >
                           009988
@@ -523,9 +541,31 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <Text
                           style={
-                            Object {
-                              "fontSize": 12,
-                            }
+                            Array [
+                              Object {
+                                "color": "#6D6D68",
+                                "fontFamily": "System",
+                                "fontWeight": "400",
+                              },
+                              Object {
+                                "textAlign": "left",
+                              },
+                              Array [
+                                Object {
+                                  "fontFamily": "RobotoMono_400Regular",
+                                  "fontSize": 24,
+                                },
+                                Object {
+                                  "alignItems": "center",
+                                  "color": "#6D6D68",
+                                  "display": "flex",
+                                  "marginBottom": 0,
+                                },
+                                Object {
+                                  "fontSize": 12,
+                                },
+                              ],
+                            ]
                           }
                         >
                           30
@@ -596,11 +636,29 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     </Text>
                     <Text
                       style={
-                        Object {
-                          "color": "#6D6D68",
-                          "fontFamily": "monospace",
-                          "fontSize": 24,
-                        }
+                        Array [
+                          Object {
+                            "color": "#6D6D68",
+                            "fontFamily": "System",
+                            "fontWeight": "400",
+                          },
+                          Object {
+                            "textAlign": "left",
+                          },
+                          Array [
+                            Object {
+                              "fontFamily": "RobotoMono_400Regular",
+                              "fontSize": 24,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "color": "#6D6D68",
+                              "display": "flex",
+                              "marginBottom": 0,
+                            },
+                            undefined,
+                          ],
+                        ]
                       }
                     >
                       1
@@ -767,13 +825,32 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         Array [
                           Object {
                             "color": "#6D6D68",
-                            "fontFamily": "monospace",
-                            "fontSize": 24,
-                            "marginBottom": 16,
+                            "fontFamily": "System",
+                            "fontWeight": "400",
                           },
                           Object {
-                            "fontSize": 16,
+                            "textAlign": "left",
                           },
+                          Array [
+                            Object {
+                              "fontFamily": "RobotoMono_400Regular",
+                              "fontSize": 24,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "color": "#6D6D68",
+                              "display": "flex",
+                              "marginBottom": 0,
+                            },
+                            Array [
+                              Object {
+                                "marginBottom": 16,
+                              },
+                              Object {
+                                "fontSize": 16,
+                              },
+                            ],
+                          ],
                         ]
                       }
                     >
@@ -1402,11 +1479,29 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <Text
                           style={
-                            Object {
-                              "color": "#6D6D68",
-                              "fontFamily": "monospace",
-                              "fontSize": 24,
-                            }
+                            Array [
+                              Object {
+                                "color": "#6D6D68",
+                                "fontFamily": "System",
+                                "fontWeight": "400",
+                              },
+                              Object {
+                                "textAlign": "left",
+                              },
+                              Array [
+                                Object {
+                                  "fontFamily": "RobotoMono_400Regular",
+                                  "fontSize": 24,
+                                },
+                                Object {
+                                  "alignItems": "center",
+                                  "color": "#6D6D68",
+                                  "display": "flex",
+                                  "marginBottom": 0,
+                                },
+                                undefined,
+                              ],
+                            ]
                           }
                         >
                           009988
@@ -1558,9 +1653,31 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <Text
                           style={
-                            Object {
-                              "fontSize": 12,
-                            }
+                            Array [
+                              Object {
+                                "color": "#6D6D68",
+                                "fontFamily": "System",
+                                "fontWeight": "400",
+                              },
+                              Object {
+                                "textAlign": "left",
+                              },
+                              Array [
+                                Object {
+                                  "fontFamily": "RobotoMono_400Regular",
+                                  "fontSize": 24,
+                                },
+                                Object {
+                                  "alignItems": "center",
+                                  "color": "#6D6D68",
+                                  "display": "flex",
+                                  "marginBottom": 0,
+                                },
+                                Object {
+                                  "fontSize": 12,
+                                },
+                              ],
+                            ]
                           }
                         >
                           30
@@ -1631,11 +1748,29 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     </Text>
                     <Text
                       style={
-                        Object {
-                          "color": "#6D6D68",
-                          "fontFamily": "monospace",
-                          "fontSize": 24,
-                        }
+                        Array [
+                          Object {
+                            "color": "#6D6D68",
+                            "fontFamily": "System",
+                            "fontWeight": "400",
+                          },
+                          Object {
+                            "textAlign": "left",
+                          },
+                          Array [
+                            Object {
+                              "fontFamily": "RobotoMono_400Regular",
+                              "fontSize": 24,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "color": "#6D6D68",
+                              "display": "flex",
+                              "marginBottom": 0,
+                            },
+                            undefined,
+                          ],
+                        ]
                       }
                     >
                       0
@@ -1802,13 +1937,32 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         Array [
                           Object {
                             "color": "#6D6D68",
-                            "fontFamily": "monospace",
-                            "fontSize": 24,
-                            "marginBottom": 16,
+                            "fontFamily": "System",
+                            "fontWeight": "400",
                           },
                           Object {
-                            "fontSize": 16,
+                            "textAlign": "left",
                           },
+                          Array [
+                            Object {
+                              "fontFamily": "RobotoMono_400Regular",
+                              "fontSize": 24,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "color": "#6D6D68",
+                              "display": "flex",
+                              "marginBottom": 0,
+                            },
+                            Array [
+                              Object {
+                                "marginBottom": 16,
+                              },
+                              Object {
+                                "fontSize": 16,
+                              },
+                            ],
+                          ],
                         ]
                       }
                     >

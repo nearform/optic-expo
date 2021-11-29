@@ -27,6 +27,10 @@ jest.mock('@expo-google-fonts/didact-gothic', () => ({
   useFonts: jest.fn().mockReturnValue([true]),
 }))
 
+jest.mock('@expo-google-fonts/roboto-mono', () => ({
+  useFonts: jest.fn().mockReturnValue([true]),
+}))
+
 jest.mock('expo-auth-session/providers/google')
 jest.mock('expo-constants', () => ({
   manifest: { extra: { apiUrl: 'http://dummy.com/api' } },
