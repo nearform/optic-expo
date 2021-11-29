@@ -7,6 +7,7 @@ import { useIsFocused } from '@react-navigation/core'
 import { MainStackParamList } from '../Main'
 import theme from '../lib/theme'
 import { useSecretSelector } from '../hooks/use-secret-selector'
+import { Typography } from '../components/Typography'
 
 const styles = StyleSheet.create({
   container: {
@@ -14,6 +15,17 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     paddingHorizontal: theme.spacing(2),
     paddingVertical: theme.spacing(3),
+  },
+  noTokens: {
+    marginTop: theme.spacing(8),
+    padding: theme.spacing(4),
+  },
+  noTokensTitle: {
+    textAlign: 'center',
+    marginBottom: theme.spacing(1),
+  },
+  noTokensBody: {
+    textAlign: 'center',
   },
   searchArea: {
     marginBottom: theme.spacing(2),
@@ -63,7 +75,7 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
   const { navigate } = navigation
   const { secretId } = route.params
   const secret = useSecretSelector(secretId)
-  const tokens = useMemo(() => (secret ? secret.tokens : []), [secret])
+  const tokens = useMemo(() => (secret.tokens ? secret.tokens : []), [secret])
   const tokensCount = tokens.length
   const [search, setSearch] = useState('')
   const [searchFocused, setSearchFocused] = useState(false)
@@ -88,59 +100,70 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
     <>
       <View style={styles.container}>
         {tokensCount > 1 && (
-          <Text style={styles.tokensCount}>
-            <Text style={styles.tokensCountLabel}>{tokensCount}</Text>{' '}
-            <Text style={styles.tokensCountValue}>
-              {tokensCount === 1 ? 'TOKEN' : 'TOKENS'}
+          <>
+            <Text style={styles.tokensCount}>
+              <Text style={styles.tokensCountLabel}>{tokensCount}</Text>{' '}
+              <Text style={styles.tokensCountValue}>
+                {tokensCount === 1 ? 'TOKEN' : 'TOKENS'}
+              </Text>
             </Text>
-          </Text>
-        )}
-        {tokensCount > 1 && (
-          <View style={styles.searchArea}>
-            <TextInput
-              textAlign="left"
-              label="Search"
-              accessibilityLabel="Search"
-              placeholder="Search..."
-              placeholderTextColor={theme.colors.disabled}
-              mode="outlined"
-              value={search}
-              onChangeText={setSearch}
-              right={<TextInput.Icon name="magnify" />}
-              onFocus={() => setSearchFocused(true)}
-              onBlur={() => setSearchFocused(false)}
-            />
-          </View>
-        )}
-        <ScrollView
-          style={styles.scrollView}
-          contentContainerStyle={{ paddingBottom: 180 }}
-        >
-          {filteredTokens.map(({ token, description }) => (
-            <>
-              <List.Item
-                key={token}
-                onPress={() =>
-                  navigation.navigate('Token', { secretId, token })
-                }
-                style={styles.tokenItem}
-                title={token}
-                titleStyle={styles.tokenValueText}
-                description={description}
-                descriptionStyle={styles.tokenDescriptionText}
-                descriptionNumberOfLines={1}
-                right={({ style, ...props }) => (
-                  <List.Icon
-                    {...props}
-                    icon="chevron-right"
-                    style={{ ...style, alignSelf: 'center' }}
-                  />
-                )}
+            <View style={styles.searchArea}>
+              <TextInput
+                textAlign="left"
+                label="Search"
+                accessibilityLabel="Search"
+                placeholder="Search..."
+                placeholderTextColor={theme.colors.disabled}
+                mode="outlined"
+                value={search}
+                onChangeText={setSearch}
+                right={<TextInput.Icon name="magnify" />}
+                onFocus={() => setSearchFocused(true)}
+                onBlur={() => setSearchFocused(false)}
               />
-              <Divider />
-            </>
-          ))}
-        </ScrollView>
+            </View>
+          </>
+        )}
+        {tokensCount === 0 ? (
+          <View style={styles.noTokens}>
+            <Typography variant="h5" style={styles.noTokensTitle}>
+              No Tokens
+            </Typography>
+            <Typography variant="body1" style={styles.noTokensBody}>
+              Create a new token and it will appear here.
+            </Typography>
+          </View>
+        ) : (
+          <ScrollView
+            style={styles.scrollView}
+            contentContainerStyle={{ paddingBottom: 180 }}
+          >
+            {filteredTokens.map(({ token, description }) => (
+              <>
+                <List.Item
+                  key={token}
+                  onPress={() =>
+                    navigation.navigate('Token', { secretId, token })
+                  }
+                  style={styles.tokenItem}
+                  title={token}
+                  titleStyle={styles.tokenValueText}
+                  description={description}
+                  descriptionStyle={styles.tokenDescriptionText}
+                  descriptionNumberOfLines={1}
+                  right={({ style, ...props }) => (
+                    <List.Icon
+                      {...props}
+                      icon="chevron-right"
+                      style={{ ...style, alignSelf: 'center' }}
+                    />
+                  )}
+                />
+                <Divider />
+              </>
+            ))}
+          </ScrollView>
+        )}
       </View>
       <Portal>
         <FAB

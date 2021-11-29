@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Avatar, Button, Card, Divider } from 'react-native-paper'
 import Animated from 'react-native-reanimated'
@@ -78,6 +78,7 @@ export const SecretCard: React.FC<SecretProps> = ({
   const [showMenu, setShowMenu] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const [otp, setOtp] = useState('')
+  const tokens = useMemo(() => (data.tokens ? data.tokens : []), [data])
 
   useEffect(() => {
     if (!data.secret) return
@@ -121,9 +122,7 @@ export const SecretCard: React.FC<SecretProps> = ({
         <Card.Content style={styles.cardContent}>
           <OTP value={otp} />
           <Divider />
-          {data.tokens && data.tokens.length > 0 && (
-            <TokensInfo count={data.tokens.length} onPress={onViewTokens} />
-          )}
+          <TokensInfo count={tokens.length} onPress={onViewTokens} />
           <Animated.View style={secretAnimationStyle}>
             <View style={styles.row}>
               <Text style={styles.label}>SECRET</Text>

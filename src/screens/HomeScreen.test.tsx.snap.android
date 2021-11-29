@@ -1582,6 +1582,199 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   }
                 />
                 <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingLeft": 8,
+                      "paddingVertical": 16,
+                    }
+                  }
+                >
+                  <View>
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#6D6D68",
+                            "fontFamily": "sans-serif",
+                            "fontWeight": "normal",
+                          },
+                          Object {
+                            "textAlign": "left",
+                          },
+                          Array [
+                            Object {
+                              "fontSize": 10,
+                              "fontWeight": "400",
+                              "letterSpacing": 1.1,
+                              "textTransform": "uppercase",
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "color": "#6D6D68",
+                              "display": "flex",
+                              "marginBottom": 0,
+                            },
+                            Object {
+                              "color": "rgba(0, 0, 0, 0.6)",
+                              "fontSize": 10,
+                              "marginRight": 8,
+                              "paddingBottom": 4,
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      TOKENS
+                    </Text>
+                    <Text
+                      style={
+                        Object {
+                          "color": "#6D6D68",
+                          "fontFamily": "monospace",
+                          "fontSize": 24,
+                        }
+                      }
+                    >
+                      0
+                    </Text>
+                  </View>
+                  <View>
+                    <View
+                      style={
+                        Object {
+                          "backgroundColor": "transparent",
+                          "borderColor": "transparent",
+                          "borderRadius": 4,
+                          "borderStyle": "solid",
+                          "borderWidth": 0,
+                          "elevation": 0,
+                          "minWidth": 64,
+                        }
+                      }
+                    >
+                      <View
+                        accessibilityRole="button"
+                        accessibilityState={
+                          Object {
+                            "disabled": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Array [
+                            Object {
+                              "overflow": "hidden",
+                            },
+                            Object {
+                              "borderRadius": 4,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "justifyContent": "center",
+                              },
+                              Object {
+                                "flexDirection": "row-reverse",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            style={
+                              Object {
+                                "marginLeft": -4,
+                                "marginRight": 12,
+                              }
+                            }
+                          >
+                            <Text />
+                          </View>
+                          <Text
+                            numberOfLines={1}
+                            selectable={false}
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#6D6D68",
+                                  "fontFamily": "sans-serif",
+                                  "fontWeight": "normal",
+                                },
+                                Object {
+                                  "textAlign": "left",
+                                },
+                                Array [
+                                  Object {
+                                    "letterSpacing": 1,
+                                    "marginHorizontal": 16,
+                                    "marginVertical": 9,
+                                    "textAlign": "center",
+                                  },
+                                  undefined,
+                                  Object {
+                                    "textTransform": "uppercase",
+                                  },
+                                  Object {
+                                    "color": "#2165E3",
+                                    "fontFamily": "sans-serif-medium",
+                                    "fontWeight": "normal",
+                                  },
+                                  Object {
+                                    "fontFamily": "sans-serif-medium",
+                                    "fontWeight": "normal",
+                                  },
+                                  undefined,
+                                ],
+                              ]
+                            }
+                          >
+                            <Text
+                              style={
+                                Object {
+                                  "color": "#2165E3",
+                                  "fontWeight": "bold",
+                                }
+                              }
+                            >
+                              SEE TOKENS
+                            </Text>
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                        "height": 0.5,
+                      },
+                      undefined,
+                      Object {
+                        "marginBottom": 8,
+                      },
+                    ]
+                  }
+                />
+                <View
                   style={[Function]}
                 >
                   <View
