@@ -24,7 +24,7 @@ jobs:
         with:
           expo-cache: true
           expo-version: 4.x
-          expo-token: ${{ secrets.expo-token }}
+          token: ${{ secrets.expo-token }}
       - run: yarn install
       - run: cp .env.sample .env
       - run: expo publish --release-channel=${{ inputs.channel }}
