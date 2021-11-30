@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-node@v2.5.0
         with:
           node-version: 16
-      - uses: expo/expo-github-action@v5
+      - uses: expo/expo-github-action@6.0.0
         with:
           expo-cache: true
           expo-version: 4.x
