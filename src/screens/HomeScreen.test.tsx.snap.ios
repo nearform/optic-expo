@@ -331,7 +331,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   <Text
                     style={
                       Object {
-                        "color": "#CCCCCC",
+                        "color": "rgba(0, 0, 0, 0.6)",
                         "fontSize": 10,
                         "marginRight": 8,
                       }
@@ -344,6 +344,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       Object {
                         "flexDirection": "row",
                         "justifyContent": "space-between",
+                        "marginBottom": 16,
                       }
                     }
                   >
@@ -355,18 +356,45 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         }
                       }
                     >
-                      <Text
+                      <View
                         style={
                           Object {
-                            "color": "#6D6D68",
-                            "fontFamily": "monospace",
-                            "fontSize": 24,
-                            "marginBottom": 16,
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "justifyContent": "center",
                           }
                         }
                       >
-                        009988
-                      </Text>
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#6D6D68",
+                                "fontFamily": "System",
+                                "fontWeight": "400",
+                              },
+                              Object {
+                                "textAlign": "left",
+                              },
+                              Array [
+                                Object {
+                                  "fontFamily": "RobotoMono_400Regular",
+                                  "fontSize": 24,
+                                },
+                                Object {
+                                  "alignItems": "center",
+                                  "color": "#6D6D68",
+                                  "display": "flex",
+                                  "marginBottom": 0,
+                                },
+                                undefined,
+                              ],
+                            ]
+                          }
+                        >
+                          009988
+                        </Text>
+                      </View>
                       <View
                         accessibilityLabel="copy-otp"
                         accessibilityRole="button"
@@ -410,10 +438,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 "width": 30,
                               },
                               undefined,
-                              Object {
-                                "marginTop": -10,
-                                "padding": 0,
-                              },
+                              undefined,
                             ],
                           ]
                         }
@@ -516,9 +541,31 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <Text
                           style={
-                            Object {
-                              "fontSize": 12,
-                            }
+                            Array [
+                              Object {
+                                "color": "#6D6D68",
+                                "fontFamily": "System",
+                                "fontWeight": "400",
+                              },
+                              Object {
+                                "textAlign": "left",
+                              },
+                              Array [
+                                Object {
+                                  "fontFamily": "RobotoMono_400Regular",
+                                  "fontSize": 24,
+                                },
+                                Object {
+                                  "alignItems": "center",
+                                  "color": "#6D6D68",
+                                  "display": "flex",
+                                  "marginBottom": 0,
+                                },
+                                Object {
+                                  "fontSize": 12,
+                                },
+                              ],
+                            ]
                           }
                         >
                           30
@@ -542,96 +589,196 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 <View
                   style={
                     Object {
-                      "flex": 1,
-                      "marginTop": 16,
-                      "paddingHorizontal": 8,
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingLeft": 8,
+                      "paddingVertical": 16,
                     }
                   }
                 >
-                  <Text
-                    style={
-                      Object {
-                        "color": "#CCCCCC",
-                        "fontSize": 10,
-                        "marginRight": 8,
-                      }
-                    }
-                  >
-                    TOKEN
-                  </Text>
-                  <View
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      }
-                    }
-                  >
+                  <View>
                     <Text
-                      style={
-                        Object {
-                          "color": "#6D6D68",
-                          "fontFamily": "monospace",
-                          "fontSize": 24,
-                          "marginBottom": 16,
-                        }
-                      }
-                    >
-                      some-token
-                    </Text>
-                    <View
-                      accessibilityLabel="copy-otp"
-                      accessibilityRole="button"
-                      accessibilityState={
-                        Object {
-                          "disabled": undefined,
-                        }
-                      }
-                      accessible={true}
-                      focusable={true}
-                      hitSlop={
-                        Object {
-                          "bottom": 6,
-                          "left": 6,
-                          "right": 6,
-                          "top": 6,
-                        }
-                      }
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
                       style={
                         Array [
                           Object {
-                            "overflow": "hidden",
+                            "color": "#6D6D68",
+                            "fontFamily": "System",
+                            "fontWeight": "400",
+                          },
+                          Object {
+                            "textAlign": "left",
                           },
                           Array [
                             Object {
+                              "fontSize": 10,
+                              "fontWeight": "400",
+                              "letterSpacing": 1.1,
+                              "textTransform": "uppercase",
+                            },
+                            Object {
                               "alignItems": "center",
-                              "justifyContent": "center",
-                              "margin": 6,
-                              "overflow": "hidden",
+                              "color": "#6D6D68",
+                              "display": "flex",
+                              "marginBottom": 0,
                             },
                             Object {
-                              "borderRadius": 15,
-                              "height": 30,
-                              "width": 30,
-                            },
-                            undefined,
-                            Object {
-                              "marginTop": -10,
-                              "padding": 0,
+                              "color": "rgba(0, 0, 0, 0.6)",
+                              "fontSize": 10,
+                              "marginRight": 8,
+                              "paddingBottom": 4,
                             },
                           ],
                         ]
                       }
                     >
-                      <View>
-                        <Text />
+                      TOKENS
+                    </Text>
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#6D6D68",
+                            "fontFamily": "System",
+                            "fontWeight": "400",
+                          },
+                          Object {
+                            "textAlign": "left",
+                          },
+                          Array [
+                            Object {
+                              "fontFamily": "RobotoMono_400Regular",
+                              "fontSize": 24,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "color": "#6D6D68",
+                              "display": "flex",
+                              "marginBottom": 0,
+                            },
+                            undefined,
+                          ],
+                        ]
+                      }
+                    >
+                      1
+                    </Text>
+                  </View>
+                  <View>
+                    <View
+                      style={
+                        Object {
+                          "backgroundColor": "transparent",
+                          "borderColor": "transparent",
+                          "borderRadius": 4,
+                          "borderStyle": "solid",
+                          "borderWidth": 0,
+                          "elevation": 0,
+                          "minWidth": 64,
+                        }
+                      }
+                    >
+                      <View
+                        accessibilityRole="button"
+                        accessibilityState={
+                          Object {
+                            "disabled": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Array [
+                            Object {
+                              "overflow": "hidden",
+                            },
+                            Object {
+                              "borderRadius": 4,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "justifyContent": "center",
+                              },
+                              Object {
+                                "flexDirection": "row-reverse",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            style={
+                              Object {
+                                "marginLeft": -4,
+                                "marginRight": 12,
+                              }
+                            }
+                          >
+                            <Text />
+                          </View>
+                          <Text
+                            numberOfLines={1}
+                            selectable={false}
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#6D6D68",
+                                  "fontFamily": "System",
+                                  "fontWeight": "400",
+                                },
+                                Object {
+                                  "textAlign": "left",
+                                },
+                                Array [
+                                  Object {
+                                    "letterSpacing": 1,
+                                    "marginHorizontal": 16,
+                                    "marginVertical": 9,
+                                    "textAlign": "center",
+                                  },
+                                  undefined,
+                                  Object {
+                                    "textTransform": "uppercase",
+                                  },
+                                  Object {
+                                    "color": "#2165E3",
+                                    "fontFamily": "System",
+                                    "fontWeight": "500",
+                                  },
+                                  Object {
+                                    "fontFamily": "System",
+                                    "fontWeight": "500",
+                                  },
+                                  undefined,
+                                ],
+                              ]
+                            }
+                          >
+                            <Text
+                              style={
+                                Object {
+                                  "color": "#2165E3",
+                                  "fontWeight": "bold",
+                                }
+                              }
+                            >
+                              SEE TOKENS
+                            </Text>
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -644,7 +791,9 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         "height": 0.5,
                       },
                       undefined,
-                      undefined,
+                      Object {
+                        "marginBottom": 8,
+                      },
                     ]
                   }
                 />
@@ -663,7 +812,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     <Text
                       style={
                         Object {
-                          "color": "#CCCCCC",
+                          "color": "rgba(0, 0, 0, 0.6)",
                           "fontSize": 10,
                           "marginRight": 8,
                         }
@@ -676,13 +825,32 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         Array [
                           Object {
                             "color": "#6D6D68",
-                            "fontFamily": "monospace",
-                            "fontSize": 24,
-                            "marginBottom": 16,
+                            "fontFamily": "System",
+                            "fontWeight": "400",
                           },
                           Object {
-                            "fontSize": 16,
+                            "textAlign": "left",
                           },
+                          Array [
+                            Object {
+                              "fontFamily": "RobotoMono_400Regular",
+                              "fontSize": 24,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "color": "#6D6D68",
+                              "display": "flex",
+                              "marginBottom": 0,
+                            },
+                            Array [
+                              Object {
+                                "marginBottom": 16,
+                              },
+                              Object {
+                                "fontSize": 16,
+                              },
+                            ],
+                          ],
                         ]
                       }
                     >
@@ -853,7 +1021,120 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       "justifyContent": "flex-end",
                     }
                   }
-                />
+                >
+                  <View
+                    style={
+                      Object {
+                        "backgroundColor": "#2165E3",
+                        "borderColor": "transparent",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "elevation": 2,
+                        "minWidth": 64,
+                        "shadowColor": "#000000",
+                        "shadowOffset": Object {
+                          "height": 0.75,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.24,
+                        "shadowRadius": 1.5,
+                      }
+                    }
+                  >
+                    <View
+                      accessibilityRole="button"
+                      accessibilityState={
+                        Object {
+                          "disabled": undefined,
+                        }
+                      }
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Array [
+                          Object {
+                            "overflow": "hidden",
+                          },
+                          Object {
+                            "borderRadius": 4,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "justifyContent": "center",
+                            },
+                            undefined,
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            Object {
+                              "marginLeft": 12,
+                              "marginRight": -4,
+                            }
+                          }
+                        >
+                          <Text />
+                        </View>
+                        <Text
+                          numberOfLines={1}
+                          selectable={false}
+                          style={
+                            Array [
+                              Object {
+                                "color": "#6D6D68",
+                                "fontFamily": "System",
+                                "fontWeight": "400",
+                              },
+                              Object {
+                                "textAlign": "left",
+                              },
+                              Array [
+                                Object {
+                                  "letterSpacing": 1,
+                                  "marginHorizontal": 16,
+                                  "marginVertical": 9,
+                                  "textAlign": "center",
+                                },
+                                undefined,
+                                Object {
+                                  "textTransform": "uppercase",
+                                },
+                                Object {
+                                  "color": "#ffffff",
+                                  "fontFamily": "System",
+                                  "fontWeight": "500",
+                                },
+                                Object {
+                                  "fontFamily": "System",
+                                  "fontWeight": "500",
+                                },
+                                undefined,
+                              ],
+                            ]
+                          }
+                        >
+                          Add Token
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
               </View>
             </View>
           </View>
@@ -1162,7 +1443,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   <Text
                     style={
                       Object {
-                        "color": "#CCCCCC",
+                        "color": "rgba(0, 0, 0, 0.6)",
                         "fontSize": 10,
                         "marginRight": 8,
                       }
@@ -1175,6 +1456,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       Object {
                         "flexDirection": "row",
                         "justifyContent": "space-between",
+                        "marginBottom": 16,
                       }
                     }
                   >
@@ -1186,18 +1468,45 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         }
                       }
                     >
-                      <Text
+                      <View
                         style={
                           Object {
-                            "color": "#6D6D68",
-                            "fontFamily": "monospace",
-                            "fontSize": 24,
-                            "marginBottom": 16,
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "justifyContent": "center",
                           }
                         }
                       >
-                        009988
-                      </Text>
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#6D6D68",
+                                "fontFamily": "System",
+                                "fontWeight": "400",
+                              },
+                              Object {
+                                "textAlign": "left",
+                              },
+                              Array [
+                                Object {
+                                  "fontFamily": "RobotoMono_400Regular",
+                                  "fontSize": 24,
+                                },
+                                Object {
+                                  "alignItems": "center",
+                                  "color": "#6D6D68",
+                                  "display": "flex",
+                                  "marginBottom": 0,
+                                },
+                                undefined,
+                              ],
+                            ]
+                          }
+                        >
+                          009988
+                        </Text>
+                      </View>
                       <View
                         accessibilityLabel="copy-otp"
                         accessibilityRole="button"
@@ -1241,10 +1550,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 "width": 30,
                               },
                               undefined,
-                              Object {
-                                "marginTop": -10,
-                                "padding": 0,
-                              },
+                              undefined,
                             ],
                           ]
                         }
@@ -1347,9 +1653,31 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <Text
                           style={
-                            Object {
-                              "fontSize": 12,
-                            }
+                            Array [
+                              Object {
+                                "color": "#6D6D68",
+                                "fontFamily": "System",
+                                "fontWeight": "400",
+                              },
+                              Object {
+                                "textAlign": "left",
+                              },
+                              Array [
+                                Object {
+                                  "fontFamily": "RobotoMono_400Regular",
+                                  "fontSize": 24,
+                                },
+                                Object {
+                                  "alignItems": "center",
+                                  "color": "#6D6D68",
+                                  "display": "flex",
+                                  "marginBottom": 0,
+                                },
+                                Object {
+                                  "fontSize": 12,
+                                },
+                              ],
+                            ]
                           }
                         >
                           30
@@ -1371,6 +1699,217 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   }
                 />
                 <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingLeft": 8,
+                      "paddingVertical": 16,
+                    }
+                  }
+                >
+                  <View>
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#6D6D68",
+                            "fontFamily": "System",
+                            "fontWeight": "400",
+                          },
+                          Object {
+                            "textAlign": "left",
+                          },
+                          Array [
+                            Object {
+                              "fontSize": 10,
+                              "fontWeight": "400",
+                              "letterSpacing": 1.1,
+                              "textTransform": "uppercase",
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "color": "#6D6D68",
+                              "display": "flex",
+                              "marginBottom": 0,
+                            },
+                            Object {
+                              "color": "rgba(0, 0, 0, 0.6)",
+                              "fontSize": 10,
+                              "marginRight": 8,
+                              "paddingBottom": 4,
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      TOKENS
+                    </Text>
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#6D6D68",
+                            "fontFamily": "System",
+                            "fontWeight": "400",
+                          },
+                          Object {
+                            "textAlign": "left",
+                          },
+                          Array [
+                            Object {
+                              "fontFamily": "RobotoMono_400Regular",
+                              "fontSize": 24,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "color": "#6D6D68",
+                              "display": "flex",
+                              "marginBottom": 0,
+                            },
+                            undefined,
+                          ],
+                        ]
+                      }
+                    >
+                      0
+                    </Text>
+                  </View>
+                  <View>
+                    <View
+                      style={
+                        Object {
+                          "backgroundColor": "transparent",
+                          "borderColor": "transparent",
+                          "borderRadius": 4,
+                          "borderStyle": "solid",
+                          "borderWidth": 0,
+                          "elevation": 0,
+                          "minWidth": 64,
+                        }
+                      }
+                    >
+                      <View
+                        accessibilityRole="button"
+                        accessibilityState={
+                          Object {
+                            "disabled": undefined,
+                          }
+                        }
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Array [
+                            Object {
+                              "overflow": "hidden",
+                            },
+                            Object {
+                              "borderRadius": 4,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "justifyContent": "center",
+                              },
+                              Object {
+                                "flexDirection": "row-reverse",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            style={
+                              Object {
+                                "marginLeft": -4,
+                                "marginRight": 12,
+                              }
+                            }
+                          >
+                            <Text />
+                          </View>
+                          <Text
+                            numberOfLines={1}
+                            selectable={false}
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#6D6D68",
+                                  "fontFamily": "System",
+                                  "fontWeight": "400",
+                                },
+                                Object {
+                                  "textAlign": "left",
+                                },
+                                Array [
+                                  Object {
+                                    "letterSpacing": 1,
+                                    "marginHorizontal": 16,
+                                    "marginVertical": 9,
+                                    "textAlign": "center",
+                                  },
+                                  undefined,
+                                  Object {
+                                    "textTransform": "uppercase",
+                                  },
+                                  Object {
+                                    "color": "#2165E3",
+                                    "fontFamily": "System",
+                                    "fontWeight": "500",
+                                  },
+                                  Object {
+                                    "fontFamily": "System",
+                                    "fontWeight": "500",
+                                  },
+                                  undefined,
+                                ],
+                              ]
+                            }
+                          >
+                            <Text
+                              style={
+                                Object {
+                                  "color": "#2165E3",
+                                  "fontWeight": "bold",
+                                }
+                              }
+                            >
+                              SEE TOKENS
+                            </Text>
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                        "height": 0.5,
+                      },
+                      undefined,
+                      Object {
+                        "marginBottom": 8,
+                      },
+                    ]
+                  }
+                />
+                <View
                   style={[Function]}
                 >
                   <View
@@ -1385,7 +1924,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     <Text
                       style={
                         Object {
-                          "color": "#CCCCCC",
+                          "color": "rgba(0, 0, 0, 0.6)",
                           "fontSize": 10,
                           "marginRight": 8,
                         }
@@ -1398,13 +1937,32 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         Array [
                           Object {
                             "color": "#6D6D68",
-                            "fontFamily": "monospace",
-                            "fontSize": 24,
-                            "marginBottom": 16,
+                            "fontFamily": "System",
+                            "fontWeight": "400",
                           },
                           Object {
-                            "fontSize": 16,
+                            "textAlign": "left",
                           },
+                          Array [
+                            Object {
+                              "fontFamily": "RobotoMono_400Regular",
+                              "fontSize": 24,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "color": "#6D6D68",
+                              "display": "flex",
+                              "marginBottom": 0,
+                            },
+                            Array [
+                              Object {
+                                "marginBottom": 16,
+                              },
+                              Object {
+                                "fontSize": 16,
+                              },
+                            ],
+                          ],
                         ]
                       }
                     >
@@ -1600,7 +2158,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       accessibilityRole="button"
                       accessibilityState={
                         Object {
-                          "disabled": false,
+                          "disabled": undefined,
                         }
                       }
                       accessible={true}
@@ -1683,7 +2241,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             ]
                           }
                         >
-                          Generate Token
+                          Add Token
                         </Text>
                       </View>
                     </View>

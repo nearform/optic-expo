@@ -1,34 +1,39 @@
 import React from 'react'
 import { IconButton } from 'react-native-paper'
-import { StyleSheet, View, Text, StyleProp, TextStyle } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import * as Clipboard from 'expo-clipboard'
 import Toast from 'react-native-root-toast'
+
+import { TypographyVariant } from '../../lib/theme'
+import { Typography } from '../Typography'
 
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  iconButton: {
-    padding: 0,
-    marginTop: -10,
+  textContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 })
 
 type CopyableInfoProps = {
   children: string
-  textStyle: StyleProp<TextStyle>
+  typographyVariant: TypographyVariant
 }
 
 export const CopyableInfo: React.FC<CopyableInfoProps> = ({
   children,
-  textStyle,
+  typographyVariant,
 }) => {
   return (
     <View style={styles.row}>
-      <Text style={textStyle}>{children}</Text>
+      <View style={styles.textContainer}>
+        <Typography variant={typographyVariant}>{children}</Typography>
+      </View>
       <IconButton
-        style={styles.iconButton}
         icon="content-copy"
         accessibilityLabel="copy-otp"
         size={20}

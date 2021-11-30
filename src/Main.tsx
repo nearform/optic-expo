@@ -9,7 +9,12 @@ import {
   useFonts as useDidactGothic,
   DidactGothic_400Regular,
 } from '@expo-google-fonts/didact-gothic'
+import {
+  useFonts as useRobotoMono,
+  RobotoMono_400Regular,
+} from '@expo-google-fonts/roboto-mono'
 import AppLoading from 'expo-app-loading'
+import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import theme from './lib/theme'
 import { useAuth } from './context/AuthContext'
@@ -19,6 +24,10 @@ import { ScanScreen } from './screens/ScanScreen'
 import { AuthScreen } from './screens/AuthScreen'
 import HomeHeaderRight from './components/HomeHeaderRight'
 import DefaultHeaderLeft from './components/DefaultHeaderLeft'
+import { TokenScreen } from './screens/TokenScreen'
+import { OtpRequestScreen } from './screens/OtpRequestScreen'
+import { TokensListScreen } from './screens/TokensListScreen'
+import { CreateTokenScreen } from './screens/CreateTokenScreen'
 
 const MainStack = createStackNavigator()
 
@@ -26,6 +35,22 @@ export type MainStackParamList = {
   Home: undefined
   Scan: undefined
   Type: undefined
+  CreateToken: {
+    secretId: string
+  }
+  Token: {
+    secretId: string
+    token: string
+  }
+  TokensList: {
+    secretId: string
+    issuer: string
+  }
+  OtpRequest: {
+    secretId: string
+    token: string
+    uniqueId: string
+  }
 }
 
 export default function Main() {
@@ -37,9 +62,13 @@ export default function Main() {
     DidactGothic_400Regular,
   })
 
+  const [hasRobotoMonoLoaded] = useRobotoMono({
+    RobotoMono_400Regular,
+  })
+
   const { user } = useAuth()
 
-  if (!hasPoppinsLoaded || !hasDidactLoaded) {
+  if (!hasPoppinsLoaded || !hasDidactLoaded || !hasRobotoMonoLoaded) {
     return <AppLoading />
   }
 
@@ -64,6 +93,33 @@ export default function Main() {
           name="Home"
           component={HomeScreen}
           options={{ title: 'Your Tokens', headerRight: HomeHeaderRight }}
+        />
+        <MainStack.Screen
+          name="TokensList"
+          component={TokensListScreen}
+          options={({
+            route: {
+              params: { issuer },
+            },
+          }: NativeStackScreenProps<MainStackParamList, 'TokensList'>) => ({
+            title: issuer,
+            headerLeft: DefaultHeaderLeft,
+          })}
+        />
+        <MainStack.Screen
+          name="CreateToken"
+          component={CreateTokenScreen}
+          options={{ title: 'Create token', headerLeft: DefaultHeaderLeft }}
+        />
+        <MainStack.Screen
+          name="Token"
+          component={TokenScreen}
+          options={{ title: 'Token', headerLeft: DefaultHeaderLeft }}
+        />
+        <MainStack.Screen
+          name="OtpRequest"
+          component={OtpRequestScreen}
+          options={{ title: 'OTP Request', headerLeft: DefaultHeaderLeft }}
         />
         <MainStack.Screen
           name="Scan"

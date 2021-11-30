@@ -1,10 +1,15 @@
+export type Token = {
+  token: string
+  description: string
+}
+
 export type Secret = {
   _id: string
   uid: string
   secret: string
   account: string
   issuer: string
-  token?: string
+  tokens?: Token[]
 }
 
 export type Subscription = {

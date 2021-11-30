@@ -11,31 +11,47 @@ type APIOptions = {
 }
 
 export type API = {
-  generateToken: (_: Secret, __: string) => Promise<string>
-  revokeToken: (_: Secret) => Promise<void>
+  generateToken: (_: Secret, __: string, ___?: string) => Promise<string>
+  deleteSecret: (_: Secret) => Promise<void>
+  revokeToken: (_: string) => Promise<void>
   registerSubscription: (_: Subscription) => Promise<string>
   respond: (_: string, __: string, ___: boolean) => Promise<void>
 }
 
 export default function apiFactory(opts: APIOptions): API {
   return {
-    async generateToken(secret, subscriptionId) {
+    async generateToken(secret, subscriptionId, existingToken) {
       const response = await fetch(`${apiUrl}/token`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           authorization: `Bearer ${opts.idToken}`,
         },
-        body: JSON.stringify({ secretId: secret._id, subscriptionId }),
+        body: JSON.stringify({
+          secretId: secret._id,
+          subscriptionId,
+          existingToken,
+        }),
       })
+
+      if (!response.ok) {
+        throw new Error('There was an issue connecting to the server')
+      }
 
       const { token } = await response.json()
 
       return token
     },
-
-    async revokeToken(secret) {
-      await fetch(`${apiUrl}/token/${secret._id}`, {
+    async deleteSecret(secret) {
+      await fetch(`${apiUrl}/secret/${secret._id}`, {
+        method: 'DELETE',
+        headers: {
+          authorization: `Bearer ${opts.idToken}`,
+        },
+      })
+    },
+    async revokeToken(token) {
+      await fetch(`${apiUrl}/token/${token}`, {
         method: 'DELETE',
         headers: {
           authorization: `Bearer ${opts.idToken}`,

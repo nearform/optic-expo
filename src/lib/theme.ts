@@ -16,6 +16,7 @@ export type TypographyVariant =
   | 'button'
   | 'caption'
   | 'overline'
+  | 'code'
 
 const typography: Record<TypographyVariant, TextStyle> = {
   h1: {
@@ -85,6 +86,11 @@ const typography: Record<TypographyVariant, TextStyle> = {
     fontSize: 10,
     fontWeight: '400',
     textTransform: 'uppercase',
+    letterSpacing: 1.1,
+  },
+  code: {
+    fontFamily: 'RobotoMono_400Regular',
+    fontSize: 24,
   },
 }
 
@@ -97,7 +103,7 @@ const theme = {
     ...NavigationDefaultTheme.colors,
     primary: '#2165E3',
     text: '#6D6D68',
-    textSecondary: '#CCCCCC',
+    textSecondary: 'rgba(0, 0, 0, 0.6)',
   },
   typography,
   spacing: (mul: number) => mul * 8,

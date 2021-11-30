@@ -57,18 +57,7 @@ describe('HomeScreen', () => {
 
   it('should match snapshot when there are no secrets', () => {
     const view = setup()
-
     expect(view).toMatchSnapshot()
-  })
-
-  it('register subscription on load', () => {
-    setup()
-
-    expect(registerSubscriptionStub).toHaveBeenCalledTimes(1)
-    expect(registerSubscriptionStub).toHaveBeenCalledWith({
-      token: 'dummy-expo-token',
-      type: 'expo',
-    })
   })
 
   it('renders secret cards when available', () => {
@@ -80,7 +69,7 @@ describe('HomeScreen', () => {
           issuer: 'Some issuer',
           secret: 'mysecret',
           uid: '222',
-          token: 'some-token',
+          tokens: [{ token: 'some-token', description: 'A description' }],
         },
         {
           _id: '222',
