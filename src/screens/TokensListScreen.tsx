@@ -80,8 +80,10 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
 
   const filteredTokens = useMemo(() => {
     if (search.length > 1) {
-      return tokens.filter(({ description }) =>
-        description.toLowerCase().includes(search.toLowerCase())
+      return tokens.filter(
+        ({ token, description }) =>
+          description.toLowerCase().includes(search.toLowerCase()) ||
+          token.toLowerCase().includes(search.toLowerCase())
       )
     } else {
       return tokens
@@ -112,6 +114,7 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
                 accessibilityLabel="Search"
                 placeholder="Search..."
                 placeholderTextColor={theme.colors.disabled}
+                autoCorrect={false}
                 mode="outlined"
                 value={search}
                 onChangeText={setSearch}
