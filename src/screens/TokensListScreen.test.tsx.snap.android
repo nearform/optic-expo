@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TokensListScreen should match snapshot when there are no tokens 1`] = `
+<View
+  collapsable={false}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexGrow": 1,
+        "justifyContent": "flex-start",
+        "paddingHorizontal": 16,
+        "paddingVertical": 24,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "marginTop": 64,
+          "padding": 32,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#6D6D68",
+              "fontFamily": "sans-serif",
+              "fontWeight": "normal",
+            },
+            Object {
+              "textAlign": "left",
+            },
+            Array [
+              Object {
+                "fontFamily": "Poppins_700Bold",
+                "fontSize": 24,
+                "letterSpacing": 0,
+                "lineHeight": 36,
+              },
+              Object {
+                "alignItems": "center",
+                "color": "#6D6D68",
+                "display": "flex",
+                "marginBottom": 0,
+              },
+              Object {
+                "marginBottom": 8,
+                "textAlign": "center",
+              },
+            ],
+          ]
+        }
+      >
+        No Tokens
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#6D6D68",
+              "fontFamily": "sans-serif",
+              "fontWeight": "normal",
+            },
+            Object {
+              "textAlign": "left",
+            },
+            Array [
+              Object {
+                "fontFamily": "DidactGothic_400Regular",
+                "fontSize": 16,
+                "fontWeight": "400",
+                "letterSpacing": 0.5,
+              },
+              Object {
+                "alignItems": "center",
+                "color": "#6D6D68",
+                "display": "flex",
+                "marginBottom": 0,
+              },
+              Object {
+                "textAlign": "center",
+              },
+            ],
+          ]
+        }
+      >
+        Create a new token and it will appear here.
+      </Text>
+    </View>
+  </View>
+</View>
+`;
