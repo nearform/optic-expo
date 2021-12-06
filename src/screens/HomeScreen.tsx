@@ -5,6 +5,7 @@ import { ScrollView, StyleSheet, View } from 'react-native'
 import { Subscription } from 'expo-modules-core'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { useIsFocused } from '@react-navigation/core'
+import Toast from 'react-native-root-toast'
 
 import { useSecrets } from '../context/SecretsContext'
 import { useAuth } from '../context/AuthContext'
@@ -73,8 +74,12 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     try {
       await api.deleteSecret(secret)
       await remove(secret)
+      Toast.show('Secret successfully deleted')
+      return true
     } catch (err) {
       console.log(err)
+      Toast.show(`An error occured while deleting the secret`)
+      return false
     }
   }
 
