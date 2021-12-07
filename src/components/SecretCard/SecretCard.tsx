@@ -1,6 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { Avatar, Button, Card, Divider } from 'react-native-paper'
+import {
+  ActivityIndicator,
+  Avatar,
+  Button,
+  Card,
+  Divider,
+} from 'react-native-paper'
 import Animated from 'react-native-reanimated'
 
 import otpLib from '../../lib/otp'
@@ -52,6 +58,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  deleteLabel: {
+    color: theme.colors.error,
+    fontSize: 16,
+    marginLeft: theme.spacing(1),
+  },
+  deleteActivity: {
+    marginRight: theme.spacing(2),
+  },
 })
 
 const BUTTON_LABELS = {
@@ -63,7 +77,7 @@ type SecretProps = {
   data: Secret
   onAddToken: () => void
   onViewTokens: () => void
-  onDelete: (_: Secret) => void
+  onDelete: (_: Secret) => Promise<boolean>
 }
 
 export const SecretCard: React.FC<SecretProps> = ({
@@ -74,6 +88,7 @@ export const SecretCard: React.FC<SecretProps> = ({
 }) => {
   const [showMenu, setShowMenu] = useState(false)
   const [expanded, setExpanded] = useState(false)
+  const [deleteInProgress, setDeleteInProgress] = useState(false)
   const [otp, setOtp] = useState('')
   const tokens = useMemo(() => (data.tokens ? data.tokens : []), [data])
 
@@ -91,8 +106,10 @@ export const SecretCard: React.FC<SecretProps> = ({
     return () => clearTimeout(timeout)
   }, [data.secret])
 
-  const handleDelete = () => {
-    onDelete(data)
+  const handleDelete = async () => {
+    setDeleteInProgress(true)
+    const deleteSuccessful = await onDelete(data)
+    setDeleteInProgress(deleteSuccessful)
     setShowMenu(false)
   }
 
@@ -135,18 +152,29 @@ export const SecretCard: React.FC<SecretProps> = ({
         </Card.Content>
         <Card.Actions style={styles.cardActions}>
           <View style={styles.leftActions}>
-            <Button
-              compact
-              onPress={handleToggleExpand}
-              icon={expanded ? 'eye-off' : 'eye'}
-            >
-              {BUTTON_LABELS.showSecret}
-            </Button>
+            {deleteInProgress ? (
+              <Text style={styles.deleteLabel}>Deleting secret...</Text>
+            ) : (
+              <Button
+                compact
+                onPress={handleToggleExpand}
+                icon={expanded ? 'eye-off' : 'eye'}
+              >
+                {BUTTON_LABELS.showSecret}
+              </Button>
+            )}
           </View>
           <View style={styles.rightActions}>
-            <Button onPress={onAddToken} mode="contained" icon="plus">
-              {BUTTON_LABELS.addToken}
-            </Button>
+            {deleteInProgress ? (
+              <ActivityIndicator
+                style={styles.deleteActivity}
+                color={theme.colors.error}
+              />
+            ) : (
+              <Button onPress={onAddToken} mode="contained" icon="plus">
+                {BUTTON_LABELS.addToken}
+              </Button>
+            )}
           </View>
         </Card.Actions>
       </Card>

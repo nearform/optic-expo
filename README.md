@@ -16,6 +16,11 @@ Optic is an app that helps you securely generate OTP tokens for 2FA protected np
 2. `yarn`
 3. `yarn start`
 
+## Development
+In order to successfully run the Optic-expo app locally you will need the following:
+1. Expo user account. You can sign up [here](https://expo.dev/signup).
+2. Once you have an Expo account, your account needs to be added to the NearForm organization (ask @simoneb to do that for you).
+
 ## Figma Design
 
 The figma designs can be found [here](https://www.figma.com/file/xsPf6IIM9AevLN5gZlXM4q/Optic-(Copy))
