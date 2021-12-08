@@ -51,7 +51,7 @@ const getDecryptedStorage = async () => {
   const encryptedStorage = await FileSystem.readAsStringAsync(
     storageFileNameURI
   )
-  if (encryptedStorage.length === 0) {
+  if (!encryptedStorage || encryptedStorage.length === 0) {
     return {}
   }
 
