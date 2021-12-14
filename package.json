@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "@babel/preset-typescript": "^7.15.0",
+    "@babel/preset-typescript": "^7.16.5",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
     "@react-native-community/eslint-config": "^3.0.1",
