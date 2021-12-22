@@ -19,6 +19,7 @@ import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import theme from './lib/theme'
 import { useAuth } from './context/AuthContext'
 import { HomeScreen } from './screens/HomeScreen'
+import { SettingsScreen } from './screens/SettingsScreen'
 import { TypeScreen } from './screens/TypeScreen'
 import { ScanScreen } from './screens/ScanScreen'
 import { AuthScreen } from './screens/AuthScreen'
@@ -35,6 +36,7 @@ export type MainStackParamList = {
   Home: undefined
   Scan: undefined
   Type: undefined
+  Settings: undefined
   CreateToken: {
     secretId: string
   }
@@ -93,6 +95,11 @@ export default function Main() {
           name="Home"
           component={HomeScreen}
           options={{ title: 'Your Tokens', headerRight: HomeHeaderRight }}
+        />
+        <MainStack.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{ title: 'Settings' }}
         />
         <MainStack.Screen
           name="TokensList"
