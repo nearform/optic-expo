@@ -13,6 +13,7 @@ import { Typography } from '../components/Typography'
 import { useTokenDataSelector } from '../hooks/use-token-data-selector'
 import { useSecretSelector } from '../hooks/use-secret-selector'
 import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
+import { usePrefs } from '../context/PrefsContext'
 
 const styles = StyleSheet.create({
   container: {
@@ -45,6 +46,7 @@ type Props = NativeStackScreenProps<MainStackParamList, 'OtpRequest'>
 export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const { goBack, canGoBack, navigate } = navigation
   const { user } = useAuth()
+  const { prefs } = usePrefs()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
   const { token, secretId, uniqueId } = route.params
@@ -79,9 +81,11 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   }, [api, canGoBack, goBack, navigate, secret.secret, uniqueId])
 
   const handleApprove = useCallback(async () => {
+    if (!prefs.useBiometricAuth) return approveRequest()
+
     const { success } = await LocalAuthentication.authenticateAsync()
     if (success) approveRequest()
-  }, [approveRequest])
+  }, [approveRequest, prefs])
 
   return (
     <>
