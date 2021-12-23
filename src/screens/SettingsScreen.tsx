@@ -19,10 +19,13 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   row: {
-    paddingHorizontal: theme.spacing(2),
+    marginHorizontal: theme.spacing(2),
     paddingVertical: theme.spacing(2),
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    borderBottomColor: theme.colors.border,
+    borderBottomWidth: 0.8,
   },
 })
 
