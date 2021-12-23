@@ -798,7 +798,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   }
                 />
                 <View
-                  style={[Function]}
+                  style={
+                    Object {
+                      "height": 0,
+                      "opacity": 0,
+                      "overflow": "hidden",
+                    }
+                  }
                 >
                   <View
                     style={
@@ -1910,7 +1916,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   }
                 />
                 <View
-                  style={[Function]}
+                  style={
+                    Object {
+                      "height": 0,
+                      "opacity": 0,
+                      "overflow": "hidden",
+                    }
+                  }
                 >
                   <View
                     style={

@@ -19,13 +19,13 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: 16
+          node-version-file: '.nvmrc'
       - uses: expo/expo-github-action@v6
         with:
           expo-cache: true
-          expo-version: 4.x
+          expo-version: 5.x
           token: ${{ secrets.expo-token }}
-      - run: yarn install
+      - run: yarn
       - run: cp .env.sample .env
       - run: expo publish --release-channel=${{ inputs.channel }}
       - uses: unsplash/comment-on-pr@master
