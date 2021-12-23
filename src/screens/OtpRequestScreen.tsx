@@ -3,6 +3,7 @@ import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import React, { useCallback, useMemo, useState } from 'react'
 import { Avatar, Button } from 'react-native-paper'
 import Toast from 'react-native-root-toast'
+import * as LocalAuthentication from 'expo-local-authentication'
 
 import theme from '../lib/theme'
 import { MainStackParamList } from '../Main'
@@ -12,6 +13,8 @@ import { Typography } from '../components/Typography'
 import { useTokenDataSelector } from '../hooks/use-token-data-selector'
 import { useSecretSelector } from '../hooks/use-secret-selector'
 import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
+import { usePrefs } from '../context/PrefsContext'
+import { useCanUseLocalAuth } from '../hooks/use-can-use-local-auth'
 
 const styles = StyleSheet.create({
   container: {
@@ -44,6 +47,8 @@ type Props = NativeStackScreenProps<MainStackParamList, 'OtpRequest'>
 export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const { goBack, canGoBack, navigate } = navigation
   const { user } = useAuth()
+  const { prefs } = usePrefs()
+  const canUseLocalAuth = useCanUseLocalAuth()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
   const { token, secretId, uniqueId } = route.params
@@ -53,7 +58,7 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleRejectToken = useCallback(async () => {
+  const handleReject = useCallback(async () => {
     setIsLoading(true)
     await api.respond(secret.secret, uniqueId, false)
     Toast.show('OTP request rejected')
@@ -65,7 +70,7 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
     setIsLoading(false)
   }, [api, canGoBack, goBack, navigate, secret.secret, uniqueId])
 
-  const handleApproveToken = useCallback(async () => {
+  const approveRequest = useCallback(async () => {
     setIsLoading(true)
     await api.respond(secret.secret, uniqueId, true)
     Toast.show('OTP request approved')
@@ -76,6 +81,13 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
     }
     setIsLoading(false)
   }, [api, canGoBack, goBack, navigate, secret.secret, uniqueId])
+
+  const handleApprove = useCallback(async () => {
+    if (!canUseLocalAuth || !prefs.useBiometricAuth) return approveRequest()
+
+    const { success } = await LocalAuthentication.authenticateAsync()
+    if (success) approveRequest()
+  }, [approveRequest, canUseLocalAuth, prefs])
 
   return (
     <>
@@ -103,17 +115,13 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
           <Typography variant="body1">{description}</Typography>
         </View>
         <View>
-          <Button
-            style={styles.button}
-            mode="outlined"
-            onPress={handleRejectToken}
-          >
+          <Button style={styles.button} mode="outlined" onPress={handleReject}>
             Reject
           </Button>
           <Button
             style={styles.button}
             mode="contained"
-            onPress={handleApproveToken}
+            onPress={handleApprove}
           >
             Approve
           </Button>

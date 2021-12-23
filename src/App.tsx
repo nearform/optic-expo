@@ -8,16 +8,19 @@ import { AuthProvider } from './context/AuthContext'
 import { SecretsProvider } from './context/SecretsContext'
 import theme from './lib/theme'
 import Main from './Main'
+import { PrefsProvider } from './context/PrefsContext'
 
 export default function App() {
   return (
     <AuthProvider>
       <RootSiblingParent>
         <SecretsProvider>
-          <PaperProvider theme={theme}>
-            <Main />
-            <StatusBar style="auto" />
-          </PaperProvider>
+          <PrefsProvider>
+            <PaperProvider theme={theme}>
+              <Main />
+              <StatusBar style="auto" />
+            </PaperProvider>
+          </PrefsProvider>
         </SecretsProvider>
       </RootSiblingParent>
     </AuthProvider>
