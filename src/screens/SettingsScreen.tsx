@@ -7,7 +7,7 @@ import { usePrefs } from '../context/PrefsContext'
 import { MainStackParamList } from '../Main'
 import theme from '../lib/theme'
 import { Typography } from '../components/Typography'
-import { useCanUseBiometric } from '../hooks/use-can-use-biometric'
+import { useCanUseLocalAuth } from '../hooks/use-can-use-local-auth'
 
 const styles = StyleSheet.create({
   container: {
@@ -32,19 +32,19 @@ type SettingsScreenProps = {
 
 export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
   const { prefs, save } = usePrefs()
-  const canUseBiometric = useCanUseBiometric()
+  const canUseLocalAuth = useCanUseLocalAuth()
 
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
         <View style={styles.row}>
-          <Typography variant="subtitle1">Use Biometric</Typography>
+          <Typography variant="subtitle1">Require Auth for Approval</Typography>
           <Switch
             value={prefs.useBiometricAuth}
             onValueChange={() => {
               save('useBiometricAuth', !prefs.useBiometricAuth)
             }}
-            disabled={!canUseBiometric}
+            disabled={!canUseLocalAuth}
           />
         </View>
       </ScrollView>

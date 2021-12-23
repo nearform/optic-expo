@@ -14,6 +14,7 @@ import { useTokenDataSelector } from '../hooks/use-token-data-selector'
 import { useSecretSelector } from '../hooks/use-secret-selector'
 import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
 import { usePrefs } from '../context/PrefsContext'
+import { useCanUseLocalAuth } from '../hooks/use-can-use-local-auth'
 
 const styles = StyleSheet.create({
   container: {
@@ -47,6 +48,7 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const { goBack, canGoBack, navigate } = navigation
   const { user } = useAuth()
   const { prefs } = usePrefs()
+  const canUseLocalAuth = useCanUseLocalAuth()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
   const { token, secretId, uniqueId } = route.params
@@ -81,11 +83,11 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   }, [api, canGoBack, goBack, navigate, secret.secret, uniqueId])
 
   const handleApprove = useCallback(async () => {
-    if (!prefs.useBiometricAuth) return approveRequest()
+    if (!canUseLocalAuth || !prefs.useBiometricAuth) return approveRequest()
 
     const { success } = await LocalAuthentication.authenticateAsync()
     if (success) approveRequest()
-  }, [approveRequest, prefs])
+  }, [approveRequest, canUseLocalAuth, prefs])
 
   return (
     <>
