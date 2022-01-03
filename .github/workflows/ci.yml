@@ -22,8 +22,20 @@ jobs:
         env:
           DISABLE_MOCKED_WARNING: true
 
+  automerge:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          approve-only: true
+
   deploy-expo-preview:
-    needs: [build]
+    needs: build
     if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]'
     uses: nearform/optic-expo/.github/workflows/expo-publish.yml@master
     with:
