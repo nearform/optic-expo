@@ -19,6 +19,7 @@ export type Subscription = {
 
 export type User = {
   name: string | null
+  email: string
   uid: string
   idToken: string
 }

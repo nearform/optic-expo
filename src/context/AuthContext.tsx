@@ -89,6 +89,7 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
 
       setUser({
         name: firebaseUser.displayName,
+        email: firebaseUser.email,
         uid: firebaseUser.uid,
         idToken: await firebaseUser.getIdToken(),
       })
