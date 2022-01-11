@@ -49,6 +49,7 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
         <View style={styles.row}>
           <Typography variant="subtitle1">Require Auth for Approval</Typography>
           <Switch
+            color={theme.colors.primary}
             value={prefs.useBiometricAuth}
             onValueChange={() => {
               save('useBiometricAuth', !prefs.useBiometricAuth)

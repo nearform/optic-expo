@@ -99,7 +99,7 @@ export default function Main() {
         <MainStack.Screen
           name="Settings"
           component={SettingsScreen}
-          options={{ title: 'Settings' }}
+          options={{ title: 'Settings', headerLeft: DefaultHeaderLeft }}
         />
         <MainStack.Screen
           name="TokensList"

@@ -76,7 +76,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
             onChange={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
-            onTintColor="#03dac4"
+            onTintColor="#2165E3"
             style={
               Object {
                 "height": 31,
