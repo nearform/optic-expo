@@ -30,6 +30,7 @@ export default {
       fallbackToCacheTimeout: 0,
     },
     assetBundlePatterns: ['**/*'],
+    platforms: ['android', 'ios'],
     ios: {
       supportsTablet: true,
     },
@@ -38,9 +39,6 @@ export default {
         foregroundImage: './src/assets/adaptive-icon.png',
         backgroundColor: '#FFFFFF',
       },
-    },
-    web: {
-      favicon: './src/assets/favicon.png',
     },
   },
 }
