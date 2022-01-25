@@ -13,7 +13,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@expo-google-fonts/didact-gothic": "^0.2.0",
+    "@expo-google-fonts/didact-gothic": "^0.2.2",
     "@expo-google-fonts/poppins": "^0.2.2",
     "@expo-google-fonts/roboto-mono": "^0.2.0",
     "@otplib/core": "^12.0.1",

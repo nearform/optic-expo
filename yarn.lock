@@ -1259,10 +1259,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@expo-google-fonts/didact-gothic@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/didact-gothic/-/didact-gothic-0.2.0.tgz#37a3da25dd3895b3822b54809253b20bbeb8d66f"
-  integrity sha512-pBo3cC9RvXbRYv1yH+btYrJD2Jtaf7/rIcjlbGhFMurMxs+i2y6rIsIlltycwf26+qQhHHeynjUdvfDNlmn3UQ==
+"@expo-google-fonts/didact-gothic@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/didact-gothic/-/didact-gothic-0.2.2.tgz#b889f6cc9cdc84450f37e5b954944608ea2f1826"
+  integrity sha512-XKUh9PLIC39IWTpjv/iU28tDZS7EeivdwCh7qzQVjWMZhlcTxnJpMdLpDlv9/GfEJ1IIHttvY6s+EEYNurf2jA==
 
 "@expo-google-fonts/poppins@^0.2.2":
   version "0.2.2"
