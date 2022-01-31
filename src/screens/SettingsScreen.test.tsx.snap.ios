@@ -41,6 +41,8 @@ exports[`SettingsScreen should match snapshot 1`] = `
           }
         >
           <Text
+            onPressIn={false}
+            onPressOut={false}
             style={
               Array [
                 Object {
@@ -97,6 +99,8 @@ exports[`SettingsScreen should match snapshot 1`] = `
             }
           >
             <Text
+              onPressIn={false}
+              onPressOut={false}
               style={
                 Array [
                   Object {
