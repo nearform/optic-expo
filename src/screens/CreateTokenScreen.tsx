@@ -112,6 +112,7 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
         </View>
         <View style={styles.description}>
           <TextInput
+            autoComplete={false}
             ref={ref}
             textAlign="left"
             label="Description"

@@ -99,16 +99,25 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
       <View style={styles.container}>
         {tokensCount > 1 && (
           <>
-            <Text style={styles.tokensCount}>
+            <Text
+              style={styles.tokensCount}
+              onPressIn={false}
+              onPressOut={false}
+            >
               <Typography variant="code" style={styles.tokensCountLabel}>
                 {tokensCount}
               </Typography>{' '}
-              <Text style={styles.tokensCountValue}>
+              <Text
+                style={styles.tokensCountValue}
+                onPressIn={false}
+                onPressOut={false}
+              >
                 {tokensCount === 1 ? 'TOKEN' : 'TOKENS'}
               </Text>
             </Text>
             <View style={styles.searchArea}>
               <TextInput
+                autoComplete={false}
                 textAlign="left"
                 label="Search"
                 accessibilityLabel="Search"

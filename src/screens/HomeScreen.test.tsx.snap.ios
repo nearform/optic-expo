@@ -160,6 +160,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             Array [
                               Object {
                                 "minHeight": 30,
+                                "paddingRight": 16,
                               },
                               Object {
                                 "marginBottom": 0,
@@ -172,6 +173,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     }
                   >
                     <Text
+                      onPressIn={false}
+                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -236,6 +239,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               Object {
                                 "marginVertical": 0,
                                 "minHeight": 20,
+                                "paddingRight": 16,
                               },
                               undefined,
                             ],
@@ -366,6 +370,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         }
                       >
                         <Text
+                          onPressIn={false}
+                          onPressOut={false}
                           style={
                             Array [
                               Object {
@@ -532,6 +538,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         }
                       >
                         <Text
+                          onPressIn={false}
+                          onPressOut={false}
                           style={
                             Array [
                               Object {
@@ -591,6 +599,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 >
                   <View>
                     <Text
+                      onPressIn={false}
+                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -627,6 +637,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       TOKENS
                     </Text>
                     <Text
+                      onPressIn={false}
+                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -819,6 +831,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       SECRET
                     </Text>
                     <Text
+                      onPressIn={false}
+                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -1270,6 +1284,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             Array [
                               Object {
                                 "minHeight": 30,
+                                "paddingRight": 16,
                               },
                               Object {
                                 "marginBottom": 0,
@@ -1282,6 +1297,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     }
                   >
                     <Text
+                      onPressIn={false}
+                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -1346,6 +1363,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               Object {
                                 "marginVertical": 0,
                                 "minHeight": 20,
+                                "paddingRight": 16,
                               },
                               undefined,
                             ],
@@ -1476,6 +1494,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         }
                       >
                         <Text
+                          onPressIn={false}
+                          onPressOut={false}
                           style={
                             Array [
                               Object {
@@ -1642,6 +1662,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         }
                       >
                         <Text
+                          onPressIn={false}
+                          onPressOut={false}
                           style={
                             Array [
                               Object {
@@ -1701,6 +1723,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 >
                   <View>
                     <Text
+                      onPressIn={false}
+                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -1737,6 +1761,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       TOKENS
                     </Text>
                     <Text
+                      onPressIn={false}
+                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -1929,6 +1955,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       SECRET
                     </Text>
                     <Text
+                      onPressIn={false}
+                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -2291,6 +2319,8 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
           }
         >
           <Text
+            onPressIn={false}
+            onPressOut={false}
             style={
               Array [
                 Object {
@@ -2322,6 +2352,8 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
             No Secrets
           </Text>
           <Text
+            onPressIn={false}
+            onPressOut={false}
             style={
               Array [
                 Object {
