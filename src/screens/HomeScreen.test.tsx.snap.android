@@ -449,8 +449,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Countdown timer"
-                      accessible={true}
                       style={
                         Object {
                           "height": 30,
@@ -481,9 +479,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <RNSVGGroup>
                           <RNSVGPath
-                            d="m 15,1.5
-          a 13.5,13.5 0 1,0 0,27
-          a 13.5,13.5 0 1,0 0,-27"
+                            d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
                             fill={null}
                             propList={
                               Array [
@@ -496,9 +492,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             strokeWidth={3}
                           />
                           <RNSVGPath
-                            d="m 15,1.5
-          a 13.5,13.5 0 1,0 0,27
-          a 13.5,13.5 0 1,0 0,-27"
+                            d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
                             fill={null}
                             propList={
                               Array [
@@ -524,8 +518,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         </RNSVGGroup>
                       </RNSVGSvgView>
                       <View
-                        accessibilityElementsHidden={true}
-                        importantForAccessibility="no-hide-descendants"
                         style={
                           Object {
                             "alignItems": "center",
@@ -1567,8 +1559,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       </View>
                     </View>
                     <View
-                      accessibilityLabel="Countdown timer"
-                      accessible={true}
                       style={
                         Object {
                           "height": 30,
@@ -1599,9 +1589,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <RNSVGGroup>
                           <RNSVGPath
-                            d="m 15,1.5
-          a 13.5,13.5 0 1,0 0,27
-          a 13.5,13.5 0 1,0 0,-27"
+                            d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
                             fill={null}
                             propList={
                               Array [
@@ -1614,9 +1602,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             strokeWidth={3}
                           />
                           <RNSVGPath
-                            d="m 15,1.5
-          a 13.5,13.5 0 1,0 0,27
-          a 13.5,13.5 0 1,0 0,-27"
+                            d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
                             fill={null}
                             propList={
                               Array [
@@ -1642,8 +1628,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         </RNSVGGroup>
                       </RNSVGSvgView>
                       <View
-                        accessibilityElementsHidden={true}
-                        importantForAccessibility="no-hide-descendants"
                         style={
                           Object {
                             "alignItems": "center",
