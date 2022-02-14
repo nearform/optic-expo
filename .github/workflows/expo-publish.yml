@@ -27,10 +27,8 @@ jobs:
           token: ${{ secrets.expo-token }}
       - run: yarn
       - run: cp .env.sample .env
-      - run: expo publish --release-channel=${{ inputs.channel }}
-      - uses: unsplash/comment-on-pr@master
+      - run: expo publish --release-channel=${{ inputs.channel }} --non-interactive
+      - uses: expo/expo-github-action/preview-comment@v7
         if: github.event_name == 'pull_request'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          msg: App is ready for review, you can [see it here](https://expo.dev/@nearform/optic-expo?release-channel=${{ inputs.channel }}).
+          channel: ${{ inputs.channel }}
