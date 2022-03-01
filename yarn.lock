@@ -8522,10 +8522,10 @@ react-native-root-toast@^3.3.0:
     prop-types "^15.5.10"
     react-native-root-siblings "^4.0.0"
 
-react-native-safe-area-context@3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.3.2.tgz#9549a2ce580f2374edb05e49d661258d1b8bcaed"
-  integrity sha512-yOwiiPJ1rk+/nfK13eafbpW6sKW0jOnsRem2C1LPJjM3tfTof6hlvV5eWHATye3XOpu2cJ7N+HdkUvUDGwFD2Q==
+react-native-safe-area-context@4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.0.2.tgz#7d7a71461b241c1642579b6e509a81a5c2091a2a"
+  integrity sha512-iRGwIGFbEW2Z/1XM3R638aXZ4YxHUfeQhSdTivRd031DAemjBTxXbus5mU8zAf1YWSCwLMdsgN8X+pcHvABHyQ==
 
 react-native-screens@^3.4.0, react-native-screens@~3.10.1:
   version "3.10.1"
