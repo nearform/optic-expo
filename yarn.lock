@@ -2603,10 +2603,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@>=16.9.0", "@types/react@~17.0.39":
-  version "17.0.39"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.39.tgz#d0f4cde092502a6db00a1cded6e6bf2abb7633ce"
-  integrity sha512-UVavlfAxDd/AgAacMa60Azl7ygyQNRwC/DsHZmKgNvPmRR5p70AJ5Q9EAmL2NWOJmeV+vVUI4IAP7GZrN8h8Ug==
+"@types/react@*", "@types/react@>=16.9.0", "@types/react@~17.0.40":
+  version "17.0.40"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.40.tgz#dc010cee6254d5239a138083f3799a16638e6bad"
+  integrity sha512-UrXhD/JyLH+W70nNSufXqMZNuUD2cXHu6UjCllC6pmOQgBX4SGXOH8fjRka0O0Ee0HrFxapDD8Bwn81Kmiz6jQ==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -6936,9 +6936,9 @@ lines-and-columns@^1.1.6:
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
 lint-staged@>=12:
-  version "12.3.4"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-12.3.4.tgz#4b1ff8c394c3e6da436aaec5afd4db18b5dac360"
-  integrity sha512-yv/iK4WwZ7/v0GtVkNb3R82pdL9M+ScpIbJLJNyCXkJ1FGaXvRCOg/SeL59SZtPpqZhE7BD6kPKFLIDUhDx2/w==
+  version "12.3.7"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-12.3.7.tgz#ad0e2014302f704f9cf2c0ebdb97ac63d0f17be0"
+  integrity sha512-/S4D726e2GIsDVWIk1XGvheCaDm1SJRQp8efamZFWJxQMVEbOwSysp7xb49Oo73KYCdy97mIWinhlxcoNqIfIQ==
   dependencies:
     cli-truncate "^3.1.0"
     colorette "^2.0.16"
@@ -6950,6 +6950,7 @@ lint-staged@>=12:
     micromatch "^4.0.4"
     normalize-path "^3.0.0"
     object-inspect "^1.12.0"
+    pidtree "^0.5.0"
     string-argv "^0.3.1"
     supports-color "^9.2.1"
     yaml "^1.10.2"
@@ -8144,6 +8145,11 @@ picomatch@^2.0.4, picomatch@^2.2.3:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.0.tgz#f1f061de8f6a4bf022892e2d128234fb98302972"
   integrity sha512-lY1Q/PiJGC2zOv/z391WOTD+Z02bCgsFfvxoXXf6h7kv9o+WmsmzYqrAwY63sNgOxE4xEdq0WyUnXfKeBrSvYw==
+
+pidtree@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/pidtree/-/pidtree-0.5.0.tgz#ad5fbc1de78b8a5f99d6fbdd4f6e4eee21d1aca1"
+  integrity sha512-9nxspIM7OpZuhBxPg73Zvyq7j1QMPMPsGKTqRc2XOaFQauDvoNz9fM1Wdkjmeo7l9GXOZiRs97sPkuayl39wjA==
 
 pify@^4.0.1:
   version "4.0.1"
