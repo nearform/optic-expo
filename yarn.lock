@@ -8465,10 +8465,10 @@ react-native-codegen@^0.0.6:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
-react-native-countdown-circle-timer@^3.0.8:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/react-native-countdown-circle-timer/-/react-native-countdown-circle-timer-3.0.8.tgz#4d33b4c343f0b50c173f6ccbae249ec67b7ba13f"
-  integrity sha512-HmuASeSlT8+eIVf5dRK402iCon/xQXYUAhzgFXgQWljYFoR28gyDHUcR0kQBG309yZivHPS6W+NiRm3NRdT/VQ==
+react-native-countdown-circle-timer@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-countdown-circle-timer/-/react-native-countdown-circle-timer-3.0.9.tgz#ef16c9301197922669bc3afa498d5a1218e59aa9"
+  integrity sha512-7djFk+2QQS9FAhfIUhwQoc+P/7Vkn9EJApr6zUWK9B5QvHP07UlqIWfhIPqqeMa4kP6y5Y2S3YL+xeRsq2tNfg==
 
 react-native-gesture-handler@~2.1.0:
   version "2.1.0"
