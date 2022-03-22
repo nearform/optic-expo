@@ -58,6 +58,3 @@ As you can see by the home page layout, you can generate many tokens to read the
 ![image](https://user-images.githubusercontent.com/11404065/159178635-418e231c-aa9c-4828-bb41-6f68cfb18059.png)
 
 By doing so, you will be able to understand who is the caller that want to read your OTP.
-
-
-The first step to use the `optic-expo` application is adding a Secret. You can add it by scanning a QR code provided by the OTP Issuer or by inputing it manually.
