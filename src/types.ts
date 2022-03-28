@@ -23,3 +23,9 @@ export type User = {
   uid: string
   idToken: string
 }
+
+export type NotificationData = {
+  secretId: string
+  uniqueId: string
+  token: string
+}

@@ -63,6 +63,7 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const handleReject = useCallback(async () => {
     setIsLoading(true)
     await api.respond(secret.secret, uniqueId, false)
+    await removeNotification(notificationId)
     Toast.show('OTP request rejected')
     if (canGoBack()) {
       goBack()
@@ -70,7 +71,6 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
       navigate('Home')
     }
     setIsLoading(false)
-    await removeNotification(notificationId)
   }, [
     api,
     canGoBack,
@@ -85,6 +85,7 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const approveRequest = useCallback(async () => {
     setIsLoading(true)
     await api.respond(secret.secret, uniqueId, true)
+    await removeNotification(notificationId)
     Toast.show('OTP request approved')
     if (canGoBack()) {
       goBack()
@@ -92,7 +93,6 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
       navigate('Home')
     }
     setIsLoading(false)
-    await removeNotification(notificationId)
   }, [
     api,
     canGoBack,

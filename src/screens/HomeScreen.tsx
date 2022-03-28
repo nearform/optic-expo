@@ -14,14 +14,8 @@ import apiFactory from '../lib/api'
 import { NoSecrets } from '../components/NoSecrets'
 import { Actions } from '../components/Actions'
 import { SecretCard } from '../components/SecretCard'
-import { Secret } from '../types'
+import { NotificationData, Secret } from '../types'
 import { MainStackParamList } from '../Main'
-
-type NotificationData = {
-  secretId: string
-  uniqueId: string
-  token: string
-}
 
 const styles = StyleSheet.create({
   container: {

@@ -8,7 +8,6 @@ import {
 } from '../components/NotificationCard'
 import { usePendingNotifications } from '../context/PendingNotificationsContext'
 
-// TODO: Share styles object with HomeScreen.tsx?
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -28,7 +27,12 @@ export const NotificationsScreen = () => {
       <ScrollView contentContainerStyle={styles.scrollView}>
         {pendingNotifications.length === 0
           ? NoPendingNotifications()
-          : pendingNotifications.map(() => NotificationCard())}
+          : pendingNotifications.map(notification => (
+              <NotificationCard
+                key={notification.request.identifier}
+                notification={notification}
+              />
+            ))}
       </ScrollView>
     </View>
   )
