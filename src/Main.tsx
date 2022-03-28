@@ -54,6 +54,9 @@ export type MainStackParamList = {
     uniqueId: string
     notificationId: string
   }
+  Notifications: {
+    //
+  }
 }
 
 export default function Main() {
