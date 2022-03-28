@@ -49,6 +49,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const { user } = useAuth()
   const { secrets, remove } = useSecrets()
   const isFocused = useIsFocused()
+  const notificationListener = useRef<Subscription>()
   const responseListener = useRef<Subscription>()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
@@ -84,6 +85,13 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   }
 
   const onNotification = useCallback(
+    async (_res: Notifications.Notification) => {
+      // Do nothing, for now
+    },
+    []
+  )
+
+  const onNotificationResponse = useCallback(
     async (res: NotificationResponse) => {
       const data = res.notification.request.content.data as NotificationData
 
@@ -106,13 +114,19 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   )
 
   useEffect(() => {
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener(onNotification)
+
     responseListener.current =
-      Notifications.addNotificationResponseReceivedListener(onNotification)
+      Notifications.addNotificationResponseReceivedListener(
+        onNotificationResponse
+      )
 
     return () => {
       Notifications.removeNotificationSubscription(responseListener.current)
+      Notifications.removeNotificationSubscription(notificationListener.current)
     }
-  }, [onNotification])
+  }, [onNotification, onNotificationResponse])
 
   return (
     <View style={styles.container}>
