@@ -7,6 +7,7 @@ import * as LocalAuthentication from 'expo-local-authentication'
 
 import theme from '../lib/theme'
 import { MainStackParamList } from '../Main'
+import { usePendingNotifications } from '../context/PendingNotificationsContext'
 import { useAuth } from '../context/AuthContext'
 import apiFactory from '../lib/api'
 import { Typography } from '../components/Typography'
@@ -51,11 +52,12 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const canUseLocalAuth = useCanUseLocalAuth()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
-  const { token, secretId, uniqueId } = route.params
+  const { token, secretId, uniqueId, notificationId } = route.params
   const secret = useSecretSelector(secretId)
   const tokenData = useTokenDataSelector(secretId, token)
   const description = tokenData ? tokenData.description : ''
 
+  const { removeNotification } = usePendingNotifications()
   const [isLoading, setIsLoading] = useState(false)
 
   const handleReject = useCallback(async () => {
@@ -68,7 +70,17 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
       navigate('Home')
     }
     setIsLoading(false)
-  }, [api, canGoBack, goBack, navigate, secret.secret, uniqueId])
+    await removeNotification(notificationId)
+  }, [
+    api,
+    canGoBack,
+    goBack,
+    navigate,
+    secret.secret,
+    uniqueId,
+    notificationId,
+    removeNotification,
+  ])
 
   const approveRequest = useCallback(async () => {
     setIsLoading(true)
@@ -80,7 +92,17 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
       navigate('Home')
     }
     setIsLoading(false)
-  }, [api, canGoBack, goBack, navigate, secret.secret, uniqueId])
+    await removeNotification(notificationId)
+  }, [
+    api,
+    canGoBack,
+    goBack,
+    navigate,
+    secret.secret,
+    uniqueId,
+    notificationId,
+    removeNotification,
+  ])
 
   const handleApprove = useCallback(async () => {
     if (!canUseLocalAuth || !prefs.useBiometricAuth) return approveRequest()
