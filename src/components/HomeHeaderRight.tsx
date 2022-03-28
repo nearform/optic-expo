@@ -18,6 +18,7 @@ export default function HomeHeaderRight() {
     <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
       <IconButton
         icon="bell"
+        // TODO: Add notifications counter instead of changing color
         color={
           hasPendingNotifications
             ? theme.colors.notification
