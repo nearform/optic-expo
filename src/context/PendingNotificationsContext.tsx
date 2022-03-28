@@ -1,20 +1,25 @@
 import React, {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
   useState,
 } from 'react'
+import { Notification } from 'expo-notifications'
 
 import * as storage from '../lib/secure-storage'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PendingNotification {}
-
-const defaultPendingNotifications: PendingNotification[] = []
+const defaultPendingNotifications: Notification[] = []
 
 const initialContext = {
   pendingNotifications: defaultPendingNotifications,
+  addNotification: async (_notification: Notification) => {
+    // set in context provider construction
+  },
+  removeNotification: async (_notificationId: string) => {
+    // set in context provider construction
+  },
 }
 
 const PendingNotificationsContext = createContext(initialContext)
@@ -26,9 +31,7 @@ export const PendingNotificationsProvider = ({ children }) => {
 
   useEffect(() => {
     async function fn() {
-      const s = await storage.getObject<PendingNotification[]>(
-        'pendingNotifications'
-      )
+      const s = await storage.getObject<Notification[]>('pendingNotifications')
       if (s) {
         setPendingNotifications(s)
       }
@@ -37,9 +40,48 @@ export const PendingNotificationsProvider = ({ children }) => {
     fn()
   }, [])
 
-  const value = useMemo(
-    () => ({ pendingNotifications }),
+  const addNotification = useCallback(
+    async (notification: Notification) => {
+      const notificationId = notification.request.identifier
+      const notAddedYet =
+        pendingNotifications.findIndex(
+          notification => notification.request.identifier === notificationId
+        ) === -1
+
+      if (notAddedYet) {
+        const updatedPendingNotifications = [
+          ...pendingNotifications,
+          notification,
+        ]
+        await storage.saveObject(
+          'pendingNotifications',
+          updatedPendingNotifications
+        )
+        setPendingNotifications(updatedPendingNotifications)
+      }
+    },
     [pendingNotifications]
+  )
+
+  const removeNotification = useCallback(
+    async (notificationId: string) => {
+      const updatedPendingNotifications = pendingNotifications.filter(
+        notification => notification.request.identifier !== notificationId
+      )
+      if (updatedPendingNotifications.length !== pendingNotifications.length) {
+        setPendingNotifications(updatedPendingNotifications)
+        await storage.saveObject(
+          'pendingNotifications',
+          updatedPendingNotifications
+        )
+      }
+    },
+    [pendingNotifications]
+  )
+
+  const value = useMemo(
+    () => ({ pendingNotifications, addNotification, removeNotification }),
+    [pendingNotifications, addNotification, removeNotification]
   )
 
   return (
