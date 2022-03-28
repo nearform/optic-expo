@@ -7,6 +7,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { useIsFocused } from '@react-navigation/core'
 import Toast from 'react-native-root-toast'
 
+import { usePendingNotifications } from '../context/PendingNotificationsContext'
 import { useSecrets } from '../context/SecretsContext'
 import { useAuth } from '../context/AuthContext'
 import apiFactory from '../lib/api'
@@ -48,6 +49,7 @@ type HomeScreenProps = {
 export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const { user } = useAuth()
   const { secrets, remove } = useSecrets()
+  const { addNotification } = usePendingNotifications()
   const isFocused = useIsFocused()
   const notificationListener = useRef<Subscription>()
   const responseListener = useRef<Subscription>()
@@ -85,10 +87,10 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   }
 
   const onNotification = useCallback(
-    async (_res: Notifications.Notification) => {
-      // Do nothing, for now
+    async (notification: Notifications.Notification) => {
+      addNotification(notification)
     },
-    []
+    [addNotification]
   )
 
   const onNotificationResponse = useCallback(
@@ -104,10 +106,12 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         return
       }
 
+      const notificationId = res.notification.request.identifier
       navigation.navigate('OtpRequest', {
         token,
         secretId,
         uniqueId,
+        notificationId,
       })
     },
     [navigation, secrets]

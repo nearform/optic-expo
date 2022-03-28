@@ -52,6 +52,7 @@ export type MainStackParamList = {
     secretId: string
     token: string
     uniqueId: string
+    notificationId: string
   }
 }
 

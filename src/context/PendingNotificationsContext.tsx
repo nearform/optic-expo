@@ -53,11 +53,11 @@ export const PendingNotificationsProvider = ({ children }) => {
           ...pendingNotifications,
           notification,
         ]
+        setPendingNotifications(updatedPendingNotifications)
         await storage.saveObject(
           'pendingNotifications',
           updatedPendingNotifications
         )
-        setPendingNotifications(updatedPendingNotifications)
       }
     },
     [pendingNotifications]
