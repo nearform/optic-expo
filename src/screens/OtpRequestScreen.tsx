@@ -108,7 +108,7 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
     if (!canUseLocalAuth || !prefs.useBiometricAuth) return approveRequest()
 
     const { success } = await LocalAuthentication.authenticateAsync()
-    if (success) approveRequest()
+    if (success) await approveRequest()
   }, [approveRequest, canUseLocalAuth, prefs])
 
   return (

@@ -1,14 +1,20 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import TimeAgo from 'react-timeago'
+import * as LocalAuthentication from 'expo-local-authentication'
 import { Notification } from 'expo-notifications'
 import { StyleSheet, View } from 'react-native'
 import { Avatar, Button, Card, Text } from 'react-native-paper'
 
+import apiFactory from '../lib/api'
 import theme from '../lib/theme'
+import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
+import { NotificationData } from '../types'
+import { useAuth } from '../context/AuthContext'
+import { useCanUseLocalAuth } from '../hooks/use-can-use-local-auth'
 import { usePendingNotifications } from '../context/PendingNotificationsContext'
+import { usePrefs } from '../context/PrefsContext'
 import { useSecretSelector } from '../hooks/use-secret-selector'
 import { useTokenDataSelector } from '../hooks/use-token-data-selector'
-import { NotificationData } from '../types'
 
 import { Typography } from './Typography'
 
@@ -90,64 +96,98 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
   const secret = useSecretSelector(data.secretId)
   const token = useTokenDataSelector(data.secretId, data.token)
 
+  const { user } = useAuth()
+  const { prefs } = usePrefs()
+  const canUseLocalAuth = useCanUseLocalAuth()
+
+  const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
   const { removeNotification } = usePendingNotifications()
+  const [isLoading, setIsLoading] = useState(false)
 
   // This is sensible to clocks' drift and lack of synchronization, but if we
   // take into account the roundtrip time, it's not that bad.
   const expired = new Date().getTime() > notification.date + OTP_REQUEST_TIMEOUT
 
+  const handleReject = useCallback(async () => {
+    setIsLoading(true)
+    await api.respond(secret.secret, data.uniqueId, false)
+    await removeNotification(data.uniqueId)
+    setIsLoading(false)
+  }, [data.uniqueId, secret.secret, api, removeNotification])
+
+  const approveRequest = useCallback(async () => {
+    setIsLoading(true)
+    await api.respond(secret.secret, data.uniqueId, true)
+    await removeNotification(data.uniqueId)
+    setIsLoading(false)
+  }, [data.uniqueId, secret.secret, api, removeNotification])
+
+  const handleApprove = useCallback(async () => {
+    if (!canUseLocalAuth || !prefs.useBiometricAuth) {
+      return approveRequest()
+    }
+
+    const { success } = await LocalAuthentication.authenticateAsync()
+    if (success) {
+      await approveRequest()
+    }
+  }, [canUseLocalAuth, approveRequest, prefs.useBiometricAuth])
+
   const handleDismiss = useCallback(
-    () => removeNotification(data.uniqueId),
+    async () => removeNotification(data.uniqueId),
     [data.uniqueId, removeNotification]
   )
 
   return (
-    <View style={styles.container}>
-      <Card>
-        <Card.Title
-          title={<Typography variant="h5">{secret.issuer}</Typography>}
-          subtitle={secret.account}
-          left={props => <Avatar.Icon {...props} icon="key" />}
-        />
-        <Card.Content>
-          <TokenInfo token={token.token} description={token.description} />
-          <View style={styles.cardRow}>
-            <TimeAgo
-              date={new Date(notification.date)}
-              minPeriod={5}
-              component={Text}
-            />
-          </View>
-          <View style={{ ...styles.cardRow, flexDirection: 'row' }}>
-            {expired ? (
-              <Button
-                style={styles.button}
-                mode="outlined"
-                onPress={handleDismiss}
-              >
-                Dismiss
-              </Button>
-            ) : (
-              <>
+    <>
+      <View style={styles.container}>
+        <Card>
+          <Card.Title
+            title={<Typography variant="h5">{secret.issuer}</Typography>}
+            subtitle={secret.account}
+            left={props => <Avatar.Icon {...props} icon="key" />}
+          />
+          <Card.Content>
+            <TokenInfo token={token.token} description={token.description} />
+            <View style={styles.cardRow}>
+              <TimeAgo
+                date={new Date(notification.date)}
+                minPeriod={5}
+                component={Text}
+              />
+            </View>
+            <View style={{ ...styles.cardRow, flexDirection: 'row' }}>
+              {expired ? (
                 <Button
                   style={styles.button}
                   mode="outlined"
-                  onPress={() => undefined}
+                  onPress={handleDismiss}
                 >
-                  Reject
+                  Dismiss
                 </Button>
-                <Button
-                  style={styles.button}
-                  mode="contained"
-                  onPress={() => undefined}
-                >
-                  Approve
-                </Button>
-              </>
-            )}
-          </View>
-        </Card.Content>
-      </Card>
-    </View>
+              ) : (
+                <>
+                  <Button
+                    style={styles.button}
+                    mode="outlined"
+                    onPress={handleReject}
+                  >
+                    Reject
+                  </Button>
+                  <Button
+                    style={styles.button}
+                    mode="contained"
+                    onPress={handleApprove}
+                  >
+                    Approve
+                  </Button>
+                </>
+              )}
+            </View>
+          </Card.Content>
+        </Card>
+      </View>
+      {isLoading && <LoadingSpinnerOverlay />}
+    </>
   )
 }
