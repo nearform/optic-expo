@@ -35,11 +35,6 @@ const styles = StyleSheet.create({
     marginTop: theme.spacing(2),
     paddingHorizontal: theme.spacing(1),
   },
-  label: {
-    color: theme.colors.textSecondary,
-    marginRight: theme.spacing(1),
-    fontSize: 10,
-  },
   tokenDescriptionRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -47,7 +42,16 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: theme.spacing(2),
-    marginHorizontal: theme.spacing(1),
+    flex: 1,
+  },
+  leftButton: {
+    marginTop: theme.spacing(2),
+    marginRight: theme.spacing(1),
+    flex: 1,
+  },
+  rightButton: {
+    marginTop: theme.spacing(2),
+    marginLeft: theme.spacing(1),
     flex: 1,
   },
 })
@@ -167,14 +171,14 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
               ) : (
                 <>
                   <Button
-                    style={styles.button}
+                    style={styles.leftButton}
                     mode="outlined"
                     onPress={handleReject}
                   >
                     Reject
                   </Button>
                   <Button
-                    style={styles.button}
+                    style={styles.rightButton}
                     mode="contained"
                     onPress={handleApprove}
                   >
