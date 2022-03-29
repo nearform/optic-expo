@@ -1,11 +1,11 @@
 import React from 'react'
 import { Notification } from 'expo-notifications'
-import { StyleSheet, Text, View } from 'react-native'
-import { Avatar, Card } from 'react-native-paper'
+import { StyleSheet, View } from 'react-native'
+import { Avatar, Button, Card } from 'react-native-paper'
 
+import theme from '../lib/theme'
 import { useSecretSelector } from '../hooks/use-secret-selector'
 import { useTokenDataSelector } from '../hooks/use-token-data-selector'
-import theme from '../lib/theme'
 import { NotificationData } from '../types'
 
 import { Typography } from './Typography'
@@ -35,6 +35,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: theme.spacing(2),
   },
+  button: {
+    marginTop: theme.spacing(2),
+    marginHorizontal: theme.spacing(1),
+    flex: 1,
+  },
 })
 
 export const NoPendingNotifications = () => (
@@ -55,15 +60,14 @@ const TokenInfo: React.FC<TokenInfoProps> = ({ token, description }) => {
   return (
     <>
       <View style={styles.cardRow}>
-        <Text style={styles.label}>Token</Text>
+        <Typography variant="overline">Token</Typography>
         <View style={styles.tokenDescriptionRow}>
-          <Text>{token}</Text>
+          <Typography variant="code">{token}</Typography>
         </View>
       </View>
       <View style={styles.cardRow}>
-        <Text style={styles.label}>Token description</Text>
         <View style={styles.tokenDescriptionRow}>
-          <Text>{description}</Text>
+          <Typography variant="body1">{description}</Typography>
         </View>
       </View>
     </>
@@ -92,6 +96,22 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
         />
         <Card.Content>
           <TokenInfo token={token.token} description={token.description} />
+          <View style={{ flexDirection: 'row' }}>
+            <Button
+              style={styles.button}
+              mode="outlined"
+              onPress={() => undefined}
+            >
+              Reject
+            </Button>
+            <Button
+              style={styles.button}
+              mode="contained"
+              onPress={() => undefined}
+            >
+              Approve
+            </Button>
+          </View>
         </Card.Content>
       </Card>
     </View>
