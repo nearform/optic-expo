@@ -92,16 +92,15 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
   notification,
 }) => {
   const data = notification.request.content.data as NotificationData
-
   const secret = useSecretSelector(data.secretId)
   const token = useTokenDataSelector(data.secretId, data.token)
+  const { removeNotification } = usePendingNotifications()
 
   const { user } = useAuth()
   const { prefs } = usePrefs()
   const canUseLocalAuth = useCanUseLocalAuth()
-
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
-  const { removeNotification } = usePendingNotifications()
+
   const [isLoading, setIsLoading] = useState(false)
 
   // This is sensible to clocks' drift and lack of synchronization, but if we
@@ -112,15 +111,15 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
     setIsLoading(true)
     await api.respond(secret.secret, data.uniqueId, false)
     await removeNotification(data.uniqueId)
-    setIsLoading(false)
-  }, [data.uniqueId, secret.secret, api, removeNotification])
+    // Don't do setIsLoading(false), as the component is unmounted anyway.
+  }, [data.uniqueId, secret.secret, api, removeNotification, setIsLoading])
 
   const approveRequest = useCallback(async () => {
     setIsLoading(true)
     await api.respond(secret.secret, data.uniqueId, true)
     await removeNotification(data.uniqueId)
-    setIsLoading(false)
-  }, [data.uniqueId, secret.secret, api, removeNotification])
+    // Don't do setIsLoading(false), as the component is unmounted anyway.
+  }, [data.uniqueId, secret.secret, api, removeNotification, setIsLoading])
 
   const handleApprove = useCallback(async () => {
     if (!canUseLocalAuth || !prefs.useBiometricAuth) {

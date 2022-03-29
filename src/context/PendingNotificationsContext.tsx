@@ -39,7 +39,7 @@ export const PendingNotificationsProvider = ({ children }) => {
     }
 
     fn()
-  }, [])
+  }, [setPendingNotifications])
 
   const addNotification = useCallback(
     async (notification: Notification) => {
@@ -65,7 +65,7 @@ export const PendingNotificationsProvider = ({ children }) => {
         )
       }
     },
-    [pendingNotifications]
+    [pendingNotifications, setPendingNotifications]
   )
 
   const removeNotification = useCallback(
@@ -83,7 +83,7 @@ export const PendingNotificationsProvider = ({ children }) => {
         )
       }
     },
-    [pendingNotifications]
+    [pendingNotifications, setPendingNotifications]
   )
 
   const value = useMemo(
