@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useState,
 } from 'react'
-import { Notification } from 'expo-notifications'
+import { Notification, dismissNotificationAsync } from 'expo-notifications'
 
 import * as storage from '../lib/secure-storage'
 import { NotificationData } from '../types'
@@ -81,6 +81,19 @@ export const PendingNotificationsProvider = ({ children }) => {
           'pendingNotifications',
           updatedPendingNotifications
         )
+
+        // We use uniqueId to identify our OTP requests, but we use a different
+        // identifier for their associated push notifications.
+        const removedNotification = pendingNotifications.find(
+          notification =>
+            (notification.request.content.data as NotificationData).uniqueId ===
+            notificationId
+        )
+        try {
+          await dismissNotificationAsync(removedNotification.request.identifier)
+        } catch (e) {
+          console.warn(`Failed to dismiss push notification: ${e.message}`)
+        }
       }
     },
     [pendingNotifications, setPendingNotifications]
