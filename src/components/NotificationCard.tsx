@@ -1,14 +1,13 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import TimeAgo from 'react-timeago'
 import * as LocalAuthentication from 'expo-local-authentication'
-import { Notification } from 'expo-notifications'
 import { StyleSheet, View } from 'react-native'
 import { Avatar, Button, Card, Text } from 'react-native-paper'
 
 import apiFactory from '../lib/api'
 import theme from '../lib/theme'
 import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
-import { NotificationData } from '../types'
+import { OpticNotification } from '../types'
 import { useAuth } from '../context/AuthContext'
 import { useCanUseLocalAuth } from '../hooks/use-can-use-local-auth'
 import { usePendingNotifications } from '../context/PendingNotificationsContext'
@@ -89,13 +88,13 @@ const TokenInfo: React.FC<TokenInfoProps> = ({ token, description }) => {
 }
 
 interface NotificationCardProps {
-  notification: Notification
+  notification: OpticNotification
 }
 
 export const NotificationCard: React.FC<NotificationCardProps> = ({
   notification,
 }) => {
-  const data = notification.request.content.data as NotificationData
+  const data = notification.request.content.data
   const secret = useSecretSelector(data.secretId)
   const token = useTokenDataSelector(data.secretId, data.token)
   const { removeNotification } = usePendingNotifications()

@@ -14,7 +14,7 @@ import apiFactory from '../lib/api'
 import { NoSecrets } from '../components/NoSecrets'
 import { Actions } from '../components/Actions'
 import { SecretCard } from '../components/SecretCard'
-import { NotificationData, Secret } from '../types'
+import { NotificationData, OpticNotification, Secret } from '../types'
 import { MainStackParamList } from '../Main'
 
 const styles = StyleSheet.create({
@@ -81,7 +81,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   }
 
   const onNotification = useCallback(
-    async (notification: Notifications.Notification) => {
+    async (notification: OpticNotification) => {
       addNotification(notification)
     },
     [addNotification]
@@ -100,14 +100,10 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         return
       }
 
-      const notificationId = (
-        res.notification.request.content.data as NotificationData
-      ).uniqueId
       navigation.navigate('OtpRequest', {
         token,
         secretId,
         uniqueId,
-        notificationId,
       })
     },
     [navigation, secrets]

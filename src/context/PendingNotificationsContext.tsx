@@ -6,16 +6,16 @@ import React, {
   useMemo,
   useState,
 } from 'react'
-import { Notification, dismissNotificationAsync } from 'expo-notifications'
+import { dismissNotificationAsync } from 'expo-notifications'
 
 import * as storage from '../lib/secure-storage'
-import { NotificationData } from '../types'
+import { type OpticNotification } from '../types'
 
-const defaultPendingNotifications: Notification[] = []
+const defaultPendingNotifications: OpticNotification[] = []
 
 const initialContext = {
   pendingNotifications: defaultPendingNotifications,
-  addNotification: async (_notification: Notification) => {
+  addNotification: async (_notification: OpticNotification) => {
     // set in context provider construction
   },
   removeNotification: async (_notificationId: string) => {
@@ -32,7 +32,9 @@ export const PendingNotificationsProvider = ({ children }) => {
 
   useEffect(() => {
     async function fn() {
-      const s = await storage.getObject<Notification[]>('pendingNotifications')
+      const s = await storage.getObject<OpticNotification[]>(
+        'pendingNotifications'
+      )
       if (s) {
         setPendingNotifications(s)
       }
@@ -42,15 +44,12 @@ export const PendingNotificationsProvider = ({ children }) => {
   }, [setPendingNotifications])
 
   const addNotification = useCallback(
-    async (notification: Notification) => {
-      const notificationId = (
-        notification.request.content.data as NotificationData
-      ).uniqueId
+    async (notification: OpticNotification) => {
+      const notificationId = notification.request.content.data.uniqueId
       const notAddedYet =
         pendingNotifications.findIndex(
           notification =>
-            (notification.request.content.data as NotificationData).uniqueId ===
-            notificationId
+            notification.request.content.data.uniqueId === notificationId
         ) === -1
 
       if (notAddedYet) {
@@ -72,8 +71,7 @@ export const PendingNotificationsProvider = ({ children }) => {
     async (notificationId: string) => {
       const updatedPendingNotifications = pendingNotifications.filter(
         notification =>
-          (notification.request.content.data as NotificationData).uniqueId !==
-          notificationId
+          notification.request.content.data.uniqueId !== notificationId
       )
       if (updatedPendingNotifications.length !== pendingNotifications.length) {
         setPendingNotifications(updatedPendingNotifications)
@@ -86,8 +84,7 @@ export const PendingNotificationsProvider = ({ children }) => {
         // identifier for their associated push notifications.
         const removedNotification = pendingNotifications.find(
           notification =>
-            (notification.request.content.data as NotificationData).uniqueId ===
-            notificationId
+            notification.request.content.data.uniqueId === notificationId
         )
         try {
           await dismissNotificationAsync(removedNotification.request.identifier)

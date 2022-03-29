@@ -52,7 +52,7 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const canUseLocalAuth = useCanUseLocalAuth()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
-  const { token, secretId, uniqueId, notificationId } = route.params
+  const { token, secretId, uniqueId } = route.params
   const secret = useSecretSelector(secretId)
   const tokenData = useTokenDataSelector(secretId, token)
   const description = tokenData ? tokenData.description : ''
@@ -63,7 +63,7 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const handleReject = useCallback(async () => {
     setIsLoading(true)
     await api.respond(secret.secret, uniqueId, false)
-    await removeNotification(notificationId)
+    await removeNotification(uniqueId)
     Toast.show('OTP request rejected')
     if (canGoBack()) {
       goBack()
@@ -78,14 +78,13 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
     navigate,
     secret.secret,
     uniqueId,
-    notificationId,
     removeNotification,
   ])
 
   const approveRequest = useCallback(async () => {
     setIsLoading(true)
     await api.respond(secret.secret, uniqueId, true)
-    await removeNotification(notificationId)
+    await removeNotification(uniqueId)
     Toast.show('OTP request approved')
     if (canGoBack()) {
       goBack()
@@ -100,7 +99,6 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
     navigate,
     secret.secret,
     uniqueId,
-    notificationId,
     removeNotification,
   ])
 
