@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import TimeAgo from 'react-timeago'
 import { Notification } from 'expo-notifications'
 import { StyleSheet, View } from 'react-native'
-import { Avatar, Button, Card } from 'react-native-paper'
+import { Avatar, Button, Card, Text } from 'react-native-paper'
 
 import theme from '../lib/theme'
+import { usePendingNotifications } from '../context/PendingNotificationsContext'
 import { useSecretSelector } from '../hooks/use-secret-selector'
 import { useTokenDataSelector } from '../hooks/use-token-data-selector'
 import { NotificationData } from '../types'
 
 import { Typography } from './Typography'
+
+const OTP_REQUEST_TIMEOUT = 60001 // See https://github.com/nearform/optic/blob/master/server/lib/routes/otp.js#L5
 
 const styles = StyleSheet.create({
   noPendingNotifications: {
@@ -86,6 +90,17 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
   const secret = useSecretSelector(data.secretId)
   const token = useTokenDataSelector(data.secretId, data.token)
 
+  const { removeNotification } = usePendingNotifications()
+
+  // This is sensible to clocks' drift and lack of synchronization, but if we
+  // take into account the roundtrip time, it's not that bad.
+  const expired = new Date().getTime() > notification.date + OTP_REQUEST_TIMEOUT
+
+  const handleDismiss = useCallback(
+    () => removeNotification(data.uniqueId),
+    [data.uniqueId, removeNotification]
+  )
+
   return (
     <View style={styles.container}>
       <Card>
@@ -96,21 +111,40 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
         />
         <Card.Content>
           <TokenInfo token={token.token} description={token.description} />
-          <View style={{ flexDirection: 'row' }}>
-            <Button
-              style={styles.button}
-              mode="outlined"
-              onPress={() => undefined}
-            >
-              Reject
-            </Button>
-            <Button
-              style={styles.button}
-              mode="contained"
-              onPress={() => undefined}
-            >
-              Approve
-            </Button>
+          <View style={styles.cardRow}>
+            <TimeAgo
+              date={new Date(notification.date)}
+              minPeriod={5}
+              component={Text}
+            />
+          </View>
+          <View style={{ ...styles.cardRow, flexDirection: 'row' }}>
+            {expired ? (
+              <Button
+                style={styles.button}
+                mode="outlined"
+                onPress={handleDismiss}
+              >
+                Dismiss
+              </Button>
+            ) : (
+              <>
+                <Button
+                  style={styles.button}
+                  mode="outlined"
+                  onPress={() => undefined}
+                >
+                  Reject
+                </Button>
+                <Button
+                  style={styles.button}
+                  mode="contained"
+                  onPress={() => undefined}
+                >
+                  Approve
+                </Button>
+              </>
+            )}
           </View>
         </Card.Content>
       </Card>
