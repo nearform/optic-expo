@@ -9,6 +9,7 @@ import React, {
 import { Notification } from 'expo-notifications'
 
 import * as storage from '../lib/secure-storage'
+import { NotificationData } from '../types'
 
 const defaultPendingNotifications: Notification[] = []
 
@@ -42,10 +43,14 @@ export const PendingNotificationsProvider = ({ children }) => {
 
   const addNotification = useCallback(
     async (notification: Notification) => {
-      const notificationId = notification.request.identifier
+      const notificationId = (
+        notification.request.content.data as NotificationData
+      ).uniqueId
       const notAddedYet =
         pendingNotifications.findIndex(
-          notification => notification.request.identifier === notificationId
+          notification =>
+            (notification.request.content.data as NotificationData).uniqueId ===
+            notificationId
         ) === -1
 
       if (notAddedYet) {
@@ -66,7 +71,9 @@ export const PendingNotificationsProvider = ({ children }) => {
   const removeNotification = useCallback(
     async (notificationId: string) => {
       const updatedPendingNotifications = pendingNotifications.filter(
-        notification => notification.request.identifier !== notificationId
+        notification =>
+          (notification.request.content.data as NotificationData).uniqueId !==
+          notificationId
       )
       if (updatedPendingNotifications.length !== pendingNotifications.length) {
         setPendingNotifications(updatedPendingNotifications)

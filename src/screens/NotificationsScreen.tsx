@@ -7,6 +7,7 @@ import {
   NotificationCard,
 } from '../components/NotificationCard'
 import { usePendingNotifications } from '../context/PendingNotificationsContext'
+import { NotificationData } from '../types'
 
 const styles = StyleSheet.create({
   container: {
@@ -29,7 +30,10 @@ export const NotificationsScreen = () => {
           ? NoPendingNotifications()
           : pendingNotifications.map(notification => (
               <NotificationCard
-                key={notification.request.identifier}
+                key={
+                  (notification.request.content.data as NotificationData)
+                    .uniqueId
+                }
                 notification={notification}
               />
             ))}

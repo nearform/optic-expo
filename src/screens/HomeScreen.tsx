@@ -100,7 +100,9 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         return
       }
 
-      const notificationId = res.notification.request.identifier
+      const notificationId = (
+        res.notification.request.content.data as NotificationData
+      ).uniqueId
       navigation.navigate('OtpRequest', {
         token,
         secretId,
