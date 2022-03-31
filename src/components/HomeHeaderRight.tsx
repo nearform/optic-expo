@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/core'
 import { StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 import { View } from 'react-native'
-import { IconButton } from 'react-native-paper'
+import { Badge, IconButton } from 'react-native-paper'
 
 import theme from '../lib/theme'
 import { usePendingNotifications } from '../context/PendingNotificationsContext'
@@ -16,16 +16,27 @@ export default function HomeHeaderRight() {
 
   return (
     <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-      <IconButton
-        icon="bell"
-        // TODO: Add notifications counter instead of changing color
-        color={
-          hasPendingNotifications
-            ? theme.colors.notification
-            : theme.colors.surface
-        }
-        onPress={() => navigate('Notifications')}
-      />
+      <View>
+        <Badge
+          visible={hasPendingNotifications}
+          size={16}
+          style={{
+            backgroundColor: theme.colors.notification,
+            position: 'absolute',
+            top: 5,
+            right: 5,
+          }}
+          onPressIn={() => undefined}
+          onPressOut={() => undefined}
+        >
+          {pendingNotifications.length}
+        </Badge>
+        <IconButton
+          icon="bell"
+          color={theme.colors.surface}
+          onPress={() => navigate('Notifications')}
+        />
+      </View>
       <IconButton
         icon="cog"
         color={theme.colors.surface}
