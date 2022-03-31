@@ -57,4 +57,8 @@ As you can see by the home page layout, you can generate many tokens to read the
 
 ![image](https://user-images.githubusercontent.com/11404065/159178635-418e231c-aa9c-4828-bb41-6f68cfb18059.png)
 
-By doing so, you will be able to understand who is the caller that want to read your OTP.
+By doing so, you will be able to understand who is the caller that wants to read your OTP.
+
+Few notes on the NPM secret:
+- the NPM secret (QR or the textual code) is the one that you get, when you enable 2FA in your [npm](https://www.npmjs.com/) profile
+- if you already have 2FA activated (with a different authenticatior app e.g. Google Authenticator) and you need to get the secret, the easiest way is to get is to open the authenticator app you were using previously and get the QR code from that app and scan it with Optic Expo
