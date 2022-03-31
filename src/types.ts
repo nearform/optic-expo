@@ -1,3 +1,5 @@
+import { type Notification } from 'expo-notifications'
+
 export type Token = {
   token: string
   description: string
@@ -22,4 +24,18 @@ export type User = {
   email: string
   uid: string
   idToken: string
+}
+
+export type NotificationData = {
+  secretId: string
+  uniqueId: string
+  token: string
+}
+
+export type OpticNotification = Notification & {
+  request: {
+    content: {
+      data: NotificationData
+    }
+  }
 }

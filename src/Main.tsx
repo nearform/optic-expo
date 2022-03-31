@@ -29,6 +29,7 @@ import { TokenScreen } from './screens/TokenScreen'
 import { OtpRequestScreen } from './screens/OtpRequestScreen'
 import { TokensListScreen } from './screens/TokensListScreen'
 import { CreateTokenScreen } from './screens/CreateTokenScreen'
+import { NotificationsScreen } from './screens/NotificationsScreen'
 
 const MainStack = createStackNavigator()
 
@@ -53,6 +54,7 @@ export type MainStackParamList = {
     token: string
     uniqueId: string
   }
+  Notifications: undefined
 }
 
 export default function Main() {
@@ -137,6 +139,11 @@ export default function Main() {
           name="Type"
           component={TypeScreen}
           options={{ title: 'New Secret', headerLeft: DefaultHeaderLeft }}
+        />
+        <MainStack.Screen
+          name="Notifications"
+          component={NotificationsScreen}
+          options={{ title: 'Notifications', headerLeft: DefaultHeaderLeft }}
         />
       </MainStack.Navigator>
     </NavigationContainer>

@@ -15,6 +15,7 @@ jest.mock('@react-navigation/core', () => ({
 
 jest.mock('expo-notifications', () => ({
   setNotificationHandler: jest.fn(),
+  addNotificationReceivedListener: jest.fn(),
   addNotificationResponseReceivedListener: jest.fn(),
   removeNotificationSubscription: jest.fn(),
 }))

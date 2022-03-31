@@ -7,20 +7,15 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { useIsFocused } from '@react-navigation/core'
 import Toast from 'react-native-root-toast'
 
+import { usePendingNotifications } from '../context/PendingNotificationsContext'
 import { useSecrets } from '../context/SecretsContext'
 import { useAuth } from '../context/AuthContext'
 import apiFactory from '../lib/api'
 import { NoSecrets } from '../components/NoSecrets'
 import { Actions } from '../components/Actions'
 import { SecretCard } from '../components/SecretCard'
-import { Secret } from '../types'
+import { NotificationData, OpticNotification, Secret } from '../types'
 import { MainStackParamList } from '../Main'
-
-type NotificationData = {
-  secretId: string
-  uniqueId: string
-  token: string
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -48,7 +43,9 @@ type HomeScreenProps = {
 export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const { user } = useAuth()
   const { secrets, remove } = useSecrets()
+  const { addNotification } = usePendingNotifications()
   const isFocused = useIsFocused()
+  const notificationListener = useRef<Subscription>()
   const responseListener = useRef<Subscription>()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
@@ -84,6 +81,13 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   }
 
   const onNotification = useCallback(
+    async (notification: OpticNotification) => {
+      addNotification(notification)
+    },
+    [addNotification]
+  )
+
+  const onNotificationResponse = useCallback(
     async (res: NotificationResponse) => {
       const data = res.notification.request.content.data as NotificationData
 
@@ -106,13 +110,19 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   )
 
   useEffect(() => {
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener(onNotification)
+
     responseListener.current =
-      Notifications.addNotificationResponseReceivedListener(onNotification)
+      Notifications.addNotificationResponseReceivedListener(
+        onNotificationResponse
+      )
 
     return () => {
       Notifications.removeNotificationSubscription(responseListener.current)
+      Notifications.removeNotificationSubscription(notificationListener.current)
     }
-  }, [onNotification])
+  }, [onNotification, onNotificationResponse])
 
   return (
     <View style={styles.container}>

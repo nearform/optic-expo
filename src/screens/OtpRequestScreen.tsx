@@ -7,6 +7,7 @@ import * as LocalAuthentication from 'expo-local-authentication'
 
 import theme from '../lib/theme'
 import { MainStackParamList } from '../Main'
+import { usePendingNotifications } from '../context/PendingNotificationsContext'
 import { useAuth } from '../context/AuthContext'
 import apiFactory from '../lib/api'
 import { Typography } from '../components/Typography'
@@ -56,11 +57,13 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const tokenData = useTokenDataSelector(secretId, token)
   const description = tokenData ? tokenData.description : ''
 
+  const { removeNotification } = usePendingNotifications()
   const [isLoading, setIsLoading] = useState(false)
 
   const handleReject = useCallback(async () => {
     setIsLoading(true)
     await api.respond(secret.secret, uniqueId, false)
+    await removeNotification(uniqueId)
     Toast.show('OTP request rejected')
     if (canGoBack()) {
       goBack()
@@ -68,11 +71,20 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
       navigate('Home')
     }
     setIsLoading(false)
-  }, [api, canGoBack, goBack, navigate, secret.secret, uniqueId])
+  }, [
+    api,
+    canGoBack,
+    goBack,
+    navigate,
+    secret.secret,
+    uniqueId,
+    removeNotification,
+  ])
 
   const approveRequest = useCallback(async () => {
     setIsLoading(true)
     await api.respond(secret.secret, uniqueId, true)
+    await removeNotification(uniqueId)
     Toast.show('OTP request approved')
     if (canGoBack()) {
       goBack()
@@ -80,13 +92,21 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
       navigate('Home')
     }
     setIsLoading(false)
-  }, [api, canGoBack, goBack, navigate, secret.secret, uniqueId])
+  }, [
+    api,
+    canGoBack,
+    goBack,
+    navigate,
+    secret.secret,
+    uniqueId,
+    removeNotification,
+  ])
 
   const handleApprove = useCallback(async () => {
     if (!canUseLocalAuth || !prefs.useBiometricAuth) return approveRequest()
 
     const { success } = await LocalAuthentication.authenticateAsync()
-    if (success) approveRequest()
+    if (success) await approveRequest()
   }, [approveRequest, canUseLocalAuth, prefs])
 
   return (
