@@ -27,7 +27,7 @@ jest.mock('@expo-google-fonts/didact-gothic', () => ({
   useFonts: jest.fn().mockReturnValue([true]),
 }))
 
-jest.mock('@expo-google-fonts/roboto-mono', () => ({
+jest.mock('@expo-google-fonts/fira-code', () => ({
   useFonts: jest.fn().mockReturnValue([true]),
 }))
 

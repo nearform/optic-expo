@@ -89,7 +89,7 @@ const typography: Record<TypographyVariant, TextStyle> = {
     letterSpacing: 1.1,
   },
   code: {
-    fontFamily: 'RobotoMono_400Regular',
+    fontFamily: 'FiraCode_400Regular',
     fontSize: 24,
   },
 }

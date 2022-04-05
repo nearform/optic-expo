@@ -10,9 +10,9 @@ import {
   DidactGothic_400Regular,
 } from '@expo-google-fonts/didact-gothic'
 import {
-  useFonts as useRobotoMono,
-  RobotoMono_400Regular,
-} from '@expo-google-fonts/roboto-mono'
+  useFonts as useFiraCode,
+  FiraCode_400Regular,
+} from '@expo-google-fonts/fira-code'
 import AppLoading from 'expo-app-loading'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
@@ -66,13 +66,13 @@ export default function Main() {
     DidactGothic_400Regular,
   })
 
-  const [hasRobotoMonoLoaded] = useRobotoMono({
-    RobotoMono_400Regular,
+  const [hasFiraCodeLoaded] = useFiraCode({
+    FiraCode_400Regular,
   })
 
   const { user } = useAuth()
 
-  if (!hasPoppinsLoaded || !hasDidactLoaded || !hasRobotoMonoLoaded) {
+  if (!hasPoppinsLoaded || !hasDidactLoaded || !hasFiraCodeLoaded) {
     return <AppLoading />
   }
 
