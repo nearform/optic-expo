@@ -384,7 +384,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               },
                               Array [
                                 Object {
-                                  "fontFamily": "RobotoMono_400Regular",
+                                  "fontFamily": "FiraCode_400Regular",
                                   "fontSize": 24,
                                 },
                                 Object {
@@ -552,7 +552,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               },
                               Array [
                                 Object {
-                                  "fontFamily": "RobotoMono_400Regular",
+                                  "fontFamily": "FiraCode_400Regular",
                                   "fontSize": 24,
                                 },
                                 Object {
@@ -651,7 +651,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           },
                           Array [
                             Object {
-                              "fontFamily": "RobotoMono_400Regular",
+                              "fontFamily": "FiraCode_400Regular",
                               "fontSize": 24,
                             },
                             Object {
@@ -845,7 +845,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           },
                           Array [
                             Object {
-                              "fontFamily": "RobotoMono_400Regular",
+                              "fontFamily": "FiraCode_400Regular",
                               "fontSize": 24,
                             },
                             Object {
@@ -1508,7 +1508,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               },
                               Array [
                                 Object {
-                                  "fontFamily": "RobotoMono_400Regular",
+                                  "fontFamily": "FiraCode_400Regular",
                                   "fontSize": 24,
                                 },
                                 Object {
@@ -1676,7 +1676,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               },
                               Array [
                                 Object {
-                                  "fontFamily": "RobotoMono_400Regular",
+                                  "fontFamily": "FiraCode_400Regular",
                                   "fontSize": 24,
                                 },
                                 Object {
@@ -1775,7 +1775,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           },
                           Array [
                             Object {
-                              "fontFamily": "RobotoMono_400Regular",
+                              "fontFamily": "FiraCode_400Regular",
                               "fontSize": 24,
                             },
                             Object {
@@ -1969,7 +1969,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           },
                           Array [
                             Object {
-                              "fontFamily": "RobotoMono_400Regular",
+                              "fontFamily": "FiraCode_400Regular",
                               "fontSize": 24,
                             },
                             Object {
