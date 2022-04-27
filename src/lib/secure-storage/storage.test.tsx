@@ -14,9 +14,7 @@ jest.mock('expo-secure-store', () => ({
   setItemAsync: jest.fn(),
 }))
 
-global.crypto = {
-  getRandomValues: jest.fn().mockReturnValue(new Uint8Array(32)),
-}
+global.crypto.getRandomValues = jest.fn().mockReturnValue(new Uint8Array(32))
 
 const writeAsStringAsyncMocked = mocked(writeAsStringAsync)
 const readAsStringAsyncMocked = mocked(readAsStringAsync)
