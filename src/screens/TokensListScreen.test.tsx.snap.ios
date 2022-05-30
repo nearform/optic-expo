@@ -29,8 +29,6 @@ exports[`TokensListScreen should match snapshot when there are no tokens 1`] = `
       }
     >
       <Text
-        onPressIn={false}
-        onPressOut={false}
         style={
           Array [
             Object {
@@ -65,8 +63,6 @@ exports[`TokensListScreen should match snapshot when there are no tokens 1`] = `
         No Tokens
       </Text>
       <Text
-        onPressIn={false}
-        onPressOut={false}
         style={
           Array [
             Object {
