@@ -679,6 +679,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           "borderWidth": 0,
                           "elevation": 0,
                           "minWidth": 64,
+                          "shadowColor": "#000000",
+                          "shadowOffset": Object {
+                            "height": 0,
+                            "width": 0,
+                          },
+                          "shadowOpacity": 0,
+                          "shadowRadius": 0,
                         }
                       }
                     >
@@ -927,6 +934,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         "borderWidth": 0,
                         "elevation": 0,
                         "minWidth": "auto",
+                        "shadowColor": "#000000",
+                        "shadowOffset": Object {
+                          "height": 0,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0,
+                        "shadowRadius": 0,
                       }
                     }
                   >
@@ -1803,6 +1817,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           "borderWidth": 0,
                           "elevation": 0,
                           "minWidth": 64,
+                          "shadowColor": "#000000",
+                          "shadowOffset": Object {
+                            "height": 0,
+                            "width": 0,
+                          },
+                          "shadowOpacity": 0,
+                          "shadowRadius": 0,
                         }
                       }
                     >
@@ -2051,6 +2072,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         "borderWidth": 0,
                         "elevation": 0,
                         "minWidth": "auto",
+                        "shadowColor": "#000000",
+                        "shadowOffset": Object {
+                          "height": 0,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0,
+                        "shadowRadius": 0,
                       }
                     }
                   >

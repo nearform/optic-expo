@@ -110,6 +110,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   }
                 />
                 <Text
+                  maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   style={
                     Object {
@@ -146,6 +147,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   Issuer
                 </Text>
                 <Text
+                  maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   onLayout={[Function]}
                   style={
@@ -178,6 +180,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   Issuer
                 </Text>
                 <Text
+                  maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   style={
                     Object {
@@ -215,6 +218,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                 autoComplete={false}
                 autoFocus={true}
                 editable={true}
+                maxFontSizeMultiplier={1.5}
                 multiline={false}
                 onBlur={[Function]}
                 onChangeText={[Function]}
@@ -347,6 +351,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   }
                 />
                 <Text
+                  maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   style={
                     Object {
@@ -383,6 +388,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   Secret
                 </Text>
                 <Text
+                  maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   onLayout={[Function]}
                   style={
@@ -415,6 +421,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   Secret
                 </Text>
                 <Text
+                  maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   style={
                     Object {
@@ -451,6 +458,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                 allowFontScaling={true}
                 autoComplete={false}
                 editable={true}
+                maxFontSizeMultiplier={1.5}
                 multiline={false}
                 onBlur={[Function]}
                 onChangeText={[Function]}
@@ -587,6 +595,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   }
                 />
                 <Text
+                  maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   style={
                     Object {
@@ -623,6 +632,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   Account
                 </Text>
                 <Text
+                  maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   onLayout={[Function]}
                   style={
@@ -655,6 +665,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   Account
                 </Text>
                 <Text
+                  maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   style={
                     Object {
@@ -691,6 +702,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                 allowFontScaling={true}
                 autoComplete={false}
                 editable={true}
+                maxFontSizeMultiplier={1.5}
                 multiline={false}
                 onBlur={[Function]}
                 onChangeText={[Function]}
@@ -750,6 +762,13 @@ exports[`TypeScreen should match snapshot 1`] = `
             "justifyContent": "center",
             "marginTop": 8,
             "minWidth": 64,
+            "shadowColor": "#000000",
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
+            "shadowRadius": 0,
           }
         }
       >
