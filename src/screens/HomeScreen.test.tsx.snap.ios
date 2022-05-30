@@ -173,8 +173,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     }
                   >
                     <Text
-                      onPressIn={false}
-                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -370,8 +368,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         }
                       >
                         <Text
-                          onPressIn={false}
-                          onPressOut={false}
                           style={
                             Array [
                               Object {
@@ -538,8 +534,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         }
                       >
                         <Text
-                          onPressIn={false}
-                          onPressOut={false}
                           style={
                             Array [
                               Object {
@@ -599,8 +593,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 >
                   <View>
                     <Text
-                      onPressIn={false}
-                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -637,8 +629,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       TOKENS
                     </Text>
                     <Text
-                      onPressIn={false}
-                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -679,6 +669,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           "borderWidth": 0,
                           "elevation": 0,
                           "minWidth": 64,
+                          "shadowColor": "#000000",
+                          "shadowOffset": Object {
+                            "height": 0,
+                            "width": 0,
+                          },
+                          "shadowOpacity": 0,
+                          "shadowRadius": 0,
                         }
                       }
                     >
@@ -831,8 +828,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       SECRET
                     </Text>
                     <Text
-                      onPressIn={false}
-                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -927,6 +922,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         "borderWidth": 0,
                         "elevation": 0,
                         "minWidth": "auto",
+                        "shadowColor": "#000000",
+                        "shadowOffset": Object {
+                          "height": 0,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0,
+                        "shadowRadius": 0,
                       }
                     }
                   >
@@ -1297,8 +1299,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     }
                   >
                     <Text
-                      onPressIn={false}
-                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -1494,8 +1494,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         }
                       >
                         <Text
-                          onPressIn={false}
-                          onPressOut={false}
                           style={
                             Array [
                               Object {
@@ -1662,8 +1660,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         }
                       >
                         <Text
-                          onPressIn={false}
-                          onPressOut={false}
                           style={
                             Array [
                               Object {
@@ -1723,8 +1719,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 >
                   <View>
                     <Text
-                      onPressIn={false}
-                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -1761,8 +1755,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       TOKENS
                     </Text>
                     <Text
-                      onPressIn={false}
-                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -1803,6 +1795,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           "borderWidth": 0,
                           "elevation": 0,
                           "minWidth": 64,
+                          "shadowColor": "#000000",
+                          "shadowOffset": Object {
+                            "height": 0,
+                            "width": 0,
+                          },
+                          "shadowOpacity": 0,
+                          "shadowRadius": 0,
                         }
                       }
                     >
@@ -1955,8 +1954,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       SECRET
                     </Text>
                     <Text
-                      onPressIn={false}
-                      onPressOut={false}
                       style={
                         Array [
                           Object {
@@ -2051,6 +2048,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         "borderWidth": 0,
                         "elevation": 0,
                         "minWidth": "auto",
+                        "shadowColor": "#000000",
+                        "shadowOffset": Object {
+                          "height": 0,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0,
+                        "shadowRadius": 0,
                       }
                     }
                   >
@@ -2319,8 +2323,6 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
           }
         >
           <Text
-            onPressIn={false}
-            onPressOut={false}
             style={
               Array [
                 Object {
@@ -2352,8 +2354,6 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
             No Secrets
           </Text>
           <Text
-            onPressIn={false}
-            onPressOut={false}
             style={
               Array [
                 Object {

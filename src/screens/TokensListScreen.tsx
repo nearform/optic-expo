@@ -99,19 +99,11 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
       <View style={styles.container}>
         {tokensCount > 1 && (
           <>
-            <Text
-              style={styles.tokensCount}
-              onPressIn={false}
-              onPressOut={false}
-            >
+            <Text style={styles.tokensCount}>
               <Typography variant="code" style={styles.tokensCountLabel}>
                 {tokensCount}
               </Typography>{' '}
-              <Text
-                style={styles.tokensCountValue}
-                onPressIn={false}
-                onPressOut={false}
-              >
+              <Text style={styles.tokensCountValue}>
                 {tokensCount === 1 ? 'TOKEN' : 'TOKENS'}
               </Text>
             </Text>

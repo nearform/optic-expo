@@ -26,8 +26,7 @@ export default function HomeHeaderRight() {
             top: 5,
             right: 5,
           }}
-          onPressIn={() => undefined}
-          onPressOut={() => undefined}
+          onPress={() => undefined}
         >
           {pendingNotifications.length}
         </Badge>

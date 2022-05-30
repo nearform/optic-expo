@@ -23,8 +23,6 @@ export const Typography: React.FC<TypographyProps> = ({
 }) => {
   return (
     <Text
-      onPressIn={false}
-      onPressOut={false}
       testID={testID}
       style={[
         theme.typography[variant],
