@@ -109,7 +109,7 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
             </Text>
             <View style={styles.searchArea}>
               <TextInput
-                autoComplete={false}
+                autoComplete="off"
                 textAlign="left"
                 label="Search"
                 accessibilityLabel="Search"

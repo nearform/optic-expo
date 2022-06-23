@@ -70,6 +70,7 @@ exports[`TypeScreen should match snapshot 1`] = `
               }
             >
               <View
+                collapsable={false}
                 pointerEvents="none"
                 style={
                   Object {
@@ -89,6 +90,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                 }
               >
                 <View
+                  collapsable={false}
                   pointerEvents="none"
                   style={
                     Object {
@@ -110,6 +112,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   }
                 />
                 <Text
+                  collapsable={false}
                   maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   style={
@@ -147,6 +150,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   Issuer
                 </Text>
                 <Text
+                  collapsable={false}
                   maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   onLayout={[Function]}
@@ -180,6 +184,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   Issuer
                 </Text>
                 <Text
+                  collapsable={false}
                   maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   style={
@@ -214,8 +219,7 @@ exports[`TypeScreen should match snapshot 1`] = `
               </View>
               <TextInput
                 accessibilityLabel="Issuer"
-                allowFontScaling={true}
-                autoComplete={false}
+                autoComplete="off"
                 autoFocus={true}
                 editable={true}
                 maxFontSizeMultiplier={1.5}
@@ -225,7 +229,6 @@ exports[`TypeScreen should match snapshot 1`] = `
                 onFocus={[Function]}
                 placeholder=""
                 placeholderTextColor="rgba(0, 0, 0, 0.54)"
-                rejectResponderTermination={true}
                 selectionColor="#2165E3"
                 style={
                   Array [
@@ -311,6 +314,7 @@ exports[`TypeScreen should match snapshot 1`] = `
               }
             >
               <View
+                collapsable={false}
                 pointerEvents="none"
                 style={
                   Object {
@@ -330,6 +334,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                 }
               >
                 <View
+                  collapsable={false}
                   pointerEvents="none"
                   style={
                     Object {
@@ -351,6 +356,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   }
                 />
                 <Text
+                  collapsable={false}
                   maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   style={
@@ -388,6 +394,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   Secret
                 </Text>
                 <Text
+                  collapsable={false}
                   maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   onLayout={[Function]}
@@ -421,6 +428,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   Secret
                 </Text>
                 <Text
+                  collapsable={false}
                   maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   style={
@@ -455,8 +463,7 @@ exports[`TypeScreen should match snapshot 1`] = `
               </View>
               <TextInput
                 accessibilityLabel="Secret"
-                allowFontScaling={true}
-                autoComplete={false}
+                autoComplete="off"
                 editable={true}
                 maxFontSizeMultiplier={1.5}
                 multiline={false}
@@ -465,7 +472,6 @@ exports[`TypeScreen should match snapshot 1`] = `
                 onFocus={[Function]}
                 placeholder=""
                 placeholderTextColor="rgba(0, 0, 0, 0.54)"
-                rejectResponderTermination={true}
                 selectionColor="#2165E3"
                 style={
                   Array [
@@ -555,6 +561,7 @@ exports[`TypeScreen should match snapshot 1`] = `
               }
             >
               <View
+                collapsable={false}
                 pointerEvents="none"
                 style={
                   Object {
@@ -574,6 +581,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                 }
               >
                 <View
+                  collapsable={false}
                   pointerEvents="none"
                   style={
                     Object {
@@ -595,6 +603,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   }
                 />
                 <Text
+                  collapsable={false}
                   maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   style={
@@ -632,6 +641,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   Account
                 </Text>
                 <Text
+                  collapsable={false}
                   maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   onLayout={[Function]}
@@ -665,6 +675,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                   Account
                 </Text>
                 <Text
+                  collapsable={false}
                   maxFontSizeMultiplier={1.5}
                   numberOfLines={1}
                   style={
@@ -699,8 +710,7 @@ exports[`TypeScreen should match snapshot 1`] = `
               </View>
               <TextInput
                 accessibilityLabel="Account"
-                allowFontScaling={true}
-                autoComplete={false}
+                autoComplete="off"
                 editable={true}
                 maxFontSizeMultiplier={1.5}
                 multiline={false}
@@ -709,7 +719,6 @@ exports[`TypeScreen should match snapshot 1`] = `
                 onFocus={[Function]}
                 placeholder=""
                 placeholderTextColor="rgba(0, 0, 0, 0.54)"
-                rejectResponderTermination={true}
                 selectionColor="#2165E3"
                 style={
                   Array [
@@ -750,6 +759,7 @@ exports[`TypeScreen should match snapshot 1`] = `
         </View>
       </View>
       <View
+        collapsable={false}
         style={
           Object {
             "backgroundColor": "rgba(0, 0, 0, 0.12)",

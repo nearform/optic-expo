@@ -13,9 +13,9 @@ import {
   useFonts as useFiraCode,
   FiraCode_400Regular,
 } from '@expo-google-fonts/fira-code'
-import AppLoading from 'expo-app-loading'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
+import { useSplashScreen } from './hooks/use-splash-screen'
 import theme from './lib/theme'
 import { useAuth } from './context/AuthContext'
 import { HomeScreen } from './screens/HomeScreen'
@@ -72,16 +72,19 @@ export default function Main() {
 
   const { user } = useAuth()
 
-  if (!hasPoppinsLoaded || !hasDidactLoaded || !hasFiraCodeLoaded) {
-    return <AppLoading />
+  const isReady = hasPoppinsLoaded && hasDidactLoaded && hasFiraCodeLoaded
+  const onReady = useSplashScreen(isReady)
+
+  if (!isReady) {
+    return null
   }
 
   if (!user) {
-    return <AuthScreen />
+    return <AuthScreen onReady={onReady} />
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer onReady={onReady}>
       <MainStack.Navigator
         initialRouteName="Home"
         screenOptions={{

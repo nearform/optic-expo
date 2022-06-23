@@ -444,6 +444,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
             }
           >
             <View
+              collapsable={false}
               style={
                 Object {
                   "backgroundColor": "#2165E3",
@@ -467,7 +468,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 accessibilityRole="button"
                 accessibilityState={
                   Object {
-                    "disabled": undefined,
+                    "disabled": false,
                   }
                 }
                 accessible={true}

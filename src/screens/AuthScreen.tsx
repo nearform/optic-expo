@@ -26,9 +26,11 @@ const styles = StyleSheet.create({
   },
 })
 
-type AuthScreenProps = unknown
+type AuthScreenProps = {
+  onReady: () => void
+}
 
-export const AuthScreen: React.FC<AuthScreenProps> = () => {
+export const AuthScreen: React.FC<AuthScreenProps> = ({ onReady }) => {
   const { handleLogin } = useAuth()
 
   useEffect(() => {
@@ -44,7 +46,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = () => {
   }, [])
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} onLayout={onReady}>
       <View>
         <Typography
           variant="h2"
