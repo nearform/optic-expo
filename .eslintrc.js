@@ -28,6 +28,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
+    'react/no-unstable-nested-components': ['warn', { allowAsProps: true }],
   },
   settings: {
     react: {
