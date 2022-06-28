@@ -68,7 +68,7 @@
     "@react-native-community/eslint-config": "^3.0.3",
     "@testing-library/jest-native": "^4.0.5",
     "@testing-library/react-hooks": "^8.0.0",
-    "@testing-library/react-native": "^9.1.0",
+    "@testing-library/react-native": "^10.1.1",
     "@types/aes-js": "^3.1.1",
     "@types/jest": "^27.5.0",
     "@types/node": "^17.0.36",
