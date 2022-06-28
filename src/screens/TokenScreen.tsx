@@ -176,28 +176,21 @@ export const TokenScreen = ({ route, navigation }: Props) => {
   useEffect(() => {
     const updateDescription = async () => {
       const existingTokens = secret.tokens ? [...secret.tokens] : []
-      const existingToken = existingTokens.find(item => item.token === token)
-
-      if (existingToken === undefined) {
+      const existingItemIndex = existingTokens.findIndex(
+        item => item.token === token
+      )
+      if (existingItemIndex === -1) {
         return
       }
-
-      if (description === existingToken.description || description.length < 3) {
+      const { description: existingDescription } =
+        existingTokens[existingItemIndex]
+      if (description === existingDescription || description.length < 3) {
         return
       }
-
+      existingTokens[existingItemIndex] = { token, description }
       await update({
         ...secret,
-        tokens: existingTokens.map(item => {
-          if (item.token === token) {
-            return {
-              ...item,
-              description,
-            }
-          } else {
-            return item
-          }
-        }),
+        tokens: existingTokens,
       })
       Toast.show('Token description updated')
     }
