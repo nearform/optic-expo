@@ -2816,14 +2816,14 @@
   dependencies:
     "@typescript-eslint/utils" "5.26.0"
 
-"@typescript-eslint/parser@^5.15.0", "@typescript-eslint/parser@^5.29.0":
-  version "5.29.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.29.0.tgz#41314b195b34d44ff38220caa55f3f93cfca43cf"
-  integrity sha512-ruKWTv+x0OOxbzIw9nW5oWlUopvP/IQDjB5ZqmTglLIoDTctLlAJpAQFpNPJP/ZI7hTT9sARBosEfaKbcFuECw==
+"@typescript-eslint/parser@^5.15.0", "@typescript-eslint/parser@^5.30.0":
+  version "5.30.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.30.0.tgz#a2184fb5f8ef2bf1db0ae61a43907e2e32aa1b8f"
+  integrity sha512-2oYYUws5o2liX6SrFQ5RB88+PuRymaM2EU02/9Ppoyu70vllPnHVO7ioxDdq/ypXHA277R04SVjxvwI8HmZpzA==
   dependencies:
-    "@typescript-eslint/scope-manager" "5.29.0"
-    "@typescript-eslint/types" "5.29.0"
-    "@typescript-eslint/typescript-estree" "5.29.0"
+    "@typescript-eslint/scope-manager" "5.30.0"
+    "@typescript-eslint/types" "5.30.0"
+    "@typescript-eslint/typescript-estree" "5.30.0"
     debug "^4.3.4"
 
 "@typescript-eslint/scope-manager@5.26.0":
@@ -2833,14 +2833,6 @@
   dependencies:
     "@typescript-eslint/types" "5.26.0"
     "@typescript-eslint/visitor-keys" "5.26.0"
-
-"@typescript-eslint/scope-manager@5.29.0":
-  version "5.29.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-5.29.0.tgz#2a6a32e3416cb133e9af8dcf54bf077a916aeed3"
-  integrity sha512-etbXUT0FygFi2ihcxDZjz21LtC+Eps9V2xVx09zFoN44RRHPrkMflidGMI+2dUs821zR1tDS6Oc9IXxIjOUZwA==
-  dependencies:
-    "@typescript-eslint/types" "5.29.0"
-    "@typescript-eslint/visitor-keys" "5.29.0"
 
 "@typescript-eslint/scope-manager@5.30.0":
   version "5.30.0"
@@ -2864,11 +2856,6 @@
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-5.26.0.tgz#cb204bb154d3c103d9cc4d225f311b08219469f3"
   integrity sha512-8794JZFE1RN4XaExLWLI2oSXsVImNkl79PzTOOWt9h0UHROwJedNOD2IJyfL0NbddFllcktGIO2aOu10avQQyA==
 
-"@typescript-eslint/types@5.29.0":
-  version "5.29.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-5.29.0.tgz#7861d3d288c031703b2d97bc113696b4d8c19aab"
-  integrity sha512-X99VbqvAXOMdVyfFmksMy3u8p8yoRGITgU1joBJPzeYa0rhdf5ok9S56/itRoUSh99fiDoMtarSIJXo7H/SnOg==
-
 "@typescript-eslint/types@5.30.0":
   version "5.30.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-5.30.0.tgz#db7d81d585a3da3801432a9c1d2fafbff125e110"
@@ -2881,19 +2868,6 @@
   dependencies:
     "@typescript-eslint/types" "5.26.0"
     "@typescript-eslint/visitor-keys" "5.26.0"
-    debug "^4.3.4"
-    globby "^11.1.0"
-    is-glob "^4.0.3"
-    semver "^7.3.7"
-    tsutils "^3.21.0"
-
-"@typescript-eslint/typescript-estree@5.29.0":
-  version "5.29.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-5.29.0.tgz#e83d19aa7fd2e74616aab2f25dfbe4de4f0b5577"
-  integrity sha512-mQvSUJ/JjGBdvo+1LwC+GY2XmSYjK1nAaVw2emp/E61wEVYEyibRHCqm1I1vEKbXCpUKuW4G7u9ZCaZhJbLoNQ==
-  dependencies:
-    "@typescript-eslint/types" "5.29.0"
-    "@typescript-eslint/visitor-keys" "5.29.0"
     debug "^4.3.4"
     globby "^11.1.0"
     is-glob "^4.0.3"
@@ -2943,14 +2917,6 @@
   integrity sha512-wei+ffqHanYDOQgg/fS6Hcar6wAWv0CUPQ3TZzOWd2BLfgP539rb49bwua8WRAs7R6kOSLn82rfEu2ro6Llt8Q==
   dependencies:
     "@typescript-eslint/types" "5.26.0"
-    eslint-visitor-keys "^3.3.0"
-
-"@typescript-eslint/visitor-keys@5.29.0":
-  version "5.29.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-5.29.0.tgz#7a4749fa7ef5160c44a451bf060ac1dc6dfb77ee"
-  integrity sha512-Hpb/mCWsjILvikMQoZIE3voc9wtQcS0A9FUw3h8bhr9UxBdtI/tw1ZDZUOXHXLOVMedKCH5NxyzATwnU78bWCQ==
-  dependencies:
-    "@typescript-eslint/types" "5.29.0"
     eslint-visitor-keys "^3.3.0"
 
 "@typescript-eslint/visitor-keys@5.30.0":
@@ -7277,9 +7243,9 @@ lines-and-columns@^1.1.6:
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
 lint-staged@>=13:
-  version "13.0.2"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-13.0.2.tgz#35a1c57130e9ad5b1dea784972a40777ba433dd5"
-  integrity sha512-qQLfLTh9z34eMzfEHENC+QBskZfxjomrf+snF3xJ4BzilORbD989NLqQ00ughsF/A+PT41e87+WsMFabf9++pQ==
+  version "13.0.3"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-13.0.3.tgz#d7cdf03a3830b327a2b63c6aec953d71d9dc48c6"
+  integrity sha512-9hmrwSCFroTSYLjflGI8Uk+GWAwMB4OlpU4bMJEAT5d/llQwtYKoim4bLOyLCuWFAhWEupE0vkIFqtw/WIsPug==
   dependencies:
     cli-truncate "^3.1.0"
     colorette "^2.0.17"
@@ -8847,10 +8813,10 @@ react-native-iphone-x-helper@^1.3.1:
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
   integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
 
-react-native-paper@4.12.1:
-  version "4.12.1"
-  resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.12.1.tgz#9c0c6236f40ab0bf02dd2d42e0264125d2f9d48a"
-  integrity sha512-xvAkwtRatsDcB/eSBUwoThBAT5Yy32SgKwrfHRUXi/9s5lR2SEuPZwmsZyAaq+bsxtAH1CaIT4CDeVLSaArzyg==
+react-native-paper@4.12.2:
+  version "4.12.2"
+  resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.12.2.tgz#31ed8011afd994d54dd403ed0099295fc1616d26"
+  integrity sha512-DDqds8E6IMbOFW7PwUgB0pP6qhFcwn/s0N+SOpqB1XYtGm0r9WMrmA8q026Mn7OCkWeMTjgnrILGJxJ7b2CRHw==
   dependencies:
     "@callstack/react-theme-provider" "^3.0.7"
     color "^3.1.2"
