@@ -48,8 +48,7 @@ export const PendingNotificationsProvider = ({ children }) => {
       const notificationId = notification.request.content.data.uniqueId
       const notAddedYet =
         pendingNotifications.findIndex(
-          notification =>
-            notification.request.content.data.uniqueId === notificationId
+          item => item.request.content.data.uniqueId === notificationId
         ) === -1
 
       if (notAddedYet) {

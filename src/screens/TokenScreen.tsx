@@ -79,10 +79,9 @@ export const TokenScreen = ({ route, navigation }: Props) => {
   const secret = useSecretSelector(secretId)
   const tokens = secret?.tokens ? secret.tokens : []
   const tokenData = useTokenDataSelector(secretId, token)
-  const existingDescription = tokenData?.description || ''
   const { user } = useAuth()
   const [subscriptionId, setSubscriptionId] = useState<string>('')
-  const [description, setDescription] = useState(existingDescription)
+  const [description, setDescription] = useState(tokenData?.description || '')
   const { update } = useSecrets()
   const expoToken = usePushToken()
   const [isRevoking, setIsRevoking] = useState(false)
@@ -176,19 +175,22 @@ export const TokenScreen = ({ route, navigation }: Props) => {
   // Keep the description for the token up to date
   useEffect(() => {
     const updateDescription = async () => {
-      const tokens = secret.tokens ? [...secret.tokens] : []
-      const existingItemIndex = tokens.findIndex(item => item.token === token)
+      const existingTokens = secret.tokens ? [...secret.tokens] : []
+      const existingItemIndex = existingTokens.findIndex(
+        item => item.token === token
+      )
       if (existingItemIndex === -1) {
         return
       }
-      const { description: existingDescription } = tokens[existingItemIndex]
+      const { description: existingDescription } =
+        existingTokens[existingItemIndex]
       if (description === existingDescription || description.length < 3) {
         return
       }
-      tokens[existingItemIndex] = { token, description: description }
+      existingTokens[existingItemIndex] = { token, description }
       await update({
         ...secret,
-        tokens,
+        tokens: existingTokens,
       })
       Toast.show('Token description updated')
     }
