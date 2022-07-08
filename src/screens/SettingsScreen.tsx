@@ -17,6 +17,7 @@ import theme from '../lib/theme'
 import { Typography } from '../components/Typography'
 import { useCanUseLocalAuth } from '../hooks/use-can-use-local-auth'
 import { useAuth } from '../context/AuthContext'
+import { Secret } from '../types'
 
 const styles = StyleSheet.create({
   container: {
@@ -50,7 +51,7 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
   const { prefs, save } = usePrefs()
   const canUseLocalAuth = useCanUseLocalAuth()
   const { user, handleLogout } = useAuth()
-  const { secrets } = useSecrets()
+  const { secrets, add } = useSecrets()
   const [status, requestPermission] = MediaLibrary.usePermissions()
 
   const backupFileName = 'optic-backup.txt'
@@ -84,7 +85,10 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
 
     if (documentMeta.type === 'success') {
       const result = await readAsStringAsync(documentMeta.uri)
-      const parsed = JSON.parse(result)
+      const parsedSecrets = JSON.parse(result) as Secret[]
+
+      // Theres a race condition which means this results in only 1 secret being saved not multiple
+      parsedSecrets.forEach(async secret => await add(secret))
     }
   }
 
