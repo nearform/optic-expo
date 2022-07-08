@@ -2,7 +2,15 @@ import React from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
 import { Switch, Button } from 'react-native-paper'
 import { StackNavigationProp } from '@react-navigation/stack'
+import * as DocumentPicker from 'expo-document-picker'
+import * as MediaLibrary from 'expo-media-library'
+import {
+  documentDirectory,
+  writeAsStringAsync,
+  readAsStringAsync,
+} from 'expo-file-system'
 
+import { useSecrets } from '../context/SecretsContext'
 import { usePrefs } from '../context/PrefsContext'
 import { MainStackParamList } from '../Main'
 import theme from '../lib/theme'
@@ -42,6 +50,43 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
   const { prefs, save } = usePrefs()
   const canUseLocalAuth = useCanUseLocalAuth()
   const { user, handleLogout } = useAuth()
+  const { secrets } = useSecrets()
+  const [status, requestPermission] = MediaLibrary.usePermissions()
+
+  const backupFileName = 'optic-backup.txt'
+  const localBackupFileRoute = `${documentDirectory}${backupFileName}`
+
+  const handleExport = async () => {
+    requestPermission()
+
+    if (!status.granted) {
+      return
+    }
+
+    try {
+      const stringified = JSON.stringify(secrets)
+      await writeAsStringAsync(localBackupFileRoute, stringified)
+
+      const asset = await MediaLibrary.createAssetAsync(localBackupFileRoute)
+      const album = await MediaLibrary.getAlbumAsync('Optic')
+      if (album === null) {
+        await MediaLibrary.createAlbumAsync('Optic', asset, false)
+      } else {
+        await MediaLibrary.addAssetsToAlbumAsync([asset], album, false)
+      }
+    } catch (error) {
+      console.log({ error })
+    }
+  }
+
+  const handleImport = async () => {
+    const documentMeta = await DocumentPicker.getDocumentAsync()
+
+    if (documentMeta.type === 'success') {
+      const result = await readAsStringAsync(documentMeta.uri)
+      const parsed = JSON.parse(result)
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -56,6 +101,18 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
             }}
             disabled={!canUseLocalAuth}
           />
+        </View>
+        <View style={styles.row}>
+          <Typography variant="subtitle1">Export tokens</Typography>
+          <Button onPress={handleExport} mode="contained">
+            Export
+          </Button>
+        </View>
+        <View style={styles.row}>
+          <Typography variant="subtitle1">Import tokens</Typography>
+          <Button onPress={handleImport} mode="contained">
+            Import
+          </Button>
         </View>
         <View>
           <View style={styles.footerRow}>
