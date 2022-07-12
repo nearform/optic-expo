@@ -57,7 +57,7 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
     const fileName = `optic-backup-${new Date()
       .toISOString()
       .replace(/[^0-9]/g, '')
-      .slice(0, -3)}`
+      .slice(0, -3)}.txt`
     const fileContent = JSON.stringify(secrets)
 
     if (Platform.OS === 'android') {
