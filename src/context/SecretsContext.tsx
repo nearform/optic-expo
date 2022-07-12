@@ -15,6 +15,7 @@ import { useAuth } from './AuthContext'
 export type ContextType = {
   secrets: Secret[]
   add: (_: Omit<Secret, '_id'>) => Promise<void>
+  addAll: (_: Secret[]) => Promise<void>
   update: (_: Secret) => Promise<void>
   remove: (_: Secret) => Promise<void>
   reset: () => Promise<void>
@@ -23,6 +24,9 @@ export type ContextType = {
 const initialContext: ContextType = {
   secrets: [],
   add: async () => {
+    // @todo
+  },
+  addAll: async () => {
     // @todo
   },
   update: async () => {
@@ -74,6 +78,11 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
     [user]
   )
 
+  const addAll = useCallback<ContextType['addAll']>(async allSecrets => {
+    await secretsManager.addAll(allSecrets)
+    setSecrets(allSecrets)
+  }, [])
+
   const remove = useCallback<ContextType['remove']>(
     async secret => {
       await secretsManager.remove(secret._id)
@@ -96,8 +105,8 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
   }, [])
 
   const value = useMemo<ContextType>(
-    () => ({ secrets, add, update, remove, reset }),
-    [secrets, add, update, remove, reset]
+    () => ({ secrets, add, addAll, update, remove, reset }),
+    [secrets, add, addAll, update, remove, reset]
   )
 
   return (

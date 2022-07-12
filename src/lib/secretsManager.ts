@@ -82,4 +82,17 @@ const reset = async () => {
   }
 }
 
-export default { getAllByUser, get, upsert, remove, reset }
+/**
+ * Sets input array as the secrets.
+ * @param {Secret[]} secrets array with secrets
+ * @returns {void}
+ */
+const addAll = async secrets => {
+  try {
+    await save(secrets)
+  } catch (err) {
+    console.error('Failed to add all the secrets to the data store', err)
+  }
+}
+
+export default { getAllByUser, get, upsert, remove, reset, addAll }

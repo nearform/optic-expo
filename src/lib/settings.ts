@@ -6,13 +6,14 @@ import {
   readAsStringAsync,
 } from 'expo-file-system'
 import * as Sharing from 'expo-sharing'
+import { Alert, Platform } from 'react-native'
 import Toast from 'react-native-root-toast'
 
 import { Secret } from '../types'
 
 const mimeType = 'application/octet-stream'
 
-export const androidExport = async (fileName, fileContent) => {
+const androidExport = async (fileName, fileContent) => {
   const permissions =
     await StorageAccessFramework.requestDirectoryPermissionsAsync()
   if (!permissions.granted) {
@@ -37,7 +38,7 @@ export const androidExport = async (fileName, fileContent) => {
   }
 }
 
-export const iosExport = async (fileName, fileContent) => {
+const iosExport = async (fileName, fileContent) => {
   const available = Sharing.isAvailableAsync()
   if (!available) {
     Toast.show('Sharing not available')
@@ -63,6 +64,14 @@ export const iosExport = async (fileName, fileContent) => {
   }
 }
 
+export const doExport = (fileName, fileContent) => {
+  if (Platform.OS === 'android') {
+    androidExport(fileName, fileContent)
+  } else {
+    iosExport(fileName, fileContent)
+  }
+}
+
 export const getSecretsFromFile = async uri => {
   if (!uri) {
     return []
@@ -73,7 +82,23 @@ export const getSecretsFromFile = async uri => {
     const parsedSecrets = JSON.parse(result) as Secret[]
     return parsedSecrets
   } catch (err) {
+    Toast.show('Unable to parse the backup file')
     console.log(err)
   }
   return []
+}
+
+export const showImportConfirmAlert = (onConfirm: () => void) => {
+  Alert.alert(
+    'Import Tokens',
+    'This will permanently remove the existing tokens, replacing them with the ones you are importing. Are you sure you want to continue?',
+    [
+      {
+        text: 'CANCEL',
+        style: 'cancel',
+      },
+      { text: 'IMPORT', onPress: onConfirm },
+    ],
+    { cancelable: true }
+  )
 }
