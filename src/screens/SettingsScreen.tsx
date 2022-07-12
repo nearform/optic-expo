@@ -76,11 +76,6 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
         return
       }
 
-      if (documentMeta.type !== 'success') {
-        Toast.show('An error occurred while importing tokens')
-        return
-      }
-
       const parsedSecrets = await getSecretsFromFile(documentMeta.uri)
       if (parsedSecrets.length === 0) {
         Toast.show('No tokens to import')
@@ -89,9 +84,6 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
 
       await reset()
       await addAll(parsedSecrets)
-      //for (const secret of parsedSecrets) {
-      //  await add(secret)
-      //}
       Toast.show('Tokens imported successfully')
     } catch (err) {
       Toast.show('An unexpected error occurred while importing tokens')
