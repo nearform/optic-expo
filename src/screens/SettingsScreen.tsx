@@ -16,7 +16,7 @@ import {
   getSecretsFromFile,
   doExport,
   showImportConfirmAlert,
-} from '../lib/settings'
+} from '../lib/importExport'
 
 const styles = StyleSheet.create({
   container: {
