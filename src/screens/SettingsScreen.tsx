@@ -119,6 +119,11 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
   }
 
   const handleExport = async () => {
+    if (secrets.length === 0) {
+      Toast.show('There are no secrets to export')
+      return
+    }
+
     const fileName = backupFileNamePattern.replace(
       '{TS}',
       new Date()
