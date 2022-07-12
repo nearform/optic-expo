@@ -69,4 +69,17 @@ const remove = async (secretId: string) => {
   }
 }
 
-export default { getAllByUser, get, upsert, remove }
+/**
+ * Resets the secrets to an empty list.
+ * @async
+ * @returns {void}
+ */
+const reset = async () => {
+  try {
+    await save([])
+  } catch (err) {
+    console.error('Failed to reset the secrets from data store', err)
+  }
+}
+
+export default { getAllByUser, get, upsert, remove, reset }
