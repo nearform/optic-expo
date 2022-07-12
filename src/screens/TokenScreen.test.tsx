@@ -52,8 +52,7 @@ describe('TokenScreen', () => {
       add: jest.fn(),
       update: updateSecretStub,
       remove: jest.fn(),
-      reset: jest.fn(),
-      addAll: jest.fn(),
+      replace: jest.fn(),
     })
 
     apiFactoryMocked.mockReturnValue({

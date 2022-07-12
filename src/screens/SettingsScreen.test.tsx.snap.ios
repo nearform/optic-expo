@@ -153,7 +153,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 accessibilityRole="button"
                 accessibilityState={
                   Object {
-                    "disabled": undefined,
+                    "disabled": true,
                   }
                 }
                 accessible={true}
@@ -225,7 +225,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                             "textTransform": "uppercase",
                           },
                           Object {
-                            "color": "#2165E3",
+                            "color": "rgba(0, 0, 0, 0.32)",
                             "fontFamily": "System",
                             "fontWeight": "500",
                           },

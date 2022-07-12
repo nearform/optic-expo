@@ -83,8 +83,7 @@ describe('HomeScreen', () => {
       add: jest.fn(),
       remove: jest.fn(),
       update: jest.fn(),
-      reset: jest.fn(),
-      addAll: jest.fn(),
+      replace: jest.fn(),
     })
 
     const view = setup()

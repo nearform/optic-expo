@@ -70,29 +70,16 @@ const remove = async (secretId: string) => {
 }
 
 /**
- * Resets the secrets to an empty list.
- * @async
- * @returns {void}
- */
-const reset = async () => {
-  try {
-    await save([])
-  } catch (err) {
-    console.error('Failed to reset the secrets from data store', err)
-  }
-}
-
-/**
- * Sets input array as the secrets.
+ * Replaces the secrets setting the input array as the new source for the secrets.
  * @param {Secret[]} secrets array with secrets
  * @returns {void}
  */
-const addAll = async secrets => {
+const replace = async secrets => {
   try {
     await save(secrets)
   } catch (err) {
-    console.error('Failed to add all the secrets to the data store', err)
+    console.error('Failed to replace the secrets in the data store', err)
   }
 }
 
-export default { getAllByUser, get, upsert, remove, reset, addAll }
+export default { getAllByUser, get, upsert, remove, replace }

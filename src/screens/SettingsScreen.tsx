@@ -50,21 +50,22 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
   const { prefs, save } = usePrefs()
   const canUseLocalAuth = useCanUseLocalAuth()
   const { user, handleLogout } = useAuth()
-  const { secrets, reset, addAll } = useSecrets()
+  const { secrets, replace } = useSecrets()
 
   const handleExport = async () => {
-    if (secrets.length === 0) {
-      Toast.show('There are no secrets to export')
-      return
-    }
-
     const fileName = `optic-backup-${new Date()
       .toISOString()
       .replace(/[^0-9]/g, '')
       .slice(0, -3)}.txt`
     const fileContent = JSON.stringify(secrets)
 
-    doExport(fileName, fileContent)
+    try {
+      await doExport(fileName, fileContent)
+      Toast.show('Tokens exported successfully')
+    } catch (err) {
+      Toast.show(err.message)
+      console.log(err)
+    }
   }
 
   const handleImport = async () => {
@@ -82,11 +83,10 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
         return
       }
 
-      await reset()
-      await addAll(parsedSecrets)
+      await replace(parsedSecrets)
       Toast.show('Tokens imported successfully')
     } catch (err) {
-      Toast.show('An unexpected error occurred while importing tokens')
+      Toast.show(err.message)
       console.log(err)
     }
   }
@@ -110,7 +110,12 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
           </View>
           <View style={styles.row}>
             <Typography variant="subtitle1">Export tokens</Typography>
-            <Button compact onPress={handleExport} icon="file-export">
+            <Button
+              compact
+              onPress={handleExport}
+              disabled={secrets.length === 0}
+              icon="file-export"
+            >
               Export
             </Button>
           </View>

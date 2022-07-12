@@ -7,7 +7,6 @@ import {
 } from 'expo-file-system'
 import * as Sharing from 'expo-sharing'
 import { Alert, Platform } from 'react-native'
-import Toast from 'react-native-root-toast'
 
 import { Secret } from '../types'
 
@@ -17,8 +16,7 @@ const androidExport = async (fileName, fileContent) => {
   const permissions =
     await StorageAccessFramework.requestDirectoryPermissionsAsync()
   if (!permissions.granted) {
-    Toast.show('Permissions not granted')
-    return
+    throw Error('Permissions not granted')
   }
 
   try {
@@ -31,18 +29,16 @@ const androidExport = async (fileName, fileContent) => {
     await writeAsStringAsync(uri, fileContent, {
       encoding: EncodingType.UTF8,
     })
-    Toast.show('Tokens exported successfully')
   } catch (err) {
-    Toast.show('An error occurred while exporting tokens')
     console.log(err)
+    throw Error('An error occurred while exporting tokens')
   }
 }
 
 const iosExport = async (fileName, fileContent) => {
   const available = Sharing.isAvailableAsync()
   if (!available) {
-    Toast.show('Sharing not available')
-    return
+    throw Error('Sharing not available')
   }
 
   const localBackupFileRoute = `${documentDirectory}${fileName}`
@@ -57,18 +53,17 @@ const iosExport = async (fileName, fileContent) => {
       UTI: 'public.item',
       mimeType,
     })
-    Toast.show('Tokens exported successfully')
   } catch (err) {
-    Toast.show('An error occurred while exporting tokens')
     console.log(err)
+    throw Error('An error occurred while exporting tokens')
   }
 }
 
 export const doExport = (fileName, fileContent) => {
   if (Platform.OS === 'android') {
-    androidExport(fileName, fileContent)
+    return androidExport(fileName, fileContent)
   } else {
-    iosExport(fileName, fileContent)
+    return iosExport(fileName, fileContent)
   }
 }
 
@@ -82,10 +77,9 @@ export const getSecretsFromFile = async uri => {
     const parsedSecrets = JSON.parse(result) as Secret[]
     return parsedSecrets
   } catch (err) {
-    Toast.show('Unable to parse the backup file')
     console.log(err)
+    throw Error('Unable to parse the backup file')
   }
-  return []
 }
 
 export const showImportConfirmAlert = (onConfirm: () => void) => {
