@@ -3,15 +3,6 @@ import { Alert, Platform, ScrollView, StyleSheet, View } from 'react-native'
 import { Switch, Button } from 'react-native-paper'
 import { StackNavigationProp } from '@react-navigation/stack'
 import * as DocumentPicker from 'expo-document-picker'
-import * as MediaLibrary from 'expo-media-library'
-import {
-  documentDirectory,
-  writeAsStringAsync,
-  readAsStringAsync,
-  EncodingType,
-  StorageAccessFramework,
-} from 'expo-file-system'
-import * as Sharing from 'expo-sharing'
 import Toast from 'react-native-root-toast'
 
 import { useSecrets } from '../context/SecretsContext'
@@ -21,7 +12,7 @@ import theme from '../lib/theme'
 import { Typography } from '../components/Typography'
 import { useCanUseLocalAuth } from '../hooks/use-can-use-local-auth'
 import { useAuth } from '../context/AuthContext'
-import { Secret } from '../types'
+import { androidExport, iosExport, getSecretsFromFile } from '../lib/settings'
 
 const styles = StyleSheet.create({
   container: {
@@ -56,67 +47,6 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
   const canUseLocalAuth = useCanUseLocalAuth()
   const { user, handleLogout } = useAuth()
   const { secrets, reset, add } = useSecrets()
-  const [status, requestPermission] = MediaLibrary.usePermissions()
-
-  const backupFileNamePattern = 'optic-backup-{TS}'
-
-  const androidExport = async (fileName, fileContent) => {
-    const permissions =
-      await StorageAccessFramework.requestDirectoryPermissionsAsync()
-    if (!permissions.granted) {
-      Toast.show('Permissions not granted')
-      return
-    }
-
-    try {
-      const uri = await StorageAccessFramework.createFileAsync(
-        permissions.directoryUri,
-        fileName,
-        'application/text'
-      )
-
-      await writeAsStringAsync(uri, fileContent, {
-        encoding: EncodingType.UTF8,
-      })
-      Toast.show('Tokens exported successfully')
-    } catch (err) {
-      Toast.show('An error occurred while exporting tokens')
-      console.log(err)
-    }
-  }
-
-  const iosExport = async (fileName, fileContent) => {
-    const available = Sharing.isAvailableAsync()
-    if (!available) {
-      Toast.show('Sharing not available')
-      return
-    }
-
-    requestPermission()
-
-    if (!status.granted) {
-      Toast.show('Permissions not granted')
-      return
-    }
-
-    const localBackupFileRoute = `${documentDirectory}${fileName}`
-
-    try {
-      await writeAsStringAsync(localBackupFileRoute, fileContent, {
-        encoding: EncodingType.UTF8,
-      })
-
-      await Sharing.shareAsync(localBackupFileRoute, {
-        dialogTitle: fileName,
-        UTI: 'public.item',
-        mimeType: 'text/plain',
-      })
-      Toast.show('Tokens exported successfully')
-    } catch (err) {
-      Toast.show('An error occurred while exporting tokens')
-      console.log(err)
-    }
-  }
 
   const handleExport = async () => {
     if (secrets.length === 0) {
@@ -124,13 +54,10 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
       return
     }
 
-    const fileName = backupFileNamePattern.replace(
-      '{TS}',
-      new Date()
-        .toISOString()
-        .replace(/[^0-9]/g, '')
-        .slice(0, -3)
-    )
+    const fileName = `optic-backup-${new Date()
+      .toISOString()
+      .replace(/[^0-9]/g, '')
+      .slice(0, -3)}`
     const fileContent = JSON.stringify(secrets)
 
     if (Platform.OS === 'android') {
@@ -141,19 +68,29 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
   }
 
   const handleImport = async () => {
-    const documentMeta = await DocumentPicker.getDocumentAsync()
+    try {
+      const documentMeta = await DocumentPicker.getDocumentAsync()
 
-    if (documentMeta.type === 'success') {
-      const result = await readAsStringAsync(documentMeta.uri)
-      const parsedSecrets = JSON.parse(result) as Secret[]
+      if (documentMeta.type === 'success') {
+        const parsedSecrets = await getSecretsFromFile(documentMeta.uri)
+        if (parsedSecrets.length === 0) {
+          Toast.show('No tokens to import')
+          return
+        }
 
-      await reset()
-      for (const secret of parsedSecrets) {
-        await add(secret)
+        await reset()
+        for (const secret of parsedSecrets) {
+          await add(secret)
+        }
+        Toast.show('Tokens imported successfully')
+      } else if (documentMeta.type === 'cancel') {
+        Toast.show('Import canceled')
+      } else {
+        Toast.show('An error occurred while importing tokens')
       }
-      Toast.show('Tokens imported successfully')
-    } else {
-      Toast.show('An error occurred while importing tokens')
+    } catch (err) {
+      Toast.show('An unexpected error occurred while importing tokens')
+      console.log(err)
     }
   }
 
