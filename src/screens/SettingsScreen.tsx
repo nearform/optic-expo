@@ -2,13 +2,21 @@ import React from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
 import { Switch, Button } from 'react-native-paper'
 import { StackNavigationProp } from '@react-navigation/stack'
+import * as DocumentPicker from 'expo-document-picker'
+import Toast from 'react-native-root-toast'
 
+import { useSecrets } from '../context/SecretsContext'
 import { usePrefs } from '../context/PrefsContext'
 import { MainStackParamList } from '../Main'
 import theme from '../lib/theme'
 import { Typography } from '../components/Typography'
 import { useCanUseLocalAuth } from '../hooks/use-can-use-local-auth'
 import { useAuth } from '../context/AuthContext'
+import {
+  getSecretsFromFile,
+  doExport,
+  showImportConfirmAlert,
+} from '../lib/importExport'
 
 const styles = StyleSheet.create({
   container: {
@@ -42,20 +50,85 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
   const { prefs, save } = usePrefs()
   const canUseLocalAuth = useCanUseLocalAuth()
   const { user, handleLogout } = useAuth()
+  const { secrets, replace } = useSecrets()
+
+  const handleExport = async () => {
+    const fileName = `optic-backup-${new Date()
+      .toISOString()
+      .replace(/[^0-9]/g, '')
+      .slice(0, -3)}.txt`
+    const fileContent = JSON.stringify(secrets)
+
+    try {
+      await doExport(fileName, fileContent)
+      Toast.show('Tokens exported successfully')
+    } catch (err) {
+      Toast.show(err.message)
+      console.log(err)
+    }
+  }
+
+  const handleImport = async () => {
+    try {
+      const documentMeta = await DocumentPicker.getDocumentAsync()
+
+      if (documentMeta.type === 'cancel') {
+        Toast.show('Import canceled')
+        return
+      }
+
+      const parsedSecrets = await getSecretsFromFile(documentMeta.uri)
+      if (parsedSecrets.length === 0) {
+        Toast.show('No tokens to import')
+        return
+      }
+
+      await replace(parsedSecrets)
+      Toast.show('Tokens imported successfully')
+    } catch (err) {
+      Toast.show(err.message)
+      console.log(err)
+    }
+  }
 
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollView}>
-        <View style={styles.row}>
-          <Typography variant="subtitle1">Require Auth for Approval</Typography>
-          <Switch
-            color={theme.colors.primary}
-            value={prefs.useBiometricAuth}
-            onValueChange={() => {
-              save('useBiometricAuth', !prefs.useBiometricAuth)
-            }}
-            disabled={!canUseLocalAuth}
-          />
+        <View>
+          <View style={styles.row}>
+            <Typography variant="subtitle1">
+              Require Auth for Approval
+            </Typography>
+            <Switch
+              color={theme.colors.primary}
+              value={prefs.useBiometricAuth}
+              onValueChange={() => {
+                save('useBiometricAuth', !prefs.useBiometricAuth)
+              }}
+              disabled={!canUseLocalAuth}
+            />
+          </View>
+          <View style={styles.row}>
+            <Typography variant="subtitle1">Export tokens</Typography>
+            <Button
+              compact
+              onPress={handleExport}
+              disabled={secrets.length === 0}
+              icon="file-export"
+            >
+              Export
+            </Button>
+          </View>
+          <View style={styles.row}>
+            <Typography variant="subtitle1">Import tokens</Typography>
+            <Button
+              compact
+              onPress={() => showImportConfirmAlert(handleImport)}
+              icon="file-import"
+            >
+              Import
+            </Button>
+          </View>
         </View>
         <View>
           <View style={styles.footerRow}>

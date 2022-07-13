@@ -5147,6 +5147,14 @@ expo-crypto@~10.1.0:
   resolved "https://registry.yarnpkg.com/expo-crypto/-/expo-crypto-10.1.1.tgz#2dccb10c5d41c4e48a29c211a926b4468547ff7a"
   integrity sha512-QSakmCNwSQw7VJKz32eKoBsNCQ9E4qT3wzOzFWzYyJQnJXHak3V6S+YcoQtK/K/oJxXPxK7T4gcOeeAk1VzRdw==
 
+expo-document-picker@~10.1.3:
+  version "10.1.3"
+  resolved "https://registry.yarnpkg.com/expo-document-picker/-/expo-document-picker-10.1.3.tgz#68a82635e9473eb19f128193f1111e7400055a7d"
+  integrity sha512-JKARJBnQ5Aug92hg2MFKrM2LqiMQabcUBYJwBhwSuc0A7dNUeprw0hkaOK0D9Fk7Ae9t+flRX0N5R/aADek3HA==
+  dependencies:
+    "@expo/config-plugins" "^4.0.2"
+    uuid "^3.3.2"
+
 expo-error-recovery@~3.0.5:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/expo-error-recovery/-/expo-error-recovery-3.0.5.tgz#1802b733e998606a8fcfb0abe6682c334319ef75"
@@ -5257,6 +5265,11 @@ expo-secure-store@~11.1.0:
   version "11.1.0"
   resolved "https://registry.yarnpkg.com/expo-secure-store/-/expo-secure-store-11.1.0.tgz#2eb6e793a459e178feeb72bbeb40afc97e412bf6"
   integrity sha512-LyCLqsoibP90Td4mSWc+un+xGNYnIuGOrfbp2aG2KAn1ZGcDL6muxIaFj7a/4Kh+EiCIoU5EPb1YjOATbmaBnQ==
+
+expo-sharing@~10.1.0:
+  version "10.1.1"
+  resolved "https://registry.yarnpkg.com/expo-sharing/-/expo-sharing-10.1.1.tgz#80348768a2b0ab23860604c8902696d0c39ffea4"
+  integrity sha512-Wyre/y6Ce+S7PYwu1QGH2QNtO8ftHViiivSGAIif4shCO64QbO2JHYvgBzeMvAGfvUXzbJ04I+oCZKypA59tnA==
 
 expo-splash-screen@~0.14.0:
   version "0.14.1"

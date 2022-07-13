@@ -17,6 +17,7 @@ export type ContextType = {
   add: (_: Omit<Secret, '_id'>) => Promise<void>
   update: (_: Secret) => Promise<void>
   remove: (_: Secret) => Promise<void>
+  replace: (_: Secret[]) => Promise<void>
 }
 
 const initialContext: ContextType = {
@@ -28,6 +29,9 @@ const initialContext: ContextType = {
     // @todo
   },
   remove: async () => {
+    // @todo
+  },
+  replace: async () => {
     // @todo
   },
 }
@@ -86,9 +90,14 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
     [user]
   )
 
+  const replace = useCallback<ContextType['replace']>(async allSecrets => {
+    await secretsManager.replace(allSecrets)
+    setSecrets(allSecrets)
+  }, [])
+
   const value = useMemo<ContextType>(
-    () => ({ secrets, add, update, remove }),
-    [secrets, add, update, remove]
+    () => ({ secrets, add, update, remove, replace }),
+    [secrets, add, update, remove, replace]
   )
 
   return (

@@ -69,4 +69,17 @@ const remove = async (secretId: string) => {
   }
 }
 
-export default { getAllByUser, get, upsert, remove }
+/**
+ * Replaces the secrets setting the input array as the new source for the secrets.
+ * @param {Secret[]} secrets array with secrets
+ * @returns {void}
+ */
+const replace = async secrets => {
+  try {
+    await save(secrets)
+  } catch (err) {
+    console.error('Failed to replace the secrets in the data store', err)
+  }
+}
+
+export default { getAllByUser, get, upsert, remove, replace }
