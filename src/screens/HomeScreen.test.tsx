@@ -2,7 +2,7 @@ import React from 'react'
 import * as Notification from 'expo-notifications'
 import { Subscription } from 'expo-modules-core'
 
-import apiFactory, { API } from '../lib/api'
+import apiFactory from '../lib/api'
 import { getMockedNavigation, renderWithTheme } from '../../test/utils'
 import { useSecrets } from '../context/SecretsContext'
 
@@ -27,20 +27,16 @@ jest.mock('../lib/otp', () => ({
 
 jest.mock('../hooks/use-push-token', () => () => 'dummy-expo-token')
 
- 
- 
-
 describe('HomeScreen', () => {
   const registerSubscriptionStub = jest.fn()
 
   beforeEach(() => {
-    (apiFactory as jest.Mock).mockReturnValue({
+    ;(apiFactory as jest.Mock).mockReturnValue({
       registerSubscription: registerSubscriptionStub,
-    });
-
-    (Notification.addNotificationResponseReceivedListener as jest.Mock).mockReturnValue(
-      {} as Subscription
-    )
+    })
+    ;(
+      Notification.addNotificationResponseReceivedListener as jest.Mock
+    ).mockReturnValue({} as Subscription)
   })
 
   afterEach(() => {
@@ -58,7 +54,7 @@ describe('HomeScreen', () => {
   })
 
   it('renders secret cards when available', () => {
-    (useSecrets as jest.Mock).mockReturnValue({
+    ;(useSecrets as jest.Mock).mockReturnValue({
       secrets: [
         {
           _id: '111',

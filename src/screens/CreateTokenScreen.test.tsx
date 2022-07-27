@@ -3,10 +3,12 @@ import * as Notification from 'expo-notifications'
 import { Subscription } from 'expo-modules-core'
 import { fireEvent } from '@testing-library/react-native'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
-import apiFactory, { API } from '../lib/api'
+
+import apiFactory from '../lib/api'
 import { getMockedNavigation, renderWithTheme } from '../../test/utils'
 import { Secret } from '../types'
 import { MainStackParamList } from '../Main'
+
 import { CreateTokenScreen } from './CreateTokenScreen'
 
 const secret: Secret = {
@@ -18,7 +20,7 @@ const secret: Secret = {
   issuer: '',
 }
 
-jest.mock('../lib/api');
+jest.mock('../lib/api')
 
 jest.mock('@react-navigation/core', () => ({
   useIsFocused: jest.fn().mockReturnValue(true),
@@ -55,14 +57,13 @@ describe('CreateTokenScreen', () => {
   const apiGenerateTokenStub = jest.fn()
 
   beforeEach(() => {
-    (apiFactory as jest.Mock).mockReturnValue({
+    ;(apiFactory as jest.Mock).mockReturnValue({
       registerSubscription: registerSubscriptionStub,
       generateToken: apiGenerateTokenStub,
-    });
-
-    (Notification.addNotificationResponseReceivedListener as jest.Mock).mockReturnValue(
-      {} as Subscription
-    );
+    })
+    ;(
+      Notification.addNotificationResponseReceivedListener as jest.Mock
+    ).mockReturnValue({} as Subscription)
   })
 
   afterEach(() => {

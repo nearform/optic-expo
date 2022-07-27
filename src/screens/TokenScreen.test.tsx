@@ -7,7 +7,7 @@ import { getMockedNavigation, renderWithTheme } from '../../test/utils'
 import { MainStackParamList } from '../Main'
 import { Secret } from '../types'
 import { useSecrets } from '../context/SecretsContext'
-import apiFactory, { API } from '../lib/api'
+import apiFactory from '../lib/api'
 
 import { TokenScreen } from './TokenScreen'
 
@@ -43,20 +43,18 @@ describe('TokenScreen', () => {
   const registerSubscriptionStub = jest.fn().mockResolvedValue('a-sub')
 
   beforeEach(() => {
-
-    (useSecrets as jest.Mock).mockReturnValue({
+    ;(useSecrets as jest.Mock).mockReturnValue({
       secrets: [secret],
       add: jest.fn(),
       update: updateSecretStub,
       remove: jest.fn(),
       replace: jest.fn(),
-    });
-
-    (apiFactory as jest.Mock).mockReturnValue({
+    })
+    ;(apiFactory as jest.Mock).mockReturnValue({
       generateToken: apiGenerateTokenStub,
       revokeToken: apiRevokeTokenStub,
       registerSubscription: registerSubscriptionStub,
-    });
+    })
   })
 
   const setup = () => {

@@ -1,5 +1,5 @@
 import { v4 } from 'uuid'
- 
+
 import { clearAll } from './secure-storage'
 import secretsManager from './secretsManager'
 
@@ -7,10 +7,9 @@ jest.mock('uuid', () => ({
   v4: jest.fn().mockReturnValue('uuid-1111'),
 }))
 
- 
 describe('secretsManager', () => {
   beforeEach(() => {
-    (v4 as jest.Mock).mockReturnValue('uuid-1111')
+    ;(v4 as jest.Mock).mockReturnValue('uuid-1111')
   })
 
   afterEach(() => {
@@ -58,7 +57,7 @@ describe('secretsManager', () => {
   })
 
   it('persists and retrieves', async () => {
-    (v4 as jest.Mock)
+    ;(v4 as jest.Mock)
       .mockReturnValueOnce('uuid-1111')
       .mockReturnValueOnce('uuid-2222')
 

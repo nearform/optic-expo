@@ -1,10 +1,11 @@
 import React from 'react'
 import { fireEvent } from '@testing-library/react-native'
+
 import { getMockedNavigation, renderWithTheme } from '../../test/utils'
 import { useSecrets } from '../context/SecretsContext'
+
 import { TypeScreen } from './TypeScreen'
 
- 
 describe('TypeScreen', () => {
   afterEach(() => {
     jest.clearAllMocks()
@@ -22,9 +23,9 @@ describe('TypeScreen', () => {
   })
 
   it('does not allow adding secret on button click when input is empty', () => {
-    const addStub = jest.fn();
+    const addStub = jest.fn()
 
-    (useSecrets as jest.Mock).mockReturnValue({
+    ;(useSecrets as jest.Mock).mockReturnValue({
       add: addStub,
     })
 
@@ -36,9 +37,9 @@ describe('TypeScreen', () => {
   })
 
   it('calls add secret on button click', () => {
-    const addStub = jest.fn();
+    const addStub = jest.fn()
 
-    (useSecrets as jest.Mock).mockReturnValue({
+    ;(useSecrets as jest.Mock).mockReturnValue({
       add: addStub,
     })
 

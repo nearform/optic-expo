@@ -3,7 +3,7 @@ import { fireEvent } from '@testing-library/react-native'
 
 import { renderWithTheme } from '../test/utils'
 
-import apiFactory, { API } from './lib/api'
+import apiFactory from './lib/api'
 import { useAuth } from './context/AuthContext'
 import Main from './Main'
 import { User } from './types'
@@ -17,18 +17,15 @@ describe('Main', () => {
   const registerSubscriptionStub = jest.fn()
 
   beforeEach(() => {
-    (useAuth as jest.Mock)
-      .mockReturnValue({
-        user: {} as User,
-        loading: false,
-        handleLogin: handleLoginStub,
-        handleLogout: jest.fn(),
-      });
-
-     (apiFactory as jest.Mock)
-      .mockReturnValue({
-        registerSubscription: registerSubscriptionStub,
-      });
+    ;(useAuth as jest.Mock).mockReturnValue({
+      user: {} as User,
+      loading: false,
+      handleLogin: handleLoginStub,
+      handleLogout: jest.fn(),
+    })
+    ;(apiFactory as jest.Mock).mockReturnValue({
+      registerSubscription: registerSubscriptionStub,
+    })
   })
 
   afterEach(() => {
@@ -36,12 +33,12 @@ describe('Main', () => {
   })
 
   it('should render correct initial state for unauthenticated users', () => {
-    (useAuth as jest.Mock).mockReturnValue({
+    ;(useAuth as jest.Mock).mockReturnValue({
       user: null,
       loading: false,
       handleLogin: handleLoginStub,
       handleLogout: jest.fn(),
-    });
+    })
 
     const { getByText, getByA11yLabel } = renderWithTheme(<Main />)
 
