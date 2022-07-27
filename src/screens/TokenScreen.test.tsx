@@ -1,7 +1,6 @@
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import React from 'react'
 import { fireEvent, waitFor } from '@testing-library/react-native'
-import { mocked } from 'ts-jest/utils'
 import { Alert } from 'react-native'
 
 import { getMockedNavigation, renderWithTheme } from '../../test/utils'
@@ -30,9 +29,6 @@ jest.mock('../lib/api')
 jest.mock('../hooks/use-push-token', () => () => 'dummy-expo-token')
 jest.mock('../context/SecretsContext')
 
-const useSecretsMocked = mocked(useSecrets)
-const apiFactoryMocked = mocked(apiFactory)
-
 // Continue after alert by clicking the confirm button
 jest
   .spyOn(Alert, 'alert')
@@ -47,19 +43,20 @@ describe('TokenScreen', () => {
   const registerSubscriptionStub = jest.fn().mockResolvedValue('a-sub')
 
   beforeEach(() => {
-    useSecretsMocked.mockReturnValue({
+
+    (useSecrets as jest.Mock).mockReturnValue({
       secrets: [secret],
       add: jest.fn(),
       update: updateSecretStub,
       remove: jest.fn(),
       replace: jest.fn(),
-    })
+    });
 
-    apiFactoryMocked.mockReturnValue({
+    (apiFactory as jest.Mock).mockReturnValue({
       generateToken: apiGenerateTokenStub,
       revokeToken: apiRevokeTokenStub,
       registerSubscription: registerSubscriptionStub,
-    } as unknown as API)
+    });
   })
 
   const setup = () => {

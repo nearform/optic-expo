@@ -1,6 +1,5 @@
 import { v4 } from 'uuid'
-import { mocked } from 'ts-jest/utils'
-
+ 
 import { clearAll } from './secure-storage'
 import secretsManager from './secretsManager'
 
@@ -8,11 +7,10 @@ jest.mock('uuid', () => ({
   v4: jest.fn().mockReturnValue('uuid-1111'),
 }))
 
-const v4Mocked = mocked(v4)
-
+ 
 describe('secretsManager', () => {
   beforeEach(() => {
-    v4Mocked.mockReturnValue('uuid-1111')
+    (v4 as jest.Mock).mockReturnValue('uuid-1111')
   })
 
   afterEach(() => {
@@ -60,8 +58,9 @@ describe('secretsManager', () => {
   })
 
   it('persists and retrieves', async () => {
-    v4Mocked.mockReturnValueOnce('uuid-1111')
-    v4Mocked.mockReturnValueOnce('uuid-2222')
+    (v4 as jest.Mock)
+      .mockReturnValueOnce('uuid-1111')
+      .mockReturnValueOnce('uuid-2222')
 
     const s1 = await secretsManager.upsert(
       {

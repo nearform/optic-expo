@@ -13,7 +13,6 @@ export const encryptWithRandomKey = async (
   data: string
 ): Promise<EncryptionResult> => {
   const encryptionKey = await generateRandomKey()
-
   const dataBytes = aesjs.utils.utf8.toBytes(data)
   const aesCtr = new aesjs.ModeOfOperation.ctr(
     encryptionKey,

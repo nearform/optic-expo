@@ -10,7 +10,7 @@ const storageFileNameURI = `${storageDirectoryURI}secure-file-storage`
 
 const encryptAndStoreKey = async (data: string) => {
   const { encryptedData, encryptionKey } = await encryptWithRandomKey(data)
-  await SecureStore.setItemAsync(storageKey, encryptionKey)
+   await SecureStore.setItemAsync(storageKey, encryptionKey)
 
   return encryptedData
 }
