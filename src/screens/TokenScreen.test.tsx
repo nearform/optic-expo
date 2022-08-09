@@ -90,7 +90,7 @@ describe('TokenScreen', () => {
     // Using fake timer as description saving is debounced
     jest.useFakeTimers()
     updateSecretStub.mockReset()
-    const { getByA11yLabel } = setup()
+    const { getByLabelText } = setup()
 
     await waitFor(() => {
       expect(registerSubscriptionStub).toBeCalled()
@@ -98,7 +98,7 @@ describe('TokenScreen', () => {
 
     const inputtedDescriptionText = 'An updated description'
 
-    const descriptionInput = getByA11yLabel('Description')
+    const descriptionInput = getByLabelText('Description')
     fireEvent.changeText(descriptionInput, inputtedDescriptionText)
     jest.runOnlyPendingTimers()
 
@@ -114,9 +114,9 @@ describe('TokenScreen', () => {
     jest.useFakeTimers()
     registerSubscriptionStub.mockReset()
     updateSecretStub.mockReset()
-    const { getByA11yLabel } = setup()
+    const { getByLabelText } = setup()
 
-    const descriptionInput = getByA11yLabel('Description')
+    const descriptionInput = getByLabelText('Description')
     fireEvent.changeText(descriptionInput, '')
 
     jest.runOnlyPendingTimers()

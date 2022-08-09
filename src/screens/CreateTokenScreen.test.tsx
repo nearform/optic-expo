@@ -89,9 +89,9 @@ describe('CreateTokenScreen', () => {
   })
 
   it('generates a token when description inputted', () => {
-    const { getByA11yLabel, getByText } = setup()
+    const { getByLabelText, getByText } = setup()
 
-    const descriptionInput = getByA11yLabel('Description')
+    const descriptionInput = getByLabelText('Description')
     fireEvent.changeText(descriptionInput, 'A description')
     fireEvent.press(getByText('Create Token'))
     expect(apiGenerateTokenStub).toBeCalledTimes(1)

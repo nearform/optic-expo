@@ -40,11 +40,11 @@ describe('Main', () => {
       handleLogout: jest.fn(),
     })
 
-    const { getByText, getByA11yLabel } = renderWithTheme(<Main />)
+    const { getByText, getByLabelText } = renderWithTheme(<Main />)
 
     getByText('Optic')
     getByText('Grant your favorite automated tools an OTP when they need it!')
-    const login = getByA11yLabel('login')
+    const login = getByLabelText('login')
 
     fireEvent.press(login)
     expect(handleLoginStub).toHaveBeenCalledTimes(1)

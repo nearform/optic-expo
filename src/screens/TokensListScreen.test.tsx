@@ -77,9 +77,9 @@ describe('TokensListScreen', () => {
       ],
     }))
 
-    const { queryByText, getByA11yLabel } = setup()
+    const { queryByText, getByLabelText } = setup()
 
-    const input = getByA11yLabel('Search')
+    const input = getByLabelText('Search')
     fireEvent.changeText(input, 'github')
     expect(queryByText('My github token')).toBeTruthy()
     expect(queryByText('My NPM token')).toBeFalsy()
@@ -98,9 +98,9 @@ describe('TokensListScreen', () => {
       ],
     }))
 
-    const { queryByText, getByA11yLabel } = setup()
+    const { queryByText, getByLabelText } = setup()
 
-    const input = getByA11yLabel('Search')
+    const input = getByLabelText('Search')
     fireEvent.changeText(input, 'hkkdoeuagk')
     expect(queryByText('My github token')).toBeTruthy()
     expect(queryByText('My NPM token')).toBeFalsy()

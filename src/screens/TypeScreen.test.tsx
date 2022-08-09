@@ -29,9 +29,9 @@ describe('TypeScreen', () => {
       add: addStub,
     })
 
-    const { getByA11yLabel } = setup()
+    const { getByLabelText } = setup()
 
-    fireEvent.press(getByA11yLabel('Add secret'))
+    fireEvent.press(getByLabelText('Add secret'))
 
     expect(addStub).toHaveBeenCalledTimes(0)
   })
@@ -43,13 +43,13 @@ describe('TypeScreen', () => {
       add: addStub,
     })
 
-    const { getByA11yLabel } = setup()
+    const { getByLabelText } = setup()
 
-    fireEvent.changeText(getByA11yLabel('Issuer'), 'Issuer A')
-    fireEvent.changeText(getByA11yLabel('Secret'), 'mysecret')
-    fireEvent.changeText(getByA11yLabel('Account'), 'My Account')
+    fireEvent.changeText(getByLabelText('Issuer'), 'Issuer A')
+    fireEvent.changeText(getByLabelText('Secret'), 'mysecret')
+    fireEvent.changeText(getByLabelText('Account'), 'My Account')
 
-    fireEvent.press(getByA11yLabel('Add secret'))
+    fireEvent.press(getByLabelText('Add secret'))
 
     expect(addStub).toHaveBeenCalledTimes(1)
     expect(addStub).toHaveBeenCalledWith({
