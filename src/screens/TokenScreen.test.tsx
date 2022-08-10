@@ -1,14 +1,13 @@
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import React from 'react'
 import { fireEvent, waitFor } from '@testing-library/react-native'
-import { mocked } from 'ts-jest/utils'
 import { Alert } from 'react-native'
 
 import { getMockedNavigation, renderWithTheme } from '../../test/utils'
 import { MainStackParamList } from '../Main'
 import { Secret } from '../types'
 import { useSecrets } from '../context/SecretsContext'
-import apiFactory, { API } from '../lib/api'
+import apiFactory from '../lib/api'
 
 import { TokenScreen } from './TokenScreen'
 
@@ -30,9 +29,6 @@ jest.mock('../lib/api')
 jest.mock('../hooks/use-push-token', () => () => 'dummy-expo-token')
 jest.mock('../context/SecretsContext')
 
-const useSecretsMocked = mocked(useSecrets)
-const apiFactoryMocked = mocked(apiFactory)
-
 // Continue after alert by clicking the confirm button
 jest
   .spyOn(Alert, 'alert')
@@ -47,19 +43,18 @@ describe('TokenScreen', () => {
   const registerSubscriptionStub = jest.fn().mockResolvedValue('a-sub')
 
   beforeEach(() => {
-    useSecretsMocked.mockReturnValue({
+    ;(useSecrets as jest.Mock).mockReturnValue({
       secrets: [secret],
       add: jest.fn(),
       update: updateSecretStub,
       remove: jest.fn(),
       replace: jest.fn(),
     })
-
-    apiFactoryMocked.mockReturnValue({
+    ;(apiFactory as jest.Mock).mockReturnValue({
       generateToken: apiGenerateTokenStub,
       revokeToken: apiRevokeTokenStub,
       registerSubscription: registerSubscriptionStub,
-    } as unknown as API)
+    })
   })
 
   const setup = () => {
@@ -95,7 +90,7 @@ describe('TokenScreen', () => {
     // Using fake timer as description saving is debounced
     jest.useFakeTimers()
     updateSecretStub.mockReset()
-    const { getByA11yLabel } = setup()
+    const { getByLabelText } = setup()
 
     await waitFor(() => {
       expect(registerSubscriptionStub).toBeCalled()
@@ -103,7 +98,7 @@ describe('TokenScreen', () => {
 
     const inputtedDescriptionText = 'An updated description'
 
-    const descriptionInput = getByA11yLabel('Description')
+    const descriptionInput = getByLabelText('Description')
     fireEvent.changeText(descriptionInput, inputtedDescriptionText)
     jest.runOnlyPendingTimers()
 
@@ -119,9 +114,9 @@ describe('TokenScreen', () => {
     jest.useFakeTimers()
     registerSubscriptionStub.mockReset()
     updateSecretStub.mockReset()
-    const { getByA11yLabel } = setup()
+    const { getByLabelText } = setup()
 
-    const descriptionInput = getByA11yLabel('Description')
+    const descriptionInput = getByLabelText('Description')
     fireEvent.changeText(descriptionInput, '')
 
     jest.runOnlyPendingTimers()

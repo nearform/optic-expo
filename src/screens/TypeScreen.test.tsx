@@ -1,13 +1,10 @@
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 import { fireEvent } from '@testing-library/react-native'
 
 import { getMockedNavigation, renderWithTheme } from '../../test/utils'
 import { useSecrets } from '../context/SecretsContext'
 
 import { TypeScreen } from './TypeScreen'
-
-const useSecretsMocked = mocked(useSecrets)
 
 describe('TypeScreen', () => {
   afterEach(() => {
@@ -27,30 +24,32 @@ describe('TypeScreen', () => {
 
   it('does not allow adding secret on button click when input is empty', () => {
     const addStub = jest.fn()
-    useSecretsMocked.mockReturnValue({
+
+    ;(useSecrets as jest.Mock).mockReturnValue({
       add: addStub,
-    } as unknown as ReturnType<typeof useSecrets>)
+    })
 
-    const { getByA11yLabel } = setup()
+    const { getByLabelText } = setup()
 
-    fireEvent.press(getByA11yLabel('Add secret'))
+    fireEvent.press(getByLabelText('Add secret'))
 
     expect(addStub).toHaveBeenCalledTimes(0)
   })
 
   it('calls add secret on button click', () => {
     const addStub = jest.fn()
-    useSecretsMocked.mockReturnValue({
+
+    ;(useSecrets as jest.Mock).mockReturnValue({
       add: addStub,
-    } as unknown as ReturnType<typeof useSecrets>)
+    })
 
-    const { getByA11yLabel } = setup()
+    const { getByLabelText } = setup()
 
-    fireEvent.changeText(getByA11yLabel('Issuer'), 'Issuer A')
-    fireEvent.changeText(getByA11yLabel('Secret'), 'mysecret')
-    fireEvent.changeText(getByA11yLabel('Account'), 'My Account')
+    fireEvent.changeText(getByLabelText('Issuer'), 'Issuer A')
+    fireEvent.changeText(getByLabelText('Secret'), 'mysecret')
+    fireEvent.changeText(getByLabelText('Account'), 'My Account')
 
-    fireEvent.press(getByA11yLabel('Add secret'))
+    fireEvent.press(getByLabelText('Add secret'))
 
     expect(addStub).toHaveBeenCalledTimes(1)
     expect(addStub).toHaveBeenCalledWith({
