@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Notification from 'expo-notifications'
 import { Subscription } from 'expo-modules-core'
-import { fireEvent } from '@testing-library/react-native'
+import { fireEvent, waitFor } from '@testing-library/react-native'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import apiFactory from '../lib/api'
@@ -79,22 +79,21 @@ describe('CreateTokenScreen', () => {
     return renderWithTheme(<CreateTokenScreen {...props} />)
   }
 
-  it('registers subscription on load', () => {
+  it('registers subscription on load', async () => {
     setup()
-    expect(registerSubscriptionStub).toHaveBeenCalledTimes(1)
-    expect(registerSubscriptionStub).toHaveBeenCalledWith({
+    await waitFor(() => expect(registerSubscriptionStub).toBeCalledTimes(1))
+    expect(registerSubscriptionStub).toBeCalledWith({
       token: 'dummy-expo-token',
       type: 'expo',
     })
   })
 
-  it('generates a token when description inputted', () => {
+  it('generates a token when description inputted', async () => {
     const { getByLabelText, getByText } = setup()
-
     const descriptionInput = getByLabelText('Description')
     fireEvent.changeText(descriptionInput, 'A description')
     fireEvent.press(getByText('Create Token'))
-    expect(apiGenerateTokenStub).toBeCalledTimes(1)
+    await waitFor(() => expect(apiGenerateTokenStub).toBeCalledTimes(1))
     expect(apiGenerateTokenStub).toBeCalledWith(secret, '')
   })
 })

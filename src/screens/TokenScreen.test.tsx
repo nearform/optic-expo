@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import React from 'react'
-import { fireEvent, waitFor } from '@testing-library/react-native'
+import { act, fireEvent, waitFor } from '@testing-library/react-native'
 import { Alert } from 'react-native'
 
 import { getMockedNavigation, renderWithTheme } from '../../test/utils'
@@ -68,21 +68,20 @@ describe('TokenScreen', () => {
     return renderWithTheme(<TokenScreen {...props} />)
   }
 
+  it('register subscription', async () => {
+    setup()
+    await waitFor(() => expect(registerSubscriptionStub).toBeCalled())
+  })
+
   it('refreshes token', async () => {
-    const { getByText } = setup()
-    await waitFor(() => {
-      expect(registerSubscriptionStub).toBeCalled()
-    })
-    fireEvent.press(getByText('REFRESH TOKEN'))
+    const { getByText } = await waitFor(() => setup())
+    await act(async () => fireEvent.press(getByText('REFRESH TOKEN')))
     expect(apiGenerateTokenStub).toBeCalledTimes(1)
   })
 
   it('revokes token', async () => {
-    const { getByText } = setup()
-    await waitFor(() => {
-      expect(registerSubscriptionStub).toBeCalled()
-    })
-    fireEvent.press(getByText('REVOKE TOKEN'))
+    const { getByText } = await waitFor(() => setup())
+    await act(async () => fireEvent.press(getByText('REVOKE TOKEN')))
     expect(apiRevokeTokenStub).toBeCalledTimes(1)
   })
 
@@ -91,25 +90,18 @@ describe('TokenScreen', () => {
     jest.useFakeTimers()
     updateSecretStub.mockReset()
     const { getByLabelText } = setup()
-
-    await waitFor(() => {
-      expect(registerSubscriptionStub).toBeCalled()
-    })
-
     const inputtedDescriptionText = 'An updated description'
-
-    const descriptionInput = getByLabelText('Description')
-    fireEvent.changeText(descriptionInput, inputtedDescriptionText)
+    fireEvent.changeText(getByLabelText('Description'), inputtedDescriptionText)
     jest.runOnlyPendingTimers()
 
-    expect(updateSecretStub).toBeCalledTimes(1)
+    await waitFor(() => expect(updateSecretStub).toBeCalledTimes(1))
     expect(updateSecretStub).toBeCalledWith({
       ...secret,
       tokens: [{ ...secret.tokens[0], description: inputtedDescriptionText }],
     })
   })
 
-  it("doesn't save description if it's empty", () => {
+  it("doesn't save description if it's empty", async () => {
     // Using fake timer as description saving is debounced
     jest.useFakeTimers()
     registerSubscriptionStub.mockReset()
@@ -121,6 +113,6 @@ describe('TokenScreen', () => {
 
     jest.runOnlyPendingTimers()
 
-    expect(updateSecretStub).toBeCalledTimes(0)
+    await waitFor(() => expect(updateSecretStub).toBeCalledTimes(0))
   })
 })
