@@ -130,6 +130,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
               Export tokens
             </Text>
             <View
+              collapsable={false}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -286,6 +287,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
               Import tokens
             </Text>
             <View
+              collapsable={false}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -309,7 +311,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 accessibilityRole="button"
                 accessibilityState={
                   Object {
-                    "disabled": undefined,
+                    "disabled": false,
                   }
                 }
                 accessible={true}
@@ -448,6 +450,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
             }
           >
             <View
+              collapsable={false}
               style={
                 Object {
                   "backgroundColor": "#2165E3",
@@ -471,7 +474,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 accessibilityRole="button"
                 accessibilityState={
                   Object {
-                    "disabled": undefined,
+                    "disabled": false,
                   }
                 }
                 accessible={true}

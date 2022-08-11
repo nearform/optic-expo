@@ -35,6 +35,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
           }
         >
           <View
+            collapsable={false}
             style={
               Object {
                 "backgroundColor": "#ffffff",
@@ -52,6 +53,11 @@ exports[`HomeScreen renders secret cards when available 1`] = `
             }
           >
             <View
+              accessibilityState={
+                Object {
+                  "disabled": true,
+                }
+              }
               accessible={true}
               focusable={false}
               onClick={[Function]}
@@ -258,7 +264,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       accessibilityRole="button"
                       accessibilityState={
                         Object {
-                          "disabled": undefined,
+                          "disabled": false,
                         }
                       }
                       accessible={true}
@@ -402,7 +408,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         accessibilityRole="button"
                         accessibilityState={
                           Object {
-                            "disabled": undefined,
+                            "disabled": false,
                           }
                         }
                         accessible={true}
@@ -660,6 +666,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   </View>
                   <View>
                     <View
+                      collapsable={false}
                       style={
                         Object {
                           "backgroundColor": "transparent",
@@ -683,7 +690,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         accessibilityRole="button"
                         accessibilityState={
                           Object {
-                            "disabled": undefined,
+                            "disabled": false,
                           }
                         }
                         accessible={true}
@@ -913,6 +920,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   }
                 >
                   <View
+                    collapsable={false}
                     style={
                       Object {
                         "backgroundColor": "transparent",
@@ -936,7 +944,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       accessibilityRole="button"
                       accessibilityState={
                         Object {
-                          "disabled": undefined,
+                          "disabled": false,
                         }
                       }
                       accessible={true}
@@ -1037,6 +1045,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   }
                 >
                   <View
+                    collapsable={false}
                     style={
                       Object {
                         "backgroundColor": "#2165E3",
@@ -1060,7 +1069,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       accessibilityRole="button"
                       accessibilityState={
                         Object {
-                          "disabled": undefined,
+                          "disabled": false,
                         }
                       }
                       accessible={true}
@@ -1161,6 +1170,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
           }
         >
           <View
+            collapsable={false}
             style={
               Object {
                 "backgroundColor": "#ffffff",
@@ -1178,6 +1188,11 @@ exports[`HomeScreen renders secret cards when available 1`] = `
             }
           >
             <View
+              accessibilityState={
+                Object {
+                  "disabled": true,
+                }
+              }
               accessible={true}
               focusable={false}
               onClick={[Function]}
@@ -1384,7 +1399,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       accessibilityRole="button"
                       accessibilityState={
                         Object {
-                          "disabled": undefined,
+                          "disabled": false,
                         }
                       }
                       accessible={true}
@@ -1528,7 +1543,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         accessibilityRole="button"
                         accessibilityState={
                           Object {
-                            "disabled": undefined,
+                            "disabled": false,
                           }
                         }
                         accessible={true}
@@ -1786,6 +1801,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   </View>
                   <View>
                     <View
+                      collapsable={false}
                       style={
                         Object {
                           "backgroundColor": "transparent",
@@ -1809,7 +1825,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         accessibilityRole="button"
                         accessibilityState={
                           Object {
-                            "disabled": undefined,
+                            "disabled": false,
                           }
                         }
                         accessible={true}
@@ -2039,6 +2055,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   }
                 >
                   <View
+                    collapsable={false}
                     style={
                       Object {
                         "backgroundColor": "transparent",
@@ -2062,7 +2079,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       accessibilityRole="button"
                       accessibilityState={
                         Object {
-                          "disabled": undefined,
+                          "disabled": false,
                         }
                       }
                       accessible={true}
@@ -2163,6 +2180,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   }
                 >
                   <View
+                    collapsable={false}
                     style={
                       Object {
                         "backgroundColor": "#2165E3",
@@ -2186,7 +2204,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       accessibilityRole="button"
                       accessibilityState={
                         Object {
-                          "disabled": undefined,
+                          "disabled": false,
                         }
                       }
                       accessible={true}
