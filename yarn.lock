@@ -2649,16 +2649,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@testing-library/jest-native@^4.0.10":
-  version "4.0.10"
-  resolved "https://registry.yarnpkg.com/@testing-library/jest-native/-/jest-native-4.0.10.tgz#6a84c6e945998cd7c9f88f6d129d897bfa80d3d5"
-  integrity sha512-4FZKzn90y7hw2uah3Q3MJ/aiQHbmgdi141DT6oaqME/dnTd9+IQYuKOIWfXTkDybIXfeWvUMCeiaqosNWpU5Ng==
+"@testing-library/jest-native@^4.0.11":
+  version "4.0.11"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-native/-/jest-native-4.0.11.tgz#6e471bcdb3fae6ed485149d0b0fd18357cf746b4"
+  integrity sha512-HQ4uopoSL7DlBLNk59mXohehzczD3deGATyMFfpUo1rkVlI7MRaKv7ZMI89PX3OwJ/3dMoeBJXR7XTuGnK1x4w==
   dependencies:
     chalk "^4.1.2"
     jest-diff "^28.1.3"
     jest-matcher-utils "^28.1.3"
     pretty-format "^28.1.3"
-    ramda "^0.28.0"
     redent "^2.0.0"
 
 "@testing-library/react-hooks@^8.0.1":
@@ -8923,11 +8922,6 @@ quick-lru@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
   integrity sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
-
-ramda@^0.28.0:
-  version "0.28.0"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.28.0.tgz#acd785690100337e8b063cab3470019be427cc97"
-  integrity sha512-9QnLuG/kPVgWvMQ4aODhsBUFKOUmnbUnsSXACv+NCQZcHbeb+v8Lodp8OVxtRULN1/xOyYLLaL6npE6dMq5QTA==
 
 range-parser@~1.2.1:
   version "1.2.1"
