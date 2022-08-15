@@ -219,7 +219,7 @@ exports[`TypeScreen should match snapshot 1`] = `
               </View>
               <TextInput
                 accessibilityLabel="Issuer"
-                autoComplete={false}
+                autoComplete="off"
                 autoFocus={true}
                 editable={true}
                 maxFontSizeMultiplier={1.5}
@@ -464,7 +464,7 @@ exports[`TypeScreen should match snapshot 1`] = `
               </View>
               <TextInput
                 accessibilityLabel="Secret"
-                autoComplete={false}
+                autoComplete="off"
                 editable={true}
                 maxFontSizeMultiplier={1.5}
                 multiline={false}
@@ -712,7 +712,7 @@ exports[`TypeScreen should match snapshot 1`] = `
               </View>
               <TextInput
                 accessibilityLabel="Account"
-                autoComplete={false}
+                autoComplete="off"
                 editable={true}
                 maxFontSizeMultiplier={1.5}
                 multiline={false}

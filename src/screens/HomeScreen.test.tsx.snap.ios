@@ -808,82 +808,72 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 <View
                   style={
                     Object {
-                      "height": 0,
-                      "opacity": 0,
-                      "overflow": "hidden",
+                      "flex": 1,
+                      "marginTop": 16,
+                      "paddingHorizontal": 8,
                     }
                   }
                 >
-                  <View
+                  <Text
                     style={
                       Object {
-                        "flex": 1,
-                        "marginTop": 16,
-                        "paddingHorizontal": 8,
+                        "color": "rgba(0, 0, 0, 0.6)",
+                        "fontSize": 10,
+                        "marginRight": 8,
                       }
                     }
                   >
-                    <Text
-                      style={
-                        Object {
-                          "color": "rgba(0, 0, 0, 0.6)",
-                          "fontSize": 10,
-                          "marginRight": 8,
-                        }
-                      }
-                    >
-                      SECRET
-                    </Text>
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#6D6D68",
-                            "fontFamily": "System",
-                            "fontWeight": "400",
-                          },
-                          Object {
-                            "textAlign": "left",
-                          },
-                          Array [
-                            Object {
-                              "fontFamily": "FiraCode_400Regular",
-                              "fontSize": 24,
-                            },
-                            Object {
-                              "alignItems": "center",
-                              "color": "#6D6D68",
-                              "display": "flex",
-                              "marginBottom": 0,
-                            },
-                            Array [
-                              Object {
-                                "marginBottom": 16,
-                              },
-                              Object {
-                                "fontSize": 16,
-                              },
-                            ],
-                          ],
-                        ]
-                      }
-                    >
-                      mysecret
-                    </Text>
-                  </View>
-                  <View
+                    SECRET
+                  </Text>
+                  <Text
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "rgba(0, 0, 0, 0.12)",
-                          "height": 0.5,
+                          "color": "#6D6D68",
+                          "fontFamily": "System",
+                          "fontWeight": "400",
                         },
-                        undefined,
-                        undefined,
+                        Object {
+                          "textAlign": "left",
+                        },
+                        Array [
+                          Object {
+                            "fontFamily": "FiraCode_400Regular",
+                            "fontSize": 24,
+                          },
+                          Object {
+                            "alignItems": "center",
+                            "color": "#6D6D68",
+                            "display": "flex",
+                            "marginBottom": 0,
+                          },
+                          Array [
+                            Object {
+                              "marginBottom": 16,
+                            },
+                            Object {
+                              "fontSize": 16,
+                            },
+                          ],
+                        ],
                       ]
                     }
-                  />
+                  >
+                    mysecret
+                  </Text>
                 </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                        "height": 0.5,
+                      },
+                      undefined,
+                      undefined,
+                    ]
+                  }
+                />
               </View>
               <View
                 index={2}
@@ -1943,82 +1933,72 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 <View
                   style={
                     Object {
-                      "height": 0,
-                      "opacity": 0,
-                      "overflow": "hidden",
+                      "flex": 1,
+                      "marginTop": 16,
+                      "paddingHorizontal": 8,
                     }
                   }
                 >
-                  <View
+                  <Text
                     style={
                       Object {
-                        "flex": 1,
-                        "marginTop": 16,
-                        "paddingHorizontal": 8,
+                        "color": "rgba(0, 0, 0, 0.6)",
+                        "fontSize": 10,
+                        "marginRight": 8,
                       }
                     }
                   >
-                    <Text
-                      style={
-                        Object {
-                          "color": "rgba(0, 0, 0, 0.6)",
-                          "fontSize": 10,
-                          "marginRight": 8,
-                        }
-                      }
-                    >
-                      SECRET
-                    </Text>
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#6D6D68",
-                            "fontFamily": "System",
-                            "fontWeight": "400",
-                          },
-                          Object {
-                            "textAlign": "left",
-                          },
-                          Array [
-                            Object {
-                              "fontFamily": "FiraCode_400Regular",
-                              "fontSize": 24,
-                            },
-                            Object {
-                              "alignItems": "center",
-                              "color": "#6D6D68",
-                              "display": "flex",
-                              "marginBottom": 0,
-                            },
-                            Array [
-                              Object {
-                                "marginBottom": 16,
-                              },
-                              Object {
-                                "fontSize": 16,
-                              },
-                            ],
-                          ],
-                        ]
-                      }
-                    >
-                      myanothersecret
-                    </Text>
-                  </View>
-                  <View
+                    SECRET
+                  </Text>
+                  <Text
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "rgba(0, 0, 0, 0.12)",
-                          "height": 0.5,
+                          "color": "#6D6D68",
+                          "fontFamily": "System",
+                          "fontWeight": "400",
                         },
-                        undefined,
-                        undefined,
+                        Object {
+                          "textAlign": "left",
+                        },
+                        Array [
+                          Object {
+                            "fontFamily": "FiraCode_400Regular",
+                            "fontSize": 24,
+                          },
+                          Object {
+                            "alignItems": "center",
+                            "color": "#6D6D68",
+                            "display": "flex",
+                            "marginBottom": 0,
+                          },
+                          Array [
+                            Object {
+                              "marginBottom": 16,
+                            },
+                            Object {
+                              "fontSize": 16,
+                            },
+                          ],
+                        ],
                       ]
                     }
-                  />
+                  >
+                    myanothersecret
+                  </Text>
                 </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "rgba(0, 0, 0, 0.12)",
+                        "height": 0.5,
+                      },
+                      undefined,
+                      undefined,
+                    ]
+                  }
+                />
               </View>
               <View
                 index={2}

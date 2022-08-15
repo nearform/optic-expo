@@ -7,13 +7,11 @@ import {
   Card,
   Divider,
 } from 'react-native-paper'
-import Animated from 'react-native-reanimated'
 
 import otpLib from '../../lib/otp'
 import theme from '../../lib/theme'
 import { Secret } from '../../types'
 import { Typography } from '../Typography'
-import useAnimatedTransition from '../../hooks/use-animated-transition'
 
 import { ContextMenu } from './ContextMenu'
 import { OTP } from './OTP'
@@ -116,8 +114,6 @@ export const SecretCard: React.FC<SecretProps> = ({
   const handleToggleExpand = () => setExpanded(!expanded)
   const handleToggleMenu = () => setShowMenu(!showMenu)
 
-  const secretAnimationStyle = useAnimatedTransition(expanded, 64)
-
   return (
     <View style={styles.container}>
       <Card>
@@ -137,18 +133,16 @@ export const SecretCard: React.FC<SecretProps> = ({
           <OTP value={otp} />
           <Divider />
           <TokensInfo count={tokens.length} onPress={onViewTokens} />
-          <Animated.View style={secretAnimationStyle}>
-            <View style={styles.row}>
-              <Text style={styles.label}>SECRET</Text>
-              <Typography
-                variant="code"
-                style={[styles.value, styles.valueSmall]}
-              >
-                {data.secret}
-              </Typography>
-            </View>
-            <Divider />
-          </Animated.View>
+          <View style={styles.row}>
+            <Text style={styles.label}>SECRET</Text>
+            <Typography
+              variant="code"
+              style={[styles.value, styles.valueSmall]}
+            >
+              {data.secret}
+            </Typography>
+          </View>
+          <Divider />
         </Card.Content>
         <Card.Actions style={styles.cardActions}>
           <View style={styles.leftActions}>
