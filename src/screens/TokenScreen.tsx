@@ -212,7 +212,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
         </View>
         <View style={styles.description}>
           <TextInput
-            autoComplete={false}
+            autoComplete="off"
             label="Description"
             accessibilityLabel="Description"
             value={description}

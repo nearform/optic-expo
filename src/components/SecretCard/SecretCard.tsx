@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Animated, StyleSheet, Text, View } from 'react-native'
 import {
   ActivityIndicator,
   Avatar,
@@ -7,13 +7,12 @@ import {
   Card,
   Divider,
 } from 'react-native-paper'
-import Animated from 'react-native-reanimated'
 
+import { useAnimatedHeight } from '../../hooks/use-animated-height'
 import otpLib from '../../lib/otp'
 import theme from '../../lib/theme'
 import { Secret } from '../../types'
 import { Typography } from '../Typography'
-import useAnimatedTransition from '../../hooks/use-animated-transition'
 
 import { ContextMenu } from './ContextMenu'
 import { OTP } from './OTP'
@@ -91,6 +90,7 @@ export const SecretCard: React.FC<SecretProps> = ({
   const [deleteInProgress, setDeleteInProgress] = useState(false)
   const [otp, setOtp] = useState('')
   const tokens = useMemo(() => (data.tokens ? data.tokens : []), [data])
+  const secretStyle = useAnimatedHeight(expanded, 68)
 
   useEffect(() => {
     if (!data.secret) return
@@ -116,8 +116,6 @@ export const SecretCard: React.FC<SecretProps> = ({
   const handleToggleExpand = () => setExpanded(!expanded)
   const handleToggleMenu = () => setShowMenu(!showMenu)
 
-  const secretAnimationStyle = useAnimatedTransition(expanded, 64)
-
   return (
     <View style={styles.container}>
       <Card>
@@ -137,7 +135,7 @@ export const SecretCard: React.FC<SecretProps> = ({
           <OTP value={otp} />
           <Divider />
           <TokensInfo count={tokens.length} onPress={onViewTokens} />
-          <Animated.View style={secretAnimationStyle}>
+          <Animated.View style={[secretStyle, { overflow: 'hidden' }]}>
             <View style={styles.row}>
               <Text style={styles.label}>SECRET</Text>
               <Typography

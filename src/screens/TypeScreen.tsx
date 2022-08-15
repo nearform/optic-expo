@@ -58,7 +58,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
       <View style={styles.form}>
         <View style={styles.inputRow}>
           <TextInput
-            autoComplete={false}
+            autoComplete="off"
             textAlign="left"
             label="Issuer"
             accessibilityLabel="Issuer"
@@ -71,7 +71,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
 
         <View style={styles.inputRow}>
           <TextInput
-            autoComplete={false}
+            autoComplete="off"
             textAlign="left"
             label="Secret"
             accessibilityLabel="Secret"
@@ -89,7 +89,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
 
         <View style={styles.inputRow}>
           <TextInput
-            autoComplete={false}
+            autoComplete="off"
             textAlign="left"
             style={styles.inputRow}
             label="Account"
