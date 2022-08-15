@@ -87,11 +87,14 @@ describe('TokenScreen', () => {
 
   it('saves description in the background', async () => {
     // Using fake timer as description saving is debounced
-    jest.useFakeTimers()
+    jest.useFakeTimers({
+      legacyFakeTimers: true,
+    })
     updateSecretStub.mockReset()
     const { getByLabelText } = setup()
     const inputtedDescriptionText = 'An updated description'
     fireEvent.changeText(getByLabelText('Description'), inputtedDescriptionText)
+
     jest.runOnlyPendingTimers()
 
     await waitFor(() => expect(updateSecretStub).toBeCalledTimes(1))
@@ -103,7 +106,9 @@ describe('TokenScreen', () => {
 
   it("doesn't save description if it's empty", async () => {
     // Using fake timer as description saving is debounced
-    jest.useFakeTimers()
+    jest.useFakeTimers({
+      legacyFakeTimers: true,
+    })
     registerSubscriptionStub.mockReset()
     updateSecretStub.mockReset()
     const { getByLabelText } = setup()
