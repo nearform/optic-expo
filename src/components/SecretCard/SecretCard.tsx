@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Animated, StyleSheet, Text, View } from 'react-native'
 import {
   ActivityIndicator,
   Avatar,
@@ -8,6 +8,7 @@ import {
   Divider,
 } from 'react-native-paper'
 
+import { useAnimatedHeight } from '../../hooks/use-animated-height'
 import otpLib from '../../lib/otp'
 import theme from '../../lib/theme'
 import { Secret } from '../../types'
@@ -89,6 +90,7 @@ export const SecretCard: React.FC<SecretProps> = ({
   const [deleteInProgress, setDeleteInProgress] = useState(false)
   const [otp, setOtp] = useState('')
   const tokens = useMemo(() => (data.tokens ? data.tokens : []), [data])
+  const secretStyle = useAnimatedHeight(expanded, 68)
 
   useEffect(() => {
     if (!data.secret) return
@@ -133,16 +135,18 @@ export const SecretCard: React.FC<SecretProps> = ({
           <OTP value={otp} />
           <Divider />
           <TokensInfo count={tokens.length} onPress={onViewTokens} />
-          <View style={styles.row}>
-            <Text style={styles.label}>SECRET</Text>
-            <Typography
-              variant="code"
-              style={[styles.value, styles.valueSmall]}
-            >
-              {data.secret}
-            </Typography>
-          </View>
-          <Divider />
+          <Animated.View style={[secretStyle, { overflow: 'hidden' }]}>
+            <View style={styles.row}>
+              <Text style={styles.label}>SECRET</Text>
+              <Typography
+                variant="code"
+                style={[styles.value, styles.valueSmall]}
+              >
+                {data.secret}
+              </Typography>
+            </View>
+            <Divider />
+          </Animated.View>
         </Card.Content>
         <Card.Actions style={styles.cardActions}>
           <View style={styles.leftActions}>
