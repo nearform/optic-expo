@@ -26,7 +26,7 @@
     "aes-js": "^3.1.2",
     "buffer": "^6.0.3",
     "dotenv": "^16.0.1",
-    "expo": "^46.0.8",
+    "expo": "^46.0.10",
     "expo-app-loading": "~2.1.0",
     "expo-auth-session": "~3.7.1",
     "expo-camera": "~12.3.0",
