@@ -36,3 +36,23 @@ jobs:
       channel: pr-${{ github.event.number }}
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
+
+  build-ios:
+    needs: build
+    if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
+    uses: ./.github/workflows/expo-eas-build.yml
+    with:
+      profile: preview
+      platform: ios
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}
+
+  build-android:
+    needs: build
+    if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
+    uses: ./.github/workflows/expo-eas-build.yml
+    with:
+      profile: preview
+      platform: android
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}

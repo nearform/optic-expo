@@ -1,0 +1,32 @@
+name: expo-publish
+
+on:
+  workflow_call:
+    secrets:
+      expo-token:
+        description: 'expo token to use to publish preview'
+        required: true
+    inputs:
+      platform:
+        type: string
+        default: android
+      profile:
+        type: string
+        default: preview
+
+jobs:
+  deploy-eas-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - uses: expo/expo-github-action@v7
+        with:
+          expo-cache: true
+          expo-version: 5.x
+          token: ${{ secrets.expo-token }}
+      - run: yarn
+      - run: cp .env.sample .env
+      - run: eas build --platform ${{ inputs.platform }} --non-interactive --profile=${{ inputs.profile }} --no-wait
