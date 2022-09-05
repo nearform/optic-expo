@@ -8,20 +8,23 @@
       "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "channel": "preview"
     },
-    "production": {}
+    "production": {
+      "channel": "production"
+    }
   },
   "submit": {
-    "production": {
-      "extends": "preview"
-    },
     "preview": {
       "ios": {
         "appleId": "app_store@nearform.com",
         "ascAppId": "1643167725",
         "appleTeamId": "VPLG3LLGBN"
       }
+    },
+    "production": {
+      "extends": "preview"
     }
   }
 }
