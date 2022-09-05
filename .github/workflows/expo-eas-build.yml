@@ -15,7 +15,7 @@ on:
         default: preview
 
 jobs:
-  deploy-eas-build:
+  eas-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
