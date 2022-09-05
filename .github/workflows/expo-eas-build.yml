@@ -29,4 +29,4 @@ jobs:
           token: ${{ secrets.expo-token }}
       - run: yarn
       - run: cp .env.sample .env
-      - run: eas build --platform ${{ inputs.platform }} --non-interactive --profile=${{ inputs.profile }} --no-wait
+      - run: npx eas build --platform ${{ inputs.platform }} --non-interactive --profile=${{ inputs.profile }} --no-wait
