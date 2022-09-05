@@ -39,7 +39,7 @@ export default {
   android: {
     package: 'com.nearfrom.optic',
     adaptiveIcon: {
-      foregroundImage: './src/assets/adaptive-icon.png',
+      foregroundImage: './src/assets/icon.png',
       backgroundColor: '#FFFFFF',
     },
   },
