@@ -1,5 +1,4 @@
 {
-  "main": "./src/index.js",
   "private": true,
   "scripts": {
     "start": "expo start",
@@ -10,7 +9,9 @@
     "lint": "eslint .",
     "typecheck": "tsc",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "build:submit:android": "eas build --platform android --non-interactive --auto-submit --profile=preview --no-wait",
+    "build:submit:ios": "eas build --platform ios --non-interactive --auto-submit --profile=preview --no-wait"
   },
   "dependencies": {
     "@expo-google-fonts/didact-gothic": "^0.2.2",
@@ -26,6 +27,7 @@
     "aes-js": "^3.1.2",
     "buffer": "^6.0.3",
     "dotenv": "^16.0.2",
+    "eas-cli": "^2.0.0",
     "expo": "^46.0.10",
     "expo-app-loading": "~2.1.0",
     "expo-auth-session": "~3.7.1",
@@ -33,6 +35,7 @@
     "expo-cli": "^6.0.2",
     "expo-clipboard": "~3.1.0",
     "expo-constants": "~13.2.3",
+    "expo-dev-client": "~1.2.1",
     "expo-document-picker": "~10.3.0",
     "expo-file-system": "~14.1.0",
     "expo-font": "~10.2.0",

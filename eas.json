@@ -1,0 +1,27 @@
+{
+  "cli": {
+    "version": ">= 2.0.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {}
+  },
+  "submit": {
+    "production": {
+      "extends": "preview"
+    },
+    "preview": {
+      "ios": {
+        "appleId": "app_store@nearform.com",
+        "ascAppId": "1643167725",
+        "appleTeamId": "VPLG3LLGBN"
+      }
+    }
+  }
+}
