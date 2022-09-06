@@ -26,4 +26,4 @@ jobs:
           token: ${{ secrets.expo-token }}
       - run: yarn
       - run: cp .env.sample .env
-      - run: npx eas update --channel ${{ inputs.channel }}
+      - run: npx eas update --branch ${{ inputs.channel }} --message todo update message
