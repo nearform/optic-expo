@@ -58,7 +58,7 @@ jobs:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
   eas-update:
-    if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
+    if: github.event_name == 'push'
     uses: ./.github/workflows/expo-eas-update.yml
     with:
       channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview'}}
