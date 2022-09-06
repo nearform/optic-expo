@@ -21,7 +21,7 @@
     "@otplib/plugin-crypto-js": "^12.0.1",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^6.0.11",
-    "@react-navigation/stack": "^6.2.2",
+    "@react-navigation/stack": "^6.2.3",
     "@types/aes-js": "^3.1.1",
     "aes-js": "^3.1.2",
     "buffer": "^6.0.3",
@@ -83,7 +83,7 @@
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
     "babel-plugin-module-resolver": "^4.1.0",
-    "eslint": "^8.22.0",
+    "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-babel-module": "^5.3.1",
     "eslint-plugin-flowtype": "^8.0.3",
@@ -98,7 +98,7 @@
     "prettier": "^2.7.1",
     "react-test-renderer": "^18.0.0",
     "ts-jest": "^28.0.8",
-    "typescript": "~4.7.4"
+    "typescript": "~4.8.2"
   },
   "lint-staged": {
     "*.js": [
