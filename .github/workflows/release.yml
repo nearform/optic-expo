@@ -1,0 +1,37 @@
+name: Stores publish
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      release-version:
+        description: Release version
+        required: true
+        type: string
+
+jobs:
+  build-ios:
+    uses: ./.github/workflows/expo-eas-build.yml
+    with:
+      profile: production
+      platform: ios
+      submit: true
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}
+
+  build-android:
+    uses: ./.github/workflows/expo-eas-build.yml
+    with:
+      profile: preview
+      platform: android
+      submit: true
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}
+
+  eas-update:
+    uses: ./.github/workflows/expo-eas-update.yml
+    with:
+      channel: production
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}

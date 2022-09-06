@@ -29,6 +29,7 @@ export default {
   },
   updates: {
     fallbackToCacheTimeout: 0,
+    url: 'https://u.expo.dev/e3c6e759-c8c5-41a8-861e-b3e4adab619a',
   },
   assetBundlePatterns: ['**/*'],
   platforms: ['android', 'ios'],
@@ -42,5 +43,8 @@ export default {
       foregroundImage: './src/assets/icon.png',
       backgroundColor: '#FFFFFF',
     },
+  },
+  runtimeVersion: {
+    policy: 'sdkVersion',
   },
 }
