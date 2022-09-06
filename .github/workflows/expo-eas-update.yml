@@ -9,10 +9,10 @@ on:
     inputs:
       channel:
         type: string
-        default: staging
+        default: preview
 
 jobs:
-  eas-build:
+  eas-update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,4 +26,4 @@ jobs:
           token: ${{ secrets.expo-token }}
       - run: yarn
       - run: cp .env.sample .env
-      - run: npx eas update --branch ${{ inputs.channel }} --message todo update message
+      - run: npx eas update --branch ${{ inputs.channel }} --message "TODO update message"
