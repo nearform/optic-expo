@@ -21,6 +21,8 @@ interface FirebaseSettings {
   messagingSenderId: string
   appId: string
   clientId: string
+  androidClientId: string
+  iosClientId: string
 }
 
 const {
@@ -32,6 +34,8 @@ const {
   messagingSenderId,
   appId,
   clientId,
+  androidClientId,
+  iosClientId,
 } = Constants.manifest?.extra as FirebaseSettings
 
 const firebaseConfig = {
@@ -70,7 +74,10 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   const [user, setUser] = useState<User>()
 
   const [, response, promptAsync] = Google.useIdTokenAuthRequest({
+    expoClientId: clientId,
     clientId,
+    androidClientId,
+    iosClientId,
   })
 
   useEffect(() => {

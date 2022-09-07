@@ -1,11 +1,13 @@
 import 'dotenv/config'
 
+const APP_PACKAGE_ID = process.env.APP_PACKAGE_ID || 'com.nearform.optic'
+
 export default {
-  name: 'optic-expo',
+  name: 'optic',
   slug: 'optic-expo',
   owner: 'nearform',
-  scheme: 'optic-expo',
-  version: '1.0.1',
+  scheme: 'optic',
+  version: '1.0.2',
   orientation: 'portrait',
   icon: './src/assets/icon.png',
   extra: {
@@ -18,6 +20,8 @@ export default {
     messagingSenderId: process.env.MESSAGING_SENDER_ID,
     appId: process.env.APP_ID,
     clientId: process.env.CLIENT_ID,
+    androidClientId: process.env.CLIENT_ID_ANDROID,
+    iosClientId: process.env.CLIENT_ID_IOS,
     eas: {
       projectId: process.env.EAS_PROJECT_ID,
     },
@@ -35,10 +39,10 @@ export default {
   platforms: ['android', 'ios'],
   ios: {
     supportsTablet: true,
-    bundleIdentifier: 'com.nearfrom.optic',
+    bundleIdentifier: APP_PACKAGE_ID,
   },
   android: {
-    package: 'com.nearfrom.optic',
+    package: APP_PACKAGE_ID,
     adaptiveIcon: {
       foregroundImage: './src/assets/icon.png',
       backgroundColor: '#FFFFFF',

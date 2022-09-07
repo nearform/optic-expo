@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "eject": "expo eject",
     "lint": "eslint .",
@@ -27,12 +27,12 @@
     "aes-js": "^3.1.2",
     "buffer": "^6.0.3",
     "dotenv": "^16.0.2",
-    "eas-cli": "^2.0.0",
+    "eas-cli": "^2.1.0",
     "expo": "^46.0.10",
     "expo-app-loading": "~2.1.0",
     "expo-auth-session": "~3.7.1",
     "expo-camera": "~12.3.0",
-    "expo-cli": "^6.0.2",
+    "expo-cli": "^6.0.5",
     "expo-clipboard": "~3.1.0",
     "expo-constants": "~13.2.3",
     "expo-dev-client": "~1.2.1",
@@ -44,6 +44,7 @@
     "expo-random": "~12.3.0",
     "expo-secure-store": "~11.3.0",
     "expo-sharing": "~10.3.0",
+    "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
     "expo-updates": "~0.14.4",
     "expo-web-browser": "~11.0.0",
@@ -51,7 +52,7 @@
     "global": "^4.4.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "react-native": "0.69.4",
+    "react-native": "0.69.5",
     "react-native-countdown-circle-timer": "^3.0.9",
     "react-native-gesture-handler": "~2.5.0",
     "react-native-get-random-values": "~1.8.0",
@@ -108,5 +109,7 @@
       "eslint",
       "prettier --write"
     ]
-  }
+  },
+  "name": "optic-expo",
+  "version": "1.0.0"
 }
