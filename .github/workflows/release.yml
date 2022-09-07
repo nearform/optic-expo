@@ -23,7 +23,7 @@ jobs:
   build-android:
     uses: ./.github/workflows/expo-eas-build.yml
     with:
-      profile: preview
+      profile: production
       platform: android
       submit: true
     secrets:
