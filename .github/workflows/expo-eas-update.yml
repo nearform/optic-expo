@@ -25,5 +25,4 @@ jobs:
           expo-version: 5.x
           token: ${{ secrets.expo-token }}
       - run: yarn
-      - run: cp .env.sample .env
       - run: npx eas update --branch ${{ inputs.channel }} --message "${{ github.event.head_commit.message }}"

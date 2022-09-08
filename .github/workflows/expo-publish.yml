@@ -26,7 +26,6 @@ jobs:
           expo-version: 5.x
           token: ${{ secrets.expo-token }}
       - run: yarn
-      - run: cp .env.sample .env
       - run: expo publish --release-channel=${{ inputs.channel }} --non-interactive
       - uses: expo/expo-github-action/preview-comment@v7
         if: github.event_name == 'pull_request'
