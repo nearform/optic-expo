@@ -10,6 +10,9 @@ on:
       channel:
         type: string
         default: preview
+      message:
+        type: string
+        default: "no message"
 
 jobs:
   eas-update:
@@ -25,4 +28,4 @@ jobs:
           expo-version: 5.x
           token: ${{ secrets.expo-token }}
       - run: yarn
-      - run: npx eas update --branch ${{ inputs.channel }} --message "${{ github.event.head_commit.message }}"
+      - run: npx eas update --branch ${{ inputs.channel }} --message "${{ inputs.message }}"

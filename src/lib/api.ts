@@ -4,7 +4,7 @@ import { Secret, Subscription } from '../types'
 
 import otpLib from './otp'
 
-const { apiUrl } = Constants.manifest?.extra as { apiUrl: string }
+const { apiUrl } = Constants.expoConfig.extra as { apiUrl: string }
 
 type APIOptions = {
   idToken: string

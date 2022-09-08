@@ -12,7 +12,7 @@ const config = {
   CLIENT_ID:
     '230076165693-0mj3vb13158tnru89f1re89m9o94g8e7.apps.googleusercontent.com',
   CLIENT_ID_ANDROID:
-    '230076165693-t0fm4hla3oarh26ic96qtu78ccfks9la.apps.googleusercontent.com',
+    '230076165693-a668m77v43bsbi0usea3p4o83ehco09r.apps.googleusercontent.com',
   CLIENT_ID_IOS:
     '230076165693-v8kk0ase89jp3s1qe0rtg70t3vb2h9i9.apps.googleusercontent.com',
   EAS_PROJECT_ID: 'e3c6e759-c8c5-41a8-861e-b3e4adab619a',
@@ -23,7 +23,7 @@ export default {
   name: 'optic',
   slug: 'optic-expo',
   owner: 'nearform',
-  scheme: 'optic',
+  scheme: 'optic-expo',
   version: '1.0.3',
   orientation: 'portrait',
   icon: './src/assets/icon.png',
