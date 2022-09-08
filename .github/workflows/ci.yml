@@ -38,7 +38,7 @@ jobs:
     uses: ./.github/workflows/expo-eas-update.yml
     with:
       channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview'}}
-      message: ${{ github.event.head_commit.message }}
+      message: ${{ github.event.head_commit.message || 'no message' }}
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
