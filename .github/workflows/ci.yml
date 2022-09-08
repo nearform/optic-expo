@@ -28,12 +28,16 @@ jobs:
       - uses: fastify/github-action-merge-dependabot@v3
         with:
           approve-only: true
+<<<<<<< HEAD
   deploy-expo-preview:
+=======
+
+  eas-update:
+>>>>>>> 9ae2608 (fix: replace expo publish eas update)
     needs: build
-    if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]'
-    uses: ./.github/workflows/expo-publish.yml
+    uses: ./.github/workflows/expo-eas-update.yml
     with:
-      channel: pr-${{ github.event.number }}
+      channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview'}}
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
@@ -54,13 +58,5 @@ jobs:
     with:
       profile: preview
       platform: android
-    secrets:
-      expo-token: ${{ secrets.EXPO_TOKEN }}
-
-  eas-update:
-    if: github.event_name == 'push'
-    uses: ./.github/workflows/expo-eas-update.yml
-    with:
-      channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview'}}
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
