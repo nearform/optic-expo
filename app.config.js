@@ -24,7 +24,7 @@ export default {
   slug: 'optic-expo',
   owner: 'nearform',
   scheme: 'optic-expo',
-  version: '1.0.3',
+  version: '1.0.4',
   orientation: 'portrait',
   icon: './src/assets/icon.png',
   extra: {
@@ -57,11 +57,12 @@ export default {
   ios: {
     supportsTablet: true,
     bundleIdentifier: config.APP_PACKAGE_ID,
-    buildNumber: '2',
+    buildNumber: '3',
   },
   android: {
-    versionCode: 2,
+    versionCode: 3,
     package: config.APP_PACKAGE_ID,
+    googleServicesFile: './google-services.json',
     adaptiveIcon: {
       foregroundImage: './src/assets/icon.png',
       backgroundColor: '#FFFFFF',

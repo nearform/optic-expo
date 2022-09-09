@@ -36,7 +36,7 @@ const {
   clientId,
   androidClientId,
   iosClientId,
-} = Constants.expoConfig.extra as FirebaseSettings
+} = Constants.expoConfig?.extra as FirebaseSettings
 
 const firebaseConfig = {
   apiKey,
