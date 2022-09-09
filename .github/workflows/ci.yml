@@ -28,12 +28,8 @@ jobs:
       - uses: fastify/github-action-merge-dependabot@v3
         with:
           approve-only: true
-<<<<<<< HEAD
-  deploy-expo-preview:
-=======
 
   eas-update:
->>>>>>> 9ae2608 (fix: replace expo publish eas update)
     needs: build
     uses: ./.github/workflows/expo-eas-update.yml
     with:
