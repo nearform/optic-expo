@@ -60,7 +60,7 @@ export default {
     buildNumber: '2',
   },
   android: {
-    versionCode: '2',
+    versionCode: 2,
     package: config.APP_PACKAGE_ID,
     adaptiveIcon: {
       foregroundImage: './src/assets/icon.png',
