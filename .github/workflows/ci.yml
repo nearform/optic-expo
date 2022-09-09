@@ -26,6 +26,8 @@ jobs:
       contents: write
     steps:
       - uses: fastify/github-action-merge-dependabot@v3
+        with:
+          approve-only: true
   deploy-expo-preview:
     needs: build
     if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]'
