@@ -10,8 +10,8 @@
     "typecheck": "tsc",
     "test": "jest",
     "test:watch": "jest --watch",
-    "build:submit:android": "eas build --platform android --non-interactive --auto-submit --profile=preview --no-wait",
-    "build:submit:ios": "eas build --platform ios --non-interactive --auto-submit --profile=preview --no-wait"
+    "build:submit:android": "eas build --platform android --non-interactive --auto-submit --no-wait",
+    "build:submit:ios": "eas build --platform ios --non-interactive --auto-submit --no-wait"
   },
   "dependencies": {
     "@expo-google-fonts/didact-gothic": "^0.2.2",
