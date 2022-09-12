@@ -1,4 +1,5 @@
-import 'dotenv/config'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const pkg = require('./package.json')
 
 const config = {
   API_URL: 'https://optic-zf3votdk5a-ew.a.run.app/api',
@@ -24,7 +25,7 @@ export default {
   slug: 'optic-expo',
   owner: 'nearform',
   scheme: 'optic-expo',
-  version: '1.0.4',
+  version: pkg.version,
   orientation: 'portrait',
   icon: './src/assets/icon.png',
   extra: {
@@ -57,10 +58,10 @@ export default {
   ios: {
     supportsTablet: true,
     bundleIdentifier: config.APP_PACKAGE_ID,
-    buildNumber: '3',
+    buildNumber: String(pkg.codeVersion),
   },
   android: {
-    versionCode: 3,
+    versionCode: pkg.versionCode,
     package: config.APP_PACKAGE_ID,
     googleServicesFile: './google-services.json',
     adaptiveIcon: {

@@ -1,17 +1,42 @@
-name: Stores publish
+name: release
 
 on:
-  release:
-    types: [published]
   workflow_dispatch:
     inputs:
-      release-version:
-        description: Release version
+      semver:
+        description: The semver to use
         required: true
-        type: string
+        default: patch
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
 
 jobs:
-  build-ios:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: nearform/optic-release-automation-action@v3
+        with:
+          github-token: ${{ secrets.github_token }}
+          semver: ${{ github.event.inputs.semver }}
+          commit-message: 'chore: release {version}'
+          build-command: |
+            npm ci
+            npm run bump:version
+
+  eas-update:
+    needs: release
+    uses: ./.github/workflows/expo-eas-update.yml
+    with:
+      channel: production
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}
+
+   build-ios:
+    needs: build
+
     uses: ./.github/workflows/expo-eas-build.yml
     with:
       profile: production
@@ -21,6 +46,7 @@ jobs:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
   build-android:
+    needs: build
     uses: ./.github/workflows/expo-eas-build.yml
     with:
       profile: production
@@ -29,9 +55,4 @@ jobs:
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
-  eas-update:
-    uses: ./.github/workflows/expo-eas-update.yml
-    with:
-      channel: production
-    secrets:
-      expo-token: ${{ secrets.EXPO_TOKEN }}
+

@@ -14,17 +14,5 @@
     "production": {
       "channel": "production"
     }
-  },
-  "submit": {
-    "preview": {
-      "ios": {
-        "appleId": "app_store@nearform.com",
-        "ascAppId": "1643969791",
-        "appleTeamId": "VPLG3LLGBN"
-      }
-    },
-    "production": {
-      "extends": "preview"
-    }
   }
 }

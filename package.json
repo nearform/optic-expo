@@ -1,5 +1,8 @@
 {
   "private": true,
+  "name": "optic-expo",
+  "version": "1.0.4",
+  "versionCode": 4,
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",
@@ -11,7 +14,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "build:submit:android": "eas build --platform android --non-interactive --auto-submit --no-wait",
-    "build:submit:ios": "eas build --platform ios --non-interactive --auto-submit --no-wait"
+    "build:submit:ios": "eas build --platform ios --non-interactive --auto-submit --no-wait",
+    "bump:version": "node scripts/bump-version.js"
   },
   "dependencies": {
     "@expo-google-fonts/didact-gothic": "^0.2.2",
@@ -109,7 +113,5 @@
       "eslint",
       "prettier --write"
     ]
-  },
-  "name": "optic-expo",
-  "version": "1.0.0"
+  }
 }

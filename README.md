@@ -13,7 +13,6 @@
 
 ## Setup
 
-1. `cp .env.sample .env`
 1. `yarn`
 1. `yarn start`
 
