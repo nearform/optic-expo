@@ -34,7 +34,7 @@ jobs:
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
-   build-ios:
+  build-ios:
     needs: build
 
     uses: ./.github/workflows/expo-eas-build.yml
