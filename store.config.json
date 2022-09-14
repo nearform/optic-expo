@@ -1,0 +1,18 @@
+{
+  "configVersion": 0,
+  "apple": {
+    "info": {
+      "en-US": {
+        "title": "NearForm Optic",
+        "subtitle": "OTP tokens for CI",
+        "description": "Securely generate OTP tokens from remote servers.",
+        "keywords": ["opt", "ci", "developer"],
+        "releaseNotes": "Bug fixes and improved stability",
+        "promoText": "OTP tokens for CI",
+        "marketingUrl": "https://nearform.com",
+        "supportUrl": "https://nearform.com",
+        "privacyPolicyUrl": "https://nearform.com/privacy"
+      }
+    }
+  }
+}

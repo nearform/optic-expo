@@ -18,6 +18,7 @@ jobs:
       - run: yarn lint
       - run: yarn typecheck
       - run: yarn test
+
   automerge:
     needs: build
     runs-on: ubuntu-latest
@@ -28,11 +29,32 @@ jobs:
       - uses: fastify/github-action-merge-dependabot@v3
         with:
           approve-only: true
-  deploy-expo-preview:
+
+  eas-update:
     needs: build
-    if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]'
-    uses: ./.github/workflows/expo-publish.yml
+    uses: ./.github/workflows/expo-eas-update.yml
     with:
-      channel: pr-${{ github.event.number }}
+      channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview'}}
+      message: ${{ github.event.head_commit.message || github.event.pull_request.title || 'no message' }}
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}
+
+  build-ios:
+    needs: build
+    if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
+    uses: ./.github/workflows/expo-eas-build.yml
+    with:
+      profile: preview
+      platform: ios
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}
+
+  build-android:
+    needs: build
+    if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
+    uses: ./.github/workflows/expo-eas-build.yml
+    with:
+      profile: preview
+      platform: android
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}

@@ -21,6 +21,8 @@ interface FirebaseSettings {
   messagingSenderId: string
   appId: string
   clientId: string
+  androidClientId: string
+  iosClientId: string
 }
 
 const {
@@ -32,7 +34,9 @@ const {
   messagingSenderId,
   appId,
   clientId,
-} = Constants.manifest?.extra as FirebaseSettings
+  androidClientId,
+  iosClientId,
+} = Constants.expoConfig?.extra as FirebaseSettings
 
 const firebaseConfig = {
   apiKey,
@@ -63,15 +67,25 @@ type AuthenticationProviderProps = {
   children: React.ReactNode
 }
 
+const projectNameForProxy = `@${Constants.expoConfig.owner}/${Constants.expoConfig.slug}`
+
 export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   children,
 }) => {
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState<User>()
 
-  const [, response, promptAsync] = Google.useIdTokenAuthRequest({
-    clientId,
-  })
+  const [, response, promptAsync] = Google.useIdTokenAuthRequest(
+    {
+      expoClientId: clientId,
+      clientId,
+      androidClientId,
+      iosClientId,
+    },
+    {
+      projectNameForProxy,
+    }
+  )
 
   useEffect(() => {
     if (response?.type === 'success') {
@@ -97,7 +111,10 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   }, [])
 
   const handleLogin = useCallback<ContextType['handleLogin']>(
-    () => promptAsync(),
+    () =>
+      promptAsync({
+        projectNameForProxy,
+      }),
     [promptAsync]
   )
 

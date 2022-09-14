@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "230076165693",
+    "firebase_url": "https://npm-otp-f6bfc.firebaseio.com",
+    "project_id": "npm-otp-f6bfc",
+    "storage_bucket": "npm-otp-f6bfc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230076165693:android:8bffd1d1850dd1b8248454",
+        "android_client_info": {
+          "package_name": "com.nearform.optic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230076165693-a668m77v43bsbi0usea3p4o83ehco09r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nearform.optic",
+            "certificate_hash": "bcbd916ede28bb1605cf4ba604577309299e7708"
+          }
+        },
+        {
+          "client_id": "230076165693-0mj3vb13158tnru89f1re89m9o94g8e7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoTlkCJBJOgdWMGrFykmDVI-NOw2Ct8OE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230076165693-0mj3vb13158tnru89f1re89m9o94g8e7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "230076165693-v8kk0ase89jp3s1qe0rtg70t3vb2h9i9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nearform.optic",
+                "app_store_id": "1643167725"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

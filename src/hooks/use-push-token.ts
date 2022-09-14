@@ -17,7 +17,14 @@ async function getToken() {
       return console.log('No permission for push')
     }
 
-    token = (await Notifications.getExpoPushTokenAsync()).data
+    try {
+      const notification = await Notifications.getExpoPushTokenAsync({
+        experienceId: `@${Constants.expoConfig.owner}/${Constants.expoConfig.slug}`,
+      })
+      token = notification.data
+    } catch (e) {
+      return console.error(e)
+    }
   } else {
     console.log('Must use physical device for Push Notifications')
   }

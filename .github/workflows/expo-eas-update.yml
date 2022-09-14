@@ -1,4 +1,4 @@
-name: expo-publish
+name: expo-eas-update
 
 on:
   workflow_call:
@@ -8,12 +8,14 @@ on:
         required: true
     inputs:
       channel:
-        required: false
         type: string
-        default: default
+        default: preview
+      message:
+        type: string
+        default: "no message"
 
 jobs:
-  deploy-expo-preview:
+  eas-update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,9 +28,4 @@ jobs:
           expo-version: 5.x
           token: ${{ secrets.expo-token }}
       - run: yarn
-      - run: cp .env.sample .env
-      - run: expo publish --release-channel=${{ inputs.channel }} --non-interactive
-      - uses: expo/expo-github-action/preview-comment@v7
-        if: github.event_name == 'pull_request'
-        with:
-          channel: ${{ inputs.channel }}
+      - run: npx eas update --branch ${{ inputs.channel }} --message "${{ inputs.message }}"
