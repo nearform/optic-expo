@@ -31,5 +31,4 @@ jobs:
           expo-version: 5.x
           token: ${{ secrets.expo-token }}
       - run: yarn
-      - run: cp .env.sample .env
       - run: npx eas build --platform ${{ inputs.platform }} --non-interactive --profile=${{ inputs.profile }} --no-wait ${{ inputs.submit && '--auto-submit' ||  ''}}
