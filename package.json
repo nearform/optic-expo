@@ -36,7 +36,6 @@
     "expo-app-loading": "~2.1.0",
     "expo-auth-session": "~3.7.1",
     "expo-camera": "~12.3.0",
-    "expo-cli": "^6.0.5",
     "expo-clipboard": "~3.1.0",
     "expo-constants": "~13.2.3",
     "expo-dev-client": "~1.2.1",
