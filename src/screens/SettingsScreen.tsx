@@ -20,7 +20,7 @@ import {
   showImportConfirmAlert,
 } from '../lib/importExport'
 
-const appSecret = Constants.expoConfig.extra?.secretString ?? 'secret'
+const appSecret = Constants.expoConfig?.extra?.secretString ?? 'secret'
 
 const styles = StyleSheet.create({
   container: {
