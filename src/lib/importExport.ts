@@ -7,10 +7,20 @@ import {
 } from 'expo-file-system'
 import * as Sharing from 'expo-sharing'
 import { Alert, Platform } from 'react-native'
+import CryptoJS from 'react-native-crypto-js'
 
 import { Secret } from '../types'
 
 const mimeType = 'application/octet-stream'
+
+function IsJsonString(str) {
+  try {
+    JSON.parse(str)
+  } catch (e) {
+    return false
+  }
+  return true
+}
 
 const androidExport = async (fileName, fileContent) => {
   const permissions =
@@ -67,14 +77,21 @@ export const doExport = (fileName, fileContent) => {
   }
 }
 
-export const getSecretsFromFile = async uri => {
+export const getSecretsFromFile = async (uri: string, secret: string) => {
   if (!uri) {
     return []
   }
-
   try {
     const result = await readAsStringAsync(uri)
-    const parsedSecrets = JSON.parse(result) as Secret[]
+    let confirmedString: string
+
+    if (IsJsonString(result)) {
+      confirmedString = result
+    } else {
+      const bytes = CryptoJS.AES.decrypt(result + ' ', secret)
+      confirmedString = bytes.toString(CryptoJS.enc.Utf8)
+    }
+    const parsedSecrets = JSON.parse(confirmedString) as Secret[]
     return parsedSecrets
   } catch (err) {
     console.log(err)

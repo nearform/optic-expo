@@ -18,6 +18,7 @@ const config = {
     '230076165693-v8kk0ase89jp3s1qe0rtg70t3vb2h9i9.apps.googleusercontent.com',
   EAS_PROJECT_ID: 'e3c6e759-c8c5-41a8-861e-b3e4adab619a',
   APP_PACKAGE_ID: 'com.nearform.optic',
+  SECRET_STRING: 'kYfgT08ExAOKraIp7zNI',
 }
 
 export default {
@@ -43,6 +44,7 @@ export default {
     eas: {
       projectId: config.EAS_PROJECT_ID,
     },
+    secretString: config.SECRET_STRING,
   },
   splash: {
     image: './src/assets/splash.png',

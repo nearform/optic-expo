@@ -4,6 +4,8 @@ import { Switch, Button } from 'react-native-paper'
 import { StackNavigationProp } from '@react-navigation/stack'
 import * as DocumentPicker from 'expo-document-picker'
 import Toast from 'react-native-root-toast'
+import CryptoJS from 'react-native-crypto-js'
+import Constants from 'expo-constants'
 
 import { useSecrets } from '../context/SecretsContext'
 import { usePrefs } from '../context/PrefsContext'
@@ -17,6 +19,8 @@ import {
   doExport,
   showImportConfirmAlert,
 } from '../lib/importExport'
+
+const appSecret = Constants.expoConfig.extra?.secretString ?? 'secret'
 
 const styles = StyleSheet.create({
   container: {
@@ -53,13 +57,20 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
   const { secrets, replace } = useSecrets()
 
   const handleExport = async () => {
-    const fileName = `optic-backup-${new Date()
-      .toISOString()
-      .replace(/[^0-9]/g, '')
-      .slice(0, -3)}.txt`
-    const fileContent = JSON.stringify(secrets)
-
     try {
+      if (!secrets.length) {
+        throw new Error('There is no secret to be exported.')
+      }
+      const encriptionSecret = `${appSecret}.${user.uid}`
+      const fileContent = CryptoJS.AES.encrypt(
+        JSON.stringify(secrets),
+        encriptionSecret
+      ).toString()
+      const fileName = `optic-backup-${new Date()
+        .toISOString()
+        .replace(/[^0-9]/g, '')
+        .slice(0, -3)}.txt`
+
       await doExport(fileName, fileContent)
       Toast.show('Tokens exported successfully')
     } catch (err) {
@@ -76,8 +87,8 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
         Toast.show('Import canceled')
         return
       }
-
-      const parsedSecrets = await getSecretsFromFile(documentMeta.uri)
+      const secret = `${appSecret}.${user.uid}`
+      const parsedSecrets = await getSecretsFromFile(documentMeta.uri, secret)
       if (parsedSecrets.length === 0) {
         Toast.show('No tokens to import')
         return
