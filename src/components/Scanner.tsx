@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Text, View, StyleSheet, ViewStyle } from 'react-native'
 import { Camera } from 'expo-camera'
+import { BarCodeScanner } from 'expo-barcode-scanner'
 
 import theme from '../lib/theme'
 
@@ -86,6 +87,9 @@ export default function Scanner({ onScan }: ScannerProps) {
   return (
     <View style={styles.container}>
       <Camera
+        barCodeScannerSettings={{
+          barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr],
+        }}
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         ratio="16:9"
         style={StyleSheet.absoluteFillObject}
