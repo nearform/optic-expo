@@ -16,10 +16,10 @@ const mimeType = 'application/octet-stream'
 function isJsonString(str) {
   try {
     JSON.parse(str)
+    return true
   } catch (e) {
     return false
   }
-  return true
 }
 
 const androidExport = async (fileName, fileContent) => {
