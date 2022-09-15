@@ -1,0 +1,31 @@
+name: cd
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  eas-update:
+    uses: ./.github/workflows/expo-eas-update.yml
+    with:
+      channel: production
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}
+
+  build-ios:
+    uses: ./.github/workflows/expo-eas-build.yml
+    with:
+      profile: production
+      platform: ios
+      submit: true
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}
+
+  build-android:
+    uses: ./.github/workflows/expo-eas-build.yml
+    with:
+      profile: production
+      platform: android
+      submit: true
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}

@@ -26,33 +26,3 @@ jobs:
             npm ci
             npm run bump:version
 
-  eas-update:
-    needs: release
-    uses: ./.github/workflows/expo-eas-update.yml
-    with:
-      channel: production
-    secrets:
-      expo-token: ${{ secrets.EXPO_TOKEN }}
-
-  build-ios:
-    needs: build
-
-    uses: ./.github/workflows/expo-eas-build.yml
-    with:
-      profile: production
-      platform: ios
-      submit: true
-    secrets:
-      expo-token: ${{ secrets.EXPO_TOKEN }}
-
-  build-android:
-    needs: build
-    uses: ./.github/workflows/expo-eas-build.yml
-    with:
-      profile: production
-      platform: android
-      submit: true
-    secrets:
-      expo-token: ${{ secrets.EXPO_TOKEN }}
-
-
