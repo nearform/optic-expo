@@ -162,14 +162,6 @@ export default function Main() {
           name="ImportFileSecret"
           component={ImportFileSecret}
           options={{ title: "Decrypt Secret's File" }}
-          // options={({
-          //   route: {
-          //     params: { fileContent },
-          //   },
-          // }: NativeStackScreenProps<MainStackParamList, 'ImportFileSecret'>) => ({
-          //   title: "Decrypt Secret's File",
-          //   headerLeft: DefaultHeaderLeft,
-          // })}
         />
       </MainStack.Navigator>
     </NavigationContainer>
