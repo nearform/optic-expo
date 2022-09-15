@@ -13,7 +13,7 @@ import { Secret } from '../types'
 
 const mimeType = 'application/octet-stream'
 
-function IsJsonString(str) {
+function isJsonString(str) {
   try {
     JSON.parse(str)
   } catch (e) {
@@ -85,7 +85,7 @@ export const getSecretsFromFile = async (uri: string, secret: string) => {
     const result = await readAsStringAsync(uri)
     let confirmedString: string
 
-    if (IsJsonString(result)) {
+    if (isJsonString(result)) {
       confirmedString = result
     } else {
       const bytes = CryptoJS.AES.decrypt(result + ' ', secret)
@@ -112,4 +112,54 @@ export const showImportConfirmAlert = (onConfirm: () => void) => {
     ],
     { cancelable: true }
   )
+}
+
+export const readFile = async (
+  uri: string
+): Promise<{ fileContent: string; isJson: boolean }> => {
+  console.log(uri)
+  if (!uri) {
+    return {
+      fileContent: '',
+      isJson: true,
+    }
+  }
+  try {
+    const fileContent = await readAsStringAsync(uri)
+    const isJson = isJsonString(fileContent)
+    return { fileContent, isJson }
+  } catch (e) {
+    throw Error('Unable to parse the backup file')
+  }
+}
+
+export const decryptDataToSecrets = (
+  fileData: string,
+  secret: string
+): Secret[] => {
+  try {
+    if (!fileData) {
+      throw new Error("Couldn't decode the file. File is empty!")
+    }
+    if (!secret) {
+      throw new Error("Couldn't decode the file. No secret provided!")
+    } else {
+      const bytes = CryptoJS.AES.decrypt(fileData, secret)
+      const result = bytes.toString(CryptoJS.enc.Utf8)
+      return JSON.parse(result) as Secret[]
+    }
+  } catch (err) {
+    console.log(err)
+    throw new Error("Couldn't decrypt the data. ")
+  }
+}
+
+/**
+ * @NOTE This is used only for backward compatibility, files are no longer exported in plain text
+ */
+export const convertOldParsedDataToSecrets = (data: string): Secret[] => {
+  if (!data) {
+    return []
+  }
+  return JSON.parse(data) as Secret[]
 }
