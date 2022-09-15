@@ -3185,14 +3185,6 @@
     "@typescript-eslint/types" "5.37.0"
     eslint-visitor-keys "^3.3.0"
 
-"@typescript-eslint/visitor-keys@5.37.0":
-  version "5.37.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-5.37.0.tgz#7b72dd343295ea11e89b624995abc7103c554eee"
-  integrity sha512-Hp7rT4cENBPIzMwrlehLW/28EVCOcE9U1Z1BQTc8EA8v5qpr7GRGuG+U58V5tTY48zvUOA3KHvw3rA8tY9fbdA==
-  dependencies:
-    "@typescript-eslint/types" "5.37.0"
-    eslint-visitor-keys "^3.3.0"
-
 "@urql/core@2.3.6":
   version "2.3.6"
   resolved "https://registry.yarnpkg.com/@urql/core/-/core-2.3.6.tgz#ee0a6f8fde02251e9560c5f17dce5cd90f948552"
@@ -5567,6 +5559,14 @@ expo-auth-session@~3.7.1:
     invariant "^2.2.4"
     qs "6.9.1"
 
+expo-barcode-scanner@~11.4.0:
+  version "11.4.0"
+  resolved "https://registry.yarnpkg.com/expo-barcode-scanner/-/expo-barcode-scanner-11.4.0.tgz#d36f1cf76a7b1e48384681560a419e85d8018804"
+  integrity sha512-Q4BreQHY5U1aGF+rfqeGSzcdlayTKnSe/qTIfkXTmXFsL7bu3hMqdh5J/DL00Dfmc7C0IR8EiV75rqRrY4t0nA==
+  dependencies:
+    "@expo/config-plugins" "~5.0.0"
+    expo-image-loader "~3.2.0"
+
 expo-camera@~12.3.0:
   version "12.3.0"
   resolved "https://registry.yarnpkg.com/expo-camera/-/expo-camera-12.3.0.tgz#de7a73081af17fe1eb51a9485c6afdb962c2b3e8"
@@ -5662,6 +5662,11 @@ expo-font@~10.2.0:
   integrity sha512-2V4EcpmhNoppaLn+lPprZVS+3bmV9hxLPKttKh2u8ghjH/oX9bv3u4JVo77SYh0EfrWO4toqVyXn8pXH8GpbIg==
   dependencies:
     fontfaceobserver "^2.1.0"
+
+expo-image-loader@~3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/expo-image-loader/-/expo-image-loader-3.2.0.tgz#d98b021660edef7243f7c5ec011b8d0545626d41"
+  integrity sha512-LU3Q2prn64/HxdToDmxgMIRXS1ZvD9Q3iCxRVTZn1fPQNNDciIQFE5okaa74Ogx20DFHs90r6WoUd7w9Af1OGQ==
 
 expo-json-utils@~0.3.0:
   version "0.3.0"
