@@ -70,7 +70,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = () => {
       <View>
         <Button
           style={styles.button}
-          accessibilityLabel="login"
+          accessibilityLabel="login with google"
           mode="contained"
           icon={({ size }) => (
             <Image
@@ -86,7 +86,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = () => {
         {appleLoginEnabled && (
           <Button
             style={styles.button}
-            accessibilityLabel="login"
+            accessibilityLabel="login with apple"
             mode="contained"
             icon={({ size }) => (
               <Image
