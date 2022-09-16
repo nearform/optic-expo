@@ -59,6 +59,7 @@ export default {
     supportsTablet: true,
     bundleIdentifier: config.APP_PACKAGE_ID,
     buildNumber: String(pkg.versionCode),
+    usesAppleSignIn: true,
   },
   android: {
     versionCode: pkg.versionCode,

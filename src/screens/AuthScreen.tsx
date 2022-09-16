@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import * as WebBrowser from 'expo-web-browser'
 import { Platform, View, StyleSheet, Image } from 'react-native'
 import { Button } from 'react-native-paper'
+import * as AppleAuthentication from 'expo-apple-authentication'
 
 import theme from '../lib/theme'
 import { useAuth } from '../context/AuthContext'
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
 type AuthScreenProps = unknown
 
 export const AuthScreen: React.FC<AuthScreenProps> = () => {
-  const { handleLogin } = useAuth()
+  const { handleLoginGoogle, handleLoginApple } = useAuth()
 
   useEffect(() => {
     if (Platform.OS === 'web') {
@@ -72,11 +73,18 @@ export const AuthScreen: React.FC<AuthScreenProps> = () => {
             style={{ width: size, height: size }}
           />
         )}
-        onPress={handleLogin}
+        onPress={handleLoginGoogle}
         color={theme.colors.surface}
       >
         Sign in with Google
       </Button>
+      <AppleAuthentication.AppleAuthenticationButton
+        buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
+        buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.WHITE}
+        cornerRadius={5}
+        style={{ width: 200, height: 44 }}
+        onPress={handleLoginApple}
+      />
       <Logo />
     </View>
   )
