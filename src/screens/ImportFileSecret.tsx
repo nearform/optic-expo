@@ -52,7 +52,7 @@ export const ImportFileSecret: React.FC<ImportFileSecretProps> = ({
         throw new Error('Secret cannot be empty')
       }
       const secrets = decryptDataToSecrets(
-        fileContent + ' ',
+        fileContent,
         `${secret.trim()}.${user.uid}`
       )
       await replace(secrets)

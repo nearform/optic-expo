@@ -77,28 +77,6 @@ export const doExport = (fileName, fileContent) => {
   }
 }
 
-export const getSecretsFromFile = async (uri: string, secret: string) => {
-  if (!uri) {
-    return []
-  }
-  try {
-    const result = await readAsStringAsync(uri)
-    let confirmedString: string
-
-    if (isJsonString(result)) {
-      confirmedString = result
-    } else {
-      const bytes = CryptoJS.AES.decrypt(result + ' ', secret)
-      confirmedString = bytes.toString(CryptoJS.enc.Utf8)
-    }
-    const parsedSecrets = JSON.parse(confirmedString) as Secret[]
-    return parsedSecrets
-  } catch (err) {
-    console.log(err)
-    throw Error('Unable to parse the backup file')
-  }
-}
-
 export const showImportConfirmAlert = (onConfirm: () => void) => {
   Alert.alert(
     'Import Tokens',
@@ -117,7 +95,6 @@ export const showImportConfirmAlert = (onConfirm: () => void) => {
 export const readFile = async (
   uri: string
 ): Promise<{ fileContent: string; isJson: boolean }> => {
-  console.log(uri)
   if (!uri) {
     return {
       fileContent: '',
@@ -143,11 +120,10 @@ export const decryptDataToSecrets = (
     }
     if (!secret) {
       throw new Error("Couldn't decode the file. No secret provided!")
-    } else {
-      const bytes = CryptoJS.AES.decrypt(fileData, secret)
-      const result = bytes.toString(CryptoJS.enc.Utf8)
-      return JSON.parse(result) as Secret[]
     }
+    const bytes = CryptoJS.AES.decrypt(fileData, secret)
+    const result = bytes.toString(CryptoJS.enc.Utf8)
+    return JSON.parse(result) as Secret[]
   } catch (err) {
     console.log(err)
     throw new Error("Couldn't decrypt the data. ")

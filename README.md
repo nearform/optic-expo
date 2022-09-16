@@ -25,14 +25,13 @@ In order to successfully run the Optic-expo app locally you will need the follow
 1. Scan the QR code on your terminal or go to `exp://172.22.22.56:19000`
 1. Once the app loads, if you get the signin screen, in your terminal run `expo login -u <username> -p <password>` and reload the app
 
-# Note:
+## Notes
 
 - The app doesn't run on the web
 
-- Note
-  `yarn start:narive` is different from `yarn start` having the flag `--dev-client` you need to build a native version of the app as it generates a url like this:
+- `yarn start:native` is different from `yarn start` having the flag `--dev-client` you need to build a native version of the app as it generates a url like this:
   `com.nearform.optic://expo-development-client/?url=http%3A%2F%2F192.168.5.92%3A8081` so you have to run `expo run:android` first.
-  exp://192.168.5.92:19000 </br> </br> As most things, it's a trade-off. Without --dev-client it's faster to start working as you don't have to install native tools but it hides some problems that only occur in the native versions like the google login problem and the qr code scan.
+  exp://192.168.5.92:19000 </br> <br> As most things, it's a trade-off.Pp Without --dev-client it's faster to start working as you don't have to install native tools but it hides some problems that only occur in the native versions like the google login problem and the qr code scan.
 
 ## Figma Design
 
