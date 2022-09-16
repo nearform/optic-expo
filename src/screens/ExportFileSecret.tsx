@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 })
 
 type ExportFileSecretProps = {
-  navigation: StackNavigationProp<MainStackParamList, 'Settings'>
+  navigation: StackNavigationProp<MainStackParamList, 'ExportFileSecret'>
 }
 
 export const ExportFileSecret: React.FC<ExportFileSecretProps> = ({
