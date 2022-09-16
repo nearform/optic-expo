@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import { StyleSheet, View } from 'react-native'
 import { Button, Text, TextInput } from 'react-native-paper'
 import Toast from 'react-native-root-toast'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 import { MainStackParamList } from '../Main'
 import { Typography } from '../components/Typography'
@@ -12,10 +12,14 @@ import { useSecrets } from '../context/SecretsContext'
 import { useAuth } from '../context/AuthContext'
 import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
 
-type ImportFileSecretProps = NativeStackScreenProps<
-  MainStackParamList,
-  'ImportFileSecret'
->
+type ImportFileSecretProps = {
+  navigation: StackNavigationProp<MainStackParamList, 'ImportFileSecret'>
+  route: {
+    params: {
+      fileContent: string
+    }
+  }
+}
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: theme.spacing(3),
@@ -52,7 +56,7 @@ export const ImportFileSecret: React.FC<ImportFileSecretProps> = ({
         throw new Error('Secret cannot be empty')
       }
       const secrets = decryptDataToSecrets(
-        fileContent + ' ',
+        fileContent,
         `${secret.trim()}.${user.uid}`
       )
       await replace(secrets)
