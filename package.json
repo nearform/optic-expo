@@ -58,7 +58,7 @@
     "react-dom": "18.0.0",
     "react-native": "0.69.5",
     "react-native-countdown-circle-timer": "^3.0.9",
-    "react-native-gesture-handler": "~2.5.0",
+    "react-native-gesture-handler": "~2.6.1",
     "react-native-get-random-values": "~1.8.0",
     "react-native-paper": "4.12.4",
     "react-native-root-toast": "^3.4.0",
