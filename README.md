@@ -6,6 +6,16 @@
 
 [Optic](https://expo.dev/@nearform/optic-expo) is an app that helps you securely generate OTP tokens for 2FA protected npm accounts. It allows auto-publish npm packages using CI.
 
+<a href='https://play.google.com/store/apps/details?id=com.nearform.optic'>
+  <img alt='Get it on Google Play' src='https://user-images.githubusercontent.com/84892/191009274-938f5cc3-03ac-4bd3-a923-bd2629d77a44.png' style="height:40px"/>
+</a>
+
+<a href='https://apps.apple.com/us/app/nearform-optic/id1643969791'>
+  <img alt='Download on the App Store' src='https://user-images.githubusercontent.com/84892/191009257-86f3b83e-b2d9-4252-ac05-98732328df2f.png' style="height:40px" />
+</a>
+
+
+
 ## Requirements
 
 - Node LTS
@@ -18,9 +28,7 @@
 1. `yarn start`
 
 ## Development
-
 In order to successfully run the Optic-expo app locally you will need the following:
-
 1. Expo user account. You can sign up [here](https://expo.dev/signup).
 1. Once you have an Expo account, your account needs to be added to the NearForm organization (ask @simoneb to do that for you).
 1. Scan the QR code on your terminal or go to `exp://172.22.22.56:19000`
@@ -50,7 +58,7 @@ In order to successfully run the Optic-expo app locally you will need the follow
 
 ## Figma Design
 
-The figma designs can be found [here](<https://www.figma.com/file/xsPf6IIM9AevLN5gZlXM4q/Optic-(Copy)>)
+The figma designs can be found [here](https://www.figma.com/file/xsPf6IIM9AevLN5gZlXM4q/Optic-(Copy))
 
 ## Sequence diagram
 
@@ -83,6 +91,5 @@ By doing so, you will be able to understand who is the caller that wants to read
 
 
 Few notes on the NPM secret:
-
 - the NPM secret (QR or the textual code) is the one that you get, when you enable 2FA in your [npm](https://www.npmjs.com/) profile
 - if you already have 2FA activated (with a different authenticatior app e.g. Google Authenticator) and you need to get the secret, the easiest way is to get is to open the authenticator app you were using previously and get the QR code from that app and scan it with Optic Expo
