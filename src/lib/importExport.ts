@@ -7,10 +7,20 @@ import {
 } from 'expo-file-system'
 import * as Sharing from 'expo-sharing'
 import { Alert, Platform } from 'react-native'
+import CryptoJS from 'react-native-crypto-js'
 
 import { Secret } from '../types'
 
 const mimeType = 'application/octet-stream'
+
+function isJsonString(str) {
+  try {
+    JSON.parse(str)
+    return true
+  } catch (e) {
+    return false
+  }
+}
 
 const androidExport = async (fileName, fileContent) => {
   const permissions =
@@ -67,21 +77,6 @@ export const doExport = (fileName, fileContent) => {
   }
 }
 
-export const getSecretsFromFile = async uri => {
-  if (!uri) {
-    return []
-  }
-
-  try {
-    const result = await readAsStringAsync(uri)
-    const parsedSecrets = JSON.parse(result) as Secret[]
-    return parsedSecrets
-  } catch (err) {
-    console.log(err)
-    throw Error('Unable to parse the backup file')
-  }
-}
-
 export const showImportConfirmAlert = (onConfirm: () => void) => {
   Alert.alert(
     'Import Tokens',
@@ -95,4 +90,52 @@ export const showImportConfirmAlert = (onConfirm: () => void) => {
     ],
     { cancelable: true }
   )
+}
+
+export const readFile = async (
+  uri: string
+): Promise<{ fileContent: string; isJson: boolean }> => {
+  if (!uri) {
+    return {
+      fileContent: '',
+      isJson: true,
+    }
+  }
+  try {
+    const fileContent = await readAsStringAsync(uri)
+    const isJson = isJsonString(fileContent)
+    return { fileContent, isJson }
+  } catch (e) {
+    throw Error('Unable to parse the backup file')
+  }
+}
+
+export const decryptDataToSecrets = (
+  fileData: string,
+  secret: string
+): Secret[] => {
+  try {
+    if (!fileData) {
+      throw new Error("Couldn't decode the file. File is empty!")
+    }
+    if (!secret) {
+      throw new Error("Couldn't decode the file. No secret provided!")
+    }
+    const bytes = CryptoJS.AES.decrypt(fileData, secret)
+    const result = bytes.toString(CryptoJS.enc.Utf8)
+    return JSON.parse(result) as Secret[]
+  } catch (err) {
+    console.log(err)
+    throw new Error("Couldn't decrypt the data. ")
+  }
+}
+
+/**
+ * @NOTE This is used only for backward compatibility, files are no longer exported in plain text
+ */
+export const convertOldParsedDataToSecrets = (data: string): Secret[] => {
+  if (!data) {
+    return []
+  }
+  return JSON.parse(data) as Secret[]
 }

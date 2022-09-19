@@ -30,6 +30,8 @@ import { OtpRequestScreen } from './screens/OtpRequestScreen'
 import { TokensListScreen } from './screens/TokensListScreen'
 import { CreateTokenScreen } from './screens/CreateTokenScreen'
 import { NotificationsScreen } from './screens/NotificationsScreen'
+import { ExportFileSecret } from './screens/ExportFileSecret'
+import { ImportFileSecret } from './screens/ImportFileSecret'
 
 const MainStack = createStackNavigator()
 
@@ -55,6 +57,10 @@ export type MainStackParamList = {
     uniqueId: string
   }
   Notifications: undefined
+  ExportFileSecret: undefined
+  ImportFileSecret: {
+    fileContent: string
+  }
 }
 
 export default function Main() {
@@ -144,6 +150,18 @@ export default function Main() {
           name="Notifications"
           component={NotificationsScreen}
           options={{ title: 'Notifications', headerLeft: DefaultHeaderLeft }}
+        />
+        <MainStack.Screen
+          name="ExportFileSecret"
+          component={ExportFileSecret}
+          options={{
+            title: 'Encrypt Exported Tokens',
+          }}
+        />
+        <MainStack.Screen
+          name="ImportFileSecret"
+          component={ImportFileSecret}
+          options={{ title: "Decrypt Secret's File" }}
         />
       </MainStack.Navigator>
     </NavigationContainer>

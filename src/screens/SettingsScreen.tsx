@@ -13,8 +13,8 @@ import { Typography } from '../components/Typography'
 import { useCanUseLocalAuth } from '../hooks/use-can-use-local-auth'
 import { useAuth } from '../context/AuthContext'
 import {
-  getSecretsFromFile,
-  doExport,
+  convertOldParsedDataToSecrets,
+  readFile,
   showImportConfirmAlert,
 } from '../lib/importExport'
 
@@ -46,27 +46,13 @@ type SettingsScreenProps = {
   navigation: StackNavigationProp<MainStackParamList, 'Settings'>
 }
 
-export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
+export const SettingsScreen: React.FC<SettingsScreenProps> = ({
+  navigation,
+}) => {
   const { prefs, save } = usePrefs()
   const canUseLocalAuth = useCanUseLocalAuth()
   const { user, handleLogout } = useAuth()
   const { secrets, replace } = useSecrets()
-
-  const handleExport = async () => {
-    const fileName = `optic-backup-${new Date()
-      .toISOString()
-      .replace(/[^0-9]/g, '')
-      .slice(0, -3)}.txt`
-    const fileContent = JSON.stringify(secrets)
-
-    try {
-      await doExport(fileName, fileContent)
-      Toast.show('Tokens exported successfully')
-    } catch (err) {
-      Toast.show(err.message)
-      console.log(err)
-    }
-  }
 
   const handleImport = async () => {
     try {
@@ -77,18 +63,28 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
         return
       }
 
-      const parsedSecrets = await getSecretsFromFile(documentMeta.uri)
-      if (parsedSecrets.length === 0) {
-        Toast.show('No tokens to import')
-        return
+      let parsedSecrets = []
+      const { fileContent, isJson } = await readFile(documentMeta.uri)
+      if (isJson) {
+        parsedSecrets = convertOldParsedDataToSecrets(fileContent)
+        if (parsedSecrets.length === 0) {
+          Toast.show('No tokens to import')
+          return
+        }
+        await replace(parsedSecrets)
+        Toast.show('Tokens imported successfully')
+        navigation.navigate('Home')
+      } else {
+        navigation.navigate('ImportFileSecret', { fileContent })
       }
-
-      await replace(parsedSecrets)
-      Toast.show('Tokens imported successfully')
     } catch (err) {
       Toast.show(err.message)
       console.log(err)
     }
+  }
+
+  const addSecretForFileExport = () => {
+    navigation.navigate('ExportFileSecret')
   }
 
   return (
@@ -112,7 +108,7 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
             <Typography variant="subtitle1">Export tokens</Typography>
             <Button
               compact
-              onPress={handleExport}
+              onPress={addSecretForFileExport}
               disabled={secrets.length === 0}
               icon="file-export"
             >

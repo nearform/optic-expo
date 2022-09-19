@@ -4,7 +4,8 @@
   "version": "1.0.4",
   "versionCode": 4,
   "scripts": {
-    "start": "expo start --dev-client",
+    "start": "expo start",
+    "start:native": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
@@ -58,6 +59,7 @@
     "react-dom": "18.0.0",
     "react-native": "0.69.5",
     "react-native-countdown-circle-timer": "^3.0.9",
+    "react-native-crypto-js": "^1.0.0",
     "react-native-gesture-handler": "~2.5.0",
     "react-native-get-random-values": "~1.8.0",
     "react-native-paper": "4.12.4",
