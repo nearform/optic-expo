@@ -13,7 +13,7 @@ import { type OpticNotification } from '../types'
 
 const defaultPendingNotifications: OpticNotification[] = []
 
-function convertNotitificationDate(date) {
+function convertNotificationDate(date) {
   // in ios notification.date is represented in seconds and in android in milliseconds.
   const now = Date.now()
   const proportion = Math.floor(now / date)
@@ -63,7 +63,7 @@ export const PendingNotificationsProvider = ({ children }) => {
           ...pendingNotifications,
           {
             ...notification,
-            date: convertNotitificationDate(notification.date),
+            date: convertNotificationDate(notification.date),
           },
         ]
         setPendingNotifications(updatedPendingNotifications)
