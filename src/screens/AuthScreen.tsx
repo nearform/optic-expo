@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
   button: {
     textAlign: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     padding: theme.spacing(1),
     marginTop: theme.spacing(1),
   },
