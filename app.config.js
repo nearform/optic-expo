@@ -60,6 +60,10 @@ export default {
     bundleIdentifier: config.APP_PACKAGE_ID,
     buildNumber: String(pkg.versionCode),
     usesAppleSignIn: true,
+    infoPlist: {
+      NSCameraUsageDescription:
+        'This app uses the camera to scan QR codes with OTP secrets',
+    },
   },
   android: {
     versionCode: pkg.versionCode,
