@@ -29,15 +29,15 @@ In order to successfully run the Optic-expo app locally you will need the follow
 ## Running on a iOS device
 
 1. Create an issue in this repo asking for apple connect developer access for the app
-1. Install expo-cli globally npm i -g expo-cli
-1. Run in the simulator first npm run ios
+1. Install expo-cli globally: `npm i -g expo-cli`
+1. Run in the simulator first: `npm run ios`
 1. Install [expo go](https://apps.apple.com/us/app/expo-go/id982107779) on your device
 1. Connect the ios device to your mac and select trust computer when prompted.
 1. Confirm your device is in [developer mode](https://developer.apple.com/documentation/xcode/enabling-developer-mode-on-a-device)
 1. [Setup code signing certificates in xcode for developement](https://github.com/expo/fyi/blob/main/setup-xcode-signing.md)
 1. In Xcode select your device as deployment target and select the development certificate (you may need to connect the device to your account if it was not done before)
 ![select device](https://user-images.githubusercontent.com/84892/191241139-5db5b905-228f-4af2-a633-47f601de993a.png)
-1. Run `run expo run:ios --device`
+1. Run: `expo run:ios --device`
 1. Select your device from the list
 
 ## Notes
