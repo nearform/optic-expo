@@ -40,7 +40,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
   const { add } = useSecrets()
   const [issuer, setIssuer] = useState('')
   const [secret, setSecret] = useState('')
-  const [account, setAccount] = useState(user.email)
+  const [account, setAccount] = useState(user.name || '')
 
   const handleAddSecretButtonPress = async () => {
     await add({ uid: user.uid, secret, account, issuer })
@@ -51,7 +51,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
     secret.trim().replace(/ /g, '').toUpperCase()
   )
   const disabled =
-    invalidSecret || !secret?.trim() || !account?.trim() || !issuer?.trim()
+    invalidSecret || !secret.trim() || !account.trim() || !issuer.trim()
 
   return (
     <View style={styles.screen}>
