@@ -23,6 +23,6 @@ jobs:
           semver: ${{ github.event.inputs.semver }}
           commit-message: 'chore: release {version}'
           build-command: |
-            npm ci
+            yarn install --frozen-lockfile
             npm run bump:version
 
