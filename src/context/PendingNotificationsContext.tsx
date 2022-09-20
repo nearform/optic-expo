@@ -13,6 +13,13 @@ import { type OpticNotification } from '../types'
 
 const defaultPendingNotifications: OpticNotification[] = []
 
+function convertNotificationDate(date) {
+  // in ios notification.date is represented in seconds and in android in milliseconds.
+  const now = Date.now()
+  const proportion = Math.floor(now / date)
+  return date * proportion
+}
+
 const initialContext = {
   pendingNotifications: defaultPendingNotifications,
   addNotification: async (_notification: OpticNotification) => {
@@ -54,7 +61,10 @@ export const PendingNotificationsProvider = ({ children }) => {
       if (notAddedYet) {
         const updatedPendingNotifications = [
           ...pendingNotifications,
-          notification,
+          {
+            ...notification,
+            date: convertNotificationDate(notification.date),
+          },
         ]
         setPendingNotifications(updatedPendingNotifications)
         await storage.saveObject(

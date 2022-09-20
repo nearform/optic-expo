@@ -108,7 +108,7 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
 
   // This is sensible to clocks' drift and lack of synchronization, but if we
   // take into account the roundtrip time, it's not that bad.
-  const expired = new Date().getTime() > notification.date + OTP_REQUEST_TIMEOUT
+  const expired = Date.now() > notification.date + OTP_REQUEST_TIMEOUT
 
   const handleReject = useCallback(async () => {
     setIsLoading(true)

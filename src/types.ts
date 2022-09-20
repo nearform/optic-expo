@@ -33,6 +33,7 @@ export type NotificationData = {
 }
 
 export type OpticNotification = Notification & {
+  date: number // timestamp in ms
   request: {
     content: {
       data: NotificationData
