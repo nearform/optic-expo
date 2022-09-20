@@ -36,7 +36,7 @@ describe('Main', () => {
     ;(useAuth as jest.Mock).mockReturnValue({
       user: null,
       loading: false,
-      handleLogin: handleLoginStub,
+      handleLoginGoogle: handleLoginStub,
       handleLogout: jest.fn(),
     })
 
@@ -44,7 +44,7 @@ describe('Main', () => {
 
     getByText('Optic')
     getByText('Grant your favorite automated tools an OTP when they need it!')
-    const login = getByLabelText('login')
+    const login = getByLabelText('login with google')
 
     fireEvent.press(login)
     expect(handleLoginStub).toHaveBeenCalledTimes(1)

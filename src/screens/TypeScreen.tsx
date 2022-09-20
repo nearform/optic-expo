@@ -40,7 +40,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
   const { add } = useSecrets()
   const [issuer, setIssuer] = useState('')
   const [secret, setSecret] = useState('')
-  const [account, setAccount] = useState(user.name)
+  const [account, setAccount] = useState(user.name || '')
 
   const handleAddSecretButtonPress = async () => {
     await add({ uid: user.uid, secret, account, issuer })
