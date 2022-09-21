@@ -12,6 +12,8 @@ on:
           - patch
           - minor
           - major
+  pull_request:
+    types: [closed]
 
 jobs:
   release:
