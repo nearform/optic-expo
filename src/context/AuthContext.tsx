@@ -61,6 +61,7 @@ type ContextType = {
   handleLoginGoogle: () => void
   handleLoginApple: () => void
   handleLogout: () => Promise<void>
+  handleDeleteAccount: () => Promise<void>
 }
 
 const AuthContext = React.createContext<ContextType | undefined>(undefined)
@@ -125,6 +126,7 @@ function useAppleAuth() {
 export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   children,
 }) => {
+  const [firebaseUser, setFirebaseUser] = useState<firebase.User>()
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState<User>()
 
@@ -132,23 +134,41 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   const handleLoginApple = useAppleAuth()
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(async firebaseUser => {
+    firebase.auth().onAuthStateChanged(newFirebaseUser => {
       setLoading(false)
-      if (!firebaseUser) return
+      setFirebaseUser(newFirebaseUser)
+    })
+  }, [])
 
+  useEffect(() => {
+    const updateUser = async () => {
+      if (!firebaseUser) {
+        setUser(null)
+        return
+      }
+      const idToken = await firebaseUser.getIdToken()
       setUser({
         name: firebaseUser.displayName,
         email: firebaseUser.email,
         uid: firebaseUser.uid,
-        idToken: await firebaseUser.getIdToken(),
+        idToken,
       })
-    })
-  }, [])
+    }
+
+    updateUser()
+  }, [firebaseUser])
 
   const handleLogout = useCallback<ContextType['handleLogout']>(async () => {
     await firebase.auth().signOut()
     setUser(null)
   }, [])
+
+  const handleDeleteAccount = useCallback<
+    ContextType['handleLogout']
+  >(async () => {
+    if (firebaseUser) await firebaseUser.delete()
+    setUser(null)
+  }, [firebaseUser])
 
   const context = useMemo<ContextType>(
     () => ({
@@ -157,8 +177,16 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
       handleLogout,
       handleLoginApple,
       handleLoginGoogle,
+      handleDeleteAccount,
     }),
-    [user, loading, handleLogout, handleLoginGoogle, handleLoginApple]
+    [
+      user,
+      loading,
+      handleLogout,
+      handleLoginGoogle,
+      handleLoginApple,
+      handleDeleteAccount,
+    ]
   )
 
   return <AuthContext.Provider value={context}>{children}</AuthContext.Provider>

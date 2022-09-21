@@ -1,5 +1,5 @@
-import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
+import React, { useCallback, useState } from 'react'
+import { Alert, ScrollView, StyleSheet, View } from 'react-native'
 import { Switch, Button } from 'react-native-paper'
 import { StackNavigationProp } from '@react-navigation/stack'
 import * as DocumentPicker from 'expo-document-picker'
@@ -17,6 +17,23 @@ import {
   readFile,
   showImportConfirmAlert,
 } from '../lib/importExport'
+import { useDeleteAccount } from '../hooks/use-delete-account'
+import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
+
+const showDeleteAccountConfirm = (onConfirm: () => void) => {
+  Alert.alert(
+    '⚠️ DELETE USER ACCOUNT',
+    'This actions is irreversible. It will revoke all your tokens and secrets and delete your account from the server. Are you sure you want to continue?',
+    [
+      {
+        text: 'CANCEL',
+        style: 'cancel',
+      },
+      { text: 'Delete account', onPress: onConfirm },
+    ],
+    { cancelable: true }
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -40,6 +57,9 @@ const styles = StyleSheet.create({
     paddingTop: theme.spacing(3),
     alignItems: 'center',
   },
+  buttonDelete: {
+    marginTop: theme.spacing(10),
+  },
 })
 
 type SettingsScreenProps = {
@@ -49,10 +69,12 @@ type SettingsScreenProps = {
 export const SettingsScreen: React.FC<SettingsScreenProps> = ({
   navigation,
 }) => {
+  const [deletingAccount, setDeletingAccount] = useState(false)
   const { prefs, save } = usePrefs()
   const canUseLocalAuth = useCanUseLocalAuth()
   const { user, handleLogout } = useAuth()
   const { secrets, replace } = useSecrets()
+  const { deleteAccount } = useDeleteAccount()
 
   const handleImport = async () => {
     try {
@@ -86,6 +108,13 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
   const addSecretForFileExport = () => {
     navigation.navigate('ExportFileSecret')
   }
+
+  const handleDeleteAccount = useCallback(async () => {
+    Toast.show('Deleting account and data')
+    setDeletingAccount(true)
+    await deleteAccount()
+    Toast.show('Account deleted')
+  }, [deleteAccount, setDeletingAccount])
 
   return (
     <View style={styles.container}>
@@ -134,9 +163,18 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
             <Button onPress={handleLogout} mode="contained">
               Logout
             </Button>
+            <Button
+              onPress={() => showDeleteAccountConfirm(handleDeleteAccount)}
+              mode="text"
+              color="red"
+              style={styles.buttonDelete}
+            >
+              Delete account
+            </Button>
           </View>
         </View>
       </ScrollView>
+      {deletingAccount && <LoadingSpinnerOverlay />}
     </View>
   )
 }
