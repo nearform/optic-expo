@@ -552,6 +552,110 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              collapsable={false}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderColor": "transparent",
+                  "borderRadius": 4,
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "elevation": 0,
+                  "marginTop": 80,
+                  "minWidth": 64,
+                  "shadowColor": "#000000",
+                  "shadowOffset": Object {
+                    "height": 0,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0,
+                  "shadowRadius": 0,
+                }
+              }
+            >
+              <View
+                accessibilityRole="button"
+                accessibilityState={
+                  Object {
+                    "disabled": false,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "overflow": "hidden",
+                    },
+                    Object {
+                      "borderRadius": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={1}
+                    selectable={false}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#6D6D68",
+                          "fontFamily": "System",
+                          "fontWeight": "400",
+                        },
+                        Object {
+                          "textAlign": "left",
+                        },
+                        Array [
+                          Object {
+                            "letterSpacing": 1,
+                            "marginHorizontal": 16,
+                            "marginVertical": 9,
+                            "textAlign": "center",
+                          },
+                          undefined,
+                          Object {
+                            "textTransform": "uppercase",
+                          },
+                          Object {
+                            "color": "red",
+                            "fontFamily": "System",
+                            "fontWeight": "500",
+                          },
+                          Object {
+                            "fontFamily": "System",
+                            "fontWeight": "500",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                  >
+                    Delete account
+                  </Text>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </View>
