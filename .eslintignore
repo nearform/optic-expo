@@ -1,0 +1,4 @@
+ patch/*
+ ios/*
+ android/*
+ node_modules/*
