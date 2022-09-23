@@ -42,20 +42,20 @@ jobs:
 
   build-ios:
     needs: build
-    if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
+    if: github.event_name == 'pull_request' && startsWith(github.event.pull_request.title, '[OPTIC-RELEASE-AUTOMATION]')
     uses: ./.github/workflows/expo-eas-build.yml
     with:
-      profile: preview
+      profile: production
       platform: ios
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
   build-android:
     needs: build
-    if: github.event_name == 'push' && github.actor != 'dependabot[bot]'
+    if: github.event_name == 'pull_request' && startsWith(github.event.pull_request.title, '[OPTIC-RELEASE-AUTOMATION]')
     uses: ./.github/workflows/expo-eas-build.yml
     with:
-      profile: preview
+      profile: production
       platform: android
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}

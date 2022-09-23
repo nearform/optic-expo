@@ -1,4 +1,4 @@
-name: expo-eas-update
+name: expo-eas-build
 
 on:
   workflow_call:
@@ -7,15 +7,12 @@ on:
         description: 'expo token'
         required: true
     inputs:
-      channel:
+      platform:
         type: string
-        default: preview
-      message:
-        type: string
-        default: "no message"
+        default: android
 
 jobs:
-  eas-update:
+  eas-submit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -29,4 +26,4 @@ jobs:
           eas-version: latest
           token: ${{ secrets.expo-token }}
       - run: yarn
-      - run: npx eas update --branch ${{ inputs.channel }} --message "${{ inputs.message }}"
+      - run: npx eas submit --platform ${{ inputs.platform }} --non-interactive --latest

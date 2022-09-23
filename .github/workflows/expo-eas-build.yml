@@ -4,7 +4,7 @@ on:
   workflow_call:
     secrets:
       expo-token:
-        description: 'expo token to use to publish preview'
+        description: 'expo token'
         required: true
     inputs:
       platform:
@@ -28,7 +28,8 @@ jobs:
       - uses: expo/expo-github-action@v7
         with:
           expo-cache: true
-          expo-version: 5.x
+          expo-version: latest
+          eas-version: latest
           token: ${{ secrets.expo-token }}
       - run: yarn
-      - run: npx eas build --platform ${{ inputs.platform }} --non-interactive --profile=${{ inputs.profile }} --no-wait ${{ inputs.submit && '--auto-submit' ||  ''}}
+      - run: npx eas build --platform ${{ inputs.platform }} --non-interactive --profile=${{ inputs.profile }} ${{ inputs.submit && '--auto-submit' ||  ''}}
