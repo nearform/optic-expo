@@ -7,6 +7,7 @@ on:
 jobs:
   eas-build:
     runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]'
     steps:
       - uses: expo/expo-github-action@v7
         with:
