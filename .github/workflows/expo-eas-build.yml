@@ -32,4 +32,4 @@ jobs:
           eas-version: latest
           token: ${{ secrets.expo-token }}
       - run: yarn
-      - run: npx eas build --platform ${{ inputs.platform }} --non-interactive --profile=${{ inputs.profile }} ${{ inputs.submit && '--auto-submit' ||  ''}}
+      - run: eas build --platform ${{ inputs.platform }} --non-interactive --profile=${{ inputs.profile }} ${{ inputs.submit && '--auto-submit' ||  ''}}

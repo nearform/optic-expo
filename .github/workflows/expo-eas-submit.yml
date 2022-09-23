@@ -26,4 +26,4 @@ jobs:
           eas-version: latest
           token: ${{ secrets.expo-token }}
       - run: yarn
-      - run: npx eas submit --platform ${{ inputs.platform }} --non-interactive --latest
+      - run: eas submit --platform ${{ inputs.platform }} --non-interactive --latest

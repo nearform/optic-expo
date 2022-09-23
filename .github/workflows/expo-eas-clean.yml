@@ -1,0 +1,18 @@
+name: expo-eas-clean
+
+on:
+  pull_request:
+    types: [ closed ]
+
+jobs:
+  eas-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: expo/expo-github-action@v7
+        with:
+          expo-cache: true
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.expo-token }}
+      - run: eas channel:delete ${{ format('pr-{0}', github.event.number) }} --non-interactive
+      - run: eas branch:delete ${{ format('pr-{0}', github.event.number) }} --json

@@ -32,7 +32,6 @@
     "aes-js": "^3.1.2",
     "buffer": "^6.0.3",
     "dotenv": "^16.0.2",
-    "eas-cli": "^2.1.0",
     "expo": "~46.0.9",
     "expo-app-loading": "~2.1.0",
     "expo-apple-authentication": "~4.3.0",
