@@ -10,15 +10,9 @@ on:
       platform:
         type: string
         default: android
-      profile:
-        type: string
-        default: preview
-      submit:
-        type: boolean
-        default: false
 
 jobs:
-  eas-build:
+  eas-submit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -32,4 +26,4 @@ jobs:
           eas-version: latest
           token: ${{ secrets.expo-token }}
       - run: yarn
-      - run: eas build --platform ${{ inputs.platform }} --non-interactive --profile=${{ inputs.profile }} ${{ inputs.submit && '--auto-submit' ||  ''}}
+      - run: eas submit --platform ${{ inputs.platform }} --non-interactive --latest

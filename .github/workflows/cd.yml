@@ -12,20 +12,16 @@ jobs:
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
-  build-ios:
-    uses: ./.github/workflows/expo-eas-build.yml
+  submit-ios:
+    uses: ./.github/workflows/expo-eas-submit.yml
     with:
-      profile: production
-      platform: ios
-      submit: true
+      platform: 'ios'
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
-  build-android:
-    uses: ./.github/workflows/expo-eas-build.yml
+  submit-android:
+    uses: ./.github/workflows/expo-eas-submit.yml
     with:
-      profile: production
-      platform: android
-      submit: true
+      platform: 'android'
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}

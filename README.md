@@ -81,6 +81,7 @@ As you can see by the home page layout, you can generate many tokens to read the
 
 By doing so, you will be able to understand who is the caller that wants to read your OTP.
 
+
 Few notes on the NPM secret:
 
 - the NPM secret (QR or the textual code) is the one that you get, when you enable 2FA in your [npm](https://www.npmjs.com/) profile
