@@ -84,7 +84,7 @@
     "@testing-library/react-native": "^11.1.0",
     "@types/aes-js": "^3.1.1",
     "@types/jest": "^28.1.7",
-    "@types/node": "^18.7.18",
+    "@types/node": "^18.7.21",
     "@types/react": "~18.0.0",
     "@types/react-native": "~0.69.1",
     "@types/react-test-renderer": "^18.0.0",
