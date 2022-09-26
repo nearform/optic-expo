@@ -88,6 +88,7 @@ function useGoogleAuth() {
   const login = useCallback<ContextType['handleLoginGoogle']>(
     () =>
       promptAsync({
+        useProxy: true,
         projectNameForProxy,
       }),
     [promptAsync]
