@@ -27,10 +27,10 @@ function getHostUri() {
     }
 }
 function isExpoHosted() {
-    return true;
     const hostUri = getHostUri();
+    console.log(host)
     return !!(hostUri &&
-        (/^(.*\.)?(expo\.io|exp\.host|exp\.direct|expo\.test)(:.*)?(\/.*)?$/.test(hostUri) ||
+        (/^(.*\.)?(expo\.io|exp\.host|exp\.direct|expo\.test|expo\.dev)(:.*)?(\/.*)?$/.test(hostUri) ||
             Constants.manifest?.developer ||
             Constants.manifest2?.extra?.expoGo?.developer));
 }
