@@ -28,7 +28,6 @@ function getHostUri() {
 }
 function isExpoHosted() {
     const hostUri = getHostUri();
-    console.log(host)
     return !!(hostUri &&
         (/^(.*\.)?(expo\.io|exp\.host|exp\.direct|expo\.test|expo\.dev)(:.*)?(\/.*)?$/.test(hostUri) ||
             Constants.manifest?.developer ||
@@ -167,7 +166,6 @@ export function createURL(path, { scheme, queryParams = {}, isTripleSlashed = fa
         queryString = `?${queryString}`;
     }
     hostUri = ensureLeadingSlash(hostUri, !isTripleSlashed);
-    path = path && ensureLeadingSlash(path, !hostUri.endsWith('/'))
     return encodeURI(`${resolvedScheme}:${isTripleSlashed ? '/' : ''}/${hostUri}${path}${queryString}`);
 }
 // @needsAudit
