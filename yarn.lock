@@ -9270,10 +9270,10 @@ react-native-crypto-js@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-native-crypto-js/-/react-native-crypto-js-1.0.0.tgz#e677e022e147f41b35614416c92d655f87e2450a"
   integrity sha512-FNbLuG/HAdapQoybeZSoes1PWdOj0w242gb+e1R0hicf3Gyj/Mf8M9NaED2AnXVOX01b2FXomwUiw1xP1K+8sA==
 
-react-native-gesture-handler@~2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.5.0.tgz#61385583570ed0a45a9ed142425e35f8fe8274fb"
-  integrity sha512-djZdcprFf08PZC332D+AeG5wcGeAPhzfCJtB3otUgOgTlvjVXmg/SLFdPJSpzLBqkRAmrC77tM79QgKbuLxkfw==
+react-native-gesture-handler@~2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.6.2.tgz#f3b68d374f5dda603ff29f7df2edb39472eb97ce"
+  integrity sha512-Ff/WKlR8KiM1wq7UJZvIyCB+OsweewaeZk+4RDIYNGM9tvNIAXEm/MtYnLHiBXiSJjZItF/8B83gE6pVq40vIw==
   dependencies:
     "@egjs/hammerjs" "^2.0.17"
     hoist-non-react-statics "^3.3.0"
