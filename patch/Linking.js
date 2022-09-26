@@ -27,6 +27,7 @@ function getHostUri() {
     }
 }
 function isExpoHosted() {
+    return true;
     const hostUri = getHostUri();
     return !!(hostUri &&
         (/^(.*\.)?(expo\.io|exp\.host|exp\.direct|expo\.test)(:.*)?(\/.*)?$/.test(hostUri) ||
