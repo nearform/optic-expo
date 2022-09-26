@@ -16,7 +16,8 @@
     "test:watch": "jest --watch",
     "build:submit:android": "eas build --platform android --non-interactive --auto-submit --no-wait",
     "build:submit:ios": "eas build --platform ios --non-interactive --auto-submit --no-wait",
-    "bump:version": "node scripts/bump-version.js"
+    "bump:version": "node scripts/bump-version.js",
+    "postinstall": "node -e \"fs.copyFileSync('./patch/Linking.js', './node_modules/expo-linking/build/Linking.js')\""
   },
   "dependencies": {
     "@expo-google-fonts/didact-gothic": "^0.2.2",
