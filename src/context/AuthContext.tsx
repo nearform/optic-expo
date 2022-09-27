@@ -60,6 +60,7 @@ type ContextType = {
   user: User | null
   handleLoginGoogle: () => void
   handleLoginApple: () => void
+  handleLoginPassword: (credentials: { user: string; password: string }) => void
   handleLogout: () => Promise<void>
   handleDeleteAccount: () => Promise<void>
 }
@@ -123,6 +124,12 @@ function useAppleAuth() {
   return login
 }
 
+function usePasswordAuth() {
+  return useCallback(async ({ user, password }) => {
+    await firebase.auth().signInWithEmailAndPassword(user, password)
+  }, [])
+}
+
 export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   children,
 }) => {
@@ -132,6 +139,7 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
 
   const handleLoginGoogle = useGoogleAuth()
   const handleLoginApple = useAppleAuth()
+  const handleLoginPassword = usePasswordAuth()
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(newFirebaseUser => {
@@ -177,6 +185,7 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
       handleLogout,
       handleLoginApple,
       handleLoginGoogle,
+      handleLoginPassword,
       handleDeleteAccount,
     }),
     [
@@ -185,6 +194,7 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
       handleLogout,
       handleLoginGoogle,
       handleLoginApple,
+      handleLoginPassword,
       handleDeleteAccount,
     ]
   )
