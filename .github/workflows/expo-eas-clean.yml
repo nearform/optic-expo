@@ -9,7 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.pull_request.user.login }}
+      - run: echo ${{ github.event.pull_request.user.login }}
 
 
   eas-clean:

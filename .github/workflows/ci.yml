@@ -2,10 +2,10 @@ name: ci
 on:
   push:
     branches:
-      - master
+      - _master
   pull_request:
     branches:
-      - master
+      - _master
 jobs:
   build:
     runs-on: ubuntu-latest
