@@ -1,9 +1,10 @@
+import * as AppleAuthentication from 'expo-apple-authentication'
 import * as WebBrowser from 'expo-web-browser'
 import React, { useEffect, useState } from 'react'
-import { Image, Platform, StyleSheet, View } from 'react-native'
+import { Image, Platform, Pressable, StyleSheet, View } from 'react-native'
 import { Button } from 'react-native-paper'
-import * as AppleAuthentication from 'expo-apple-authentication'
 
+import { Login } from '../components/Login'
 import Logo from '../components/Logo'
 import { Typography } from '../components/Typography'
 import { useAuth } from '../context/AuthContext'
@@ -32,7 +33,8 @@ type AuthScreenProps = unknown
 
 export const AuthScreen: React.FC<AuthScreenProps> = () => {
   const [appleLoginEnabled, setAppleLoginEnabled] = useState(false)
-  const { handleLoginGoogle, handleLoginApple } = useAuth()
+  const { handleLoginGoogle, handleLoginApple, handleLoginPassword } = useAuth()
+  const [showPasswordForm, setShowPasswordForm] = useState(false)
 
   useEffect(() => {
     AppleAuthentication.isAvailableAsync().then(setAppleLoginEnabled)
@@ -47,6 +49,43 @@ export const AuthScreen: React.FC<AuthScreenProps> = () => {
       WebBrowser.coolDownAsync()
     }
   }, [])
+
+  const authButtons = (
+    <>
+      <Button
+        style={styles.button}
+        accessibilityLabel="login with google"
+        mode="contained"
+        icon={({ size }) => (
+          <Image
+            source={require('../assets/google.png')}
+            style={{ width: size, height: size }}
+          />
+        )}
+        onPress={handleLoginGoogle}
+        color={theme.colors.surface}
+      >
+        Sign in with Google
+      </Button>
+      {appleLoginEnabled && (
+        <Button
+          style={styles.button}
+          accessibilityLabel="login with apple"
+          mode="contained"
+          icon={({ size }) => (
+            <Image
+              source={require('../assets/apple.png')}
+              style={{ width: size, height: size }}
+            />
+          )}
+          onPress={handleLoginApple}
+          color={theme.colors.surface}
+        >
+          Sign in with Apple
+        </Button>
+      )}
+    </>
+  )
 
   return (
     <View style={styles.container}>
@@ -68,40 +107,18 @@ export const AuthScreen: React.FC<AuthScreenProps> = () => {
         </Typography>
       </View>
       <View>
-        <Button
-          style={styles.button}
-          accessibilityLabel="login with google"
-          mode="contained"
-          icon={({ size }) => (
-            <Image
-              source={require('../assets/google.png')}
-              style={{ width: size, height: size }}
-            />
-          )}
-          onPress={handleLoginGoogle}
-          color={theme.colors.surface}
-        >
-          Sign in with Google
-        </Button>
-        {appleLoginEnabled && (
-          <Button
-            style={styles.button}
-            accessibilityLabel="login with apple"
-            mode="contained"
-            icon={({ size }) => (
-              <Image
-                source={require('../assets/apple.png')}
-                style={{ width: size, height: size }}
-              />
-            )}
-            onPress={handleLoginApple}
-            color={theme.colors.surface}
-          >
-            Sign in with Apple
-          </Button>
+        {showPasswordForm ? (
+          <Login onLogin={handleLoginPassword} />
+        ) : (
+          authButtons
         )}
       </View>
-      <Logo />
+      <Pressable
+        onLongPress={() => setShowPasswordForm(form => !form)}
+        delayLongPress={3000}
+      >
+        <Logo />
+      </Pressable>
     </View>
   )
 }
