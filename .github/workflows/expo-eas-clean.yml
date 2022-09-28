@@ -3,6 +3,7 @@ name: expo-eas-clean
 on:
   pull_request:
     branches:
+      - master
 
 jobs:
   test:
