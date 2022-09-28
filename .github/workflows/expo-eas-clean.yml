@@ -2,7 +2,7 @@ name: expo-eas-clean
 
 on:
   pull_request:
-    type: [ closed ]
+    types: [ closed ]
 
 jobs:
   eas-clean:
