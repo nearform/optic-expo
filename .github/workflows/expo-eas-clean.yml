@@ -15,4 +15,4 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
       - run: eas channel:delete ${{ format('pr-{0}', github.event.number) }} --non-interactive
-      - run: eas branch:delete ${{ format('pr-{0}', github.event.number) }} --json
+      - run: eas branch:delete ${{ format('pr-{0}', github.event.number) }} --json --non-interactive
