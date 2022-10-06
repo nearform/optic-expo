@@ -24,6 +24,7 @@ export default {
   name: 'optic',
   slug: 'optic-expo',
   owner: 'nearform',
+  privacy: 'public',
   scheme: 'optic-expo',
   version: pkg.version,
   orientation: 'portrait',
