@@ -26,6 +26,7 @@ export default {
   owner: 'nearform',
   privacy: 'public',
   scheme: 'optic-expo',
+  githubUrl: 'https://github.com/nearform/optic-expo',
   version: pkg.version,
   orientation: 'portrait',
   icon: './src/assets/icon.png',
@@ -56,6 +57,9 @@ export default {
   },
   assetBundlePatterns: ['**/*'],
   platforms: ['android', 'ios'],
+  appStoreUrl: 'https://apps.apple.com/us/app/nearform-optic/id1643969791',
+  playStoreUrl:
+    'https://play.google.com/store/apps/details?id=com.nearform.optic',
   ios: {
     supportsTablet: true,
     bundleIdentifier: config.APP_PACKAGE_ID,
