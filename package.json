@@ -33,7 +33,7 @@
     "aes-js": "^3.1.2",
     "buffer": "^6.0.3",
     "dotenv": "^16.0.2",
-    "expo": "~46.0.13",
+    "expo": "~46.0.14",
     "expo-app-loading": "~2.1.0",
     "expo-apple-authentication": "~4.3.0",
     "expo-auth-session": "~3.7.1",
