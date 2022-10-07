@@ -17,6 +17,8 @@ jobs:
       - run: yarn
       - run: yarn lint
       - run: yarn typecheck
+      - run: npm install -g expo-cli
+      - run: yarn doctor
       - run: yarn test
 
   automerge:
@@ -27,8 +29,6 @@ jobs:
       contents: write
     steps:
       - uses: fastify/github-action-merge-dependabot@v3
-        with:
-          approve-only: true
 
   eas-update:
     needs: build
