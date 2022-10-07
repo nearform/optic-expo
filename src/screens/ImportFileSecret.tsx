@@ -86,7 +86,7 @@ export const ImportFileSecret: React.FC<ImportFileSecretProps> = ({
             value={secret}
             onChangeText={setSecret}
             accessibilityLabel="Secret"
-            placeholder="Exncryption Secret"
+            placeholder="Encryption Secret"
             mode="outlined"
           />
           <Button
