@@ -57,10 +57,8 @@ export default {
   },
   assetBundlePatterns: ['**/*'],
   platforms: ['android', 'ios'],
-  appStoreUrl: 'https://apps.apple.com/us/app/nearform-optic/id1643969791',
-  playStoreUrl:
-    'https://play.google.com/store/apps/details?id=com.nearform.optic',
   ios: {
+    appStoreUrl: 'https://apps.apple.com/us/app/nearform-optic/id1643969791',
     supportsTablet: true,
     bundleIdentifier: config.APP_PACKAGE_ID,
     buildNumber: String(pkg.versionCode),
@@ -78,6 +76,8 @@ export default {
       foregroundImage: './src/assets/icon.png',
       backgroundColor: '#FFFFFF',
     },
+    playStoreUrl:
+      'https://play.google.com/store/apps/details?id=com.nearform.optic',
   },
   runtimeVersion: {
     policy: 'sdkVersion',
