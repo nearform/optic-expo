@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import {
@@ -13,7 +13,7 @@ import {
   useFonts as useFiraCode,
   FiraCode_400Regular,
 } from '@expo-google-fonts/fira-code'
-import AppLoading from 'expo-app-loading'
+import * as SplashScren from 'expo-splash-screen'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import theme from './lib/theme'
@@ -63,6 +63,8 @@ export type MainStackParamList = {
   }
 }
 
+SplashScren.preventAutoHideAsync()
+
 export default function Main() {
   const [hasPoppinsLoaded] = usePoppins({
     Poppins_700Bold,
@@ -76,10 +78,16 @@ export default function Main() {
     FiraCode_400Regular,
   })
 
-  const { user } = useAuth()
+  const { user, loading } = useAuth()
 
-  if (!hasPoppinsLoaded || !hasDidactLoaded || !hasFiraCodeLoaded) {
-    return <AppLoading />
+  useEffect(() => {
+    if (hasPoppinsLoaded && hasDidactLoaded && hasFiraCodeLoaded && !loading) {
+      SplashScren.hideAsync()
+    }
+  }, [hasDidactLoaded, hasFiraCodeLoaded, hasPoppinsLoaded, loading])
+
+  if (!hasPoppinsLoaded || !hasDidactLoaded || !hasFiraCodeLoaded || loading) {
+    return null
   }
 
   if (!user) {
