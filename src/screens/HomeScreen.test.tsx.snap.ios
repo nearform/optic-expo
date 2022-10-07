@@ -466,8 +466,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       }
                     >
                       <RNSVGSvgView
-                        bbHeight={30}
-                        bbWidth={30}
+                        bbHeight="30"
+                        bbWidth="30"
                         focusable={false}
                         height={30}
                         style={
@@ -496,8 +496,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 "strokeWidth",
                               ]
                             }
-                            stroke={4292467161}
-                            strokeWidth={3}
+                            stroke={
+                              Object {
+                                "payload": 4292467161,
+                                "type": 0,
+                              }
+                            }
+                            strokeWidth="3"
                           />
                           <RNSVGPath
                             d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
@@ -512,16 +517,21 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 "strokeLinecap",
                               ]
                             }
-                            stroke={4293624476}
+                            stroke={
+                              Object {
+                                "payload": 4293624476,
+                                "type": 0,
+                              }
+                            }
                             strokeDasharray={
                               Array [
-                                84.82300164692441,
-                                84.82300164692441,
+                                "84.82300164692441",
+                                "84.82300164692441",
                               ]
                             }
                             strokeDashoffset={null}
                             strokeLinecap={1}
-                            strokeWidth={3}
+                            strokeWidth="3"
                           />
                         </RNSVGGroup>
                       </RNSVGSvgView>
@@ -1602,8 +1612,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       }
                     >
                       <RNSVGSvgView
-                        bbHeight={30}
-                        bbWidth={30}
+                        bbHeight="30"
+                        bbWidth="30"
                         focusable={false}
                         height={30}
                         style={
@@ -1632,8 +1642,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 "strokeWidth",
                               ]
                             }
-                            stroke={4292467161}
-                            strokeWidth={3}
+                            stroke={
+                              Object {
+                                "payload": 4292467161,
+                                "type": 0,
+                              }
+                            }
+                            strokeWidth="3"
                           />
                           <RNSVGPath
                             d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
@@ -1648,16 +1663,21 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 "strokeLinecap",
                               ]
                             }
-                            stroke={4293624476}
+                            stroke={
+                              Object {
+                                "payload": 4293624476,
+                                "type": 0,
+                              }
+                            }
                             strokeDasharray={
                               Array [
-                                84.82300164692441,
-                                84.82300164692441,
+                                "84.82300164692441",
+                                "84.82300164692441",
                               ]
                             }
                             strokeDashoffset={null}
                             strokeLinecap={1}
-                            strokeWidth={3}
+                            strokeWidth="3"
                           />
                         </RNSVGGroup>
                       </RNSVGSvgView>
