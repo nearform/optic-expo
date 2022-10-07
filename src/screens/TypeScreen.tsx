@@ -43,7 +43,8 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
   const [account, setAccount] = useState(user.name || '')
 
   const handleAddSecretButtonPress = async () => {
-    await add({ uid: user.uid, secret, account, issuer })
+    const cleanedSecret = secret.trim().replace(/ /g, '').toUpperCase()
+    await add({ uid: user.uid, secret: cleanedSecret, account, issuer })
     navigation.navigate('Home')
   }
 
