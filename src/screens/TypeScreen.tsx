@@ -43,12 +43,13 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
   const [account, setAccount] = useState(user.name || '')
 
   const handleAddSecretButtonPress = async () => {
-    await add({ uid: user.uid, secret, account, issuer })
+    const cleanedSecret = secret.replace(/\s/g, '').toUpperCase()
+    await add({ uid: user.uid, secret: cleanedSecret, account, issuer })
     navigation.navigate('Home')
   }
 
   const invalidSecret = !RFC4648_REGEX.test(
-    secret.trim().replace(/ /g, '').toUpperCase()
+    secret.replace(/\s/g, '').toUpperCase()
   )
   const disabled =
     invalidSecret || !secret.trim() || !account.trim() || !issuer.trim()
