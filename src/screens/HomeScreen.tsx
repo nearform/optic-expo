@@ -42,7 +42,7 @@ type HomeScreenProps = {
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const { user } = useAuth()
-  const { secrets, remove } = useSecrets()
+  const { secrets, secretsLoading, remove } = useSecrets()
   const { addNotification } = usePendingNotifications()
   const isFocused = useIsFocused()
   const notificationListener = useRef<Subscription>()
@@ -123,6 +123,10 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       Notifications.removeNotificationSubscription(notificationListener.current)
     }
   }, [onNotification, onNotificationResponse])
+
+  if (secretsLoading) {
+    return null
+  }
 
   return (
     <View style={styles.container}>

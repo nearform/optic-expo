@@ -13,6 +13,7 @@ jest.spyOn(secretsContext, 'useSecrets').mockReturnValue({
   remove: jest.fn(),
   replace: jest.fn(),
   secrets: [],
+  secretsLoading: false,
   update: jest.fn(),
 })
 

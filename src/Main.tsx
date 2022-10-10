@@ -13,7 +13,7 @@ import {
   useFonts as useFiraCode,
   FiraCode_400Regular,
 } from '@expo-google-fonts/fira-code'
-import * as SplashScren from 'expo-splash-screen'
+import * as SplashScreen from 'expo-splash-screen'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import theme from './lib/theme'
@@ -63,7 +63,7 @@ export type MainStackParamList = {
   }
 }
 
-SplashScren.preventAutoHideAsync()
+SplashScreen.preventAutoHideAsync()
 
 export default function Main() {
   const [hasPoppinsLoaded] = usePoppins({
@@ -82,7 +82,7 @@ export default function Main() {
 
   useEffect(() => {
     if (hasPoppinsLoaded && hasDidactLoaded && hasFiraCodeLoaded && !loading) {
-      SplashScren.hideAsync()
+      SplashScreen.hideAsync()
     }
   }, [hasDidactLoaded, hasFiraCodeLoaded, hasPoppinsLoaded, loading])
 
