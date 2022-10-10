@@ -14,6 +14,7 @@ import { useAuth } from './AuthContext'
 
 export type ContextType = {
   secrets: Secret[]
+  secretsLoading: boolean
   add: (_: Omit<Secret, '_id'>) => Promise<void>
   update: (_: Secret) => Promise<void>
   remove: (_: Secret) => Promise<void>
@@ -22,6 +23,7 @@ export type ContextType = {
 
 const initialContext: ContextType = {
   secrets: [],
+  secretsLoading: false,
   add: async () => {
     // @todo
   },
@@ -46,17 +48,21 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
   children,
 }) => {
   const [secrets, setSecrets] = useState<Secret[]>([])
+  const [secretsLoading, setSecretsLoading] = useState(false)
   const { user } = useAuth()
 
   useEffect(() => {
     let mounted = true
     async function initialize() {
       if (user) {
+        setSecretsLoading(true)
         const items = await secretsManager.getAllByUser(user.uid)
 
         if (mounted) {
           setSecrets(items)
         }
+
+        setSecretsLoading(false)
       }
     }
 
@@ -96,8 +102,8 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
   }, [])
 
   const value = useMemo<ContextType>(
-    () => ({ secrets, add, update, remove, replace }),
-    [secrets, add, update, remove, replace]
+    () => ({ secrets, secretsLoading, add, update, remove, replace }),
+    [secrets, secretsLoading, add, update, remove, replace]
   )
 
   return (

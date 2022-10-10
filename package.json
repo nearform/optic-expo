@@ -4,7 +4,7 @@
   "version": "1.0.8",
   "versionCode": 8,
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --dev-client",
     "start:native": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
@@ -35,8 +35,7 @@
     "aes-js": "^3.1.2",
     "buffer": "^6.0.3",
     "dotenv": "^16.0.3",
-    "expo": "~46.0.15",
-    "expo-app-loading": "~2.1.0",
+    "expo": "~46.0.13",
     "expo-apple-authentication": "~4.3.0",
     "expo-auth-session": "~3.7.1",
     "expo-barcode-scanner": "~11.4.0",
