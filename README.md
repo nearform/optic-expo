@@ -35,7 +35,7 @@ In order to successfully run the Optic-expo app locally you will need the follow
 
 ## Running on a iOS device
 
-1. Create an issue in this repo asking for apple connect developer access for the app
+1. Create an issue in this repo asking for apple connect developer access for the app (see section: [Providing Apple Developer Access](##providing-apple-developer-access))
 1. Install expo-cli globally: `npm i -g expo-cli`
 1. Run in the simulator first: `npm run ios`
 1. Install [expo go](https://apps.apple.com/us/app/expo-go/id982107779) on your device
@@ -46,6 +46,28 @@ In order to successfully run the Optic-expo app locally you will need the follow
 ![select device](https://user-images.githubusercontent.com/84892/191241139-5db5b905-228f-4af2-a633-47f601de993a.png)
 1. Run: `expo run:ios --device`
 1. Select your device from the list
+
+## Setup Android Studio (MacOS)
+
+1. Running `yarn android` will help you throughout the process.
+1. Follow the [expo tutorial](https://docs.expo.dev/workflow/android-studio-emulator/).
+1. Java Runtime will be necessary. OpenJDK version 11 worked. [Homebrew](https://formulae.brew.sh/formula/openjdk@11)
+1. Read the output of the installation and execute the suggested commands related to symlink and including in the PATH variable.
+
+## Setup Xcode/Simulator (MacOS)
+
+1. Running `yarn ios` will help you throughout the following steps;
+1. Create an Apple ID if you don't have one. If applicable, use your NearForm email.
+1. Download Xcode from the App Store.
+1. Open Xcode, navigate to "Preferences / Locations" and select the appropriate version in Command Line Tools.
+
+## Providing Apple Developer Access
+
+1. Login to Apple Developer using an account with "App Manager" role
+1. You might need to use the nearform root account to provide permission above 'developer'
+1. 'App Manager' role is needed if you want to give access to create new releases in play store
+1. Navigate to [https://appstoreconnect.apple.com/access/users](https://appstoreconnect.apple.com/access/users)
+1. Click on the "+" button on the top left corner and add the user info (most of the time will be developer or app manager) and choose what apps they have access to
 
 ## Notes
 
