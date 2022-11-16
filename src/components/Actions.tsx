@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet } from 'react-native'
-import { FAB, Portal } from 'react-native-paper'
+import { FAB } from 'react-native-paper'
 
 import theme from '../lib/theme'
 
@@ -26,27 +26,25 @@ export const Actions: React.FC<ActionsProps> = ({
   const [{ open }, setOpen] = useState(initialState)
 
   return (
-    <Portal>
-      <FAB.Group
-        visible={visible}
-        open={open}
-        accessibilityLabel="show-actions"
-        icon={open ? 'close' : 'plus'}
-        fabStyle={styles.primaryButton}
-        actions={[
-          {
-            icon: 'qrcode',
-            label: 'Scan QR Code',
-            onPress: onScan,
-          },
-          {
-            icon: 'pencil',
-            label: 'Add details manually',
-            onPress: onType,
-          },
-        ]}
-        onStateChange={setOpen}
-      />
-    </Portal>
+    <FAB.Group
+      visible={visible}
+      open={open}
+      accessibilityLabel="show-actions"
+      icon={open ? 'close' : 'plus'}
+      fabStyle={styles.primaryButton}
+      actions={[
+        {
+          icon: 'qrcode',
+          label: 'Scan QR Code',
+          onPress: onScan,
+        },
+        {
+          icon: 'pencil',
+          label: 'Add details manually',
+          onPress: onType,
+        },
+      ]}
+      onStateChange={setOpen}
+    />
   )
 }
