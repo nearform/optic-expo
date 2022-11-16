@@ -9,10 +9,8 @@ on:
     inputs:
       channel:
         type: string
-        default: preview
       message:
         type: string
-        default: "no message"
 
 jobs:
   eas-update:
