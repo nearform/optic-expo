@@ -3,6 +3,7 @@ import { Alert, ScrollView, StyleSheet, View } from 'react-native'
 import { Switch, Button } from 'react-native-paper'
 import { StackNavigationProp } from '@react-navigation/stack'
 import * as DocumentPicker from 'expo-document-picker'
+import * as Application from 'expo-application'
 import Toast from 'react-native-root-toast'
 
 import { useSecrets } from '../context/SecretsContext'
@@ -58,7 +59,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonDelete: {
+    marginTop: theme.spacing(8),
+  },
+  appVersionContainer: {
     marginTop: theme.spacing(10),
+    alignItems: 'center',
   },
 })
 
@@ -171,6 +176,12 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
             >
               Delete account
             </Button>
+          </View>
+          <View style={styles.appVersionContainer}>
+            <Typography variant="subtitle1">App version</Typography>
+            <Typography variant="subtitle2">
+              {Application.nativeApplicationVersion}
+            </Typography>
           </View>
         </View>
       </ScrollView>
