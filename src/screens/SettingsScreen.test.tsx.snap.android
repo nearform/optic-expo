@@ -563,7 +563,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                   "borderStyle": "solid",
                   "borderWidth": 0,
                   "elevation": 0,
-                  "marginTop": 80,
+                  "marginTop": 64,
                   "minWidth": 64,
                   "shadowColor": "#000000",
                   "shadowOffset": Object {
@@ -657,6 +657,75 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 </View>
               </View>
             </View>
+          </View>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "marginTop": 80,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#6D6D68",
+                    "fontFamily": "sans-serif",
+                    "fontWeight": "normal",
+                  },
+                  Object {
+                    "textAlign": "left",
+                  },
+                  Array [
+                    Object {
+                      "fontSize": 16,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.15,
+                    },
+                    Object {
+                      "alignItems": "center",
+                      "color": "#6D6D68",
+                      "display": "flex",
+                      "marginBottom": 0,
+                    },
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              App version
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#6D6D68",
+                    "fontFamily": "sans-serif",
+                    "fontWeight": "normal",
+                  },
+                  Object {
+                    "textAlign": "left",
+                  },
+                  Array [
+                    Object {
+                      "fontSize": 14,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.15,
+                    },
+                    Object {
+                      "alignItems": "center",
+                      "color": "#6D6D68",
+                      "display": "flex",
+                      "marginBottom": 0,
+                    },
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              mock
+            </Text>
           </View>
         </View>
       </View>
