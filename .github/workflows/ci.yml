@@ -35,8 +35,8 @@ jobs:
     if: github.actor != 'dependabot[bot]'
     uses: ./.github/workflows/expo-eas-update.yml
     with:
-      channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview'}}
-      message: ${{ github.event.head_commit.message || github.event.pull_request.title || 'no message' }}
+      channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) }}
+      message: ${{ github.event.head_commit.message || github.event.pull_request.title }}
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
