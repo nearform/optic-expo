@@ -9,6 +9,7 @@ jobs:
     uses: ./.github/workflows/expo-eas-update.yml
     with:
       channel: production
+      message: ${{ github.event.release.tag_name }}
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
