@@ -33,11 +33,11 @@ jobs:
   eas-update:
     needs: build
     if: github.actor != 'dependabot[bot]'
-    run: echo "{message-eas-update}={${{ github.event.head_commit.message || github.event.pull_request.title }}" | sed "s/\"/'/g"}" >> $GITHUB_ENV
     uses: ./.github/workflows/expo-eas-update.yml
     with:
       channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview' }}
-      message: ${{ env.message-eas-update }}
+      message: |
+      ${{ github.event.head_commit.message || github.event.pull_request.title }} | sed "s/\"/'/g"
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
