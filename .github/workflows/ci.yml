@@ -35,8 +35,10 @@ jobs:
     if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
-      - run: echo "EAS_UPDATE_MESSAGE=$(echo ${{ github.event.head_commit.message || github.event.pull_request.title }} | sed 's/\"/'/g')" >> $GITHUB_ENV
-      - uses: ./.github/workflows/expo-eas-update.yml
+      - name: Santise eas-update message
+        run: echo "EAS_UPDATE_MESSAGE=$(echo ${{ github.event.head_commit.message || github.event.pull_request.title }} | sed 's/\"/'/g')" >> $GITHUB_ENV
+      - name: Expo eas-update
+        uses: ./.github/workflows/expo-eas-update.yml
           with:
           channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview' }}
           message: ${{ env.EAS_UPDATE_MESSAGE }}
