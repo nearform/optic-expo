@@ -27,4 +27,4 @@ jobs:
           eas-version: latest
           token: ${{ secrets.expo-token }}
       - run: yarn
-      - run: eas update --branch ${{ inputs.channel }} --message "${{ inputs.message }}"
+      - run: eas update --branch ${{ inputs.channel }} --message \"${{ inputs.message }}\"
