@@ -33,12 +33,16 @@ jobs:
   eas-update:
     needs: build
     if: github.actor != 'dependabot[bot]'
-    uses: ./.github/workflows/expo-eas-update.yml
-    with:
-      channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview' }}
-      message: ${{ github.event.head_commit.message || github.event.pull_request.title }}
-    secrets:
-      expo-token: ${{ secrets.EXPO_TOKEN }}
+    steps:
+      - name: Santise eas-update message
+        run: echo "EAS_UPDATE_MESSAGE=\"$(echo ${{ github.event.head_commit.message || github.event.pull_request.title }} | sed "s/\"/\\\\\"/g")\"" >> $GITHUB_ENV
+      - name: Expo EAS update
+        uses: ./.github/workflows/expo-eas-update.yml
+        with:
+          channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview' }}
+          message: ${{ env.EAS_UPDATE_MESSAGE }}
+        secrets:
+          expo-token: ${{ secrets.EXPO_TOKEN }}
 
   build-ios:
     needs: build
