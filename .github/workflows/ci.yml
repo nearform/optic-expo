@@ -37,7 +37,7 @@ jobs:
     outputs:
       EAS_UPDATE_MESSAGE: ${{ steps.sanitise-eas-message.outputs.EAS_UPDATE_MESSAGE }}
     steps:
-      - id: sanitise-eas-message
+        id: sanitise-eas-message
       - run: |
           MESSAGE=$(cat << "EOF" \
           ${{ github.event.head_commit.message || github.event.pull_request.title }} \
