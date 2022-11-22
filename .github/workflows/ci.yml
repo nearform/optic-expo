@@ -30,29 +30,27 @@ jobs:
     steps:
       - uses: fastify/github-action-merge-dependabot@v3
 
-  eas-update:
+  sanitise-eas-update-message:
     needs: build
     if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
-      - name: Santise eas-update message
-        if: contains(github.event.head_commit.message || github.event.pull_request.title, '"')
-        run: |
-          MESSAGE=$(cat << "EOF"
-          ${{ github.event.head_commit.message || github.event.pull_request.title }}
-          EOF
-          )
-          echo $MESSAGE
-          echo $(echo "$MESSAGE" | sed "s/\"/\\\\\\\"/g")
-          echo "EAS_UPDATE_MESSAGE=\"$(echo "$MESSAGE" | sed "s/\"/\\\\\\\"/g")\""
-          echo "EAS_UPDATE_MESSAGE=\"$(echo "$MESSAGE" | sed "s/\"/\\\\\\\"/g")\"" >> $GITHUB_ENV
-      - name: Expo EAS update
-        uses: ./.github/workflows/expo-eas-update.yml
-        with:
-          channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview' }}
-          message: ${{ env.EAS_UPDATE_MESSAGE }}
-        secrets:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
+      run: |
+        MESSAGE=$(cat << "EOF"
+        ${{ github.event.head_commit.message || github.event.pull_request.title }}
+        EOF
+        )
+        echo "EAS_UPDATE_MESSAGE=\"$(echo "$MESSAGE" | sed "s/\"/\\\\\\\"/g")\"" >> $GITHUB_ENV
+
+  eas-update:
+    needs: [build, sanitise-eas-update-message]
+    if: github.actor != 'dependabot[bot]'
+    uses: ./.github/workflows/expo-eas-update.yml
+      with:
+        channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview' }}
+        message: ${{ env.EAS_UPDATE_MESSAGE }}
+      secrets:
+        expo-token: ${{ secrets.EXPO_TOKEN }}
 
   build-ios:
     needs: build
