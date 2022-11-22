@@ -35,7 +35,7 @@ jobs:
     if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
-      run: |
+      - run: |
         MESSAGE=$(cat << "EOF"
         ${{ github.event.head_commit.message || github.event.pull_request.title }}
         EOF
