@@ -46,11 +46,11 @@ jobs:
     needs: [build, sanitise-eas-update-message]
     if: github.actor != 'dependabot[bot]'
     uses: ./.github/workflows/expo-eas-update.yml
-      with:
-        channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview' }}
-        message: ${{ env.EAS_UPDATE_MESSAGE }}
-      secrets:
-        expo-token: ${{ secrets.EXPO_TOKEN }}
+    with:
+      channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview' }}
+      message: ${{ env.EAS_UPDATE_MESSAGE }}
+    secrets:
+      expo-token: ${{ secrets.EXPO_TOKEN }}
 
   build-ios:
     needs: build
