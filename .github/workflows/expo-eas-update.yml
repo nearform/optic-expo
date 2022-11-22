@@ -27,4 +27,9 @@ jobs:
           eas-version: latest
           token: ${{ secrets.expo-token }}
       - run: yarn
-      - run: eas update --branch ${{ inputs.channel }} --message "${{ inputs.message }}"
+      - uses: actions/github-script@v6
+        id: sanitise-double-quotes
+        with:
+          script: return `${{ inputs.message }}`.replaceAll('"',"'")
+          result-encoding: string
+      - run: eas update --branch ${{ inputs.channel }} --message "${{ steps.sanitise-double-quotes.outputs.result }}"
