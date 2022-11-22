@@ -37,12 +37,14 @@ jobs:
     outputs:
       EAS_UPDATE_MESSAGE: ${{ steps.sanitise-eas-message.outputs.EAS_UPDATE_MESSAGE }}
     steps:
-        id: sanitise-eas-message
+      id: sanitise-eas-message
       - run: |
-          MESSAGE=$(cat << "EOF" \
-          ${{ github.event.head_commit.message || github.event.pull_request.title }} \
-          EOF \
-          ) \
+          echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
+          MESSAGE=$(cat << "EOF"
+          ${{ github.event.head_commit.message || github.event.pull_request.title }}
+          EOF
+          )
+          echo 'EOF' >> $GITHUB_ENV
           echo "EAS_UPDATE_MESSAGE=\"$(echo "$MESSAGE" | sed "s/\"/\\\\\\\"/g")\"" >> $GITHUB_OUTPUT
 
   eas-update:
