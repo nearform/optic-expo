@@ -5266,10 +5266,10 @@ expo-asset@~8.6.2:
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
 
-expo-auth-session@~3.7.2:
-  version "3.7.2"
-  resolved "https://registry.yarnpkg.com/expo-auth-session/-/expo-auth-session-3.7.2.tgz#4c67b9b5c4171efc79f42b19c7337baae3b4c20e"
-  integrity sha512-FLbliqiE39jZP+UjpMbxw8lWM+WlezgbcALr7HRkHCJHHM3taMkT8RX9oB1s68lUCA/EngcBKu5lSPDnbamcvg==
+expo-auth-session@~3.7.3:
+  version "3.7.3"
+  resolved "https://registry.yarnpkg.com/expo-auth-session/-/expo-auth-session-3.7.3.tgz#ded1afbbf88e0c6e4098e59920b4f13927fc1f3d"
+  integrity sha512-0mX47j6WdpEoaFVxU36VBRkEjJKwAkqnRyNdd5g+Ab1fHXQJJK3nzjOjxuBzgE8mKSS9NGHr/At9IGY6MLrg2g==
   dependencies:
     expo-constants "~14.0.0"
     expo-crypto "~12.0.0"

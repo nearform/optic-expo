@@ -37,7 +37,7 @@
     "dotenv": "^16.0.3",
     "expo": "~47.0.8",
     "expo-apple-authentication": "~5.0.1",
-    "expo-auth-session": "~3.7.2",
+    "expo-auth-session": "~3.7.3",
     "expo-barcode-scanner": "~12.1.0",
     "expo-camera": "~13.1.0",
     "expo-clipboard": "~4.0.1",
