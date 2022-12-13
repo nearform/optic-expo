@@ -466,10 +466,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       }
                     >
                       <RNSVGSvgView
+                        align="xMidYMid"
                         bbHeight="30"
                         bbWidth="30"
                         focusable={false}
                         height={30}
+                        meetOrSlice={0}
+                        minX={0}
+                        minY={0}
                         style={
                           Array [
                             Object {
@@ -483,6 +487,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             },
                           ]
                         }
+                        vbHeight={30}
+                        vbWidth={30}
                         width={30}
                       >
                         <RNSVGGroup>
@@ -1612,10 +1618,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       }
                     >
                       <RNSVGSvgView
+                        align="xMidYMid"
                         bbHeight="30"
                         bbWidth="30"
                         focusable={false}
                         height={30}
+                        meetOrSlice={0}
+                        minX={0}
+                        minY={0}
                         style={
                           Array [
                             Object {
@@ -1629,6 +1639,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             },
                           ]
                         }
+                        vbHeight={30}
+                        vbWidth={30}
                         width={30}
                       >
                         <RNSVGGroup>
