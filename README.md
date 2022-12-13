@@ -13,8 +13,6 @@
   <img alt='Download on the App Store' src='https://user-images.githubusercontent.com/84892/191009257-86f3b83e-b2d9-4252-ac05-98732328df2f.png' style="height:40px" />
 </a>
 
-
-
 ## Requirements
 
 - Node LTS
@@ -27,7 +25,9 @@
 1. `yarn start`
 
 ## Development
+
 In order to successfully run the Optic-expo app locally you will need the following:
+
 1. Expo user account. You can sign up [here](https://expo.dev/signup).
 1. Once you have an Expo account, your account needs to be added to the NearForm organization (ask @simoneb to do that for you).
 1. Scan the QR code on your terminal or go to `exp://172.22.22.56:19000`
@@ -43,7 +43,7 @@ In order to successfully run the Optic-expo app locally you will need the follow
 1. Confirm your device is in [developer mode](https://developer.apple.com/documentation/xcode/enabling-developer-mode-on-a-device)
 1. [Setup code signing certificates in xcode for developement](https://github.com/expo/fyi/blob/main/setup-xcode-signing.md)
 1. In Xcode select your device as deployment target and select the development certificate (you may need to connect the device to your account if it was not done before)
-![select device](https://user-images.githubusercontent.com/84892/191241139-5db5b905-228f-4af2-a633-47f601de993a.png)
+   ![select device](https://user-images.githubusercontent.com/84892/191241139-5db5b905-228f-4af2-a633-47f601de993a.png)
 1. Run: `expo run:ios --device`
 1. Select your device from the list
 
@@ -72,14 +72,13 @@ In order to successfully run the Optic-expo app locally you will need the follow
 ## Notes
 
 - The app doesn't run on the web
-
 - `yarn start:native` is different from `yarn start` having the flag `--dev-client` you need to build a native version of the app as it generates a url like this:
   `com.nearform.optic://expo-development-client/?url=http%3A%2F%2F192.168.5.92%3A8081` so you have to run `expo run:android` first.
   exp://192.168.5.92:19000 </br> <br> As most things, it's a trade-off.Pp Without --dev-client it's faster to start working as you don't have to install native tools but it hides some problems that only occur in the native versions like the google login problem and the qr code scan.
 
 ## Figma Design
 
-The figma designs can be found [here](https://www.figma.com/file/xsPf6IIM9AevLN5gZlXM4q/Optic-(Copy))
+The figma designs can be found [here](<https://www.figma.com/file/xsPf6IIM9AevLN5gZlXM4q/Optic-(Copy)>)
 
 ## Sequence diagram
 
@@ -110,7 +109,7 @@ As you can see by the home page layout, you can generate many tokens to read the
 
 By doing so, you will be able to understand who is the caller that wants to read your OTP.
 
-
 Few notes on the NPM secret:
+
 - the NPM secret (QR or the textual code) is the one that you get, when you enable 2FA in your [npm](https://www.npmjs.com/) profile
 - if you already have 2FA activated (with a different authenticatior app e.g. Google Authenticator) and you need to get the secret, the easiest way is to get is to open the authenticator app you were using previously and get the QR code from that app and scan it with Optic Expo
