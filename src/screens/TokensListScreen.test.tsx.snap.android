@@ -1,101 +1,282 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TokensListScreen should match snapshot when there are no tokens 1`] = `
-<View
-  collapsable={false}
-  pointerEvents="box-none"
+<RNCSafeAreaProvider
+  onInsetsChange={[Function]}
   style={
-    Object {
-      "flex": 1,
-    }
+    Array [
+      Object {
+        "flex": 1,
+      },
+      undefined,
+    ]
   }
 >
   <View
+    collapsable={false}
+    pointerEvents="box-none"
     style={
       Object {
-        "flexGrow": 1,
-        "justifyContent": "flex-start",
-        "paddingHorizontal": 16,
-        "paddingVertical": 24,
+        "flex": 1,
       }
     }
   >
     <View
       style={
         Object {
-          "marginTop": 64,
-          "padding": 32,
+          "flexGrow": 1,
+          "justifyContent": "flex-start",
+          "paddingHorizontal": 16,
+          "paddingVertical": 24,
         }
       }
     >
-      <Text
+      <View
         style={
-          Array [
-            Object {
-              "color": "#6D6D68",
-              "fontFamily": "sans-serif",
-              "fontWeight": "normal",
-            },
-            Object {
-              "textAlign": "left",
-            },
-            Array [
-              Object {
-                "fontFamily": "Poppins_700Bold",
-                "fontSize": 24,
-                "letterSpacing": 0,
-                "lineHeight": 36,
-              },
-              Object {
-                "alignItems": "center",
-                "color": "#6D6D68",
-                "display": "flex",
-                "marginBottom": 0,
-              },
-              Object {
-                "marginBottom": 8,
-                "textAlign": "center",
-              },
-            ],
-          ]
+          Object {
+            "marginTop": 64,
+            "padding": 32,
+          }
         }
       >
-        No Tokens
-      </Text>
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#6D6D68",
-              "fontFamily": "sans-serif",
-              "fontWeight": "normal",
-            },
-            Object {
-              "textAlign": "left",
-            },
+        <Text
+          style={
             Array [
               Object {
-                "fontFamily": "DidactGothic_400Regular",
-                "fontSize": 16,
-                "fontWeight": "400",
-                "letterSpacing": 0.5,
+                "textAlign": "left",
               },
               Object {
-                "alignItems": "center",
                 "color": "#6D6D68",
-                "display": "flex",
-                "marginBottom": 0,
+                "fontFamily": "sans-serif",
+                "fontWeight": "normal",
               },
               Object {
-                "textAlign": "center",
+                "writingDirection": "ltr",
               },
-            ],
-          ]
-        }
-      >
-        Create a new token and it will appear here.
-      </Text>
+              Array [
+                Object {
+                  "fontFamily": "Poppins_700Bold",
+                  "fontSize": 24,
+                  "letterSpacing": 0,
+                  "lineHeight": 36,
+                },
+                Object {
+                  "alignItems": "center",
+                  "color": "#6D6D68",
+                  "display": "flex",
+                  "marginBottom": 0,
+                },
+                Object {
+                  "marginBottom": 8,
+                  "textAlign": "center",
+                },
+              ],
+            ]
+          }
+        >
+          No Tokens
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "textAlign": "left",
+              },
+              Object {
+                "color": "#6D6D68",
+                "fontFamily": "sans-serif",
+                "fontWeight": "normal",
+              },
+              Object {
+                "writingDirection": "ltr",
+              },
+              Array [
+                Object {
+                  "fontFamily": "DidactGothic_400Regular",
+                  "fontSize": 16,
+                  "fontWeight": "400",
+                  "letterSpacing": 0.5,
+                },
+                Object {
+                  "alignItems": "center",
+                  "color": "#6D6D68",
+                  "display": "flex",
+                  "marginBottom": 0,
+                },
+                Object {
+                  "textAlign": "center",
+                },
+              ],
+            ]
+          }
+        >
+          Create a new token and it will appear here.
+        </Text>
+      </View>
     </View>
   </View>
-</View>
+  <View
+    collapsable={false}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      pointerEvents="auto"
+      small={true}
+      style={
+        Object {
+          "alignSelf": "center",
+          "backgroundColor": "#2165E3",
+          "borderRadius": 28,
+          "bottom": 0,
+          "elevation": 6,
+          "margin": 24,
+          "opacity": 1,
+          "overflow": "hidden",
+          "position": "absolute",
+          "shadowColor": "#000000",
+          "shadowOffset": Object {
+            "height": 5,
+            "width": 0,
+          },
+          "shadowOpacity": 0.24,
+          "shadowRadius": 6,
+          "transform": Array [
+            Object {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+    >
+      <View
+        accessibilityLabel="Create Token"
+        accessibilityRole="button"
+        accessibilityState={
+          Object {
+            "disabled": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "overflow": "hidden",
+            },
+            false,
+            undefined,
+          ]
+        }
+        testID="fab"
+      >
+        <View
+          pointerEvents="none"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "center",
+              },
+              Object {
+                "height": 48,
+                "paddingHorizontal": 16,
+              },
+            ]
+          }
+          testID="fab-content"
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "justifyContent": "center",
+                },
+                Object {
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                Object {
+                  "bottom": 0,
+                  "left": 0,
+                  "opacity": 1,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "transform": Array [
+                    Object {
+                      "rotate": "0deg",
+                    },
+                  ],
+                }
+              }
+            >
+              <Text />
+            </View>
+          </View>
+          <Text
+            selectable={false}
+            style={
+              Array [
+                Object {
+                  "textAlign": "left",
+                },
+                Object {
+                  "color": "#6D6D68",
+                  "fontFamily": "sans-serif",
+                  "fontWeight": "normal",
+                },
+                Object {
+                  "writingDirection": "ltr",
+                },
+                Array [
+                  Object {
+                    "marginHorizontal": 8,
+                  },
+                  Object {
+                    "textTransform": "uppercase",
+                  },
+                  Object {
+                    "color": "#ffffff",
+                    "fontFamily": "sans-serif-medium",
+                    "fontWeight": "normal",
+                  },
+                ],
+              ]
+            }
+          >
+            Create Token
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</RNCSafeAreaProvider>
 `;

@@ -1,5 +1,5 @@
 import { TextStyle } from 'react-native'
-import { DefaultTheme as PaperDefaultTheme } from 'react-native-paper'
+import { MD2LightTheme as PaperDefaultTheme } from 'react-native-paper'
 import { DefaultTheme as NavigationDefaultTheme } from '@react-navigation/native'
 
 export type TypographyVariant =
