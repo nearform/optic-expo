@@ -119,7 +119,7 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
                 mode="outlined"
                 value={search}
                 onChangeText={setSearch}
-                right={<TextInput.Icon name="magnify" />}
+                right={<TextInput.Icon icon="magnify" />}
                 onFocus={() => setSearchFocused(true)}
                 onBlur={() => setSearchFocused(false)}
               />

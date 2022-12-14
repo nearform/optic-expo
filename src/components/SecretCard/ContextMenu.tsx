@@ -25,7 +25,11 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
         />
       }
     >
-      <Menu.Item onPress={onDelete} title="Delete secret" icon="delete" />
+      <Menu.Item
+        onPress={onDelete}
+        title="Delete secret"
+        leadingIcon="delete"
+      />
     </Menu>
   )
 }
