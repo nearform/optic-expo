@@ -197,6 +197,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       },
                     ]
                   }
+                  testID="button"
                 >
                   <View
                     style={
@@ -221,6 +222,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                           false,
                         ]
                       }
+                      testID="button-icon-container"
                     >
                       <Text />
                     </View>
@@ -367,6 +369,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       },
                     ]
                   }
+                  testID="button"
                 >
                   <View
                     style={
@@ -391,6 +394,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                           false,
                         ]
                       }
+                      testID="button-icon-container"
                     >
                       <Text />
                     </View>
@@ -543,6 +547,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       },
                     ]
                   }
+                  testID="button"
                 >
                   <View
                     style={
@@ -654,6 +659,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       },
                     ]
                   }
+                  testID="button"
                 >
                   <View
                     style={
