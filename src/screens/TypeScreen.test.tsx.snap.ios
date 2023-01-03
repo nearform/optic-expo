@@ -250,7 +250,6 @@ exports[`TypeScreen should match snapshot 1`] = `
                   style={
                     Array [
                       Object {
-                        "flexGrow": 1,
                         "margin": 0,
                         "zIndex": 1,
                       },
@@ -275,6 +274,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                       Array [
                         Object {},
                       ],
+                      undefined,
                     ]
                   }
                   testID="text-input-outlined"
@@ -500,7 +500,6 @@ exports[`TypeScreen should match snapshot 1`] = `
                   style={
                     Array [
                       Object {
-                        "flexGrow": 1,
                         "margin": 0,
                         "zIndex": 1,
                       },
@@ -525,6 +524,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                       Array [
                         Object {},
                       ],
+                      undefined,
                     ]
                   }
                   testID="text-input-outlined"
@@ -754,7 +754,6 @@ exports[`TypeScreen should match snapshot 1`] = `
                   style={
                     Array [
                       Object {
-                        "flexGrow": 1,
                         "margin": 0,
                         "zIndex": 1,
                       },
@@ -779,6 +778,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                       Array [
                         Object {},
                       ],
+                      undefined,
                     ]
                   }
                   testID="text-input-outlined"
@@ -845,6 +845,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                 },
               ]
             }
+            testID="button"
           >
             <View
               style={
@@ -869,6 +870,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                     false,
                   ]
                 }
+                testID="button-icon-container"
               >
                 <Text />
               </View>

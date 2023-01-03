@@ -82,6 +82,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     "flexShrink": 1,
                   }
                 }
+                testID="card"
               >
                 <View
                   style={
@@ -326,11 +327,16 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 "overflow": "hidden",
                               },
                               false,
-                              Object {
-                                "alignItems": "center",
-                                "flexGrow": 1,
-                                "justifyContent": "center",
-                              },
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexGrow": 1,
+                                  "justifyContent": "center",
+                                },
+                                Object {
+                                  "borderRadius": 18,
+                                },
+                              ],
                             ]
                           }
                         >
@@ -485,11 +491,16 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                   "overflow": "hidden",
                                 },
                                 false,
-                                Object {
-                                  "alignItems": "center",
-                                  "flexGrow": 1,
-                                  "justifyContent": "center",
-                                },
+                                Array [
+                                  Object {
+                                    "alignItems": "center",
+                                    "flexGrow": 1,
+                                    "justifyContent": "center",
+                                  },
+                                  Object {
+                                    "borderRadius": 15,
+                                  },
+                                ],
                               ]
                             }
                           >
@@ -784,6 +795,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               },
                             ]
                           }
+                          testID="button"
                         >
                           <View
                             style={
@@ -810,6 +822,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                   false,
                                 ]
                               }
+                              testID="button-icon-container"
                             >
                               <Text />
                             </View>
@@ -1054,6 +1067,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             },
                           ]
                         }
+                        testID="button"
                       >
                         <View
                           style={
@@ -1078,6 +1092,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 false,
                               ]
                             }
+                            testID="button-icon-container"
                           >
                             <Text />
                           </View>
@@ -1185,6 +1200,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             },
                           ]
                         }
+                        testID="button"
                       >
                         <View
                           style={
@@ -1209,6 +1225,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 false,
                               ]
                             }
+                            testID="button-icon-container"
                           >
                             <Text />
                           </View>
@@ -1306,6 +1323,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     "flexShrink": 1,
                   }
                 }
+                testID="card"
               >
                 <View
                   style={
@@ -1550,11 +1568,16 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 "overflow": "hidden",
                               },
                               false,
-                              Object {
-                                "alignItems": "center",
-                                "flexGrow": 1,
-                                "justifyContent": "center",
-                              },
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexGrow": 1,
+                                  "justifyContent": "center",
+                                },
+                                Object {
+                                  "borderRadius": 18,
+                                },
+                              ],
                             ]
                           }
                         >
@@ -1709,11 +1732,16 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                   "overflow": "hidden",
                                 },
                                 false,
-                                Object {
-                                  "alignItems": "center",
-                                  "flexGrow": 1,
-                                  "justifyContent": "center",
-                                },
+                                Array [
+                                  Object {
+                                    "alignItems": "center",
+                                    "flexGrow": 1,
+                                    "justifyContent": "center",
+                                  },
+                                  Object {
+                                    "borderRadius": 15,
+                                  },
+                                ],
                               ]
                             }
                           >
@@ -2008,6 +2036,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               },
                             ]
                           }
+                          testID="button"
                         >
                           <View
                             style={
@@ -2034,6 +2063,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                   false,
                                 ]
                               }
+                              testID="button-icon-container"
                             >
                               <Text />
                             </View>
@@ -2278,6 +2308,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             },
                           ]
                         }
+                        testID="button"
                       >
                         <View
                           style={
@@ -2302,6 +2333,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 false,
                               ]
                             }
+                            testID="button-icon-container"
                           >
                             <Text />
                           </View>
@@ -2409,6 +2441,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             },
                           ]
                         }
+                        testID="button"
                       >
                         <View
                           style={
@@ -2433,6 +2466,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 false,
                               ]
                             }
+                            testID="button-icon-container"
                           >
                             <Text />
                           </View>
@@ -2612,6 +2646,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         "flexShrink": 1,
                       }
                     }
+                    testID="card"
                   >
                     <Text
                       index={0}
@@ -2824,6 +2859,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         "flexShrink": 1,
                       }
                     }
+                    testID="card"
                   >
                     <Text
                       index={0}
@@ -3338,6 +3374,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                         "flexShrink": 1,
                       }
                     }
+                    testID="card"
                   >
                     <Text
                       index={0}
@@ -3550,6 +3587,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                         "flexShrink": 1,
                       }
                     }
+                    testID="card"
                   >
                     <Text
                       index={0}
