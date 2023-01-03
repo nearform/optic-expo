@@ -32,4 +32,28 @@ jobs:
         with:
           script: return `${{ inputs.message }}`.replaceAll('"',"'")
           result-encoding: string
-      - run: eas update --branch ${{ inputs.channel }} --message "${{ steps.sanitise-double-quotes.outputs.result }}"
+      - name: Update (and create preview links)
+        id: eas-update
+        run: |
+          eas update --branch ${{ inputs.channel }} --message "${{ steps.sanitise-double-quotes.outputs.result }}" --non-interactive --json | tr '\n' ' ' > updates.json
+
+          echo "Preparing preview links..."
+
+          GROUP_ID="$(cat updates.json | jq -r '.[0].group')"
+          PREVIEW_LINK="https://expo.dev/accounts/nearform/projects/optic-expo/updates/${GROUP_ID}"
+          echo "::set-output name=previewLink::$PREVIEW_LINK"
+
+          ID_1="$(cat updates.json | jq -r '.[0].id')"
+          PLATFORM_1="$(cat updates.json | jq -r '.[0].platform')"
+          QR_CODE_1="${PLATFORM_1}: <br/> <img src='https://qr.expo.dev/eas-update?updateId=${ID_1}&amp;appScheme=exp&amp;host=u.expo.dev' alt='QR Code' />"
+          echo "::set-output name=qrCode1::$QR_CODE_1"
+
+          ID_2="$(cat updates.json | jq -r '.[1].id')"
+          PLATFORM_2="$(cat updates.json | jq -r '.[1].platform')"
+          QR_CODE_2="${PLATFORM_2}: <br/> <img src='https://qr.expo.dev/eas-update?updateId=${ID_2}&amp;appScheme=exp&amp;host=u.expo.dev' alt='QR Code' />"
+          echo "::set-output name=qrCode2::$QR_CODE_2"
+      - name: Comment preview link
+        uses: expo/expo-github-action/preview-comment@v7
+        with:
+          channel: pr-${{ github.event.number }}
+          message: Preview available at ${{ steps.eas-update.outputs.previewLink }} <br/> <br/> Or scan QR Codes... <br/> <br/> ${{ steps.eas-update.outputs.qrCode1 }} <br/> <br/> ${{ steps.eas-update.outputs.qrCode2 }}
