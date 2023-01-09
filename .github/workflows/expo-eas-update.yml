@@ -32,4 +32,28 @@ jobs:
         with:
           script: return `${{ inputs.message }}`.replaceAll('"',"'")
           result-encoding: string
-      - run: eas update --branch ${{ inputs.channel }} --message "${{ steps.sanitise-double-quotes.outputs.result }}"
+      - name: EAS update
+        id: eas-update
+        run: |
+          EAS_UPDATED_OUTPUT="$(eas update --branch ${{ inputs.channel }} --message '${{ steps.sanitise-double-quotes.outputs.result }}' --non-interactive --json | tr '\n' ' ')"
+          echo "$EAS_UPDATED_OUTPUT"
+          echo "::set-output name=easUpdateOutput::$EAS_UPDATED_OUTPUT"
+      - name: Build comment with preview links
+        id: build-comment
+        uses: actions/github-script@v6
+        with:
+          result-encoding: string
+          script: |
+            const rawEasUpdateOutput = `${{ steps.eas-update.outputs.easUpdateOutput }}`
+            const easUpdateOutput = JSON.parse(rawEasUpdateOutput)
+            const previewLink = `https://expo.dev/accounts/nearform/projects/optic-expo/updates/${easUpdateOutput[0].group}`
+            const qrCodesSections = easUpdateOutput.map(
+              preview =>
+                `${preview.platform}: <br/> <img src='https://qr.expo.dev/eas-update?updateId=${preview.id}&amp;appScheme=exp&amp;host=u.expo.dev' alt='QR Code' />`
+            )
+            return `Preview available at ${previewLink} <br/> <br/> Or scan QR Codes... <br/> <br/> ${qrCodesSections.join('<br/><br/>')}}`
+      - name: Comment preview link
+        uses: expo/expo-github-action/preview-comment@v7
+        with:
+          channel: pr-${{ github.event.number }}
+          message: ${{ steps.build-comment.outputs.result }}
