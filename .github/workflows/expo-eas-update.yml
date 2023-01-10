@@ -39,6 +39,7 @@ jobs:
           echo "$EAS_UPDATED_OUTPUT"
           echo "::set-output name=easUpdateOutput::$EAS_UPDATED_OUTPUT"
       - name: Build comment with preview links
+        if: github.event_name == 'pull_request'
         id: build-comment
         uses: actions/github-script@v6
         with:
@@ -53,6 +54,7 @@ jobs:
             )
             return `Preview available at ${previewLink} <br/> <br/> Or scan QR Codes... <br/> <br/> ${qrCodesSections.join('<br/><br/>')}}`
       - name: Comment preview link
+        if: github.event_name == 'pull_request'
         uses: expo/expo-github-action/preview-comment@v7
         with:
           channel: pr-${{ github.event.number }}
