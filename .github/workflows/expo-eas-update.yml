@@ -37,7 +37,7 @@ jobs:
         run: |
           EAS_UPDATED_OUTPUT="$(eas update --branch ${{ inputs.channel }} --message '${{ steps.sanitise-double-quotes.outputs.result }}' --non-interactive --json | tr '\n' ' ')"
           echo "$EAS_UPDATED_OUTPUT"
-          echo "::set-output name=easUpdateOutput::$EAS_UPDATED_OUTPUT"
+          echo "easUpdateOutput=$EAS_UPDATED_OUTPUT" >> $GITHUB_OUTPUT
       - name: Build comment with preview links
         if: github.event_name == 'pull_request'
         id: build-comment
