@@ -45,5 +45,17 @@ jobs:
           command: eas update --branch ${{ inputs.channel }} --message "${{ steps.sanitise-double-quotes.outputs.result }}" --non-interactive --json
       - uses: actions/github-script@v6
         with:
-          script: console.log('Preview output ', JSON.stringify(${{ steps.preview.outputs }}))
           result-encoding: string
+          script: |
+            const qr = ${{ steps.preview.outputs.qr }}
+            const link = ${{ steps.preview.outputs.link }}
+            const androidQR = ${{ steps.preview.outputs.androidQR }}
+            const androidLink = ${{ steps.preview.outputs.androidLink }}
+            const iosQR = ${{ steps.preview.outputs.iosQR }}
+            const iosLink = ${{ steps.preview.outputs.iosLink }}
+            console.log('qr ', qr)
+            console.log('link ', link)
+            console.log('androidQR ', androidQR)
+            console.log('androidLink ', androidLink)
+            console.log('iosQR ', iosQR)
+            console.log('iosLink ', iosLink)
