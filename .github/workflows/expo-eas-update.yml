@@ -45,5 +45,5 @@ jobs:
           command: eas update --branch ${{ inputs.channel }} --message "${{ steps.sanitise-double-quotes.outputs.result }}" --non-interactive
       - uses: actions/github-script@v6
         with:
-          script: console.log('Preview output ', ${{ steps.preview.outputs }})
+          script: console.log('Preview output ', JSON.stringify(${{ steps.preview.outputs }}))
           result-encoding: string
