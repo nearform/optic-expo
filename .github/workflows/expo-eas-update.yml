@@ -50,7 +50,7 @@ jobs:
         with:
           result-encoding: string
           script: |
-            const rawEasUpdateOutput = `${{ steps.preview.outputs }} `
+            const rawEasUpdateOutput = `${{ steps.preview.outputs.result }} `
             const easUpdateOutput = JSON.parse(rawEasUpdateOutput)
             const previewLink = `https://expo.dev/accounts/nearform/projects/optic-expo/updates/${easUpdateOutput[0].group}`
             const qrCodesSections = easUpdateOutput.map(
