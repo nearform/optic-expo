@@ -40,27 +40,5 @@ jobs:
           result-encoding: string
       - name: Create preview
         uses: expo/expo-github-action/preview@v8
-        id: preview
         with:
-          command: eas update --branch ${{ inputs.channel }} --message "${{ steps.sanitise-double-quotes.outputs.result }}" --non-interactive --json
-          comment: false
-      - uses: actions/github-script@v6
-        if: github.event_name == 'pull_request'
-        id: build-comment
-        with:
-          result-encoding: string
-          script: |
-            const rawEasUpdateOutput = `${{ steps.preview.outputs.result }} `
-            const easUpdateOutput = JSON.parse(rawEasUpdateOutput)
-            const previewLink = `https://expo.dev/accounts/nearform/projects/optic-expo/updates/${easUpdateOutput[0].group}`
-            const qrCodesSections = easUpdateOutput.map(
-              preview =>
-                `${preview.platform}: <br/> <img src='https://qr.expo.dev/eas-update?updateId=${preview.id}&amp;appScheme=exp&amp;host=u.expo.dev' alt='QR Code' />`
-            )
-            return `Preview available at ${previewLink} <br/> <br/> Or scan QR Codes... <br/> <br/> ${qrCodesSections.join('<br/><br/>')}}`
-      - name: Comment preview link
-        if: github.event_name == 'pull_request'
-        uses: expo/expo-github-action/preview-comment@v8
-        with:
-          channel: pr-${{ github.event.number }}
-          message: ${{ steps.build-comment.outputs.result }}
+          command: eas update --branch ${{ inputs.channel }} --message "${{ steps.sanitise-double-quotes.outputs.result }}" --non-interactive
