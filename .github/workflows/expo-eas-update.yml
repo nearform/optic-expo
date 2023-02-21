@@ -41,4 +41,4 @@ jobs:
       - name: Create preview
         uses: expo/expo-github-action/preview@v8
         with:
-          command: eas update --branch ${{ inputs.channel }} --message '${{ steps.sanitise-double-quotes.outputs.result }}' --non-interactive --json
+          command: eas update --branch ${{ inputs.channel }} --message "${{ steps.sanitise-double-quotes.outputs.result }}" --non-interactive --json
