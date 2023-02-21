@@ -39,6 +39,11 @@ jobs:
           script: return `${{ inputs.message }}`.replaceAll('"',"'")
           result-encoding: string
       - name: Create preview
+        id: preview
         uses: expo/expo-github-action/preview@v8
         with:
           command: eas update --branch ${{ inputs.channel }} --message "${{ steps.sanitise-double-quotes.outputs.result }}" --non-interactive
+      - uses: actions/github-script@v6
+        with:
+          script: console.log('Preview output ', ${{ steps.preview.outputs }})
+          result-encoding: string
