@@ -78,9 +78,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
-                    "flexShrink": 1,
-                  }
+                  Array [
+                    Object {
+                      "flexShrink": 1,
+                    },
+                    undefined,
+                  ]
                 }
                 testID="card"
               >
@@ -339,6 +342,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               ],
                             ]
                           }
+                          testID="icon-button"
                         >
                           <Text />
                         </View>
@@ -503,6 +507,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 ],
                               ]
                             }
+                            testID="icon-button"
                           >
                             <Text />
                           </View>
@@ -865,6 +870,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                   ],
                                 ]
                               }
+                              testID="button-text"
                             >
                               <Text
                                 style={
@@ -988,7 +994,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   index={2}
                   siblings={
                     Array [
-                      "withTheme(Card.Title)",
+                      "Card.Title",
                       "Card.Content",
                       "Card.Actions",
                     ]
@@ -1014,7 +1020,15 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   <View
                     compact={true}
                     mode={false}
-                    style={false}
+                    style={
+                      Array [
+                        false,
+                        Object {
+                          "flexDirection": "row",
+                          "justifyContent": "flex-start",
+                        },
+                      ]
+                    }
                   >
                     <View
                       collapsable={false}
@@ -1137,6 +1151,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 ],
                               ]
                             }
+                            testID="button-text"
                           >
                             SECRET
                           </Text>
@@ -1147,7 +1162,15 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   <View
                     compact={true}
                     mode={false}
-                    style={false}
+                    style={
+                      Array [
+                        false,
+                        Object {
+                          "flexDirection": "row",
+                          "justifyContent": "flex-end",
+                        },
+                      ]
+                    }
                   >
                     <View
                       collapsable={false}
@@ -1268,6 +1291,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 ],
                               ]
                             }
+                            testID="button-text"
                           >
                             Add Token
                           </Text>
@@ -1319,9 +1343,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
-                    "flexShrink": 1,
-                  }
+                  Array [
+                    Object {
+                      "flexShrink": 1,
+                    },
+                    undefined,
+                  ]
                 }
                 testID="card"
               >
@@ -1580,6 +1607,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               ],
                             ]
                           }
+                          testID="icon-button"
                         >
                           <Text />
                         </View>
@@ -1744,6 +1772,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 ],
                               ]
                             }
+                            testID="icon-button"
                           >
                             <Text />
                           </View>
@@ -2106,6 +2135,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                   ],
                                 ]
                               }
+                              testID="button-text"
                             >
                               <Text
                                 style={
@@ -2229,7 +2259,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   index={2}
                   siblings={
                     Array [
-                      "withTheme(Card.Title)",
+                      "Card.Title",
                       "Card.Content",
                       "Card.Actions",
                     ]
@@ -2255,7 +2285,15 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   <View
                     compact={true}
                     mode={false}
-                    style={false}
+                    style={
+                      Array [
+                        false,
+                        Object {
+                          "flexDirection": "row",
+                          "justifyContent": "flex-start",
+                        },
+                      ]
+                    }
                   >
                     <View
                       collapsable={false}
@@ -2378,6 +2416,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 ],
                               ]
                             }
+                            testID="button-text"
                           >
                             SECRET
                           </Text>
@@ -2388,7 +2427,15 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   <View
                     compact={true}
                     mode={false}
-                    style={false}
+                    style={
+                      Array [
+                        false,
+                        Object {
+                          "flexDirection": "row",
+                          "justifyContent": "flex-end",
+                        },
+                      ]
+                    }
                   >
                     <View
                       collapsable={false}
@@ -2509,6 +2556,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 ],
                               ]
                             }
+                            testID="button-text"
                           >
                             Add Token
                           </Text>
@@ -2642,9 +2690,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
-                        "flexShrink": 1,
-                      }
+                      Array [
+                        Object {
+                          "flexShrink": 1,
+                        },
+                        undefined,
+                      ]
                     }
                     testID="card"
                   >
@@ -2855,9 +2906,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
-                        "flexShrink": 1,
-                      }
+                      Array [
+                        Object {
+                          "flexShrink": 1,
+                        },
+                        undefined,
+                      ]
                     }
                     testID="card"
                   >
@@ -3370,9 +3424,12 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
-                        "flexShrink": 1,
-                      }
+                      Array [
+                        Object {
+                          "flexShrink": 1,
+                        },
+                        undefined,
+                      ]
                     }
                     testID="card"
                   >
@@ -3583,9 +3640,12 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
-                        "flexShrink": 1,
-                      }
+                      Array [
+                        Object {
+                          "flexShrink": 1,
+                        },
+                        undefined,
+                      ]
                     }
                     testID="card"
                   >

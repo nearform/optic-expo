@@ -267,6 +267,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                           ],
                         ]
                       }
+                      testID="button-text"
                     >
                       Export
                     </Text>
@@ -439,6 +440,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                           ],
                         ]
                       }
+                      testID="button-text"
                     >
                       Import
                     </Text>
@@ -600,6 +602,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                           ],
                         ]
                       }
+                      testID="button-text"
                     >
                       Logout
                     </Text>
@@ -712,6 +715,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                           ],
                         ]
                       }
+                      testID="button-text"
                     >
                       Delete account
                     </Text>
