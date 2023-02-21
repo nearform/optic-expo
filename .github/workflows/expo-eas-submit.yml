@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - uses: expo/expo-github-action@v7
+      - uses: expo/expo-github-action@v8
         with:
           expo-cache: true
           expo-version: latest
