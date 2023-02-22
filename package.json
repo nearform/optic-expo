@@ -22,7 +22,7 @@
     "doctor": "expo-cli doctor"
   },
   "dependencies": {
-    "@expo-google-fonts/didact-gothic": "^0.2.2",
+    "@expo-google-fonts/didact-gothic": "^0.2.3",
     "@expo-google-fonts/fira-code": "^0.2.3",
     "@expo-google-fonts/poppins": "^0.2.2",
     "@otplib/core": "^12.0.1",

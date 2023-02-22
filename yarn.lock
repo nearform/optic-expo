@@ -1285,10 +1285,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@expo-google-fonts/didact-gothic@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/didact-gothic/-/didact-gothic-0.2.2.tgz#b889f6cc9cdc84450f37e5b954944608ea2f1826"
-  integrity sha512-XKUh9PLIC39IWTpjv/iU28tDZS7EeivdwCh7qzQVjWMZhlcTxnJpMdLpDlv9/GfEJ1IIHttvY6s+EEYNurf2jA==
+"@expo-google-fonts/didact-gothic@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/didact-gothic/-/didact-gothic-0.2.3.tgz#33242b4fb5efdd41e519cbf9e87dd5503aa25bce"
+  integrity sha512-LmS9JNfnN9qVv4389w3Q3vVKGXXesygDypOgflN+rw1TTYFQGyL/LrU4gDTZ4OTCL+LwI8YYoNw2SR94B14M8Q==
 
 "@expo-google-fonts/fira-code@^0.2.3":
   version "0.2.3"
