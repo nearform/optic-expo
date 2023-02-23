@@ -1385,10 +1385,10 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/fira-code/-/fira-code-0.2.3.tgz#1316c8c618747f60c098caaf9394a4e57885b5f4"
   integrity sha512-rrl8TxYYuAO4xGKlOatEDLUH8mkrGc+ywG54BfL649hHTg2K5UwfT2k7jg7YMhw48FPQ0ebyt4ISoRc3fhyHjg==
 
-"@expo-google-fonts/poppins@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/poppins/-/poppins-0.2.2.tgz#d2a343fa69400ffbaf61ae97162791a59e215678"
-  integrity sha512-x0SzC8nWTC2pInIcBDiAuMJxhoglwqCGJYMM8ylI8HKDqBxMrfRTripB3xMGo6UtzROTcL+OX1w9nEcM5FK0PQ==
+"@expo-google-fonts/poppins@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/poppins/-/poppins-0.2.3.tgz#807fc1bf58948c32ddfb9c67f7329ff16cc78d14"
+  integrity sha512-PXkur1ZY/puy1PwVFYPJx8qiI3dtBzC2ig1bo53swCt7/sI7krCGYRO6hLBNp15M0kcNh2J4cCR9ZQyFxsving==
 
 "@expo/bunyan@4.0.0", "@expo/bunyan@^4.0.0":
   version "4.0.0"
