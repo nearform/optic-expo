@@ -5,6 +5,7 @@ import React, {
   useCallback,
   useContext,
 } from 'react'
+import { makeRedirectUri } from 'expo-auth-session'
 import * as Google from 'expo-auth-session/providers/google'
 import firebase from 'firebase'
 import * as WebBrowser from 'expo-web-browser'
@@ -80,6 +81,9 @@ function useGoogleAuth() {
       clientId,
       androidClientId,
       iosClientId,
+      redirectUri: makeRedirectUri({
+        scheme: 'optic-expo',
+      }),
     },
     {
       projectNameForProxy,
