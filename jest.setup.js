@@ -17,6 +17,7 @@ jest.mock('expo-auth-session/providers/google')
 jest.mock('expo-constants', () => ({
   manifest: { extra: { apiUrl: 'http://dummy.com/api' } },
 }))
+jest.mock('expo-font')
 jest.mock('firebase')
 
 jest.mock('./src/context/AuthContext')
