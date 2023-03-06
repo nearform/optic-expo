@@ -87,6 +87,7 @@ function useGoogleAuth() {
     },
     {
       projectNameForProxy,
+      useProxy: true,
     }
   )
 
