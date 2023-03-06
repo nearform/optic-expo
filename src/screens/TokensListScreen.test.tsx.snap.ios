@@ -271,6 +271,7 @@ exports[`TokensListScreen should match snapshot when there are no tokens 1`] = `
                 ],
               ]
             }
+            testID="fab-text"
           >
             Create Token
           </Text>
