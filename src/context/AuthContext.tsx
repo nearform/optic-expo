@@ -5,8 +5,21 @@ import React, {
   useCallback,
   useContext,
 } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Google from 'expo-auth-session/providers/google'
-import firebase from 'firebase'
+import { FirebaseApp, initializeApp, getApp, getApps } from 'firebase/app'
+import {
+  Auth,
+  User as FirebaseUser,
+  OAuthProvider,
+  GoogleAuthProvider,
+  initializeAuth,
+  getAuth,
+  signInWithEmailAndPassword,
+  signInWithCredential,
+  onAuthStateChanged,
+} from 'firebase/auth'
+import { getReactNativePersistence } from 'firebase/auth/react-native'
 import * as WebBrowser from 'expo-web-browser'
 import Constants from 'expo-constants'
 import * as AppleAuthentication from 'expo-apple-authentication'
@@ -49,8 +62,16 @@ const firebaseConfig = {
   appId,
 }
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig)
+let firebaseApp: FirebaseApp
+let firebaseAuth: Auth
+if (!getApps().length) {
+  firebaseApp = initializeApp(firebaseConfig)
+  firebaseAuth = initializeAuth(firebaseApp, {
+    persistence: getReactNativePersistence(AsyncStorage),
+  })
+} else {
+  firebaseApp = getApp()
+  firebaseAuth = getAuth()
 }
 
 WebBrowser.maybeCompleteAuthSession()
@@ -97,8 +118,8 @@ function useGoogleAuth() {
   useEffect(() => {
     if (response?.type === 'success') {
       const { id_token } = response.params
-      const credentials = firebase.auth.GoogleAuthProvider.credential(id_token)
-      firebase.auth().signInWithCredential(credentials)
+      const credentials = GoogleAuthProvider.credential(id_token)
+      signInWithCredential(firebaseAuth, credentials)
     }
   }, [response])
 
@@ -111,11 +132,11 @@ function useAppleAuth() {
       const credential = await AppleAuthentication.signInAsync({
         requestedScopes: [AppleAuthentication.AppleAuthenticationScope.EMAIL],
       })
-      const provider = new firebase.auth.OAuthProvider('apple.com')
+      const provider = new OAuthProvider('apple.com')
       const credentials = provider.credential({
         idToken: credential.identityToken,
       })
-      firebase.auth().signInWithCredential(credentials)
+      signInWithCredential(firebaseAuth, credentials)
     } catch (e) {
       // do nothing
     }
@@ -126,14 +147,14 @@ function useAppleAuth() {
 
 function usePasswordAuth() {
   return useCallback(async ({ user, password }) => {
-    await firebase.auth().signInWithEmailAndPassword(user, password)
+    await signInWithEmailAndPassword(firebaseAuth, user, password)
   }, [])
 }
 
 export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   children,
 }) => {
-  const [firebaseUser, setFirebaseUser] = useState<firebase.User>()
+  const [firebaseUser, setFirebaseUser] = useState<FirebaseUser>()
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState<User>()
 
@@ -142,7 +163,7 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   const handleLoginPassword = usePasswordAuth()
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(newFirebaseUser => {
+    onAuthStateChanged(firebaseAuth, newFirebaseUser => {
       setLoading(false)
       setFirebaseUser(newFirebaseUser)
     })
@@ -167,7 +188,7 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   }, [firebaseUser])
 
   const handleLogout = useCallback<ContextType['handleLogout']>(async () => {
-    await firebase.auth().signOut()
+    await firebaseAuth.signOut()
     setUser(null)
   }, [])
 
