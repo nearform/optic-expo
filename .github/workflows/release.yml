@@ -17,9 +17,12 @@ on:
 
 jobs:
   release:
+    permissions:
+      pull-requests: write
+      contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: nearform/optic-release-automation-action@v4
+      - uses: nearform-actions/optic-release-automation-action@v4
         with:
           github-token: ${{ secrets.github_token }}
           semver: ${{ github.event.inputs.semver }}
@@ -27,3 +30,4 @@ jobs:
           build-command: |
             yarn install --frozen-lockfile
             npm run bump:version
+
