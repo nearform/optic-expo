@@ -13,6 +13,7 @@ describe('storage', () => {
   beforeEach(() => {
     jest.resetAllMocks()
     global.crypto = {
+      ...global.crypto,
       getRandomValues: jest.fn().mockReturnValue(new Uint8Array(32)),
     }
     ;(getInfoAsync as jest.Mock).mockImplementation(() => ({ exists: true }))
