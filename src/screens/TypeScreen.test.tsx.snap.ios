@@ -112,9 +112,8 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "fontFamily": "System",
                         "fontSize": 16,
                         "fontWeight": undefined,
-                        "left": 18,
+                        "left": 8,
                         "lineHeight": undefined,
-                        "maxWidth": -28,
                         "opacity": -0.6666666666666667,
                         "paddingHorizontal": 0,
                         "position": "absolute",
@@ -134,6 +133,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                             "scaleY": 1,
                           },
                         ],
+                        "width": -14,
                         "writingDirection": "ltr",
                       }
                     }
@@ -341,9 +341,8 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "fontFamily": "System",
                         "fontSize": 16,
                         "fontWeight": undefined,
-                        "left": 18,
+                        "left": 8,
                         "lineHeight": undefined,
-                        "maxWidth": -28,
                         "opacity": -0.6666666666666667,
                         "paddingHorizontal": 0,
                         "position": "absolute",
@@ -363,6 +362,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                             "scaleY": 1,
                           },
                         ],
+                        "width": -14,
                         "writingDirection": "ltr",
                       }
                     }
@@ -573,9 +573,8 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "fontFamily": "System",
                         "fontSize": 16,
                         "fontWeight": undefined,
-                        "left": 18,
+                        "left": 8,
                         "lineHeight": undefined,
-                        "maxWidth": -28,
                         "opacity": 1,
                         "paddingHorizontal": 0,
                         "position": "absolute",
@@ -595,6 +594,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                             "scaleY": 0.2,
                           },
                         ],
+                        "width": -14,
                         "writingDirection": "ltr",
                       }
                     }
