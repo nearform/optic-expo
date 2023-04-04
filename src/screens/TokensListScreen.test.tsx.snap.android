@@ -141,7 +141,6 @@ exports[`TokensListScreen should match snapshot when there are no tokens 1`] = `
           "elevation": 6,
           "margin": 24,
           "opacity": 1,
-          "overflow": "hidden",
           "position": "absolute",
           "shadowColor": "#000000",
           "shadowOffset": Object {
@@ -184,7 +183,9 @@ exports[`TokensListScreen should match snapshot when there are no tokens 1`] = `
               "overflow": "hidden",
             },
             false,
-            undefined,
+            Object {
+              "borderRadius": 28,
+            },
           ]
         }
         testID="fab"
