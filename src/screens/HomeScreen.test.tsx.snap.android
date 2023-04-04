@@ -2740,7 +2740,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     "borderRadius": 28,
                     "elevation": 6,
                     "opacity": 0,
-                    "overflow": "hidden",
                     "shadowColor": "#000000",
                     "shadowOffset": Object {
                       "height": 5,
@@ -2782,7 +2781,9 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         "overflow": "hidden",
                       },
                       false,
-                      undefined,
+                      Object {
+                        "borderRadius": 28,
+                      },
                     ]
                   }
                   testID="fab"
@@ -2956,7 +2957,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     "borderRadius": 28,
                     "elevation": 6,
                     "opacity": 0,
-                    "overflow": "hidden",
                     "shadowColor": "#000000",
                     "shadowOffset": Object {
                       "height": 5,
@@ -2998,7 +2998,9 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         "overflow": "hidden",
                       },
                       false,
-                      undefined,
+                      Object {
+                        "borderRadius": 28,
+                      },
                     ]
                   }
                   testID="fab"
@@ -3074,7 +3076,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 "marginHorizontal": 16,
                 "marginTop": 0,
                 "opacity": 1,
-                "overflow": "hidden",
                 "shadowColor": "#000000",
                 "shadowOffset": Object {
                   "height": 5,
@@ -3117,7 +3118,9 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     "overflow": "hidden",
                   },
                   false,
-                  undefined,
+                  Object {
+                    "borderRadius": 28,
+                  },
                 ]
               }
               testID="fab"
@@ -3474,7 +3477,6 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                     "borderRadius": 28,
                     "elevation": 6,
                     "opacity": 0,
-                    "overflow": "hidden",
                     "shadowColor": "#000000",
                     "shadowOffset": Object {
                       "height": 5,
@@ -3516,7 +3518,9 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                         "overflow": "hidden",
                       },
                       false,
-                      undefined,
+                      Object {
+                        "borderRadius": 28,
+                      },
                     ]
                   }
                   testID="fab"
@@ -3690,7 +3694,6 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                     "borderRadius": 28,
                     "elevation": 6,
                     "opacity": 0,
-                    "overflow": "hidden",
                     "shadowColor": "#000000",
                     "shadowOffset": Object {
                       "height": 5,
@@ -3732,7 +3735,9 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                         "overflow": "hidden",
                       },
                       false,
-                      undefined,
+                      Object {
+                        "borderRadius": 28,
+                      },
                     ]
                   }
                   testID="fab"
@@ -3808,7 +3813,6 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                 "marginHorizontal": 16,
                 "marginTop": 0,
                 "opacity": 1,
-                "overflow": "hidden",
                 "shadowColor": "#000000",
                 "shadowOffset": Object {
                   "height": 5,
@@ -3851,7 +3855,9 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                     "overflow": "hidden",
                   },
                   false,
-                  undefined,
+                  Object {
+                    "borderRadius": 28,
+                  },
                 ]
               }
               testID="fab"
