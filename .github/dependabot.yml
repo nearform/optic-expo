@@ -6,6 +6,8 @@ updates:
       interval: 'daily'
     ignore:
       - dependency-name: 'expo-*'
+      - dependency-name: 'react*'
+      - dependency-name: 'jest-expo'
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
