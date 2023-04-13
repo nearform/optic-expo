@@ -1,8 +1,8 @@
 {
   "private": true,
   "name": "optic-expo",
-  "version": "1.3.8",
-  "versionCode": 19,
+  "version": "1.3.9",
+  "versionCode": 20,
   "scripts": {
     "start": "expo start --dev-client",
     "start:native": "expo start --dev-client",
