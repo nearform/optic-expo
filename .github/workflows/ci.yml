@@ -54,16 +54,16 @@ jobs:
             ].some(dependency => ${{ github.event.pull_request.title }}.includes(dependency))
 
             if (shouldClosePr) {
-              github.rest.issues.createComment({
+              // ask dependabot to close the PR
+              await github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: '🚫 This PR was closed because this dependency must be managed by the Expo itself'
+                body: '@dependabot close'
               })
             }
 
   build:
-    needs: pre-build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
