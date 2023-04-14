@@ -2,12 +2,68 @@ name: ci
 on:
   push:
     branches:
-      - master
+      - feat/update-ci-workflow
   pull_request:
     branches:
-      - master
+      - feat/update-ci-workflow
 jobs:
+  pre-build:
+  # if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+      - run: yarn
+
+      - name: Check Expo version
+        id: version
+        run: node -p -e '`expo-package-version=${require("./package.json").dependencies.expo}`' >> $GITHUB_OUTPUT
+      - uses: actions/github-script@v6
+        id: sanitise-package-version
+        with:
+          script: return `${{ steps.version.outputs.expo-package-version }}`.replaceAll('~','')
+          result-encoding: string
+
+      - name: Grab Expo related packages
+        uses: actions/github-script@v6
+        id: related-packages
+        with:
+          result-encoding: string
+          script: |
+            const expoVersion = `${{ steps.sanitise-package-version.outputs.result }}`
+            const majorExpoVersion = `${expoVersion.substring(0, expoVersion.indexOf('.'))}.0.0`
+
+            const expoData = await fetch('https://api.expo.dev/v2/versions/latest')
+            const expoDataOutput = await expoData.json()
+
+            const { relatedPackages } = expoDataOutput.data.sdkVersions[majorExpoVersion]
+            return relatedPackages
+
+      - name: Check if it is a bump that should be managed by Expo
+        uses: actions/github-script@v6
+        with:
+          result-encoding: string
+          script: |
+            const shouldClosePr = [
+              ...Object.keys(${{ steps.related-packages.outputs.result }}),
+              'react',
+              'react-native',
+              'expo'
+            ].some(dependency => ${{ github.event.pull_request.title }}.includes(dependency))
+
+            if(shouldClosePr) {
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '🚫 This PR was closed because this dependency must be managed by the Expo itself'
+              })
+            }
+
   build:
+    needs: pre-build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,41 +77,41 @@ jobs:
       - run: yarn doctor
       - run: yarn test
 
-  automerge:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      contents: write
-    steps:
-      - uses: fastify/github-action-merge-dependabot@v3
+  # automerge:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     pull-requests: write
+  #     contents: write
+  #   steps:
+  #     - uses: fastify/github-action-merge-dependabot@v3
 
-  eas-update:
-    needs: build
-    if: github.actor != 'dependabot[bot]'
-    uses: ./.github/workflows/expo-eas-update.yml
-    with:
-      channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview' }}
-      message: ${{ github.event.head_commit.message || github.event.pull_request.title }}
-    secrets:
-      expo-token: ${{ secrets.EXPO_TOKEN }}
+  # eas-update:
+  #   needs: build
+  #   if: github.actor != 'dependabot[bot]'
+  #   uses: ./.github/workflows/expo-eas-update.yml
+  #   with:
+  #     channel: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'preview' }}
+  #     message: ${{ github.event.head_commit.message || github.event.pull_request.title }}
+  #   secrets:
+  #     expo-token: ${{ secrets.EXPO_TOKEN }}
 
-  build-ios:
-    needs: build
-    if: github.event_name == 'pull_request' && startsWith(github.event.pull_request.title, '[OPTIC-RELEASE-AUTOMATION]')
-    uses: ./.github/workflows/expo-eas-build.yml
-    with:
-      profile: production
-      platform: ios
-    secrets:
-      expo-token: ${{ secrets.EXPO_TOKEN }}
+  # build-ios:
+  #   needs: build
+  #   if: github.event_name == 'pull_request' && startsWith(github.event.pull_request.title, '[OPTIC-RELEASE-AUTOMATION]')
+  #   uses: ./.github/workflows/expo-eas-build.yml
+  #   with:
+  #     profile: production
+  #     platform: ios
+  #   secrets:
+  #     expo-token: ${{ secrets.EXPO_TOKEN }}
 
-  build-android:
-    needs: build
-    if: github.event_name == 'pull_request' && startsWith(github.event.pull_request.title, '[OPTIC-RELEASE-AUTOMATION]')
-    uses: ./.github/workflows/expo-eas-build.yml
-    with:
-      profile: production
-      platform: android
-    secrets:
-      expo-token: ${{ secrets.EXPO_TOKEN }}
+  # build-android:
+  #   needs: build
+  #   if: github.event_name == 'pull_request' && startsWith(github.event.pull_request.title, '[OPTIC-RELEASE-AUTOMATION]')
+  #   uses: ./.github/workflows/expo-eas-build.yml
+  #   with:
+  #     profile: production
+  #     platform: android
+  #   secrets:
+  #     expo-token: ${{ secrets.EXPO_TOKEN }}
