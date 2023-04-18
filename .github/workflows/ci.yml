@@ -7,65 +7,29 @@ on:
     branches:
       - master
 jobs:
+
   pre-build:
-  if: github.actor == 'dependabot[bot]'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: .nvmrc
-      - run: yarn
-
-      - name: Check Expo version
-        id: version
-        run: node -p -e '`expo-package-version=${require("./package.json").dependencies.expo}`' >> $GITHUB_OUTPUT
-      - uses: actions/github-script@v6
-        id: sanitise-package-version
-        with:
-          script: return `${{ steps.version.outputs.expo-package-version }}`.replaceAll('~','')
-          result-encoding: string
-
-      - name: Grab Expo related packages
-        uses: actions/github-script@v6
-        id: related-packages
-        with:
-          result-encoding: string
-          script: |
-            const expoVersion = `${{ steps.sanitise-package-version.outputs.result }}`
-            const majorExpoVersion = `${expoVersion.substring(0, expoVersion.indexOf('.'))}.0.0`
-
-            const expoData = await fetch('https://api.expo.dev/v2/versions/latest')
-            const expoDataOutput = await expoData.json()
-
-            const { relatedPackages } = expoDataOutput.data.sdkVersions[majorExpoVersion]
-            return relatedPackages
-
-      - name: Check if it is a bump that should be managed by Expo
-        uses: actions/github-script@v6
-        with:
-          result-encoding: string
-          script: |
-            const shouldClosePr = [
-              ...Object.keys(${{ steps.related-packages.outputs.result }}),
-              'react',
-              'react-native',
-              'expo'
-            ].some(dependency => ${{ github.event.pull_request.title }}.includes(dependency))
-
-            if (shouldClosePr) {
-              // ask dependabot to close the PR
-              await github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: '@dependabot close'
-              })
-            }
+    if: github.actor == 'dependabot[bot]'
+    name: Check expo dependencies
+    uses: ./.github/workflows/check-expo-dependencies.yml
 
   build:
     runs-on: ubuntu-latest
+    needs: pre-build
+    if: always()
     steps:
+      - name: Cancel workflow
+        if: github.actor == 'dependabot[bot]' && needs.pre-build.outputs.cancel-workflow == 'true'
+        uses: actions/github-script@v6
+        with:
+          result-encoding: string
+          script: |
+            await github.rest.actions.cancelWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: github.run_id,
+            });
+
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
