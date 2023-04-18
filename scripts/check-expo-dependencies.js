@@ -9,7 +9,7 @@ module.exports = async ({ context, github, fetch, expoVersion, prTitle }) => {
   const expoData = await fetch('https://api.expo.dev/v2/versions/latest')
   const expoDataOutput = await expoData.json()
 
-  const relatedPackages = expoDataOutput.data.sdkVersions[majorExpoVersion]
+  const { relatedPackages } = expoDataOutput.data.sdkVersions[majorExpoVersion]
 
   const shouldClosePR = [
     ...Object.keys(relatedPackages),
@@ -25,8 +25,7 @@ module.exports = async ({ context, github, fetch, expoVersion, prTitle }) => {
       pull_number: context.issue.number,
       state: 'closed',
     })
-    return true
   }
 
-  return false
+  return shouldClosePR
 }

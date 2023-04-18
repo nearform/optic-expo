@@ -40,6 +40,6 @@ jobs:
               prTitle: `${{ github.event.pull_request.title }}`
             });
 
-            return shouldClosePR ? 'true' : 'false'
+            return String(shouldClosePR)
 
 
