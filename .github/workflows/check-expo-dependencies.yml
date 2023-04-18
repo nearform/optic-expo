@@ -21,54 +21,25 @@ jobs:
       - name: Check Expo version
         id: version
         run: node -p -e '`expo-package-version=${require("./package.json").dependencies.expo}`' >> $GITHUB_OUTPUT
-      - uses: actions/github-script@v6
-        id: sanitise-package-version
-        with:
-          script: return `${{ steps.version.outputs.expo-package-version }}`.replaceAll('~','')
-          result-encoding: string
-
-      - name: Grab Expo related packages
-        uses: actions/github-script@v6
-        id: related-packages
-        with:
-          result-encoding: json
-          script: |
-            const expoVersion = `${{ steps.sanitise-package-version.outputs.result }}`
-            const majorExpoVersion = `${expoVersion.substring(0, expoVersion.indexOf('.'))}.0.0`
-            
-            const expoData = await fetch('https://api.expo.dev/v2/versions/latest')
-            const expoDataOutput = await expoData.json()
-
-            const { relatedPackages } = expoDataOutput.data.sdkVersions[majorExpoVersion]
-            return relatedPackages
 
       - name: Check if it is a bump that should be managed by Expo
-        id: should-cancel-workflow
         uses: actions/github-script@v6
+        id: should-cancel-workflow
         with:
           result-encoding: string
           script: |
-            const rawRelatedPackages = `${{ steps.related-packages.outputs.result }}`
-            const relatedPackages = JSON.parse(rawRelatedPackages)
+            const script = require(
+              `${process.env.GITHUB_WORKSPACE}/scripts/check-expo-dependencies.js`
+            );
+            
+            const shouldClosePR = await script({ 
+              context, 
+              github, 
+              fetch,
+              expoVersion: `${{ steps.version.outputs.expo-package-version }}`,
+              prTitle: `${{ github.event.pull_request.title }}`
+            });
 
-            const shouldClosePR = [
-              ...Object.keys(relatedPackages),
-              'react',
-              'react-native',
-              'expo' 
-            ].some(dependency => `${{ github.event.pull_request.title }}`.includes(dependency))
-
-            if (shouldClosePR) {
-              // ask dependabot to close the PR
-              await github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: '@dependabot close'
-              })
-
-              return 'true'
-            }
-            return 'false'
+            return shouldClosePR ? 'true' : 'false'
 
 

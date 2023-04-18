@@ -19,7 +19,7 @@ jobs:
     if: always()
     steps:
       - name: Cancel workflow
-        if: github.actor == 'dependabot[bot]' && needs.pre-build.outputs.cancel-workflow == 'true'
+        if: needs.pre-build.outputs.cancel-workflow == 'true'
         uses: actions/github-script@v6
         with:
           result-encoding: string
