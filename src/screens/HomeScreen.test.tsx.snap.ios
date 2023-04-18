@@ -63,20 +63,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
               }
             >
               <View
-                accessibilityState={
-                  Object {
-                    "disabled": true,
-                  }
-                }
-                accessible={true}
-                focusable={false}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   Array [
                     Object {
@@ -1328,20 +1314,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
               }
             >
               <View
-                accessibilityState={
-                  Object {
-                    "disabled": true,
-                  }
-                }
-                accessible={true}
-                focusable={false}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
                   Array [
                     Object {
@@ -2675,11 +2647,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   }
                 >
                   <View
-                    accessibilityState={
-                      Object {
-                        "disabled": false,
-                      }
-                    }
                     accessible={true}
                     focusable={true}
                     onClick={[Function]}
@@ -2892,11 +2859,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   }
                 >
                   <View
-                    accessibilityState={
-                      Object {
-                        "disabled": false,
-                      }
-                    }
                     accessible={true}
                     focusable={true}
                     onClick={[Function]}
@@ -3412,11 +3374,6 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   }
                 >
                   <View
-                    accessibilityState={
-                      Object {
-                        "disabled": false,
-                      }
-                    }
                     accessible={true}
                     focusable={true}
                     onClick={[Function]}
@@ -3629,11 +3586,6 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   }
                 >
                   <View
-                    accessibilityState={
-                      Object {
-                        "disabled": false,
-                      }
-                    }
                     accessible={true}
                     focusable={true}
                     onClick={[Function]}
