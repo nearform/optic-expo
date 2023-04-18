@@ -4,11 +4,13 @@ on:
     outputs:
       cancel-workflow:
         description: "Return 'true' if PR was closed and the workflow needs to be cancelled"
-        value: ${{steps.should-cancel-workflow.outputs.result}}
+        value: ${{ jobs.check.outputs.cancel-workflow }}
 
 jobs:
   check:
     runs-on: ubuntu-latest
+    outputs:
+      cancel-workflow: ${{ steps.should-cancel-workflow.outputs.result }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
