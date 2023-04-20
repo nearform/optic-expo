@@ -12,21 +12,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Dependabot metadata
+        if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
+        id: dependabot-metadata
+        uses: dependabot/fetch-metadata@v1.3.1
+
       - name: Check if it is a dependency that should be managed by Expo
-        if: github.actor == 'dependabot[bot]'
+        if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
         uses: actions/github-script@v6
         with:
-          result-encoding: string
           script: |
-            const script = require(
-              `${process.env.GITHUB_WORKSPACE}/scripts/check-expo-dependencies.js`
-            );
+            const script = require(`./scripts/check-expo-dependencies.js`);
 
             await script({ 
               context, 
               github, 
               fetch,
-              prTitle: `${{ github.event.pull_request.title }}`
+              dependency: `${{ steps.dependabot-metadata.outputs.dependency-names }}`
             });
 
       - uses: actions/setup-node@v3
