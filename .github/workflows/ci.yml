@@ -7,30 +7,28 @@ on:
     branches:
       - master
 jobs:
-
-  pre-build:
-    if: github.actor == 'dependabot[bot]'
-    name: Check expo dependencies
-    uses: ./.github/workflows/check-expo-dependencies.yml
-
   build:
     runs-on: ubuntu-latest
-    needs: pre-build
-    if: always()
     steps:
-      - name: Cancel workflow
-        if: needs.pre-build.outputs.cancel-workflow == 'true'
+      - uses: actions/checkout@v3
+
+      - name: Check if it is a dependency that should be managed by Expo
+        if: github.actor == 'dependabot[bot]'
         uses: actions/github-script@v6
         with:
           result-encoding: string
           script: |
-            await github.rest.actions.cancelWorkflowRun({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              run_id: github.run_id,
+            const script = require(
+              `${process.env.GITHUB_WORKSPACE}/scripts/check-expo-dependencies.js`
+            );
+
+            await script({ 
+              context, 
+              github, 
+              fetch,
+              prTitle: `${{ github.event.pull_request.title }}`
             });
 
-      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc

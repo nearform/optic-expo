@@ -21,13 +21,19 @@ module.exports = async ({ context, github, fetch, prTitle }) => {
   ].some(dependency => prTitle.includes(dependency))
 
   if (shouldClosePR) {
+    // close PR
     await github.rest.pulls.update({
       owner: context.repo.owner,
       repo: context.repo.repo,
       pull_number: context.issue.number,
       state: 'closed',
     })
-  }
 
-  return shouldClosePR
+    // cancel workflow
+    await github.rest.actions.cancelWorkflowRun({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      run_id: github.run_id,
+    })
+  }
 }
