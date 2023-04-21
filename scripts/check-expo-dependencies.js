@@ -1,9 +1,7 @@
 module.exports = async ({ context, github, fetch, dependencyNames }) => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const expoVersion = require('../package.json').dependencies.expo
-  const expoVersionSanitized = expoVersion
-    .replaceAll('~', '')
-    .replaceAll('^', '')
+  const expoVersionSanitized = expoVersion.replace(/[!^~]/g, '')
 
   const majorExpoVersion = `${expoVersionSanitized.substring(
     0,
