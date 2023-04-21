@@ -1,7 +1,7 @@
 module.exports = async ({ context, github, fetch, dependencyNames }) => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const expoVersion = require('../package.json').dependencies.expo
-  const expoVersionSanitized = expoVersion.replace(/[!^~]/g, '')
+  const expoVersionSanitized = expoVersion.replace(/^[~^]/g, '')
 
   const majorExpoVersion = `${expoVersionSanitized.substring(
     0,
@@ -17,6 +17,7 @@ module.exports = async ({ context, github, fetch, dependencyNames }) => {
   const shouldClosePR = [
     ...Object.keys(relatedPackages),
     'react',
+    'react-dom',
     'react-native',
     'expo',
   ].some(
