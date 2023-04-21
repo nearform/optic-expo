@@ -11,6 +11,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Dependabot metadata
+        if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
+        id: dependabot-metadata
+        uses: dependabot/fetch-metadata@v1
+
+      - name: Check if it is a dependency that should be managed by Expo
+        if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const script = require(`./scripts/check-expo-dependencies.js`);
+
+            await script({ 
+              context, 
+              github, 
+              fetch,
+              dependency: `${{ steps.dependabot-metadata.outputs.dependency-names }}`
+            });
+
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
