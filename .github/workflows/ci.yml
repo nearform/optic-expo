@@ -28,7 +28,7 @@ jobs:
               context, 
               github, 
               fetch,
-              dependency: `${{ steps.dependabot-metadata.outputs.dependency-names }}`
+              dependencyNames: `${{ steps.dependabot-metadata.outputs.dependency-names }}`
             });
 
       - uses: actions/setup-node@v3
