@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+          pull-requests: write
     steps:
       - uses: actions/checkout@v3
 
@@ -18,8 +20,6 @@ jobs:
         uses: dependabot/fetch-metadata@v1
 
       - name: Check if it is a dependency that should be managed by Expo
-        permissions:
-          pull-requests: write
         if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
         uses: actions/github-script@v6
         with:
