@@ -18,8 +18,7 @@
     "build:submit:ios": "eas build --platform ios --non-interactive --auto-submit --no-wait",
     "bump:version": "node scripts/bump-version.js",
     "postinstall": "node -e \"fs.copyFileSync('./patch/Linking.js', './node_modules/expo-linking/build/Linking.js')\"",
-    "prepare": "husky install",
-    "doctor": "expo-cli doctor"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@expo-google-fonts/didact-gothic": "^0.2.3",

@@ -40,8 +40,7 @@ jobs:
       - run: yarn
       - run: yarn lint
       - run: yarn typecheck
-      - run: npm install -g expo-cli
-      - run: yarn doctor
+      - run: npx expo-doctor
       - run: yarn test
 
   automerge:
