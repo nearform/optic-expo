@@ -16,6 +16,7 @@ import { useSecretSelector } from '../hooks/use-secret-selector'
 import { useTokenDataSelector } from '../hooks/use-token-data-selector'
 
 import { Typography } from './Typography'
+import { PackageInfo } from './PackageInfo'
 
 const OTP_REQUEST_TIMEOUT = 60001 // See https://github.com/nearform/optic/blob/master/server/lib/routes/otp.js#L5
 
@@ -53,11 +54,6 @@ const styles = StyleSheet.create({
     marginLeft: theme.spacing(1),
     flex: 1,
   },
-  packageInfo: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
 })
 
 export const NoPendingNotifications = () => (
@@ -84,34 +80,6 @@ const TokenInfo: React.FC<TokenInfoProps> = ({ token, description }) => {
         </View>
         <View style={styles.tokenDescriptionRow}>
           <Typography variant="body1">{description}</Typography>
-        </View>
-      </View>
-    </>
-  )
-}
-
-type PackageInfoProps = {
-  packageInfo: {
-    version?: string
-    name?: string
-  }
-}
-
-const PackageInfo: React.FC<PackageInfoProps> = ({
-  packageInfo: { version, name } = {},
-}) => {
-  return (
-    <>
-      <View style={styles.cardRow}>
-        <View style={styles.packageInfo}>
-          <View>
-            <Typography variant="overline">Package</Typography>
-            <Typography variant="body1">{name}</Typography>
-          </View>
-          <View>
-            <Typography variant="overline">Version</Typography>
-            <Typography variant="body1">{version}</Typography>
-          </View>
         </View>
       </View>
     </>
@@ -171,6 +139,8 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
     [data.uniqueId, removeNotification]
   )
 
+  const packageInfo = notification.request.content.data.packageInfo
+
   return (
     <>
       <View style={styles.container}>
@@ -182,9 +152,11 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
           />
           <Card.Content>
             <TokenInfo token={token.token} description={token.description} />
-            <PackageInfo
-              packageInfo={notification.request.content.data.packageInfo}
-            />
+            {packageInfo && (
+              <View style={styles.cardRow}>
+                <PackageInfo packageInfo={packageInfo} />
+              </View>
+            )}
             <View style={styles.cardRow}>
               <TimeAgo
                 date={new Date(notification.date)}

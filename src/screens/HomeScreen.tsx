@@ -91,7 +91,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     async (res: NotificationResponse) => {
       const data = res.notification.request.content.data as NotificationData
 
-      const { secretId, uniqueId, token } = data
+      const { secretId, uniqueId, token, packageInfo } = data
 
       const secret = secrets.find(({ _id }) => _id === secretId)
 
@@ -104,6 +104,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         token,
         secretId,
         uniqueId,
+        packageInfo
       })
     },
     [navigation, secrets]
