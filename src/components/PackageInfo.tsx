@@ -1,5 +1,8 @@
+import React from 'react'
 import { StyleSheet, View } from 'react-native'
+
 import theme from '../lib/theme'
+
 import { Typography } from './Typography'
 
 const styles = StyleSheet.create({

@@ -104,7 +104,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         token,
         secretId,
         uniqueId,
-        packageInfo
+        packageInfo,
       })
     },
     [navigation, secrets]

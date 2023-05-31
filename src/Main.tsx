@@ -56,7 +56,7 @@ export type MainStackParamList = {
     token: string
     uniqueId: string
     packageInfo?: {
-      name?: string,
+      name?: string
       version?: string
     }
   }
