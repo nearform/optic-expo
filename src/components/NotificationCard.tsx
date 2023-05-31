@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   tokenDescriptionRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(1),
   },
   button: {
     marginTop: theme.spacing(2),
@@ -52,6 +52,11 @@ const styles = StyleSheet.create({
     marginTop: theme.spacing(2),
     marginLeft: theme.spacing(1),
     flex: 1,
+  },
+  packageInfo: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 })
 
@@ -77,10 +82,36 @@ const TokenInfo: React.FC<TokenInfoProps> = ({ token, description }) => {
         <View style={styles.tokenDescriptionRow}>
           <Typography variant="code">{token}</Typography>
         </View>
-      </View>
-      <View style={styles.cardRow}>
         <View style={styles.tokenDescriptionRow}>
           <Typography variant="body1">{description}</Typography>
+        </View>
+      </View>
+    </>
+  )
+}
+
+type PackageInfoProps = {
+  packageInfo: {
+    version?: string
+    name?: string
+  }
+}
+
+const PackageInfo: React.FC<PackageInfoProps> = ({
+  packageInfo: { version, name } = {},
+}) => {
+  return (
+    <>
+      <View style={styles.cardRow}>
+        <View style={styles.packageInfo}>
+          <View>
+            <Typography variant="overline">Package</Typography>
+            <Typography variant="body1">{name}</Typography>
+          </View>
+          <View>
+            <Typography variant="overline">Version</Typography>
+            <Typography variant="body1">{version}</Typography>
+          </View>
         </View>
       </View>
     </>
@@ -151,6 +182,9 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
           />
           <Card.Content>
             <TokenInfo token={token.token} description={token.description} />
+            <PackageInfo
+              packageInfo={notification.request.content.data.packageInfo}
+            />
             <View style={styles.cardRow}>
               <TimeAgo
                 date={new Date(notification.date)}
