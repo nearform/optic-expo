@@ -30,6 +30,10 @@ export type NotificationData = {
   secretId: string
   uniqueId: string
   token: string
+  packageInfo?: {
+    name?: string
+    version?: string
+  }
 }
 
 export type OpticNotification = Notification & {

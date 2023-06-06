@@ -16,6 +16,7 @@ import { useSecretSelector } from '../hooks/use-secret-selector'
 import { useTokenDataSelector } from '../hooks/use-token-data-selector'
 
 import { Typography } from './Typography'
+import { PackageInfo } from './PackageInfo'
 
 const OTP_REQUEST_TIMEOUT = 60001 // See https://github.com/nearform/optic/blob/master/server/lib/routes/otp.js#L5
 
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
   tokenDescriptionRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(1),
   },
   button: {
     marginTop: theme.spacing(2),
@@ -77,8 +78,6 @@ const TokenInfo: React.FC<TokenInfoProps> = ({ token, description }) => {
         <View style={styles.tokenDescriptionRow}>
           <Typography variant="code">{token}</Typography>
         </View>
-      </View>
-      <View style={styles.cardRow}>
         <View style={styles.tokenDescriptionRow}>
           <Typography variant="body1">{description}</Typography>
         </View>
@@ -140,6 +139,8 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
     [data.uniqueId, removeNotification]
   )
 
+  const packageInfo = notification.request.content.data.packageInfo
+
   return (
     <>
       <View style={styles.container}>
@@ -151,6 +152,11 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
           />
           <Card.Content>
             <TokenInfo token={token.token} description={token.description} />
+            {packageInfo && (
+              <View style={styles.cardRow}>
+                <PackageInfo packageInfo={packageInfo} />
+              </View>
+            )}
             <View style={styles.cardRow}>
               <TimeAgo
                 date={new Date(notification.date)}

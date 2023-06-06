@@ -16,6 +16,7 @@ import { useSecretSelector } from '../hooks/use-secret-selector'
 import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
 import { usePrefs } from '../context/PrefsContext'
 import { useCanUseLocalAuth } from '../hooks/use-can-use-local-auth'
+import { PackageInfo } from '../components/PackageInfo'
 
 const styles = StyleSheet.create({
   container: {
@@ -52,7 +53,7 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
   const canUseLocalAuth = useCanUseLocalAuth()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
-  const { token, secretId, uniqueId } = route.params
+  const { token, secretId, uniqueId, packageInfo } = route.params
   const secret = useSecretSelector(secretId)
   const tokenData = useTokenDataSelector(secretId, token)
   const description = tokenData ? tokenData.description : ''
@@ -134,6 +135,7 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
           </Typography>
           <Typography variant="body1">{description}</Typography>
         </View>
+        {packageInfo && <PackageInfo packageInfo={packageInfo} />}
         <View>
           <Button style={styles.button} mode="outlined" onPress={handleReject}>
             Reject
