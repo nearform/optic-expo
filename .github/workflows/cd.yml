@@ -13,6 +13,9 @@ jobs:
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
+  update-expo-qr-codes:
+    uses: ./.github/workflows/replace-expo-qr-codes.yml
+
   submit-ios:
     uses: ./.github/workflows/expo-eas-submit.yml
     with:
