@@ -1,0 +1,96 @@
+name: Replace Expo update ID in README
+
+on:
+  push:
+
+jobs:
+  replace-expo-update-id:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install EAS cli
+        uses: expo/expo-github-action@v8
+        with:
+          expo-cache: true
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Get Expo update ID
+        id: get-expo-update-id
+        run: |
+          UPDATES=$(eas update:view --json $(eas branch:view production --json --non-interactive | jq ".currentPage[0].group" -r ))
+          echo "::set-output name=android_update_id::$(echo $UPDATES | jq -r '.[] | select(.platform | contains("android")) | .id')"
+          echo "::set-output name=ios_update_id::$(echo $UPDATES | jq -r '.[] | select(.platform | contains("ios")) | .id')"
+
+      - name: Replace Expo update ID
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.PAT }}
+          script: |
+            const targetRepo = {
+              owner: 'nearform',
+              repo: 'optic-website',
+              mainRef: 'master',
+            }
+
+            const targetFilePath = 'docs/5-mobile-app/1-getting-started.md'
+            const commitMessage = 'Update Expo QR codes ID in README'
+
+            const androidRegex = /(<img alt='Expo Android preview' src=')([^']*)(' .* \/>)/
+            const iosRegex = /(<img alt='Expo iOS preview' src=')([^']*)(' .* \/>)/
+
+            const androidUpdateId = '${{  steps.get-expo-update-id.outputs.android_update_id }}'
+            const iosUpdateId = '${{  steps.get-expo-update-id.outputs.ios_update_id }}'
+
+            const needsUpdate = (file) => {
+              const [, , currentAndroidUrl] = androidRegex.exec(file)
+              const [, , currentIosUrl] = iosRegex.exec(file)
+
+              // Extract update id from qrcode url
+              const updateIdUrlRegex = /updateId=([^&]+)/
+
+              const [, currentAndroidId] = updateIdUrlRegex.exec(currentAndroidUrl)
+              const [, currentIosId] = updateIdUrlRegex.exec(currentIosUrl)
+
+              return currentAndroidId !== androidUpdateId || currentIosId !== iosUpdateId
+            }
+
+            const replaceQrCode = (file) => {
+              const qrCodeUrl = (updateId) => `https://qr.expo.dev/eas-update?updateId=${updateId}&amp;appScheme=exp&amp;host=u.expo.dev`
+
+              return btoa(
+                file
+                  .replace(androidRegex, `$1${qrCodeUrl(androidUpdateId)}$3`)
+                  .replace(iosRegex, `$1${qrCodeUrl(iosUpdateId)}$3`)
+              )
+            }
+
+            const {
+              data: { sha: fileSha, content: file },
+            } = await github.rest.repos.getContent({
+              owner: targetRepo.owner,
+              repo: targetRepo.repo,
+              ref: targetRepo.mainRef,
+              path: targetFilePath,
+            })
+
+            const fileContent = atob(file.replaceAll('\n', ''))
+
+            if (!needsUpdate(fileContent)) {
+              console.log('QR Codes already at last version. Skipping.')
+              return
+            }
+
+            await github.rest.repos.createOrUpdateFileContents({
+              owner: targetRepo.owner,
+              repo: targetRepo.repo,
+              path: targetFilePath,
+              message: commitMessage,
+              content: replaceQrCode(fileContent),
+              branch: targetRepo.mainRef,
+              sha: fileSha,
+            })
