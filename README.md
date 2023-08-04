@@ -113,3 +113,9 @@ Few notes on the NPM secret:
 
 - the NPM secret (QR or the textual code) is the one that you get, when you enable 2FA in your [npm](https://www.npmjs.com/) profile
 - if you already have 2FA activated (with a different authenticatior app e.g. Google Authenticator) and you need to get the secret, the easiest way is to get is to open the authenticator app you were using previously and get the QR code from that app and scan it with Optic Expo
+
+## Store release Guide
+
+The Android app is published to the Play Store once the release workflow is run.
+
+For the iOS version, please follow [this guide](IOS_RELEASE.md)
