@@ -116,6 +116,6 @@ Few notes on the NPM secret:
 
 ## Store release Guide
 
-The android app is published to the play store once the release workflow is run.
+The Android app is published to the Play Store once the release workflow is run.
 
 For the iOS version, please follow [this guide](IOS_RELEASE.md)
