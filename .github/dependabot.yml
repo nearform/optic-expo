@@ -1,12 +1,12 @@
 version: 2
 updates:
-  - package-ecosystem: 'npm'
-    directory: '/'
+  - package-ecosystem: npm
+    directory: /
     schedule:
-      interval: 'daily'
+      interval: weekly
     ignore:
-      - dependency-name: 'expo-*'
-  - package-ecosystem: 'github-actions'
-    directory: '/'
+      - dependency-name: expo-*
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: 'daily'
+      interval: weekly

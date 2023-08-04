@@ -67,6 +67,9 @@ export default {
       NSCameraUsageDescription:
         'This app uses the camera to scan QR codes with OTP secrets',
     },
+    config: {
+      usesNonExemptEncryption: false,
+    },
   },
   android: {
     versionCode: pkg.versionCode,

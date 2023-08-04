@@ -55,6 +55,10 @@ export type MainStackParamList = {
     secretId: string
     token: string
     uniqueId: string
+    packageInfo?: {
+      name?: string
+      version?: string
+    }
   }
   Notifications: undefined
   ExportFileSecret: undefined
