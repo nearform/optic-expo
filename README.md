@@ -89,3 +89,9 @@ The figma designs can be found [here](<https://www.figma.com/file/xsPf6IIM9AevLN
 ## Sequence diagram
 
 [![](docs/images/architecture.png)](https://docs.google.com/presentation/d/16038cTBefSKQezJk0IZKNXnSqaG2PnU07Sb2_qIkNe8/edit?usp=sharing)
+
+## Store release Guide
+
+The Android app is published to the Play Store once the release workflow is run.
+
+For the iOS version, please follow [this guide](IOS_RELEASE.md)
