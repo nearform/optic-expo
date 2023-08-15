@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as Notifications from 'expo-notifications'
 import { NotificationResponse } from 'expo-notifications'
 import { ScrollView, StyleSheet, View } from 'react-native'
@@ -47,6 +47,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const isFocused = useIsFocused()
   const notificationListener = useRef<Subscription>()
   const responseListener = useRef<Subscription>()
+  const lastNotificationResponse = Notifications.useLastNotificationResponse()
+  const [initialLoadingComplete, setInitialLoadingComplete] = useState(false)
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
 
@@ -111,6 +113,28 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   )
 
   useEffect(() => {
+    // runs callbacks when notification is pressed from a cold start
+    if (
+      !initialLoadingComplete &&
+      !secretsLoading &&
+      lastNotificationResponse
+    ) {
+      const request = lastNotificationResponse.notification
+        .request as Notifications.NotificationRequest & {
+        content: { data: NotificationData }
+      }
+      const opticNotification: OpticNotification = {
+        date: lastNotificationResponse.notification.date,
+        request: request,
+      }
+
+      onNotificationResponse(lastNotificationResponse)
+      onNotification(opticNotification)
+
+      // prevents the cold start callbacks from being called after a notification is triggered
+      setInitialLoadingComplete(true)
+    }
+
     notificationListener.current =
       Notifications.addNotificationReceivedListener(onNotification)
 
@@ -123,7 +147,13 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       Notifications.removeNotificationSubscription(responseListener.current)
       Notifications.removeNotificationSubscription(notificationListener.current)
     }
-  }, [onNotification, onNotificationResponse])
+  }, [
+    initialLoadingComplete,
+    lastNotificationResponse,
+    onNotification,
+    onNotificationResponse,
+    secretsLoading,
+  ])
 
   if (secretsLoading) {
     return null
