@@ -10,6 +10,7 @@ import Toast from 'react-native-root-toast'
 import { usePendingNotifications } from '../context/PendingNotificationsContext'
 import { useSecrets } from '../context/SecretsContext'
 import { useAuth } from '../context/AuthContext'
+import { useInitialLoading } from '../context/InitalLoadingContext'
 import apiFactory from '../lib/api'
 import { NoSecrets } from '../components/NoSecrets'
 import { Actions } from '../components/Actions'
@@ -47,6 +48,9 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const isFocused = useIsFocused()
   const notificationListener = useRef<Subscription>()
   const responseListener = useRef<Subscription>()
+  const lastNotificationResponse = Notifications.useLastNotificationResponse()
+  const { initialLoadingComplete, markInitialLoadingComplete } =
+    useInitialLoading()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
 
@@ -124,6 +128,37 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       Notifications.removeNotificationSubscription(notificationListener.current)
     }
   }, [onNotification, onNotificationResponse])
+
+  useEffect(() => {
+    // runs callbacks when notification is pressed from a cold start
+    if (
+      !initialLoadingComplete &&
+      !secretsLoading &&
+      lastNotificationResponse
+    ) {
+      const request = lastNotificationResponse.notification
+        .request as Notifications.NotificationRequest & {
+        content: { data: NotificationData }
+      }
+      const opticNotification: OpticNotification = {
+        date: lastNotificationResponse.notification.date,
+        request: request,
+      }
+
+      onNotificationResponse(lastNotificationResponse)
+      onNotification(opticNotification)
+
+      // prevents the cold start callbacks from being called again after this conditional has been triggered
+      markInitialLoadingComplete()
+    }
+  }, [
+    initialLoadingComplete,
+    lastNotificationResponse,
+    markInitialLoadingComplete,
+    onNotification,
+    onNotificationResponse,
+    secretsLoading,
+  ])
 
   if (secretsLoading) {
     return null

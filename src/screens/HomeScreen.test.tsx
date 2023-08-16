@@ -17,6 +17,7 @@ jest.mock('expo-notifications', () => ({
   addNotificationReceivedListener: jest.fn(),
   addNotificationResponseReceivedListener: jest.fn(),
   removeNotificationSubscription: jest.fn(),
+  useLastNotificationResponse: jest.fn(),
 }))
 
 jest.mock('../lib/api')

@@ -10,6 +10,7 @@ import theme from './lib/theme'
 import Main from './Main'
 import { PrefsProvider } from './context/PrefsContext'
 import { PendingNotificationsProvider } from './context/PendingNotificationsContext'
+import { InitialLoadingProvider } from './context/InitalLoadingContext'
 
 export default function App() {
   return (
@@ -18,10 +19,12 @@ export default function App() {
         <SecretsProvider>
           <PrefsProvider>
             <PendingNotificationsProvider>
-              <PaperProvider theme={theme}>
-                <Main />
-                <StatusBar style="auto" />
-              </PaperProvider>
+              <InitialLoadingProvider>
+                <PaperProvider theme={theme}>
+                  <Main />
+                  <StatusBar style="auto" />
+                </PaperProvider>
+              </InitialLoadingProvider>
             </PendingNotificationsProvider>
           </PrefsProvider>
         </SecretsProvider>
