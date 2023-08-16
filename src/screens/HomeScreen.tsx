@@ -113,6 +113,21 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   )
 
   useEffect(() => {
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener(onNotification)
+
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener(
+        onNotificationResponse
+      )
+
+    return () => {
+      Notifications.removeNotificationSubscription(responseListener.current)
+      Notifications.removeNotificationSubscription(notificationListener.current)
+    }
+  }, [onNotification, onNotificationResponse])
+
+  useEffect(() => {
     // runs callbacks when notification is pressed from a cold start
     if (
       !initialLoadingComplete &&
@@ -131,21 +146,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       onNotificationResponse(lastNotificationResponse)
       onNotification(opticNotification)
 
-      // prevents the cold start callbacks from being called after a notification is triggered
+      // prevents the cold start callbacks from being called again after this conditional has been triggered
       setInitialLoadingComplete(true)
-    }
-
-    notificationListener.current =
-      Notifications.addNotificationReceivedListener(onNotification)
-
-    responseListener.current =
-      Notifications.addNotificationResponseReceivedListener(
-        onNotificationResponse
-      )
-
-    return () => {
-      Notifications.removeNotificationSubscription(responseListener.current)
-      Notifications.removeNotificationSubscription(notificationListener.current)
     }
   }, [
     initialLoadingComplete,
