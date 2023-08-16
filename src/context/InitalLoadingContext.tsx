@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useMemo,
+  useCallback,
+} from 'react'
 
 const initialContext = {
   initialLoadingComplete: false,
@@ -14,14 +20,20 @@ export const useInitialLoading = () => useContext(InitialLoadingContext)
 export const InitialLoadingProvider = ({ children }) => {
   const [initialLoadingComplete, setInitialLoadingComplete] = useState(false)
 
-  const markInitialLoadingComplete = () => {
+  const markInitialLoadingComplete = useCallback(() => {
     setInitialLoadingComplete(true)
-  }
+  }, [setInitialLoadingComplete])
+
+  const value = useMemo(
+    () => ({
+      initialLoadingComplete,
+      markInitialLoadingComplete,
+    }),
+    [initialLoadingComplete, markInitialLoadingComplete]
+  )
 
   return (
-    <InitialLoadingContext.Provider
-      value={{ initialLoadingComplete, markInitialLoadingComplete }}
-    >
+    <InitialLoadingContext.Provider value={value}>
       {children}
     </InitialLoadingContext.Provider>
   )
