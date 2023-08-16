@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import * as Notifications from 'expo-notifications'
 import { NotificationResponse } from 'expo-notifications'
 import { ScrollView, StyleSheet, View } from 'react-native'
@@ -10,6 +10,7 @@ import Toast from 'react-native-root-toast'
 import { usePendingNotifications } from '../context/PendingNotificationsContext'
 import { useSecrets } from '../context/SecretsContext'
 import { useAuth } from '../context/AuthContext'
+import { useInitialLoading } from '../context/InitalLoadingContext'
 import apiFactory from '../lib/api'
 import { NoSecrets } from '../components/NoSecrets'
 import { Actions } from '../components/Actions'
@@ -48,7 +49,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const notificationListener = useRef<Subscription>()
   const responseListener = useRef<Subscription>()
   const lastNotificationResponse = Notifications.useLastNotificationResponse()
-  const [initialLoadingComplete, setInitialLoadingComplete] = useState(false)
+  const { initialLoadingComplete, markInitialLoadingComplete } =
+    useInitialLoading()
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
 
@@ -147,11 +149,12 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       onNotification(opticNotification)
 
       // prevents the cold start callbacks from being called again after this conditional has been triggered
-      setInitialLoadingComplete(true)
+      markInitialLoadingComplete()
     }
   }, [
     initialLoadingComplete,
     lastNotificationResponse,
+    markInitialLoadingComplete,
     onNotification,
     onNotificationResponse,
     secretsLoading,
