@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Modal, Text, Pressable, Alert } from 'react-native'
 import { Button, TextInput } from 'react-native-paper'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import Toast from 'react-native-root-toast'
@@ -30,6 +30,50 @@ const styles = StyleSheet.create({
   },
 })
 
+const test = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+})
+
 type Props = NativeStackScreenProps<MainStackParamList, 'CreateToken'>
 
 export const CreateTokenScreen = ({ route, navigation }: Props) => {
@@ -40,7 +84,7 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
   const [description, setDescription] = useState('')
   const { update } = useSecrets()
   const expoToken = usePushToken()
-
+  const [modalVisible, setModalVisible] = useState(expoToken ? false : true)
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
 
   const disabled = description.length < 3
@@ -104,6 +148,29 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
 
   return (
     <>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.')
+          setModalVisible(!modalVisible)
+        }}
+      >
+        <View style={test.centeredView}>
+          <View style={test.modalView}>
+            <Text style={test.modalText}>
+              Please enable notificaiton permissions
+            </Text>
+            <Pressable
+              style={[test.button, test.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={test.textStyle}>Enable</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
       <View style={styles.container}>
         <View>
           <Typography variant="h6">
