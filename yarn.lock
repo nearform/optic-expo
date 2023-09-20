@@ -5539,6 +5539,13 @@ expo-dev-menu@2.0.2:
     expo-dev-menu-interface "1.0.0"
     semver "^7.3.5"
 
+expo-device@~5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/expo-device/-/expo-device-5.0.0.tgz#2039e01a9d8bc696c060771145b764758e3ed242"
+  integrity sha512-FWlbOUMzAjHojLER8fnS42vLT7aqZ7IoEY+nw/RqmW17SA3GE2lzcYxRYZs1vAIgDnLzcS5CQMp08Eu+EXih1g==
+  dependencies:
+    ua-parser-js "^0.7.19"
+
 expo-document-picker@~11.0.1:
   version "11.0.1"
   resolved "https://registry.yarnpkg.com/expo-document-picker/-/expo-document-picker-11.0.1.tgz#1655e1cfacc20fe70ba81e310365048804bcf803"
@@ -11100,6 +11107,11 @@ typedarray-to-buffer@^3.1.5:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.4.tgz#b217fd20119bd61a94d4011274e0ab369058da3b"
   integrity sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==
+
+ua-parser-js@^0.7.19:
+  version "0.7.36"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.36.tgz#382c5d6fc09141b6541be2cae446ecfcec284db2"
+  integrity sha512-CPPLoCts2p7D8VbybttE3P2ylv0OBZEAy7a12DsulIEcAiMtWJy+PBgMXgWDI80D5UwqE8oQPHYnk13tm38M2Q==
 
 ua-parser-js@^0.7.30:
   version "0.7.33"

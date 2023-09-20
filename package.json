@@ -42,6 +42,7 @@
     "expo-clipboard": "~4.0.1",
     "expo-constants": "~14.0.2",
     "expo-dev-client": "~2.0.1",
+    "expo-device": "~5.0.0",
     "expo-document-picker": "~11.0.1",
     "expo-file-system": "~15.1.1",
     "expo-font": "~11.0.1",
