@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { Alert, StyleSheet, View } from 'react-native'
+import { Alert, StyleSheet, View, Modal, Text, Pressable } from 'react-native'
 import { Button, ProgressBar, TextInput } from 'react-native-paper'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import Toast from 'react-native-root-toast'
@@ -203,6 +203,8 @@ export const TokenScreen = ({ route, navigation }: Props) => {
     }
   }, [description, secret, token, update])
 
+  if (!expoToken) {
+  }
   return (
     <>
       <View style={styles.container}>

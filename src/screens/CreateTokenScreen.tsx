@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { StyleSheet, View, Modal, Text, Pressable, Alert } from 'react-native'
+import * as Linking from 'expo-linking'
 import { Button, TextInput } from 'react-native-paper'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import Toast from 'react-native-root-toast'
@@ -160,11 +161,11 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
         <View style={test.centeredView}>
           <View style={test.modalView}>
             <Text style={test.modalText}>
-              Please enable notificaiton permissions
+              Please enable notification permissions
             </Text>
             <Pressable
               style={[test.button, test.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
+              onPress={Linking.openSettings}
             >
               <Text style={test.textStyle}>Enable</Text>
             </Pressable>

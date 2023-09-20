@@ -5603,6 +5603,17 @@ expo-linking@~3.3.0:
     qs "^6.9.1"
     url-parse "^1.5.9"
 
+expo-linking@~3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/expo-linking/-/expo-linking-3.3.1.tgz#253b183321e54cb6fa1a667a53d4594aa88a3357"
+  integrity sha512-T3VIZMyZhkBOpHIyfT514rweGZZMbdg1vwavsfAkm6BFJ8G0iNVGbYMTpoUiQ9xdA0ARCcZbXFFb+WhqEUITgQ==
+  dependencies:
+    "@types/qs" "^6.5.3"
+    expo-constants "~14.0.0"
+    invariant "^2.2.4"
+    qs "^6.9.1"
+    url-parse "^1.5.9"
+
 expo-local-authentication@~13.0.2:
   version "13.0.2"
   resolved "https://registry.yarnpkg.com/expo-local-authentication/-/expo-local-authentication-13.0.2.tgz#a785e589119538e0c328b65c0f63e162a423ad5f"
