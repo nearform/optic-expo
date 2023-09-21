@@ -86,18 +86,18 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
   }
 
   useEffect(() => {
-    if (!user || !expoToken.token) return
+    if (!user || !expoToken) return
 
     const register = async () => {
       const id = await api.registerSubscription({
         type: 'expo',
-        token: expoToken.token,
+        token: expoToken,
       })
       setSubscriptionId(id)
     }
 
     register()
-  }, [user, api, expoToken.token])
+  }, [user, api, expoToken])
 
   if (!secret) {
     return null
@@ -105,10 +105,7 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
 
   return (
     <>
-      <PermissionModal
-        modalVisible={expoToken.token.length ? false : true}
-        refetchToken={expoToken.refetchToken}
-      />
+      <PermissionModal modalVisible={expoToken ? false : true} />
       <View style={styles.container}>
         <View>
           <Typography variant="h6">

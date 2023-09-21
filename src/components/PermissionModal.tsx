@@ -1,20 +1,22 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Modal, Text, Pressable, Alert } from 'react-native'
+import { StyleSheet, View, Modal, Pressable } from 'react-native'
 import { openSettings } from 'expo-linking'
 
+import theme from '../lib/theme'
+
+import { Typography } from './Typography'
+
 const styles = StyleSheet.create({
-  centeredView: {
+  modalContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
+    justifyContent: 'flex-start',
+    marginTop: 200,
   },
   modalView: {
-    margin: 20,
+    margin: 15,
+    borderRadius: 3,
     backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
+    padding: 25,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -22,52 +24,57 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 5,
+    elevation: 20,
   },
   button: {
     borderRadius: 20,
     padding: 10,
     elevation: 2,
   },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
+  navText: {
+    textAlign: 'right',
+    color: theme.colors.primary,
   },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
+  navContainer: {
+    marginTop: 30,
   },
   modalText: {
     marginBottom: 15,
-    textAlign: 'center',
   },
 })
 
 type Props = {
   modalVisible: boolean
-  refetchToken: () => Promise<void>
 }
 
-export default function PermissionModal({ modalVisible, refetchToken }: Props) {
+export default function PermissionModal({ modalVisible }: Props) {
   const [visible, setVisible] = useState(modalVisible)
   return (
-    <Modal animationType="slide" transparent={true} visible={visible}>
-      <View style={styles.centeredView}>
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={visible}
+      onRequestClose={() => {
+        setVisible(false)
+      }}
+    >
+      <View style={styles.modalContainer}>
         <View style={styles.modalView}>
-          <Text style={styles.modalText}>
-            Please enable notification permissions
-          </Text>
+          <Typography variant="h6" style={styles.modalText}>
+            Enable Push Notifications?
+          </Typography>
+          <Typography variant="body1">
+            This app requires push notification permissions to function.
+          </Typography>
           <Pressable
-            style={[styles.button, styles.buttonClose]}
+            style={styles.navContainer}
             onPress={async () => {
               openSettings()
-              setVisible(false)
             }}
           >
-            <Text style={styles.textStyle}>Enable</Text>
+            <Typography variant="h6" style={styles.navText}>
+              ENABLE
+            </Typography>
           </Pressable>
         </View>
       </View>
