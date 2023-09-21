@@ -15,7 +15,6 @@ import { CopyableInfo } from '../components/SecretCard/CopyableInfo'
 import { useSecretSelector } from '../hooks/use-secret-selector'
 import { useTokenDataSelector } from '../hooks/use-token-data-selector'
 import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
-import PermissionModal from '../components/PermissionModal'
 
 const SAVE_UPDATED_DESCRIPTION_DELAY = 1000
 
@@ -204,9 +203,10 @@ export const TokenScreen = ({ route, navigation }: Props) => {
     }
   }, [description, secret, token, update])
 
+  if (!expoToken) {
+  }
   return (
     <>
-      <PermissionModal modalVisible={expoToken ? false : true} />
       <View style={styles.container}>
         <View style={styles.token}>
           <Typography variant="overline">TOKEN</Typography>

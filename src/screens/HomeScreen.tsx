@@ -166,6 +166,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      {/* <NotificationPermissionRequest /> */}
       <ScrollView contentContainerStyle={styles.scrollView}>
         {secrets.length === 0 ? (
           <NoSecrets />

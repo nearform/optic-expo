@@ -14,7 +14,6 @@ import theme from '../lib/theme'
 import { Typography } from '../components/Typography'
 import { useSecretSelector } from '../hooks/use-secret-selector'
 import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
-import PermissionModal from '../components/PermissionModal'
 
 const styles = StyleSheet.create({
   container: {
@@ -105,7 +104,6 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
 
   return (
     <>
-      <PermissionModal modalVisible={expoToken ? false : true} />
       <View style={styles.container}>
         <View>
           <Typography variant="h6">
