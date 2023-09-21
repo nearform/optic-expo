@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { Alert, StyleSheet, View, Modal, Text, Pressable } from 'react-native'
+import { Alert, StyleSheet, View } from 'react-native'
 import { Button, ProgressBar, TextInput } from 'react-native-paper'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import Toast from 'react-native-root-toast'
@@ -15,6 +15,7 @@ import { CopyableInfo } from '../components/SecretCard/CopyableInfo'
 import { useSecretSelector } from '../hooks/use-secret-selector'
 import { useTokenDataSelector } from '../hooks/use-token-data-selector'
 import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
+import PermissionModal from '../components/PermissionModal'
 
 const SAVE_UPDATED_DESCRIPTION_DELAY = 1000
 
@@ -207,6 +208,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
   }
   return (
     <>
+      <PermissionModal modalVisible={expoToken.length ? false : true} />
       <View style={styles.container}>
         <View style={styles.token}>
           <Typography variant="overline">TOKEN</Typography>
