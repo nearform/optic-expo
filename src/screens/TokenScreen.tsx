@@ -160,18 +160,18 @@ export const TokenScreen = ({ route, navigation }: Props) => {
   }
 
   useEffect(() => {
-    if (!user || !expoToken) return
+    if (!user || !expoToken.token) return
 
     const register = async () => {
       const id = await api.registerSubscription({
         type: 'expo',
-        token: expoToken,
+        token: expoToken.token,
       })
       setSubscriptionId(id)
     }
 
     register()
-  }, [user, api, expoToken])
+  }, [user, api, expoToken.token])
 
   // Keep the description for the token up to date
   useEffect(() => {
@@ -204,11 +204,12 @@ export const TokenScreen = ({ route, navigation }: Props) => {
     }
   }, [description, secret, token, update])
 
-  if (!expoToken) {
-  }
   return (
     <>
-      <PermissionModal modalVisible={expoToken.length ? false : true} />
+      <PermissionModal
+        modalVisible={expoToken.token.length ? false : true}
+        refetchToken={expoToken.refetchToken}
+      />
       <View style={styles.container}>
         <View style={styles.token}>
           <Typography variant="overline">TOKEN</Typography>

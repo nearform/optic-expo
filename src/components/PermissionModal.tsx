@@ -1,7 +1,6 @@
-export const CreateTokenScreen = {}
-import { openSettings } from 'expo-linking'
 import React, { useState } from 'react'
 import { StyleSheet, View, Modal, Text, Pressable, Alert } from 'react-native'
+import { openSettings } from 'expo-linking'
 
 const styles = StyleSheet.create({
   centeredView: {
@@ -49,21 +48,13 @@ const styles = StyleSheet.create({
 
 type Props = {
   modalVisible: boolean
+  refetchToken: () => Promise<void>
 }
-export default function PermissionModal({ modalVisible }: Props) {
-  const [visible, setVisible] = useState(modalVisible)
 
-  console.log(visible)
+export default function PermissionModal({ modalVisible, refetchToken }: Props) {
+  const [visible, setVisible] = useState(modalVisible)
   return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={visible}
-      onRequestClose={() => {
-        Alert.alert('Modal has been closed.')
-        setVisible(!modalVisible)
-      }}
-    >
+    <Modal animationType="slide" transparent={true} visible={visible}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <Text style={styles.modalText}>
@@ -71,7 +62,10 @@ export default function PermissionModal({ modalVisible }: Props) {
           </Text>
           <Pressable
             style={[styles.button, styles.buttonClose]}
-            onPress={openSettings}
+            onPress={async () => {
+              openSettings()
+              setVisible(false)
+            }}
           >
             <Text style={styles.textStyle}>Enable</Text>
           </Pressable>

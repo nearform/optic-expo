@@ -45,14 +45,18 @@ async function getToken() {
 export default function usePushToken() {
   const [token, setToken] = useState('')
 
-  useEffect(() => {
-    const fn = async () => {
-      const expoToken = await getToken()
-      if (expoToken) setToken(expoToken)
+  const fetchToken = async () => {
+    const expoToken = await getToken()
+    if (expoToken) {
+      setToken(expoToken)
     }
+  }
 
-    if (!token) fn()
+  useEffect(() => {
+    if (!token) {
+      fetchToken()
+    }
   }, [token])
 
-  return token
+  return { token, refetchToken: fetchToken }
 }

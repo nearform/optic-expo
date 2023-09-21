@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { StyleSheet, View, Platform } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { Button, TextInput } from 'react-native-paper'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import Toast from 'react-native-root-toast'
@@ -86,18 +86,18 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
   }
 
   useEffect(() => {
-    if (!user || !expoToken) return
+    if (!user || !expoToken.token) return
 
     const register = async () => {
       const id = await api.registerSubscription({
         type: 'expo',
-        token: expoToken,
+        token: expoToken.token,
       })
       setSubscriptionId(id)
     }
 
     register()
-  }, [user, api, expoToken])
+  }, [user, api, expoToken.token])
 
   if (!secret) {
     return null
@@ -105,7 +105,10 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
 
   return (
     <>
-      <PermissionModal modalVisible={expoToken.length ? false : true} />
+      <PermissionModal
+        modalVisible={expoToken.token.length ? false : true}
+        refetchToken={expoToken.refetchToken}
+      />
       <View style={styles.container}>
         <View>
           <Typography variant="h6">
