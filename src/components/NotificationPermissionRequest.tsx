@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, View, Modal, Pressable, Platform } from 'react-native'
+import {
+  Alert,
+  StyleSheet,
+  View,
+  Modal,
+  Pressable,
+  Platform,
+} from 'react-native'
 import { openSettings } from 'expo-linking'
 import { isDevice } from 'expo-device'
 import * as Notifications from 'expo-notifications'
@@ -10,11 +17,10 @@ import { Typography } from './Typography'
 
 const styles = StyleSheet.create({
   modalContainer: {
-    flex: 1,
-    justifyContent: 'flex-start',
     marginTop: 200,
   },
   modalView: {
+    height: '60%',
     margin: 15,
     borderRadius: 3,
     backgroundColor: 'white',
@@ -28,20 +34,24 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 20,
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
   navText: {
     textAlign: 'right',
     color: theme.colors.primary,
   },
   navContainer: {
-    marginTop: 30,
+    flex: 1,
   },
   modalText: {
     marginBottom: 15,
+  },
+  pressableContainer: {
+    marginLeft: 60,
+    marginTop: 20,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    borderColor: theme.colors.primary,
   },
 })
 
@@ -97,6 +107,17 @@ export default function NotificationPermissionRequest() {
     }
   }
 
+  async function handleCloseModal() {
+    const { status: isAllowedNotifications } =
+      await Notifications.getPermissionsAsync()
+
+    if (isAllowedNotifications !== 'granted') {
+      Alert.alert('Please accept notifications.')
+    } else {
+      setPermissionGranted(true)
+    }
+  }
+
   useEffect(() => {
     const fn = async () => {
       await checkPermissions()
@@ -109,6 +130,9 @@ export default function NotificationPermissionRequest() {
       animationType="slide"
       transparent={true}
       visible={!permissionGranted}
+      onRequestClose={() => {
+        handleCloseModal()
+      }}
     >
       <View style={styles.modalContainer}>
         <View style={styles.modalView}>
@@ -118,17 +142,29 @@ export default function NotificationPermissionRequest() {
           <Typography variant="body1">
             This app requires push notification permissions to function.
           </Typography>
+          <View style={styles.pressableContainer}>
+            <Pressable
+              style={styles.navContainer}
+              onPress={() => {
+                handleCloseModal()
+              }}
+            >
+              <Typography variant="h6" style={styles.navText}>
+                CLOSE
+              </Typography>
+            </Pressable>
 
-          <Pressable
-            style={styles.navContainer}
-            onPress={() => {
-              handleAcceptPermissions()
-            }}
-          >
-            <Typography variant="h6" style={styles.navText}>
-              ENABLE
-            </Typography>
-          </Pressable>
+            <Pressable
+              style={styles.navContainer}
+              onPress={() => {
+                handleAcceptPermissions()
+              }}
+            >
+              <Typography variant="h6" style={styles.navText}>
+                ENABLE
+              </Typography>
+            </Pressable>
+          </View>
         </View>
       </View>
     </Modal>
