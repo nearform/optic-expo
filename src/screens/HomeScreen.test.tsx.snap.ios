@@ -33,6 +33,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
       <Modal
         animationType="slide"
         hardwareAccelerated={false}
+        onRequestClose={[Function]}
         transparent={true}
         visible={false}
       />
