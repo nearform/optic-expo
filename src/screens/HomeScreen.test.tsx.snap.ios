@@ -30,6 +30,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
         }
       }
     >
+      <Modal
+        animationType="slide"
+        hardwareAccelerated={false}
+        transparent={true}
+        visible={false}
+      />
       <RCTScrollView
         contentContainerStyle={
           Object {
@@ -3180,6 +3186,12 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
         }
       }
     >
+      <Modal
+        animationType="slide"
+        hardwareAccelerated={false}
+        transparent={true}
+        visible={false}
+      />
       <RCTScrollView
         contentContainerStyle={
           Object {
