@@ -3190,6 +3190,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
       <Modal
         animationType="slide"
         hardwareAccelerated={false}
+        onRequestClose={[Function]}
         transparent={true}
         visible={false}
       />
