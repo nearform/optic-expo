@@ -17,7 +17,7 @@ import { Actions } from '../components/Actions'
 import { SecretCard } from '../components/SecretCard'
 import { NotificationData, OpticNotification, Secret } from '../types'
 import { MainStackParamList } from '../Main'
-
+import NotificationPermissionRequest from '../components/NotificationPermissionRequest'
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -166,7 +166,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* <NotificationPermissionRequest /> */}
+      <NotificationPermissionRequest />
       <ScrollView contentContainerStyle={styles.scrollView}>
         {secrets.length === 0 ? (
           <NoSecrets />
