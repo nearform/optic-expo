@@ -203,8 +203,6 @@ export const TokenScreen = ({ route, navigation }: Props) => {
     }
   }, [description, secret, token, update])
 
-  if (!expoToken) {
-  }
   return (
     <>
       <View style={styles.container}>

@@ -102,6 +102,8 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
     return null
   }
 
+  console.log(expoToken)
+
   return (
     <>
       <View style={styles.container}>

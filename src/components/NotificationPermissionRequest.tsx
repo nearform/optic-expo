@@ -81,7 +81,7 @@ export default function NotificationPermissionRequest() {
       }
     } else {
       setPermissionGranted(false)
-      console.log('permissions denied')
+      console.log('permissions denied, not a device')
     }
   }
   async function sendPermissionRequest() {
