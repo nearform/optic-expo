@@ -1,3 +1,30 @@
+## Distribution Certificates
+
+Most of the time the build is created by running the release action with no issues. If this is the case you can skip to the next section.
+
+If an IOS build has failed, this may be because of an expired distribution certificate from Apple.
+When this happens, you should do the following:
+
+**Step 1**
+
+Visit https://developer.apple.com/account/ios/certificate/ and generate an Apple Distribution Certificate for Apple Distribution
+
+![Distribution Certificate](docs/images/ios_certificate.png)
+
+and a Provisioning Profile for App Store Distribution.
+
+![Provisioning Profile](docs/images/ios_provisioning_profile.png)
+
+**Step 2**
+
+Update the certificates on the expo dashboard. To do this you should select the optic project, and select Credentials -> iOS -> com.nearform.optic. On this screen, you will be able to upload the newly generated Distribution Certificate and Provisioning Profile.
+
+![Expo Dashboard](docs/images/expo_dashboard.png)
+
+**Step 3**
+
+Once the new credentials have been uploaded, you can re-run the failed build action, and follow the steps below.
+
 ## Submitting for review
 
 Once a build is available to the AppStore Connect and has finished processing (usually takes about 10-15 minutes from the time Expo shares the build), you can proceed to create the new version on the platform.
@@ -60,7 +87,7 @@ Finally press “Add for Review” at the top right corner. Now it’s the Apple
 
 ![Step 1](docs/images/ios_release_store_step_1.png)
 
-If you selected “Automatically release this version” during the submission process, you don’t have to do anything else. Once the app is approved, it will show up in the stores in the next few hours -  it does takes some time for the store to make it available to everyone.
+If you selected “Automatically release this version” during the submission process, you don’t have to do anything else. Once the app is approved, it will show up in the stores in the next few hours - it does takes some time for the store to make it available to everyone.
 
 **Step 2**
 
