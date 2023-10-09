@@ -2940,10 +2940,10 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.3.tgz#472eaab5f15c1ffdd7f8628bd4c4f753995ec79e"
   integrity sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==
 
-"@types/aes-js@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@types/aes-js/-/aes-js-3.1.1.tgz#34b3978122310c135de4b377270d1d65676fae28"
-  integrity sha512-SDSGgXT3LRCH6qMWk8OHT1vLSVNuHNvCpKCx2/TYtQMbMGGgxJC9fspwSkQjqzRagrWnCrxuLL3jMNXLXHHvSw==
+"@types/aes-js@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@types/aes-js/-/aes-js-3.1.2.tgz#9bd9fa645dadbcd8f0c9f774c33d8a778f1a7a31"
+  integrity sha512-bKms4q1H3YCcLMKvqE9kUefE1TXc9/QhurzMRVqY9Qevodl0Fxyt6GQcUQ4TkmuWLdGQM1xL+yhSUBTJJRfBFA==
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.14", "@types/babel__core@^7.1.7":
   version "7.1.20"
