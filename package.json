@@ -71,7 +71,7 @@
     "react-native-screens": "~3.18.0",
     "react-native-svg": "13.4.0",
     "react-native-web": "~0.18.12",
-    "react-timeago": "^7.1.0",
+    "react-timeago": "^7.2.0",
     "url-otpauth": "^2.0.0",
     "utility-types": "^3.10.0",
     "uuid": "9.0.1"
