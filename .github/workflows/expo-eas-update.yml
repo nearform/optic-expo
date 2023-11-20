@@ -27,7 +27,7 @@ jobs:
           eas-version: latest
           token: ${{ secrets.expo-token }}
       - run: yarn
-      - uses: actions/github-script@v6
+      - uses: actions/github-script@v7
         id: sanitise-double-quotes
         with:
           script: return `${{ inputs.message }}`.replaceAll('"',"'")
@@ -41,7 +41,7 @@ jobs:
       - name: Build comment with preview links
         if: github.event_name == 'pull_request'
         id: build-comment
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           result-encoding: string
           script: |
