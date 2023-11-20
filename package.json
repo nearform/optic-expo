@@ -79,7 +79,7 @@
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/preset-typescript": "^7.23.2",
-    "@commitlint/cli": "^17.6.5",
+    "@commitlint/cli": "^18.4.2",
     "@commitlint/config-conventional": "^17.8.0",
     "@react-native-community/eslint-config": "^3.1.0",
     "@testing-library/jest-native": "^5.4.3",
