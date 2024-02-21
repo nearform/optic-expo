@@ -114,14 +114,14 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
     await api.respond(secret.secret, data.uniqueId, false)
     await removeNotification(data.uniqueId)
     // Don't do setIsLoading(false), as the component is unmounted anyway.
-  }, [data.uniqueId, secret.secret, api, removeNotification, setIsLoading])
+  }, [data.uniqueId, secret?.secret, api, removeNotification, setIsLoading])
 
   const approveRequest = useCallback(async () => {
     setIsLoading(true)
     await api.respond(secret.secret, data.uniqueId, true)
     await removeNotification(data.uniqueId)
     // Don't do setIsLoading(false), as the component is unmounted anyway.
-  }, [data.uniqueId, secret.secret, api, removeNotification, setIsLoading])
+  }, [data.uniqueId, secret?.secret, api, removeNotification, setIsLoading])
 
   const handleApprove = useCallback(async () => {
     if (!canUseLocalAuth || !prefs.useBiometricAuth) {
@@ -139,19 +139,19 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
     [data.uniqueId, removeNotification]
   )
 
-  const packageInfo = notification.request.content.data.packageInfo
+  const packageInfo = notification.request.content.data?.packageInfo || {}
 
   return (
     <>
       <View style={styles.container}>
         <Card>
           <Card.Title
-            title={<Typography variant="h5">{secret.issuer}</Typography>}
-            subtitle={secret.account}
+            title={<Typography variant="h5">{secret?.issuer}</Typography>}
+            subtitle={secret?.account}
             left={props => <Avatar.Icon {...props} icon="key" />}
           />
           <Card.Content>
-            <TokenInfo token={token.token} description={token.description} />
+            <TokenInfo token={token?.token} description={token?.description} />
             {packageInfo && (
               <View style={styles.cardRow}>
                 <PackageInfo packageInfo={packageInfo} />
