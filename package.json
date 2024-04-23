@@ -63,7 +63,7 @@
     "react-native": "0.70.8",
     "react-native-countdown-circle-timer": "^3.2.1",
     "react-native-crypto-js": "^1.0.0",
-    "react-native-gesture-handler": "~2.9.0",
+    "react-native-gesture-handler": "~2.8.0",
     "react-native-get-random-values": "~1.8.0",
     "react-native-paper": "5.7.2",
     "react-native-root-toast": "^3.5.1",
