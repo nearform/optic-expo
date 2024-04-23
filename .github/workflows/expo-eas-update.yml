@@ -48,4 +48,5 @@ jobs:
         with:
           comment: true
           comment-id: auto-preview
-          command: eas update --auto --branch ${{ inputs.channel }} --message "${{ steps.sanitise-double-quotes.outputs.result }}"
+          qr-target: expo-go
+          command: eas update --branch ${{ inputs.channel }} --message "${{ steps.sanitise-double-quotes.outputs.result }}"
