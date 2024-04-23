@@ -15,47 +15,37 @@ on:
 jobs:
   eas-update:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - uses: expo/expo-github-action@v8
+
+      - name: 🏗 Setup EAS
+        uses: expo/expo-github-action@v8
         with:
           expo-cache: true
           expo-version: latest
           eas-version: latest
           token: ${{ secrets.expo-token }}
-      - run: yarn
-      - uses: actions/github-script@v7
+
+      - name: 📦 Install dependencies
+        run: yarn
+
+      - uses: actions/github-script@v6
         id: sanitise-double-quotes
         with:
           script: return `${{ inputs.message }}`.replaceAll('"',"'")
           result-encoding: string
-      - name: EAS update
-        id: eas-update
-        run: |
-          EAS_UPDATED_OUTPUT="$(eas update --branch ${{ inputs.channel }} --message '${{ steps.sanitise-double-quotes.outputs.result }}' --non-interactive --json | tr '\n' ' ')"
-          echo "$EAS_UPDATED_OUTPUT"
-          echo "easUpdateOutput=$EAS_UPDATED_OUTPUT" >> $GITHUB_OUTPUT
-      - name: Build comment with preview links
-        if: github.event_name == 'pull_request'
-        id: build-comment
-        uses: actions/github-script@v7
+
+      - name: 🚀 Create preview
+        uses: expo/expo-github-action/preview@v8
         with:
-          result-encoding: string
-          script: |
-            const rawEasUpdateOutput = `${{ steps.eas-update.outputs.easUpdateOutput }}`
-            const easUpdateOutput = JSON.parse(rawEasUpdateOutput)
-            const previewLink = `https://expo.dev/accounts/nearform/projects/optic-expo/updates/${easUpdateOutput[0].group}`
-            const qrCodesSections = easUpdateOutput.map(
-              preview =>
-                `${preview.platform}: <br/> <img src='https://qr.expo.dev/eas-update?updateId=${preview.id}&amp;appScheme=exp&amp;host=u.expo.dev' alt='QR Code' />`
-            )
-            return `Preview available at ${previewLink} <br/> <br/> Or scan QR Codes... <br/> <br/> ${qrCodesSections.join('<br/><br/>')}}`
-      - name: Comment preview link
-        if: github.event_name == 'pull_request'
-        uses: expo/expo-github-action/preview-comment@v8
-        with:
-          channel: pr-${{ github.event.number }}
-          message: ${{ steps.build-comment.outputs.result }}
+          comment: true
+          comment-id: auto-preview
+          command: eas update --auto --branch ${{ inputs.channel }} --message "${{ steps.sanitise-double-quotes.outputs.result }}"
