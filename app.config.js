@@ -85,4 +85,5 @@ export default {
   runtimeVersion: {
     policy: 'sdkVersion',
   },
+  plugins: ['expo-font', 'expo-secure-store'],
 }
