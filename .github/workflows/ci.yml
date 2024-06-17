@@ -18,7 +18,7 @@ jobs:
       - name: Dependabot metadata
         if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
         id: dependabot-metadata
-        uses: dependabot/fetch-metadata@v1
+        uses: dependabot/fetch-metadata@v2
 
       - name: Check if it is a dependency that should be managed by Expo
         if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
