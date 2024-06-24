@@ -34,7 +34,7 @@
     "aes-js": "^3.1.2",
     "buffer": "^6.0.3",
     "dotenv": "^16.3.1",
-    "expo": "~47.0.13",
+    "expo": "~51.0.14",
     "expo-apple-authentication": "~5.0.1",
     "expo-auth-session": "~3.8.0",
     "expo-barcode-scanner": "~12.1.0",
