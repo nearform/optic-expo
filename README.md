@@ -84,7 +84,7 @@ In order to successfully run the Optic-expo app locally you will need the follow
 
 ## Figma Design
 
-The figma designs can be found [here](<https://www.figma.com/file/xsPf6IIM9AevLN5gZlXM4q/Optic-(Copy)>)
+The figma designs can be found [here](<https://www.figma.com/file/xsPf6IIM9AevLN5gZlXM4q/Optic-(Copy)>).
 
 ## Sequence diagram
 
