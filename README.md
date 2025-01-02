@@ -94,4 +94,4 @@ The figma designs can be found [here](<https://www.figma.com/design/1vQl3KweUUkX
 
 The Android app is published to the Play Store once the release workflow is run.
 
-For the iOS version, please follow [this guide](IOS_RELEASE.md)
+For the iOS version, please follow [this guide](IOS_RELEASE.md).
