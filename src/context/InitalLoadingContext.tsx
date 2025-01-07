@@ -29,7 +29,7 @@ export const InitialLoadingProvider = ({ children }) => {
       initialLoadingComplete,
       markInitialLoadingComplete,
     }),
-    [initialLoadingComplete, markInitialLoadingComplete]
+    [initialLoadingComplete, markInitialLoadingComplete],
   )
 
   return (

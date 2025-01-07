@@ -136,7 +136,7 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
 
   const handleDismiss = useCallback(
     async () => removeNotification(data.uniqueId),
-    [data.uniqueId, removeNotification]
+    [data.uniqueId, removeNotification],
   )
 
   const packageInfo = notification.request.content.data.packageInfo

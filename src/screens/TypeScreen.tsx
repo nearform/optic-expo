@@ -49,7 +49,7 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
   }
 
   const invalidSecret = !RFC4648_REGEX.test(
-    secret.replace(/\s/g, '').toUpperCase()
+    secret.replace(/\s/g, '').toUpperCase(),
   )
   const disabled =
     invalidSecret || !secret.trim() || !account.trim() || !issuer.trim()

@@ -54,7 +54,7 @@ export const ExportFileSecret: React.FC<ExportFileSecretProps> = ({
       const encriptionSecret = `${secret}.${user.uid}`
       const fileContent = CryptoJS.AES.encrypt(
         JSON.stringify(secrets),
-        encriptionSecret
+        encriptionSecret,
       ).toString()
       const fileName = `optic-backup-${new Date()
         .toISOString()

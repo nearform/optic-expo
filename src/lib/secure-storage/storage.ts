@@ -48,9 +48,8 @@ const checkOrCreateStorageFile = async () => {
 
 const getDecryptedStorage = async () => {
   await checkOrCreateStorageFile()
-  const encryptedStorage = await FileSystem.readAsStringAsync(
-    storageFileNameURI
-  )
+  const encryptedStorage =
+    await FileSystem.readAsStringAsync(storageFileNameURI)
   if (!encryptedStorage || encryptedStorage.length === 0) {
     return {}
   }

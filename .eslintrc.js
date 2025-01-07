@@ -10,6 +10,7 @@ module.exports = {
     '@react-native-community',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    // 'plugin:jest/recommended',
     'plugin:prettier/recommended',
   ],
   parserOptions: {
@@ -48,4 +49,5 @@ module.exports = {
   env: {
     'jest/globals': true,
   },
+  ignorePatterns: ['patch/', 'ios/', 'android/', 'node_modules/', 'dist/'],
 }

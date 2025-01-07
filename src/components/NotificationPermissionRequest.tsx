@@ -95,7 +95,12 @@ export default function NotificationPermissionRequest() {
     if (!userRejected) {
       const granted = await sendPermissionRequest()
 
-      granted ? setPermissionGranted(granted) : setUserRejected(granted)
+      if (granted) {
+        setPermissionGranted(granted)
+      } else {
+        setUserRejected(granted)
+      }
+
       if (!granted) {
         setPermissionGranted(false)
         setUserRejected(true)

@@ -12,7 +12,7 @@ export function renderWithTheme(ui: React.ReactElement) {
 
 export function getMockedNavigation<
   P extends keyof MainStackParamList = 'Home',
-  T = StackNavigationProp<MainStackParamList, P>
+  T = StackNavigationProp<MainStackParamList, P>,
 >(fns?: T) {
   return {
     navigate: jest.fn(),

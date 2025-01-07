@@ -48,7 +48,7 @@ describe('TokensListScreen', () => {
     const { getByText } = setup()
     expect(getByText('No Tokens')).toBeTruthy()
     expect(
-      getByText('Create a new token and it will appear here.')
+      getByText('Create a new token and it will appear here.'),
     ).toBeTruthy()
   })
 

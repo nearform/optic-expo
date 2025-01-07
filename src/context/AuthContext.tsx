@@ -81,6 +81,7 @@ type AuthenticationProviderProps = {
 }
 
 // FIXME: likely not needed any more, remove once auth is working
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const projectNameForProxy = `@${Constants.expoConfig.owner}/${Constants.expoConfig.slug}`
 
 function useGoogleAuth() {
@@ -117,7 +118,7 @@ function useAppleAuth() {
         idToken: credential.identityToken,
       })
       signInWithCredential(auth, credentials)
-    } catch (e) {
+    } catch {
       // do nothing
     }
   }, [])

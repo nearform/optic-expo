@@ -1,11 +1,11 @@
 module.exports = async ({ context, github, fetch, dependencyNames }) => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const expoVersion = require('../package.json').dependencies.expo
   const expoVersionSanitized = expoVersion.replace(/^[~^]/g, '')
 
   const majorExpoVersion = `${expoVersionSanitized.substring(
     0,
-    expoVersionSanitized.indexOf('.')
+    expoVersionSanitized.indexOf('.'),
   )}.0.0`
 
   const expoData = await fetch('https://api.expo.dev/v2/versions/latest')
@@ -22,7 +22,7 @@ module.exports = async ({ context, github, fetch, dependencyNames }) => {
     'expo',
   ].some(
     // checks if the list of dependencies being updated contains a related package
-    package => dependencyNamesList.includes(package)
+    package => dependencyNamesList.includes(package),
   )
 
   if (shouldClosePR) {

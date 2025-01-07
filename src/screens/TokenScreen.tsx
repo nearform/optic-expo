@@ -53,7 +53,7 @@ const showRevokeConfirmAlert = (onConfirm: () => void) => {
       },
       { text: 'REVOKE', onPress: onConfirm },
     ],
-    { cancelable: true }
+    { cancelable: true },
   )
 }
 
@@ -68,7 +68,7 @@ const showRefreshConfirmAlert = (onConfirm: () => void) => {
       },
       { text: 'REFRESH', onPress: onConfirm },
     ],
-    { cancelable: true }
+    { cancelable: true },
   )
 }
 
@@ -122,7 +122,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
       const refreshedToken = await api.generateToken(
         secret,
         subscriptionId,
-        token
+        token,
       )
       const newToken = {
         token: refreshedToken,
@@ -177,7 +177,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
     const updateDescription = async () => {
       const existingTokens = secret.tokens ? [...secret.tokens] : []
       const existingItemIndex = existingTokens.findIndex(
-        item => item.token === token
+        item => item.token === token,
       )
       if (existingItemIndex === -1) {
         return
@@ -196,7 +196,7 @@ export const TokenScreen = ({ route, navigation }: Props) => {
     }
     const timeoutId = setTimeout(
       updateDescription,
-      SAVE_UPDATED_DESCRIPTION_DELAY
+      SAVE_UPDATED_DESCRIPTION_DELAY,
     )
     return () => {
       clearTimeout(timeoutId)

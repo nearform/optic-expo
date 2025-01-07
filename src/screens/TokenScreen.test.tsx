@@ -33,7 +33,7 @@ jest.mock('../context/SecretsContext')
 jest
   .spyOn(Alert, 'alert')
   .mockImplementation((title, message, callbackOrButtons) =>
-    callbackOrButtons[1].onPress()
+    callbackOrButtons[1].onPress(),
   )
 
 describe('TokenScreen', () => {
