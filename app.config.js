@@ -85,4 +85,5 @@ export default {
   runtimeVersion: {
     policy: 'sdkVersion',
   },
+  // newArchEnabled: true, // FIXME: do we want to do this later?
 }

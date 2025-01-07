@@ -11,6 +11,8 @@ import CryptoJS from 'react-native-crypto-js'
 
 import { Secret } from '../types'
 
+// FIXME: do we want to switch to the beta expo-file-system?
+
 const mimeType = 'application/octet-stream'
 
 function isJsonString(str) {

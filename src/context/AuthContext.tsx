@@ -1,15 +1,25 @@
+import * as AppleAuthentication from 'expo-apple-authentication'
+import * as Google from 'expo-auth-session/providers/google'
+import Constants from 'expo-constants'
+import * as WebBrowser from 'expo-web-browser'
+import { initializeApp } from 'firebase/app'
+import {
+  User as FirebaseUser,
+  getAuth,
+  GoogleAuthProvider,
+  OAuthProvider,
+  onAuthStateChanged,
+  signInWithCredential,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth'
 import React, {
-  useState,
-  useEffect,
-  useMemo,
   useCallback,
   useContext,
+  useEffect,
+  useMemo,
+  useState,
 } from 'react'
-import * as Google from 'expo-auth-session/providers/google'
-import firebase from 'firebase'
-import * as WebBrowser from 'expo-web-browser'
-import Constants from 'expo-constants'
-import * as AppleAuthentication from 'expo-apple-authentication'
 
 import { User } from '../types'
 
@@ -49,9 +59,8 @@ const firebaseConfig = {
   appId,
 }
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig)
-}
+const app = initializeApp(firebaseConfig)
+const auth = getAuth(app)
 
 WebBrowser.maybeCompleteAuthSession()
 
@@ -71,34 +80,26 @@ type AuthenticationProviderProps = {
   children: React.ReactNode
 }
 
+// FIXME: likely not needed any more, remove once auth is working
 const projectNameForProxy = `@${Constants.expoConfig.owner}/${Constants.expoConfig.slug}`
 
 function useGoogleAuth() {
-  const [, response, promptAsync] = Google.useIdTokenAuthRequest(
-    {
-      expoClientId: clientId,
-      clientId,
-      androidClientId,
-      iosClientId,
-    },
-    {
-      projectNameForProxy,
-    }
-  )
+  const [, response, promptAsync] = Google.useIdTokenAuthRequest({
+    clientId,
+    androidClientId,
+    iosClientId,
+  })
 
   const login = useCallback<ContextType['handleLoginGoogle']>(
-    () =>
-      promptAsync({
-        projectNameForProxy,
-      }),
-    [promptAsync]
+    () => promptAsync(), // FIXME: swap to development build and custom uri scheme
+    [promptAsync],
   )
 
   useEffect(() => {
     if (response?.type === 'success') {
       const { id_token } = response.params
-      const credentials = firebase.auth.GoogleAuthProvider.credential(id_token)
-      firebase.auth().signInWithCredential(credentials)
+      const credentials = GoogleAuthProvider.credential(id_token)
+      signInWithCredential(auth, credentials)
     }
   }, [response])
 
@@ -111,11 +112,11 @@ function useAppleAuth() {
       const credential = await AppleAuthentication.signInAsync({
         requestedScopes: [AppleAuthentication.AppleAuthenticationScope.EMAIL],
       })
-      const provider = new firebase.auth.OAuthProvider('apple.com')
+      const provider = new OAuthProvider('apple.com')
       const credentials = provider.credential({
         idToken: credential.identityToken,
       })
-      firebase.auth().signInWithCredential(credentials)
+      signInWithCredential(auth, credentials)
     } catch (e) {
       // do nothing
     }
@@ -126,14 +127,14 @@ function useAppleAuth() {
 
 function usePasswordAuth() {
   return useCallback(async ({ user, password }) => {
-    await firebase.auth().signInWithEmailAndPassword(user, password)
+    await signInWithEmailAndPassword(auth, user, password)
   }, [])
 }
 
 export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   children,
 }) => {
-  const [firebaseUser, setFirebaseUser] = useState<firebase.User>()
+  const [firebaseUser, setFirebaseUser] = useState<FirebaseUser>()
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState<User>()
 
@@ -142,10 +143,11 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   const handleLoginPassword = usePasswordAuth()
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(newFirebaseUser => {
+    const unsubscribe = onAuthStateChanged(auth, newFirebaseUser => {
       setLoading(false)
       setFirebaseUser(newFirebaseUser)
     })
+    return () => unsubscribe()
   }, [])
 
   useEffect(() => {
@@ -167,7 +169,7 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   }, [firebaseUser])
 
   const handleLogout = useCallback<ContextType['handleLogout']>(async () => {
-    await firebase.auth().signOut()
+    await signOut(auth)
     setUser(null)
   }, [])
 
@@ -196,7 +198,7 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
       handleLoginApple,
       handleLoginPassword,
       handleDeleteAccount,
-    ]
+    ],
   )
 
   return <AuthContext.Provider value={context}>{children}</AuthContext.Provider>
