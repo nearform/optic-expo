@@ -3,7 +3,7 @@ const pkg = require('./package.json')
 
 const config = {
   API_URL: 'https://optic-zf3votdk5a-ew.a.run.app/api',
-  API_KEY: 'AIzaSyBFiuUulmuQ7Pv1VvxpUQB01AWCEQhIToA',
+  API_KEY: 'AIzaSyBFiuUulmuQ7Pv1VvxpUQB01AWCEQhIToA', // cSpell:disable-line
   AUTH_DOMAIN: 'npm-otp-f6bfc.firebaseapp.com',
   DATABASE_URL: 'https://npm-otp-f6bfc.firebaseio.com',
   PROJECT_ID: 'npm-otp-f6bfc',
@@ -11,11 +11,11 @@ const config = {
   MESSAGING_SENDER_ID: '230076165693',
   APP_ID: '1:230076165693:web:a04f9ad6f64be8ec248454',
   CLIENT_ID:
-    '230076165693-0mj3vb13158tnru89f1re89m9o94g8e7.apps.googleusercontent.com',
+    '230076165693-0mj3vb13158tnru89f1re89m9o94g8e7.apps.googleusercontent.com', // cSpell:disable-line
   CLIENT_ID_ANDROID:
-    '230076165693-a668m77v43bsbi0usea3p4o83ehco09r.apps.googleusercontent.com',
+    '230076165693-a668m77v43bsbi0usea3p4o83ehco09r.apps.googleusercontent.com', // cSpell:disable-line
   CLIENT_ID_IOS:
-    '230076165693-v8kk0ase89jp3s1qe0rtg70t3vb2h9i9.apps.googleusercontent.com',
+    '230076165693-v8kk0ase89jp3s1qe0rtg70t3vb2h9i9.apps.googleusercontent.com', // cSpell:disable-line
   EAS_PROJECT_ID: 'e3c6e759-c8c5-41a8-861e-b3e4adab619a',
   APP_PACKAGE_ID: 'com.nearform.optic',
 }
