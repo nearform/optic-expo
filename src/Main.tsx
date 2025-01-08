@@ -1,39 +1,38 @@
-import React, { useEffect } from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
 import {
-  useFonts as usePoppins,
-  Poppins_700Bold,
-} from '@expo-google-fonts/poppins'
-import {
-  useFonts as useDidactGothic,
   DidactGothic_400Regular,
+  useFonts as useDidactGothic,
 } from '@expo-google-fonts/didact-gothic'
 import {
-  useFonts as useFiraCode,
   FiraCode_400Regular,
+  useFonts as useFiraCode,
 } from '@expo-google-fonts/fira-code'
+import {
+  Poppins_700Bold,
+  useFonts as usePoppins,
+} from '@expo-google-fonts/poppins'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator, StackScreenProps } from '@react-navigation/stack'
 import * as SplashScreen from 'expo-splash-screen'
-import { NativeStackScreenProps } from 'react-native-screens/native-stack'
+import React, { useEffect } from 'react'
 
-import theme from './lib/theme'
-import { useAuth } from './context/AuthContext'
-import { HomeScreen } from './screens/HomeScreen'
-import { SettingsScreen } from './screens/SettingsScreen'
-import { TypeScreen } from './screens/TypeScreen'
-import { ScanScreen } from './screens/ScanScreen'
-import { AuthScreen } from './screens/AuthScreen'
-import HomeHeaderRight from './components/HomeHeaderRight'
 import DefaultHeaderLeft from './components/DefaultHeaderLeft'
-import { TokenScreen } from './screens/TokenScreen'
-import { OtpRequestScreen } from './screens/OtpRequestScreen'
-import { TokensListScreen } from './screens/TokensListScreen'
+import HomeHeaderRight from './components/HomeHeaderRight'
+import { useAuth } from './context/AuthContext'
+import theme from './lib/theme'
+import { AuthScreen } from './screens/AuthScreen'
 import { CreateTokenScreen } from './screens/CreateTokenScreen'
-import { NotificationsScreen } from './screens/NotificationsScreen'
 import { ExportFileSecret } from './screens/ExportFileSecret'
+import { HomeScreen } from './screens/HomeScreen'
 import { ImportFileSecret } from './screens/ImportFileSecret'
+import { NotificationsScreen } from './screens/NotificationsScreen'
+import { OtpRequestScreen } from './screens/OtpRequestScreen'
+import { ScanScreen } from './screens/ScanScreen'
+import { SettingsScreen } from './screens/SettingsScreen'
+import { TokenScreen } from './screens/TokenScreen'
+import { TokensListScreen } from './screens/TokensListScreen'
+import { TypeScreen } from './screens/TypeScreen'
 
-const MainStack = createStackNavigator()
+const MainStack = createStackNavigator<MainStackParamList>()
 
 export type MainStackParamList = {
   Home: undefined
@@ -102,6 +101,7 @@ export default function Main() {
   return (
     <NavigationContainer>
       <MainStack.Navigator
+        id={undefined} // FIXME: diagnose this properly and remove
         initialRouteName="Home"
         screenOptions={{
           headerStyle: {
@@ -110,6 +110,7 @@ export default function Main() {
           headerTitleStyle: {
             color: theme.colors.surface,
           },
+          freezeOnBlur: true,
         }}
       >
         <MainStack.Screen
@@ -129,7 +130,7 @@ export default function Main() {
             route: {
               params: { issuer },
             },
-          }: NativeStackScreenProps<MainStackParamList, 'TokensList'>) => ({
+          }: StackScreenProps<MainStackParamList, 'TokensList'>) => ({
             title: issuer,
             headerLeft: DefaultHeaderLeft,
           })}
