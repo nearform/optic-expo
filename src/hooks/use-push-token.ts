@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react'
-import Constants from 'expo-constants'
 import * as Notifications from 'expo-notifications'
 
 async function getToken() {
   let token
 
   try {
-    const notification = await Notifications.getExpoPushTokenAsync({
-      experienceId: `@${Constants.expoConfig.owner}/${Constants.expoConfig.slug}`,
-    })
+    // FIXME: check push notifications work
+    const notification = await Notifications.getExpoPushTokenAsync()
     token = notification.data
   } catch (e) {
     return console.error(e)

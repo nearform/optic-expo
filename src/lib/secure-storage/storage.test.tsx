@@ -13,8 +13,10 @@ describe('storage', () => {
   beforeEach(() => {
     jest.resetAllMocks()
     global.crypto = {
-      getRandomValues: jest.fn().mockReturnValue(new Uint8Array(32)),
-    }
+      getRandomValues: jest
+        .fn()
+        .mockReturnValue(new Uint8Array(32)) as Crypto['getRandomValues'],
+    } as Crypto
     ;(getInfoAsync as jest.Mock).mockImplementation(() => ({ exists: true }))
   })
 

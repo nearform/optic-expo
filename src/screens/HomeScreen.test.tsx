@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Notification from 'expo-notifications'
-import { Subscription } from 'expo-modules-core'
+import { EventSubscription } from 'expo-modules-core'
 
 import apiFactory from '../lib/api'
 import { getMockedNavigation, renderWithTheme } from '../../test/utils'
@@ -37,7 +37,7 @@ describe('HomeScreen', () => {
     })
     ;(
       Notification.addNotificationResponseReceivedListener as jest.Mock
-    ).mockReturnValue({} as Subscription)
+    ).mockReturnValue({} as EventSubscription)
   })
 
   afterEach(() => {

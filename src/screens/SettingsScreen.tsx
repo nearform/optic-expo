@@ -83,15 +83,21 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
 
   const handleImport = async () => {
     try {
-      const documentMeta = await DocumentPicker.getDocumentAsync()
+      const result = await DocumentPicker.getDocumentAsync({
+        type: '*/*', // FIXME: check which types are supported, and alter accordingly
+        multiple: false,
+        copyToCacheDirectory: true,
+      })
 
-      if (documentMeta.type === 'cancel') {
+      if (result.canceled) {
         Toast.show('Import canceled')
         return
       }
 
+      // NOTE: only one asset in list, as we used `multiple: false`
+      const asset = result.assets[0]
       let parsedSecrets = []
-      const { fileContent, isJson } = await readFile(documentMeta.uri)
+      const { fileContent, isJson } = await readFile(asset.uri)
       if (isJson) {
         parsedSecrets = convertOldParsedDataToSecrets(fileContent)
         if (parsedSecrets.length === 0) {
