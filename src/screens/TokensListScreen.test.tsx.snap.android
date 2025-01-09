@@ -254,22 +254,39 @@ exports[`TokensListScreen should match snapshot when there are no tokens 1`] = `
             >
               <Text
                 accessibilityElementsHidden={true}
+                allowFontScaling={false}
                 importantForAccessibility="no-hide-descendants"
                 pointerEvents="none"
                 selectable={false}
                 style={
                   [
                     {
-                      "backgroundColor": "transparent",
-                    },
-                    {
                       "color": "#ffffff",
                       "fontSize": 24,
                     },
+                    [
+                      {
+                        "lineHeight": 24,
+                        "transform": [
+                          {
+                            "scaleX": 1,
+                          },
+                        ],
+                      },
+                      {
+                        "backgroundColor": "transparent",
+                      },
+                    ],
+                    {
+                      "fontFamily": "material-community",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    {},
                   ]
                 }
               >
-                □
+                󰐕
               </Text>
             </View>
           </View>

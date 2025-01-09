@@ -386,22 +386,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     >
                       <Text
                         accessibilityElementsHidden={true}
+                        allowFontScaling={false}
                         importantForAccessibility="no-hide-descendants"
                         pointerEvents="none"
                         selectable={false}
                         style={
                           [
                             {
-                              "backgroundColor": "transparent",
-                            },
-                            {
                               "color": "#ffffff",
                               "fontSize": 24,
                             },
+                            [
+                              {
+                                "lineHeight": 24,
+                                "transform": [
+                                  {
+                                    "scaleX": 1,
+                                  },
+                                ],
+                              },
+                              {
+                                "backgroundColor": "transparent",
+                              },
+                            ],
+                            {
+                              "fontFamily": "material-community",
+                              "fontStyle": "normal",
+                              "fontWeight": "normal",
+                            },
+                            {},
                           ]
                         }
                       >
-                        □
+                        󰌆
                       </Text>
                     </View>
                   </View>
@@ -626,22 +643,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         >
                           <Text
                             accessibilityElementsHidden={true}
+                            allowFontScaling={false}
                             importantForAccessibility="no-hide-descendants"
                             pointerEvents="none"
                             selectable={false}
                             style={
                               [
                                 {
-                                  "backgroundColor": "transparent",
-                                },
-                                {
                                   "color": "#6D6D68",
                                   "fontSize": 24,
                                 },
+                                [
+                                  {
+                                    "lineHeight": 24,
+                                    "transform": [
+                                      {
+                                        "scaleX": 1,
+                                      },
+                                    ],
+                                  },
+                                  {
+                                    "backgroundColor": "transparent",
+                                  },
+                                ],
+                                {
+                                  "fontFamily": "material-community",
+                                  "fontStyle": "normal",
+                                  "fontWeight": "normal",
+                                },
+                                {},
                               ]
                             }
                           >
-                            □
+                            󰇙
                           </Text>
                         </View>
                       </View>
@@ -821,22 +855,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           >
                             <Text
                               accessibilityElementsHidden={true}
+                              allowFontScaling={false}
                               importantForAccessibility="no-hide-descendants"
                               pointerEvents="none"
                               selectable={false}
                               style={
                                 [
                                   {
-                                    "backgroundColor": "transparent",
-                                  },
-                                  {
                                     "color": "#6D6D68",
                                     "fontSize": 20,
                                   },
+                                  [
+                                    {
+                                      "lineHeight": 20,
+                                      "transform": [
+                                        {
+                                          "scaleX": 1,
+                                        },
+                                      ],
+                                    },
+                                    {
+                                      "backgroundColor": "transparent",
+                                    },
+                                  ],
+                                  {
+                                    "fontFamily": "material-community",
+                                    "fontStyle": "normal",
+                                    "fontWeight": "normal",
+                                  },
+                                  {},
                                 ]
                               }
                             >
-                              □
+                              󰆏
                             </Text>
                           </View>
                         </View>
@@ -1177,22 +1228,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             >
                               <Text
                                 accessibilityElementsHidden={true}
+                                allowFontScaling={false}
                                 importantForAccessibility="no-hide-descendants"
                                 pointerEvents="none"
                                 selectable={false}
                                 style={
                                   [
                                     {
-                                      "backgroundColor": "transparent",
-                                    },
-                                    {
                                       "color": "#2165E3",
                                       "fontSize": 16,
                                     },
+                                    [
+                                      {
+                                        "lineHeight": 16,
+                                        "transform": [
+                                          {
+                                            "scaleX": 1,
+                                          },
+                                        ],
+                                      },
+                                      {
+                                        "backgroundColor": "transparent",
+                                      },
+                                    ],
+                                    {
+                                      "fontFamily": "material-community",
+                                      "fontStyle": "normal",
+                                      "fontWeight": "normal",
+                                    },
+                                    {},
                                   ]
                                 }
                               >
-                                □
+                                󰅂
                               </Text>
                             </View>
                             <Text
@@ -1486,22 +1554,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           >
                             <Text
                               accessibilityElementsHidden={true}
+                              allowFontScaling={false}
                               importantForAccessibility="no-hide-descendants"
                               pointerEvents="none"
                               selectable={false}
                               style={
                                 [
                                   {
-                                    "backgroundColor": "transparent",
-                                  },
-                                  {
                                     "color": "#2165E3",
                                     "fontSize": 16,
                                   },
+                                  [
+                                    {
+                                      "lineHeight": 16,
+                                      "transform": [
+                                        {
+                                          "scaleX": 1,
+                                        },
+                                      ],
+                                    },
+                                    {
+                                      "backgroundColor": "transparent",
+                                    },
+                                  ],
+                                  {
+                                    "fontFamily": "material-community",
+                                    "fontStyle": "normal",
+                                    "fontWeight": "normal",
+                                  },
+                                  {},
                                 ]
                               }
                             >
-                              □
+                              󰈈
                             </Text>
                           </View>
                           <Text
@@ -1657,22 +1742,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           >
                             <Text
                               accessibilityElementsHidden={true}
+                              allowFontScaling={false}
                               importantForAccessibility="no-hide-descendants"
                               pointerEvents="none"
                               selectable={false}
                               style={
                                 [
                                   {
-                                    "backgroundColor": "transparent",
-                                  },
-                                  {
                                     "color": "#ffffff",
                                     "fontSize": 16,
                                   },
+                                  [
+                                    {
+                                      "lineHeight": 16,
+                                      "transform": [
+                                        {
+                                          "scaleX": 1,
+                                        },
+                                      ],
+                                    },
+                                    {
+                                      "backgroundColor": "transparent",
+                                    },
+                                  ],
+                                  {
+                                    "fontFamily": "material-community",
+                                    "fontStyle": "normal",
+                                    "fontWeight": "normal",
+                                  },
+                                  {},
                                 ]
                               }
                             >
-                              □
+                              󰐕
                             </Text>
                           </View>
                           <Text
@@ -1809,22 +1911,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     >
                       <Text
                         accessibilityElementsHidden={true}
+                        allowFontScaling={false}
                         importantForAccessibility="no-hide-descendants"
                         pointerEvents="none"
                         selectable={false}
                         style={
                           [
                             {
-                              "backgroundColor": "transparent",
-                            },
-                            {
                               "color": "#ffffff",
                               "fontSize": 24,
                             },
+                            [
+                              {
+                                "lineHeight": 24,
+                                "transform": [
+                                  {
+                                    "scaleX": 1,
+                                  },
+                                ],
+                              },
+                              {
+                                "backgroundColor": "transparent",
+                              },
+                            ],
+                            {
+                              "fontFamily": "material-community",
+                              "fontStyle": "normal",
+                              "fontWeight": "normal",
+                            },
+                            {},
                           ]
                         }
                       >
-                        □
+                        󰌆
                       </Text>
                     </View>
                   </View>
@@ -2049,22 +2168,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         >
                           <Text
                             accessibilityElementsHidden={true}
+                            allowFontScaling={false}
                             importantForAccessibility="no-hide-descendants"
                             pointerEvents="none"
                             selectable={false}
                             style={
                               [
                                 {
-                                  "backgroundColor": "transparent",
-                                },
-                                {
                                   "color": "#6D6D68",
                                   "fontSize": 24,
                                 },
+                                [
+                                  {
+                                    "lineHeight": 24,
+                                    "transform": [
+                                      {
+                                        "scaleX": 1,
+                                      },
+                                    ],
+                                  },
+                                  {
+                                    "backgroundColor": "transparent",
+                                  },
+                                ],
+                                {
+                                  "fontFamily": "material-community",
+                                  "fontStyle": "normal",
+                                  "fontWeight": "normal",
+                                },
+                                {},
                               ]
                             }
                           >
-                            □
+                            󰇙
                           </Text>
                         </View>
                       </View>
@@ -2244,22 +2380,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           >
                             <Text
                               accessibilityElementsHidden={true}
+                              allowFontScaling={false}
                               importantForAccessibility="no-hide-descendants"
                               pointerEvents="none"
                               selectable={false}
                               style={
                                 [
                                   {
-                                    "backgroundColor": "transparent",
-                                  },
-                                  {
                                     "color": "#6D6D68",
                                     "fontSize": 20,
                                   },
+                                  [
+                                    {
+                                      "lineHeight": 20,
+                                      "transform": [
+                                        {
+                                          "scaleX": 1,
+                                        },
+                                      ],
+                                    },
+                                    {
+                                      "backgroundColor": "transparent",
+                                    },
+                                  ],
+                                  {
+                                    "fontFamily": "material-community",
+                                    "fontStyle": "normal",
+                                    "fontWeight": "normal",
+                                  },
+                                  {},
                                 ]
                               }
                             >
-                              □
+                              󰆏
                             </Text>
                           </View>
                         </View>
@@ -2600,22 +2753,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             >
                               <Text
                                 accessibilityElementsHidden={true}
+                                allowFontScaling={false}
                                 importantForAccessibility="no-hide-descendants"
                                 pointerEvents="none"
                                 selectable={false}
                                 style={
                                   [
                                     {
-                                      "backgroundColor": "transparent",
-                                    },
-                                    {
                                       "color": "#2165E3",
                                       "fontSize": 16,
                                     },
+                                    [
+                                      {
+                                        "lineHeight": 16,
+                                        "transform": [
+                                          {
+                                            "scaleX": 1,
+                                          },
+                                        ],
+                                      },
+                                      {
+                                        "backgroundColor": "transparent",
+                                      },
+                                    ],
+                                    {
+                                      "fontFamily": "material-community",
+                                      "fontStyle": "normal",
+                                      "fontWeight": "normal",
+                                    },
+                                    {},
                                   ]
                                 }
                               >
-                                □
+                                󰅂
                               </Text>
                             </View>
                             <Text
@@ -2909,22 +3079,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           >
                             <Text
                               accessibilityElementsHidden={true}
+                              allowFontScaling={false}
                               importantForAccessibility="no-hide-descendants"
                               pointerEvents="none"
                               selectable={false}
                               style={
                                 [
                                   {
-                                    "backgroundColor": "transparent",
-                                  },
-                                  {
                                     "color": "#2165E3",
                                     "fontSize": 16,
                                   },
+                                  [
+                                    {
+                                      "lineHeight": 16,
+                                      "transform": [
+                                        {
+                                          "scaleX": 1,
+                                        },
+                                      ],
+                                    },
+                                    {
+                                      "backgroundColor": "transparent",
+                                    },
+                                  ],
+                                  {
+                                    "fontFamily": "material-community",
+                                    "fontStyle": "normal",
+                                    "fontWeight": "normal",
+                                  },
+                                  {},
                                 ]
                               }
                             >
-                              □
+                              󰈈
                             </Text>
                           </View>
                           <Text
@@ -3080,22 +3267,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           >
                             <Text
                               accessibilityElementsHidden={true}
+                              allowFontScaling={false}
                               importantForAccessibility="no-hide-descendants"
                               pointerEvents="none"
                               selectable={false}
                               style={
                                 [
                                   {
-                                    "backgroundColor": "transparent",
-                                  },
-                                  {
                                     "color": "#ffffff",
                                     "fontSize": 16,
                                   },
+                                  [
+                                    {
+                                      "lineHeight": 16,
+                                      "transform": [
+                                        {
+                                          "scaleX": 1,
+                                        },
+                                      ],
+                                    },
+                                    {
+                                      "backgroundColor": "transparent",
+                                    },
+                                  ],
+                                  {
+                                    "fontFamily": "material-community",
+                                    "fontStyle": "normal",
+                                    "fontWeight": "normal",
+                                  },
+                                  {},
                                 ]
                               }
                             >
-                              □
+                              󰐕
                             </Text>
                           </View>
                           <Text
@@ -3483,22 +3687,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <Text
                           accessibilityElementsHidden={true}
+                          allowFontScaling={false}
                           importantForAccessibility="no-hide-descendants"
                           pointerEvents="none"
                           selectable={false}
                           style={
                             [
                               {
-                                "backgroundColor": "transparent",
-                              },
-                              {
                                 "color": "rgba(0, 0, 0, .54)",
                                 "fontSize": 24,
                               },
+                              [
+                                {
+                                  "lineHeight": 24,
+                                  "transform": [
+                                    {
+                                      "scaleX": 1,
+                                    },
+                                  ],
+                                },
+                                {
+                                  "backgroundColor": "transparent",
+                                },
+                              ],
+                              {
+                                "fontFamily": "material-community",
+                                "fontStyle": "normal",
+                                "fontWeight": "normal",
+                              },
+                              {},
                             ]
                           }
                         >
-                          □
+                          󰐲
                         </Text>
                       </View>
                     </View>
@@ -3761,22 +3982,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <Text
                           accessibilityElementsHidden={true}
+                          allowFontScaling={false}
                           importantForAccessibility="no-hide-descendants"
                           pointerEvents="none"
                           selectable={false}
                           style={
                             [
                               {
-                                "backgroundColor": "transparent",
-                              },
-                              {
                                 "color": "rgba(0, 0, 0, .54)",
                                 "fontSize": 24,
                               },
+                              [
+                                {
+                                  "lineHeight": 24,
+                                  "transform": [
+                                    {
+                                      "scaleX": 1,
+                                    },
+                                  ],
+                                },
+                                {
+                                  "backgroundColor": "transparent",
+                                },
+                              ],
+                              {
+                                "fontFamily": "material-community",
+                                "fontStyle": "normal",
+                                "fontWeight": "normal",
+                              },
+                              {},
                             ]
                           }
                         >
-                          □
+                          󰏫
                         </Text>
                       </View>
                     </View>
@@ -3910,22 +4148,39 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   >
                     <Text
                       accessibilityElementsHidden={true}
+                      allowFontScaling={false}
                       importantForAccessibility="no-hide-descendants"
                       pointerEvents="none"
                       selectable={false}
                       style={
                         [
                           {
-                            "backgroundColor": "transparent",
-                          },
-                          {
                             "color": "#ffffff",
                             "fontSize": 24,
                           },
+                          [
+                            {
+                              "lineHeight": 24,
+                              "transform": [
+                                {
+                                  "scaleX": 1,
+                                },
+                              ],
+                            },
+                            {
+                              "backgroundColor": "transparent",
+                            },
+                          ],
+                          {
+                            "fontFamily": "material-community",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          {},
                         ]
                       }
                     >
-                      □
+                      󰐕
                     </Text>
                   </View>
                 </View>
@@ -4655,22 +4910,39 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                       >
                         <Text
                           accessibilityElementsHidden={true}
+                          allowFontScaling={false}
                           importantForAccessibility="no-hide-descendants"
                           pointerEvents="none"
                           selectable={false}
                           style={
                             [
                               {
-                                "backgroundColor": "transparent",
-                              },
-                              {
                                 "color": "rgba(0, 0, 0, .54)",
                                 "fontSize": 24,
                               },
+                              [
+                                {
+                                  "lineHeight": 24,
+                                  "transform": [
+                                    {
+                                      "scaleX": 1,
+                                    },
+                                  ],
+                                },
+                                {
+                                  "backgroundColor": "transparent",
+                                },
+                              ],
+                              {
+                                "fontFamily": "material-community",
+                                "fontStyle": "normal",
+                                "fontWeight": "normal",
+                              },
+                              {},
                             ]
                           }
                         >
-                          □
+                          󰐲
                         </Text>
                       </View>
                     </View>
@@ -4933,22 +5205,39 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                       >
                         <Text
                           accessibilityElementsHidden={true}
+                          allowFontScaling={false}
                           importantForAccessibility="no-hide-descendants"
                           pointerEvents="none"
                           selectable={false}
                           style={
                             [
                               {
-                                "backgroundColor": "transparent",
-                              },
-                              {
                                 "color": "rgba(0, 0, 0, .54)",
                                 "fontSize": 24,
                               },
+                              [
+                                {
+                                  "lineHeight": 24,
+                                  "transform": [
+                                    {
+                                      "scaleX": 1,
+                                    },
+                                  ],
+                                },
+                                {
+                                  "backgroundColor": "transparent",
+                                },
+                              ],
+                              {
+                                "fontFamily": "material-community",
+                                "fontStyle": "normal",
+                                "fontWeight": "normal",
+                              },
+                              {},
                             ]
                           }
                         >
-                          □
+                          󰏫
                         </Text>
                       </View>
                     </View>
@@ -5082,22 +5371,39 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   >
                     <Text
                       accessibilityElementsHidden={true}
+                      allowFontScaling={false}
                       importantForAccessibility="no-hide-descendants"
                       pointerEvents="none"
                       selectable={false}
                       style={
                         [
                           {
-                            "backgroundColor": "transparent",
-                          },
-                          {
                             "color": "#ffffff",
                             "fontSize": 24,
                           },
+                          [
+                            {
+                              "lineHeight": 24,
+                              "transform": [
+                                {
+                                  "scaleX": 1,
+                                },
+                              ],
+                            },
+                            {
+                              "backgroundColor": "transparent",
+                            },
+                          ],
+                          {
+                            "fontFamily": "material-community",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          {},
                         ]
                       }
                     >
-                      □
+                      󰐕
                     </Text>
                   </View>
                 </View>

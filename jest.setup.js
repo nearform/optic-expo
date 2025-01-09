@@ -2,6 +2,10 @@ import 'react-native-gesture-handler/jestSetup'
 import '@testing-library/jest-native/extend-expect'
 
 jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
+jest.mock('expo-font', () => ({
+  ...jest.requireActual('expo-font'),
+  isLoaded: jest.fn(() => true),
+}))
 jest.mock('@expo-google-fonts/poppins', () => ({
   useFonts: jest.fn().mockReturnValue([true]),
 }))

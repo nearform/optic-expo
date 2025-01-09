@@ -236,22 +236,39 @@ exports[`SettingsScreen should match snapshot 1`] = `
                     >
                       <Text
                         accessibilityElementsHidden={true}
+                        allowFontScaling={false}
                         importantForAccessibility="no-hide-descendants"
                         pointerEvents="none"
                         selectable={false}
                         style={
                           [
                             {
-                              "backgroundColor": "transparent",
-                            },
-                            {
                               "color": "rgba(0, 0, 0, 0.32)",
                               "fontSize": 16,
                             },
+                            [
+                              {
+                                "lineHeight": 16,
+                                "transform": [
+                                  {
+                                    "scaleX": 1,
+                                  },
+                                ],
+                              },
+                              {
+                                "backgroundColor": "transparent",
+                              },
+                            ],
+                            {
+                              "fontFamily": "material-community",
+                              "fontStyle": "normal",
+                              "fontWeight": "normal",
+                            },
+                            {},
                           ]
                         }
                       >
-                        □
+                        󰈝
                       </Text>
                     </View>
                     <Text
@@ -438,22 +455,39 @@ exports[`SettingsScreen should match snapshot 1`] = `
                     >
                       <Text
                         accessibilityElementsHidden={true}
+                        allowFontScaling={false}
                         importantForAccessibility="no-hide-descendants"
                         pointerEvents="none"
                         selectable={false}
                         style={
                           [
                             {
-                              "backgroundColor": "transparent",
-                            },
-                            {
                               "color": "#2165E3",
                               "fontSize": 16,
                             },
+                            [
+                              {
+                                "lineHeight": 16,
+                                "transform": [
+                                  {
+                                    "scaleX": 1,
+                                  },
+                                ],
+                              },
+                              {
+                                "backgroundColor": "transparent",
+                              },
+                            ],
+                            {
+                              "fontFamily": "material-community",
+                              "fontStyle": "normal",
+                              "fontWeight": "normal",
+                            },
+                            {},
                           ]
                         }
                       >
-                        □
+                        󰈠
                       </Text>
                     </View>
                     <Text
