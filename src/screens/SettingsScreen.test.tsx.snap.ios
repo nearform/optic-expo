@@ -155,15 +155,14 @@ exports[`SettingsScreen should match snapshot 1`] = `
                     "borderRadius": 4,
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "elevation": 0,
                     "minWidth": "auto",
                     "shadowColor": "#000000",
                     "shadowOffset": {
-                      "height": 0,
+                      "height": 3,
                       "width": 0,
                     },
-                    "shadowOpacity": 0,
-                    "shadowRadius": 0,
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   }
                 }
               >
@@ -171,7 +170,19 @@ exports[`SettingsScreen should match snapshot 1`] = `
                   accessibilityRole="button"
                   accessibilityState={
                     {
+                      "busy": undefined,
+                      "checked": undefined,
                       "disabled": true,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
@@ -191,7 +202,6 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       {
                         "overflow": "hidden",
                       },
-                      false,
                       {
                         "borderRadius": 4,
                       },
@@ -224,7 +234,25 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       }
                       testID="button-icon-container"
                     >
-                      <Text />
+                      <Text
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no-hide-descendants"
+                        pointerEvents="none"
+                        selectable={false}
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                            },
+                            {
+                              "color": "rgba(0, 0, 0, 0.32)",
+                              "fontSize": 16,
+                            },
+                          ]
+                        }
+                      >
+                        □
+                      </Text>
                     </View>
                     <Text
                       numberOfLines={1}
@@ -344,7 +372,19 @@ exports[`SettingsScreen should match snapshot 1`] = `
                   accessibilityRole="button"
                   accessibilityState={
                     {
+                      "busy": undefined,
+                      "checked": undefined,
                       "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
@@ -364,7 +404,6 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       {
                         "overflow": "hidden",
                       },
-                      false,
                       {
                         "borderRadius": 4,
                       },
@@ -397,7 +436,25 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       }
                       testID="button-icon-container"
                     >
-                      <Text />
+                      <Text
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no-hide-descendants"
+                        pointerEvents="none"
+                        selectable={false}
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                            },
+                            {
+                              "color": "#2165E3",
+                              "fontSize": 16,
+                            },
+                          ]
+                        }
+                      >
+                        □
+                      </Text>
                     </View>
                     <Text
                       numberOfLines={1}
@@ -523,7 +580,19 @@ exports[`SettingsScreen should match snapshot 1`] = `
                   accessibilityRole="button"
                   accessibilityState={
                     {
+                      "busy": undefined,
+                      "checked": undefined,
                       "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
@@ -543,7 +612,6 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       {
                         "overflow": "hidden",
                       },
-                      false,
                       {
                         "borderRadius": 4,
                       },
@@ -636,7 +704,19 @@ exports[`SettingsScreen should match snapshot 1`] = `
                   accessibilityRole="button"
                   accessibilityState={
                     {
+                      "busy": undefined,
+                      "checked": undefined,
                       "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
@@ -656,7 +736,6 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       {
                         "overflow": "hidden",
                       },
-                      false,
                       {
                         "borderRadius": 4,
                       },

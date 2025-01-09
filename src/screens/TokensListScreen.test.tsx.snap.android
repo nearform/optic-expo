@@ -162,7 +162,19 @@ exports[`TokensListScreen should match snapshot when there are no tokens 1`] = `
         accessibilityRole="button"
         accessibilityState={
           {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -177,12 +189,12 @@ exports[`TokensListScreen should match snapshot when there are no tokens 1`] = `
         onResponderTerminate={[Function]}
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
+        small={true}
         style={
           [
             {
               "overflow": "hidden",
             },
-            false,
             {
               "borderRadius": 28,
             },
@@ -238,8 +250,27 @@ exports[`TokensListScreen should match snapshot when there are no tokens 1`] = `
                   ],
                 }
               }
+              testID="cross-fade-icon-current"
             >
-              <Text />
+              <Text
+                accessibilityElementsHidden={true}
+                importantForAccessibility="no-hide-descendants"
+                pointerEvents="none"
+                selectable={false}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                    {
+                      "color": "#ffffff",
+                      "fontSize": 24,
+                    },
+                  ]
+                }
+              >
+                □
+              </Text>
             </View>
           </View>
           <Text

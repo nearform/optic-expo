@@ -35,8 +35,266 @@ exports[`HomeScreen renders secret cards when available 1`] = `
         hardwareAccelerated={false}
         onRequestClose={[Function]}
         transparent={true}
-        visible={false}
-      />
+        visible={true}
+      >
+        <View
+          style={
+            {
+              "marginTop": 200,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "backgroundColor": "white",
+                "borderRadius": 3,
+                "elevation": 20,
+                "height": "60%",
+                "margin": 15,
+                "padding": 25,
+                "shadowColor": "#000",
+                "shadowOffset": {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.25,
+                "shadowRadius": 4,
+              }
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "textAlign": "left",
+                  },
+                  {
+                    "color": "#6D6D68",
+                    "fontFamily": "System",
+                    "fontWeight": "400",
+                  },
+                  {
+                    "writingDirection": "ltr",
+                  },
+                  [
+                    {
+                      "fontFamily": "Poppins_700Bold",
+                      "fontSize": 20,
+                      "letterSpacing": 0.15,
+                    },
+                    {
+                      "alignItems": "center",
+                      "color": "#6D6D68",
+                      "display": "flex",
+                      "marginBottom": 0,
+                    },
+                    {
+                      "marginBottom": 15,
+                    },
+                  ],
+                ]
+              }
+            >
+              Enable Push Notifications?
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "textAlign": "left",
+                  },
+                  {
+                    "color": "#6D6D68",
+                    "fontFamily": "System",
+                    "fontWeight": "400",
+                  },
+                  {
+                    "writingDirection": "ltr",
+                  },
+                  [
+                    {
+                      "fontFamily": "DidactGothic_400Regular",
+                      "fontSize": 16,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.5,
+                    },
+                    {
+                      "alignItems": "center",
+                      "color": "#6D6D68",
+                      "display": "flex",
+                      "marginBottom": 0,
+                    },
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              This app requires push notification permissions to function.
+            </Text>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "borderColor": "#2165E3",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-end",
+                  "marginLeft": 60,
+                  "marginTop": 20,
+                }
+              }
+            >
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "flex": 1,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "textAlign": "left",
+                      },
+                      {
+                        "color": "#6D6D68",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                      },
+                      {
+                        "writingDirection": "ltr",
+                      },
+                      [
+                        {
+                          "fontFamily": "Poppins_700Bold",
+                          "fontSize": 20,
+                          "letterSpacing": 0.15,
+                        },
+                        {
+                          "alignItems": "center",
+                          "color": "#6D6D68",
+                          "display": "flex",
+                          "marginBottom": 0,
+                        },
+                        {
+                          "color": "#2165E3",
+                          "textAlign": "right",
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  CLOSE
+                </Text>
+              </View>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "flex": 1,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "textAlign": "left",
+                      },
+                      {
+                        "color": "#6D6D68",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                      },
+                      {
+                        "writingDirection": "ltr",
+                      },
+                      [
+                        {
+                          "fontFamily": "Poppins_700Bold",
+                          "fontSize": 20,
+                          "letterSpacing": 0.15,
+                        },
+                        {
+                          "alignItems": "center",
+                          "color": "#6D6D68",
+                          "display": "flex",
+                          "marginBottom": 0,
+                        },
+                        {
+                          "color": "#2165E3",
+                          "textAlign": "right",
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  ENABLE
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </Modal>
       <RCTScrollView
         contentContainerStyle={
           {
@@ -126,7 +384,25 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         ]
                       }
                     >
-                      <Text />
+                      <Text
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no-hide-descendants"
+                        pointerEvents="none"
+                        selectable={false}
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                            },
+                            {
+                              "color": "#ffffff",
+                              "fontSize": 24,
+                            },
+                          ]
+                        }
+                      >
+                        □
+                      </Text>
                     </View>
                   </View>
                   <View
@@ -292,10 +568,22 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           accessibilityRole="button"
                           accessibilityState={
                             {
+                              "busy": undefined,
+                              "checked": undefined,
                               "disabled": false,
+                              "expanded": undefined,
+                              "selected": undefined,
                             }
                           }
                           accessibilityTraits="button"
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
                           accessible={true}
                           centered={true}
                           collapsable={false}
@@ -322,7 +610,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               {
                                 "overflow": "hidden",
                               },
-                              false,
                               [
                                 {
                                   "alignItems": "center",
@@ -337,13 +624,32 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           }
                           testID="icon-button"
                         >
-                          <Text />
+                          <Text
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            pointerEvents="none"
+                            selectable={false}
+                            style={
+                              [
+                                {
+                                  "backgroundColor": "transparent",
+                                },
+                                {
+                                  "color": "#6D6D68",
+                                  "fontSize": 24,
+                                },
+                              ]
+                            }
+                          >
+                            □
+                          </Text>
                         </View>
                       </View>
                     </View>
                   </View>
                 </View>
                 <View
+                  borderRadiusStyles={{}}
                   style={
                     [
                       {
@@ -457,10 +763,22 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             accessibilityRole="button"
                             accessibilityState={
                               {
+                                "busy": undefined,
+                                "checked": undefined,
                                 "disabled": false,
+                                "expanded": undefined,
+                                "selected": undefined,
                               }
                             }
                             accessibilityTraits="button"
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
                             accessible={true}
                             centered={true}
                             collapsable={false}
@@ -487,7 +805,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 {
                                   "overflow": "hidden",
                                 },
-                                false,
                                 [
                                   {
                                     "alignItems": "center",
@@ -502,7 +819,25 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             }
                             testID="icon-button"
                           >
-                            <Text />
+                            <Text
+                              accessibilityElementsHidden={true}
+                              importantForAccessibility="no-hide-descendants"
+                              pointerEvents="none"
+                              selectable={false}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                  },
+                                  {
+                                    "color": "#6D6D68",
+                                    "fontSize": 20,
+                                  },
+                                ]
+                              }
+                            >
+                              □
+                            </Text>
                           </View>
                         </View>
                       </View>
@@ -517,8 +852,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <RNSVGSvgView
                           align="xMidYMid"
-                          bbHeight="30"
-                          bbWidth="30"
+                          bbHeight={30}
+                          bbWidth={30}
                           focusable={false}
                           height={30}
                           meetOrSlice={0}
@@ -541,7 +876,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           vbWidth={30}
                           width={30}
                         >
-                          <RNSVGGroup>
+                          <RNSVGGroup
+                            fill={
+                              {
+                                "payload": 4278190080,
+                                "type": 0,
+                              }
+                            }
+                          >
                             <RNSVGPath
                               d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
                               fill={null}
@@ -558,7 +900,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                   "type": 0,
                                 }
                               }
-                              strokeWidth="3"
+                              strokeWidth={3}
                             />
                             <RNSVGPath
                               d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
@@ -581,13 +923,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               }
                               strokeDasharray={
                                 [
-                                  "84.82300164692441",
-                                  "84.82300164692441",
+                                  84.82300164692441,
+                                  84.82300164692441,
                                 ]
                               }
                               strokeDashoffset={null}
                               strokeLinecap={1}
-                              strokeWidth="3"
+                              strokeWidth={3}
                             />
                           </RNSVGGroup>
                         </RNSVGSvgView>
@@ -767,7 +1109,19 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           accessibilityRole="button"
                           accessibilityState={
                             {
+                              "busy": undefined,
+                              "checked": undefined,
                               "disabled": false,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
                             }
                           }
                           accessible={true}
@@ -787,7 +1141,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               {
                                 "overflow": "hidden",
                               },
-                              false,
                               {
                                 "borderRadius": 4,
                               },
@@ -822,7 +1175,25 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               }
                               testID="button-icon-container"
                             >
-                              <Text />
+                              <Text
+                                accessibilityElementsHidden={true}
+                                importantForAccessibility="no-hide-descendants"
+                                pointerEvents="none"
+                                selectable={false}
+                                style={
+                                  [
+                                    {
+                                      "backgroundColor": "transparent",
+                                    },
+                                    {
+                                      "color": "#2165E3",
+                                      "fontSize": 16,
+                                    },
+                                  ]
+                                }
+                              >
+                                □
+                              </Text>
                             </View>
                             <Text
                               numberOfLines={1}
@@ -984,6 +1355,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   </View>
                 </View>
                 <View
+                  borderRadiusStyles={{}}
                   index={2}
                   siblings={
                     [
@@ -1048,7 +1420,19 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         accessibilityRole="button"
                         accessibilityState={
                           {
+                            "busy": undefined,
+                            "checked": undefined,
                             "disabled": false,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
                           }
                         }
                         accessible={true}
@@ -1068,7 +1452,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             {
                               "overflow": "hidden",
                             },
-                            false,
                             {
                               "borderRadius": 4,
                             },
@@ -1101,7 +1484,25 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             }
                             testID="button-icon-container"
                           >
-                            <Text />
+                            <Text
+                              accessibilityElementsHidden={true}
+                              importantForAccessibility="no-hide-descendants"
+                              pointerEvents="none"
+                              selectable={false}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                  },
+                                  {
+                                    "color": "#2165E3",
+                                    "fontSize": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              □
+                            </Text>
                           </View>
                           <Text
                             numberOfLines={1}
@@ -1190,7 +1591,19 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         accessibilityRole="button"
                         accessibilityState={
                           {
+                            "busy": undefined,
+                            "checked": undefined,
                             "disabled": false,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
                           }
                         }
                         accessible={true}
@@ -1210,7 +1623,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             {
                               "overflow": "hidden",
                             },
-                            false,
                             {
                               "borderRadius": 4,
                             },
@@ -1243,7 +1655,25 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             }
                             testID="button-icon-container"
                           >
-                            <Text />
+                            <Text
+                              accessibilityElementsHidden={true}
+                              importantForAccessibility="no-hide-descendants"
+                              pointerEvents="none"
+                              selectable={false}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                  },
+                                  {
+                                    "color": "#ffffff",
+                                    "fontSize": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              □
+                            </Text>
                           </View>
                           <Text
                             numberOfLines={1}
@@ -1377,7 +1807,25 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         ]
                       }
                     >
-                      <Text />
+                      <Text
+                        accessibilityElementsHidden={true}
+                        importantForAccessibility="no-hide-descendants"
+                        pointerEvents="none"
+                        selectable={false}
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                            },
+                            {
+                              "color": "#ffffff",
+                              "fontSize": 24,
+                            },
+                          ]
+                        }
+                      >
+                        □
+                      </Text>
                     </View>
                   </View>
                   <View
@@ -1543,10 +1991,22 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           accessibilityRole="button"
                           accessibilityState={
                             {
+                              "busy": undefined,
+                              "checked": undefined,
                               "disabled": false,
+                              "expanded": undefined,
+                              "selected": undefined,
                             }
                           }
                           accessibilityTraits="button"
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
                           accessible={true}
                           centered={true}
                           collapsable={false}
@@ -1573,7 +2033,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               {
                                 "overflow": "hidden",
                               },
-                              false,
                               [
                                 {
                                   "alignItems": "center",
@@ -1588,13 +2047,32 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           }
                           testID="icon-button"
                         >
-                          <Text />
+                          <Text
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            pointerEvents="none"
+                            selectable={false}
+                            style={
+                              [
+                                {
+                                  "backgroundColor": "transparent",
+                                },
+                                {
+                                  "color": "#6D6D68",
+                                  "fontSize": 24,
+                                },
+                              ]
+                            }
+                          >
+                            □
+                          </Text>
                         </View>
                       </View>
                     </View>
                   </View>
                 </View>
                 <View
+                  borderRadiusStyles={{}}
                   style={
                     [
                       {
@@ -1708,10 +2186,22 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             accessibilityRole="button"
                             accessibilityState={
                               {
+                                "busy": undefined,
+                                "checked": undefined,
                                 "disabled": false,
+                                "expanded": undefined,
+                                "selected": undefined,
                               }
                             }
                             accessibilityTraits="button"
+                            accessibilityValue={
+                              {
+                                "max": undefined,
+                                "min": undefined,
+                                "now": undefined,
+                                "text": undefined,
+                              }
+                            }
                             accessible={true}
                             centered={true}
                             collapsable={false}
@@ -1738,7 +2228,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 {
                                   "overflow": "hidden",
                                 },
-                                false,
                                 [
                                   {
                                     "alignItems": "center",
@@ -1753,7 +2242,25 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             }
                             testID="icon-button"
                           >
-                            <Text />
+                            <Text
+                              accessibilityElementsHidden={true}
+                              importantForAccessibility="no-hide-descendants"
+                              pointerEvents="none"
+                              selectable={false}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                  },
+                                  {
+                                    "color": "#6D6D68",
+                                    "fontSize": 20,
+                                  },
+                                ]
+                              }
+                            >
+                              □
+                            </Text>
                           </View>
                         </View>
                       </View>
@@ -1768,8 +2275,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <RNSVGSvgView
                           align="xMidYMid"
-                          bbHeight="30"
-                          bbWidth="30"
+                          bbHeight={30}
+                          bbWidth={30}
                           focusable={false}
                           height={30}
                           meetOrSlice={0}
@@ -1792,7 +2299,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           vbWidth={30}
                           width={30}
                         >
-                          <RNSVGGroup>
+                          <RNSVGGroup
+                            fill={
+                              {
+                                "payload": 4278190080,
+                                "type": 0,
+                              }
+                            }
+                          >
                             <RNSVGPath
                               d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
                               fill={null}
@@ -1809,7 +2323,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                   "type": 0,
                                 }
                               }
-                              strokeWidth="3"
+                              strokeWidth={3}
                             />
                             <RNSVGPath
                               d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
@@ -1832,13 +2346,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               }
                               strokeDasharray={
                                 [
-                                  "84.82300164692441",
-                                  "84.82300164692441",
+                                  84.82300164692441,
+                                  84.82300164692441,
                                 ]
                               }
                               strokeDashoffset={null}
                               strokeLinecap={1}
-                              strokeWidth="3"
+                              strokeWidth={3}
                             />
                           </RNSVGGroup>
                         </RNSVGSvgView>
@@ -2018,7 +2532,19 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           accessibilityRole="button"
                           accessibilityState={
                             {
+                              "busy": undefined,
+                              "checked": undefined,
                               "disabled": false,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
                             }
                           }
                           accessible={true}
@@ -2038,7 +2564,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               {
                                 "overflow": "hidden",
                               },
-                              false,
                               {
                                 "borderRadius": 4,
                               },
@@ -2073,7 +2598,25 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               }
                               testID="button-icon-container"
                             >
-                              <Text />
+                              <Text
+                                accessibilityElementsHidden={true}
+                                importantForAccessibility="no-hide-descendants"
+                                pointerEvents="none"
+                                selectable={false}
+                                style={
+                                  [
+                                    {
+                                      "backgroundColor": "transparent",
+                                    },
+                                    {
+                                      "color": "#2165E3",
+                                      "fontSize": 16,
+                                    },
+                                  ]
+                                }
+                              >
+                                □
+                              </Text>
                             </View>
                             <Text
                               numberOfLines={1}
@@ -2235,6 +2778,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   </View>
                 </View>
                 <View
+                  borderRadiusStyles={{}}
                   index={2}
                   siblings={
                     [
@@ -2299,7 +2843,19 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         accessibilityRole="button"
                         accessibilityState={
                           {
+                            "busy": undefined,
+                            "checked": undefined,
                             "disabled": false,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
                           }
                         }
                         accessible={true}
@@ -2319,7 +2875,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             {
                               "overflow": "hidden",
                             },
-                            false,
                             {
                               "borderRadius": 4,
                             },
@@ -2352,7 +2907,25 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             }
                             testID="button-icon-container"
                           >
-                            <Text />
+                            <Text
+                              accessibilityElementsHidden={true}
+                              importantForAccessibility="no-hide-descendants"
+                              pointerEvents="none"
+                              selectable={false}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                  },
+                                  {
+                                    "color": "#2165E3",
+                                    "fontSize": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              □
+                            </Text>
                           </View>
                           <Text
                             numberOfLines={1}
@@ -2441,7 +3014,19 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         accessibilityRole="button"
                         accessibilityState={
                           {
+                            "busy": undefined,
+                            "checked": undefined,
                             "disabled": false,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
                           }
                         }
                         accessible={true}
@@ -2461,7 +3046,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             {
                               "overflow": "hidden",
                             },
-                            false,
                             {
                               "borderRadius": 4,
                             },
@@ -2494,7 +3078,25 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             }
                             testID="button-icon-container"
                           >
-                            <Text />
+                            <Text
+                              accessibilityElementsHidden={true}
+                              importantForAccessibility="no-hide-descendants"
+                              pointerEvents="none"
+                              selectable={false}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                  },
+                                  {
+                                    "color": "#ffffff",
+                                    "fontSize": 16,
+                                  },
+                                ]
+                              }
+                            >
+                              □
+                            </Text>
                           </View>
                           <Text
                             numberOfLines={1}
@@ -2573,10 +3175,29 @@ exports[`HomeScreen renders secret cards when available 1`] = `
       >
         <View
           accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
+          onBlur={[Function]}
           onClick={[Function]}
+          onFocus={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
@@ -2608,6 +3229,10 @@ exports[`HomeScreen renders secret cards when available 1`] = `
             pointerEvents="none"
           >
             <View
+              accessibilityLabel="Scan QR Code"
+              accessibilityRole="button"
+              accessible={true}
+              importantForAccessibility="yes"
               pointerEvents="none"
               style={
                 [
@@ -2625,9 +3250,9 @@ exports[`HomeScreen renders secret cards when available 1`] = `
             >
               <View>
                 <View
-                  accessibilityLabel="Scan QR Code"
-                  accessibilityRole="button"
+                  accessibilityElementsHidden={true}
                   collapsable={false}
+                  importantForAccessibility="no-hide-descendants"
                   style={
                     {
                       "backgroundColor": "#ffffff",
@@ -2654,59 +3279,90 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   }
                 >
                   <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
                     accessible={true}
+                    collapsable={false}
                     focusable={true}
+                    onBlur={[Function]}
                     onClick={[Function]}
+                    onFocus={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
                     onResponderRelease={[Function]}
                     onResponderTerminate={[Function]}
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        {
-                          "flexShrink": 1,
-                        },
-                        undefined,
-                      ]
-                    }
-                    testID="card"
                   >
-                    <Text
-                      index={0}
-                      siblings={[]}
+                    <View
                       style={
                         [
                           {
-                            "textAlign": "left",
+                            "flexShrink": 1,
                           },
-                          {
-                            "color": "#6D6D68",
-                            "fontFamily": "System",
-                            "fontWeight": "400",
-                          },
-                          {
-                            "writingDirection": "ltr",
-                          },
-                          [
-                            {
-                              "color": "rgba(109, 109, 104, 0.45999999999999996)",
-                            },
-                            undefined,
-                          ],
+                          undefined,
                         ]
                       }
-                      total={1}
+                      testID="card"
                     >
-                      Scan QR Code
-                    </Text>
+                      <Text
+                        accessibilityElementsHidden={true}
+                        borderRadiusStyles={
+                          {
+                            "borderRadius": 5,
+                          }
+                        }
+                        importantForAccessibility="no-hide-descendants"
+                        index={0}
+                        siblings={[]}
+                        style={
+                          [
+                            {
+                              "textAlign": "left",
+                            },
+                            {
+                              "color": "#6D6D68",
+                              "fontFamily": "System",
+                              "fontWeight": "400",
+                            },
+                            {
+                              "writingDirection": "ltr",
+                            },
+                            [
+                              {
+                                "color": "rgba(109, 109, 104, 0.45999999999999996)",
+                              },
+                              undefined,
+                            ],
+                          ]
+                        }
+                        total={1}
+                      >
+                        Scan QR Code
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
               <View
-                accessibilityRole="button"
+                accessibilityElementsHidden={true}
                 collapsable={false}
+                importantForAccessibility="no-hide-descendants"
                 pointerEvents="none"
                 style={
                   {
@@ -2730,16 +3386,29 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Scan QR Code"
+                  accessibilityElementsHidden={true}
                   accessibilityRole="button"
                   accessibilityState={
                     {
+                      "busy": undefined,
+                      "checked": undefined,
                       "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  importantForAccessibility="no-hide-descendants"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
@@ -2754,7 +3423,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       {
                         "overflow": "hidden",
                       },
-                      false,
                       {
                         "borderRadius": 28,
                       },
@@ -2811,8 +3479,27 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             ],
                           }
                         }
+                        testID="cross-fade-icon-current"
                       >
-                        <Text />
+                        <Text
+                          accessibilityElementsHidden={true}
+                          importantForAccessibility="no-hide-descendants"
+                          pointerEvents="none"
+                          selectable={false}
+                          style={
+                            [
+                              {
+                                "backgroundColor": "transparent",
+                              },
+                              {
+                                "color": "rgba(0, 0, 0, .54)",
+                                "fontSize": 24,
+                              },
+                            ]
+                          }
+                        >
+                          □
+                        </Text>
                       </View>
                     </View>
                   </View>
@@ -2820,6 +3507,10 @@ exports[`HomeScreen renders secret cards when available 1`] = `
               </View>
             </View>
             <View
+              accessibilityLabel="Add details manually"
+              accessibilityRole="button"
+              accessible={true}
+              importantForAccessibility="yes"
               pointerEvents="none"
               style={
                 [
@@ -2837,9 +3528,9 @@ exports[`HomeScreen renders secret cards when available 1`] = `
             >
               <View>
                 <View
-                  accessibilityLabel="Add details manually"
-                  accessibilityRole="button"
+                  accessibilityElementsHidden={true}
                   collapsable={false}
+                  importantForAccessibility="no-hide-descendants"
                   style={
                     {
                       "backgroundColor": "#ffffff",
@@ -2866,59 +3557,90 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   }
                 >
                   <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
                     accessible={true}
+                    collapsable={false}
                     focusable={true}
+                    onBlur={[Function]}
                     onClick={[Function]}
+                    onFocus={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
                     onResponderRelease={[Function]}
                     onResponderTerminate={[Function]}
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        {
-                          "flexShrink": 1,
-                        },
-                        undefined,
-                      ]
-                    }
-                    testID="card"
                   >
-                    <Text
-                      index={0}
-                      siblings={[]}
+                    <View
                       style={
                         [
                           {
-                            "textAlign": "left",
+                            "flexShrink": 1,
                           },
-                          {
-                            "color": "#6D6D68",
-                            "fontFamily": "System",
-                            "fontWeight": "400",
-                          },
-                          {
-                            "writingDirection": "ltr",
-                          },
-                          [
-                            {
-                              "color": "rgba(109, 109, 104, 0.45999999999999996)",
-                            },
-                            undefined,
-                          ],
+                          undefined,
                         ]
                       }
-                      total={1}
+                      testID="card"
                     >
-                      Add details manually
-                    </Text>
+                      <Text
+                        accessibilityElementsHidden={true}
+                        borderRadiusStyles={
+                          {
+                            "borderRadius": 5,
+                          }
+                        }
+                        importantForAccessibility="no-hide-descendants"
+                        index={0}
+                        siblings={[]}
+                        style={
+                          [
+                            {
+                              "textAlign": "left",
+                            },
+                            {
+                              "color": "#6D6D68",
+                              "fontFamily": "System",
+                              "fontWeight": "400",
+                            },
+                            {
+                              "writingDirection": "ltr",
+                            },
+                            [
+                              {
+                                "color": "rgba(109, 109, 104, 0.45999999999999996)",
+                              },
+                              undefined,
+                            ],
+                          ]
+                        }
+                        total={1}
+                      >
+                        Add details manually
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
               <View
-                accessibilityRole="button"
+                accessibilityElementsHidden={true}
                 collapsable={false}
+                importantForAccessibility="no-hide-descendants"
                 pointerEvents="none"
                 style={
                   {
@@ -2942,16 +3664,29 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Add details manually"
+                  accessibilityElementsHidden={true}
                   accessibilityRole="button"
                   accessibilityState={
                     {
+                      "busy": undefined,
+                      "checked": undefined,
                       "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  importantForAccessibility="no-hide-descendants"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
@@ -2966,7 +3701,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       {
                         "overflow": "hidden",
                       },
-                      false,
                       {
                         "borderRadius": 28,
                       },
@@ -3023,8 +3757,27 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             ],
                           }
                         }
+                        testID="cross-fade-icon-current"
                       >
-                        <Text />
+                        <Text
+                          accessibilityElementsHidden={true}
+                          importantForAccessibility="no-hide-descendants"
+                          pointerEvents="none"
+                          selectable={false}
+                          style={
+                            [
+                              {
+                                "backgroundColor": "transparent",
+                              },
+                              {
+                                "color": "rgba(0, 0, 0, .54)",
+                                "fontSize": 24,
+                              },
+                            ]
+                          }
+                        >
+                          □
+                        </Text>
                       </View>
                     </View>
                   </View>
@@ -3065,8 +3818,19 @@ exports[`HomeScreen renders secret cards when available 1`] = `
               accessibilityRole="button"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": false,
                   "expanded": false,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -3086,7 +3850,6 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   {
                     "overflow": "hidden",
                   },
-                  false,
                   {
                     "borderRadius": 28,
                   },
@@ -3143,8 +3906,27 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         ],
                       }
                     }
+                    testID="cross-fade-icon-current"
                   >
-                    <Text />
+                    <Text
+                      accessibilityElementsHidden={true}
+                      importantForAccessibility="no-hide-descendants"
+                      pointerEvents="none"
+                      selectable={false}
+                      style={
+                        [
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                          {
+                            "color": "#ffffff",
+                            "fontSize": 24,
+                          },
+                        ]
+                      }
+                    >
+                      □
+                    </Text>
                   </View>
                 </View>
               </View>
@@ -3192,8 +3974,266 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
         hardwareAccelerated={false}
         onRequestClose={[Function]}
         transparent={true}
-        visible={false}
-      />
+        visible={true}
+      >
+        <View
+          style={
+            {
+              "marginTop": 200,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "backgroundColor": "white",
+                "borderRadius": 3,
+                "elevation": 20,
+                "height": "60%",
+                "margin": 15,
+                "padding": 25,
+                "shadowColor": "#000",
+                "shadowOffset": {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.25,
+                "shadowRadius": 4,
+              }
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "textAlign": "left",
+                  },
+                  {
+                    "color": "#6D6D68",
+                    "fontFamily": "System",
+                    "fontWeight": "400",
+                  },
+                  {
+                    "writingDirection": "ltr",
+                  },
+                  [
+                    {
+                      "fontFamily": "Poppins_700Bold",
+                      "fontSize": 20,
+                      "letterSpacing": 0.15,
+                    },
+                    {
+                      "alignItems": "center",
+                      "color": "#6D6D68",
+                      "display": "flex",
+                      "marginBottom": 0,
+                    },
+                    {
+                      "marginBottom": 15,
+                    },
+                  ],
+                ]
+              }
+            >
+              Enable Push Notifications?
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "textAlign": "left",
+                  },
+                  {
+                    "color": "#6D6D68",
+                    "fontFamily": "System",
+                    "fontWeight": "400",
+                  },
+                  {
+                    "writingDirection": "ltr",
+                  },
+                  [
+                    {
+                      "fontFamily": "DidactGothic_400Regular",
+                      "fontSize": 16,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.5,
+                    },
+                    {
+                      "alignItems": "center",
+                      "color": "#6D6D68",
+                      "display": "flex",
+                      "marginBottom": 0,
+                    },
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              This app requires push notification permissions to function.
+            </Text>
+            <View
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "borderColor": "#2165E3",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-end",
+                  "marginLeft": 60,
+                  "marginTop": 20,
+                }
+              }
+            >
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "flex": 1,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "textAlign": "left",
+                      },
+                      {
+                        "color": "#6D6D68",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                      },
+                      {
+                        "writingDirection": "ltr",
+                      },
+                      [
+                        {
+                          "fontFamily": "Poppins_700Bold",
+                          "fontSize": 20,
+                          "letterSpacing": 0.15,
+                        },
+                        {
+                          "alignItems": "center",
+                          "color": "#6D6D68",
+                          "display": "flex",
+                          "marginBottom": 0,
+                        },
+                        {
+                          "color": "#2165E3",
+                          "textAlign": "right",
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  CLOSE
+                </Text>
+              </View>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "flex": 1,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "textAlign": "left",
+                      },
+                      {
+                        "color": "#6D6D68",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                      },
+                      {
+                        "writingDirection": "ltr",
+                      },
+                      [
+                        {
+                          "fontFamily": "Poppins_700Bold",
+                          "fontSize": 20,
+                          "letterSpacing": 0.15,
+                        },
+                        {
+                          "alignItems": "center",
+                          "color": "#6D6D68",
+                          "display": "flex",
+                          "marginBottom": 0,
+                        },
+                        {
+                          "color": "#2165E3",
+                          "textAlign": "right",
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  ENABLE
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </Modal>
       <RCTScrollView
         contentContainerStyle={
           {
@@ -3307,10 +4347,29 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
       >
         <View
           accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
+          onBlur={[Function]}
           onClick={[Function]}
+          onFocus={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
@@ -3342,6 +4401,10 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
             pointerEvents="none"
           >
             <View
+              accessibilityLabel="Scan QR Code"
+              accessibilityRole="button"
+              accessible={true}
+              importantForAccessibility="yes"
               pointerEvents="none"
               style={
                 [
@@ -3359,9 +4422,9 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
             >
               <View>
                 <View
-                  accessibilityLabel="Scan QR Code"
-                  accessibilityRole="button"
+                  accessibilityElementsHidden={true}
                   collapsable={false}
+                  importantForAccessibility="no-hide-descendants"
                   style={
                     {
                       "backgroundColor": "#ffffff",
@@ -3388,59 +4451,90 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   }
                 >
                   <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
                     accessible={true}
+                    collapsable={false}
                     focusable={true}
+                    onBlur={[Function]}
                     onClick={[Function]}
+                    onFocus={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
                     onResponderRelease={[Function]}
                     onResponderTerminate={[Function]}
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        {
-                          "flexShrink": 1,
-                        },
-                        undefined,
-                      ]
-                    }
-                    testID="card"
                   >
-                    <Text
-                      index={0}
-                      siblings={[]}
+                    <View
                       style={
                         [
                           {
-                            "textAlign": "left",
+                            "flexShrink": 1,
                           },
-                          {
-                            "color": "#6D6D68",
-                            "fontFamily": "System",
-                            "fontWeight": "400",
-                          },
-                          {
-                            "writingDirection": "ltr",
-                          },
-                          [
-                            {
-                              "color": "rgba(109, 109, 104, 0.45999999999999996)",
-                            },
-                            undefined,
-                          ],
+                          undefined,
                         ]
                       }
-                      total={1}
+                      testID="card"
                     >
-                      Scan QR Code
-                    </Text>
+                      <Text
+                        accessibilityElementsHidden={true}
+                        borderRadiusStyles={
+                          {
+                            "borderRadius": 5,
+                          }
+                        }
+                        importantForAccessibility="no-hide-descendants"
+                        index={0}
+                        siblings={[]}
+                        style={
+                          [
+                            {
+                              "textAlign": "left",
+                            },
+                            {
+                              "color": "#6D6D68",
+                              "fontFamily": "System",
+                              "fontWeight": "400",
+                            },
+                            {
+                              "writingDirection": "ltr",
+                            },
+                            [
+                              {
+                                "color": "rgba(109, 109, 104, 0.45999999999999996)",
+                              },
+                              undefined,
+                            ],
+                          ]
+                        }
+                        total={1}
+                      >
+                        Scan QR Code
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
               <View
-                accessibilityRole="button"
+                accessibilityElementsHidden={true}
                 collapsable={false}
+                importantForAccessibility="no-hide-descendants"
                 pointerEvents="none"
                 style={
                   {
@@ -3464,16 +4558,29 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Scan QR Code"
+                  accessibilityElementsHidden={true}
                   accessibilityRole="button"
                   accessibilityState={
                     {
+                      "busy": undefined,
+                      "checked": undefined,
                       "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  importantForAccessibility="no-hide-descendants"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
@@ -3488,7 +4595,6 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                       {
                         "overflow": "hidden",
                       },
-                      false,
                       {
                         "borderRadius": 28,
                       },
@@ -3545,8 +4651,27 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                             ],
                           }
                         }
+                        testID="cross-fade-icon-current"
                       >
-                        <Text />
+                        <Text
+                          accessibilityElementsHidden={true}
+                          importantForAccessibility="no-hide-descendants"
+                          pointerEvents="none"
+                          selectable={false}
+                          style={
+                            [
+                              {
+                                "backgroundColor": "transparent",
+                              },
+                              {
+                                "color": "rgba(0, 0, 0, .54)",
+                                "fontSize": 24,
+                              },
+                            ]
+                          }
+                        >
+                          □
+                        </Text>
                       </View>
                     </View>
                   </View>
@@ -3554,6 +4679,10 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
               </View>
             </View>
             <View
+              accessibilityLabel="Add details manually"
+              accessibilityRole="button"
+              accessible={true}
+              importantForAccessibility="yes"
               pointerEvents="none"
               style={
                 [
@@ -3571,9 +4700,9 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
             >
               <View>
                 <View
-                  accessibilityLabel="Add details manually"
-                  accessibilityRole="button"
+                  accessibilityElementsHidden={true}
                   collapsable={false}
+                  importantForAccessibility="no-hide-descendants"
                   style={
                     {
                       "backgroundColor": "#ffffff",
@@ -3600,59 +4729,90 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   }
                 >
                   <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
                     accessible={true}
+                    collapsable={false}
                     focusable={true}
+                    onBlur={[Function]}
                     onClick={[Function]}
+                    onFocus={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
                     onResponderRelease={[Function]}
                     onResponderTerminate={[Function]}
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        {
-                          "flexShrink": 1,
-                        },
-                        undefined,
-                      ]
-                    }
-                    testID="card"
                   >
-                    <Text
-                      index={0}
-                      siblings={[]}
+                    <View
                       style={
                         [
                           {
-                            "textAlign": "left",
+                            "flexShrink": 1,
                           },
-                          {
-                            "color": "#6D6D68",
-                            "fontFamily": "System",
-                            "fontWeight": "400",
-                          },
-                          {
-                            "writingDirection": "ltr",
-                          },
-                          [
-                            {
-                              "color": "rgba(109, 109, 104, 0.45999999999999996)",
-                            },
-                            undefined,
-                          ],
+                          undefined,
                         ]
                       }
-                      total={1}
+                      testID="card"
                     >
-                      Add details manually
-                    </Text>
+                      <Text
+                        accessibilityElementsHidden={true}
+                        borderRadiusStyles={
+                          {
+                            "borderRadius": 5,
+                          }
+                        }
+                        importantForAccessibility="no-hide-descendants"
+                        index={0}
+                        siblings={[]}
+                        style={
+                          [
+                            {
+                              "textAlign": "left",
+                            },
+                            {
+                              "color": "#6D6D68",
+                              "fontFamily": "System",
+                              "fontWeight": "400",
+                            },
+                            {
+                              "writingDirection": "ltr",
+                            },
+                            [
+                              {
+                                "color": "rgba(109, 109, 104, 0.45999999999999996)",
+                              },
+                              undefined,
+                            ],
+                          ]
+                        }
+                        total={1}
+                      >
+                        Add details manually
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
               <View
-                accessibilityRole="button"
+                accessibilityElementsHidden={true}
                 collapsable={false}
+                importantForAccessibility="no-hide-descendants"
                 pointerEvents="none"
                 style={
                   {
@@ -3676,16 +4836,29 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Add details manually"
+                  accessibilityElementsHidden={true}
                   accessibilityRole="button"
                   accessibilityState={
                     {
+                      "busy": undefined,
+                      "checked": undefined,
                       "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
                   collapsable={false}
                   focusable={true}
+                  importantForAccessibility="no-hide-descendants"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
@@ -3700,7 +4873,6 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                       {
                         "overflow": "hidden",
                       },
-                      false,
                       {
                         "borderRadius": 28,
                       },
@@ -3757,8 +4929,27 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                             ],
                           }
                         }
+                        testID="cross-fade-icon-current"
                       >
-                        <Text />
+                        <Text
+                          accessibilityElementsHidden={true}
+                          importantForAccessibility="no-hide-descendants"
+                          pointerEvents="none"
+                          selectable={false}
+                          style={
+                            [
+                              {
+                                "backgroundColor": "transparent",
+                              },
+                              {
+                                "color": "rgba(0, 0, 0, .54)",
+                                "fontSize": 24,
+                              },
+                            ]
+                          }
+                        >
+                          □
+                        </Text>
                       </View>
                     </View>
                   </View>
@@ -3799,8 +4990,19 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
               accessibilityRole="button"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": false,
                   "expanded": false,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -3820,7 +5022,6 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   {
                     "overflow": "hidden",
                   },
-                  false,
                   {
                     "borderRadius": 28,
                   },
@@ -3877,8 +5078,27 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                         ],
                       }
                     }
+                    testID="cross-fade-icon-current"
                   >
-                    <Text />
+                    <Text
+                      accessibilityElementsHidden={true}
+                      importantForAccessibility="no-hide-descendants"
+                      pointerEvents="none"
+                      selectable={false}
+                      style={
+                        [
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                          {
+                            "color": "#ffffff",
+                            "fontSize": 24,
+                          },
+                        ]
+                      }
+                    >
+                      □
+                    </Text>
                   </View>
                 </View>
               </View>
