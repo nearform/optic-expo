@@ -4,8 +4,8 @@ exports[`TypeScreen should match snapshot 1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={
-    Array [
-      Object {
+    [
+      {
         "flex": 1,
       },
       undefined,
@@ -16,47 +16,47 @@ exports[`TypeScreen should match snapshot 1`] = `
     collapsable={false}
     pointerEvents="box-none"
     style={
-      Object {
+      {
         "flex": 1,
       }
     }
   >
     <View
       style={
-        Object {
+        {
           "width": "100%",
         }
       }
     >
       <View
         style={
-          Object {
+          {
             "padding": 16,
           }
         }
       >
         <View
           style={
-            Object {
+            {
               "marginBottom": 16,
             }
           }
         >
           <View
-            style={Object {}}
+            style={{}}
           >
             <View
               pointerEvents="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "bottom": 0,
                     "left": 0,
                     "position": "absolute",
                     "right": 0,
                     "top": 6,
                   },
-                  Object {
+                  {
                     "backgroundColor": "rgb(242, 242, 242)",
                     "borderColor": "rgba(0, 0, 0, 0.54)",
                     "borderRadius": 4,
@@ -70,11 +70,11 @@ exports[`TypeScreen should match snapshot 1`] = `
             <View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "paddingBottom": 0,
                     },
-                    Object {
+                    {
                       "minHeight": 64,
                       "paddingTop": 8,
                     },
@@ -85,15 +85,15 @@ exports[`TypeScreen should match snapshot 1`] = `
                   collapsable={false}
                   pointerEvents="none"
                   style={
-                    Object {
+                    {
                       "bottom": 0,
                       "left": 0,
                       "opacity": 1,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": 0,
                         },
                       ],
@@ -106,7 +106,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                     maxFontSizeMultiplier={1.5}
                     numberOfLines={1}
                     style={
-                      Object {
+                      {
                         "backgroundColor": "rgb(242, 242, 242)",
                         "color": "transparent",
                         "fontFamily": "sans-serif",
@@ -119,17 +119,17 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "position": "absolute",
                         "textAlign": "left",
                         "top": 37,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": 0,
                           },
-                          Object {
+                          {
                             "translateY": 0,
                           },
-                          Object {
+                          {
                             "scale": 1,
                           },
-                          Object {
+                          {
                             "scaleY": 1,
                           },
                         ],
@@ -146,7 +146,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                     numberOfLines={1}
                     onLayout={[Function]}
                     style={
-                      Object {
+                      {
                         "color": "#2165E3",
                         "fontFamily": "sans-serif",
                         "fontSize": 16,
@@ -158,14 +158,14 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "position": "absolute",
                         "textAlign": "left",
                         "top": 36,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": 0,
                           },
-                          Object {
+                          {
                             "translateY": 0,
                           },
-                          Object {
+                          {
                             "scale": 1,
                           },
                         ],
@@ -181,7 +181,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                     maxFontSizeMultiplier={1.5}
                     numberOfLines={1}
                     style={
-                      Object {
+                      {
                         "color": "rgba(0, 0, 0, 0.54)",
                         "fontFamily": "sans-serif",
                         "fontSize": 16,
@@ -193,14 +193,14 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "position": "absolute",
                         "textAlign": "left",
                         "top": 36,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": 0,
                           },
-                          Object {
+                          {
                             "translateY": 0,
                           },
-                          Object {
+                          {
                             "scale": 1,
                           },
                         ],
@@ -226,19 +226,19 @@ exports[`TypeScreen should match snapshot 1`] = `
                   placeholderTextColor="rgba(0, 0, 0, 0.54)"
                   selectionColor="#2165E3"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "margin": 0,
                         "zIndex": 1,
                       },
-                      Object {
+                      {
                         "height": 56,
                       },
-                      Object {
+                      {
                         "paddingBottom": 0,
                         "paddingTop": 0,
                       },
-                      Object {
+                      {
                         "color": "#6D6D68",
                         "fontFamily": "sans-serif",
                         "fontSize": 16,
@@ -249,8 +249,8 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "textAlignVertical": "center",
                       },
                       false,
-                      Array [
-                        Object {},
+                      [
+                        {},
                       ],
                       undefined,
                     ]
@@ -266,26 +266,26 @@ exports[`TypeScreen should match snapshot 1`] = `
         </View>
         <View
           style={
-            Object {
+            {
               "marginBottom": 16,
             }
           }
         >
           <View
-            style={Object {}}
+            style={{}}
           >
             <View
               pointerEvents="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "bottom": 0,
                     "left": 0,
                     "position": "absolute",
                     "right": 0,
                     "top": 6,
                   },
-                  Object {
+                  {
                     "backgroundColor": "rgb(242, 242, 242)",
                     "borderColor": "rgba(0, 0, 0, 0.54)",
                     "borderRadius": 4,
@@ -299,11 +299,11 @@ exports[`TypeScreen should match snapshot 1`] = `
             <View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "paddingBottom": 0,
                     },
-                    Object {
+                    {
                       "minHeight": 64,
                       "paddingTop": 8,
                     },
@@ -314,15 +314,15 @@ exports[`TypeScreen should match snapshot 1`] = `
                   collapsable={false}
                   pointerEvents="none"
                   style={
-                    Object {
+                    {
                       "bottom": 0,
                       "left": 0,
                       "opacity": 1,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": 0,
                         },
                       ],
@@ -335,7 +335,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                     maxFontSizeMultiplier={1.5}
                     numberOfLines={1}
                     style={
-                      Object {
+                      {
                         "backgroundColor": "rgb(242, 242, 242)",
                         "color": "transparent",
                         "fontFamily": "sans-serif",
@@ -348,17 +348,17 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "position": "absolute",
                         "textAlign": "left",
                         "top": 37,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": 0,
                           },
-                          Object {
+                          {
                             "translateY": 0,
                           },
-                          Object {
+                          {
                             "scale": 1,
                           },
-                          Object {
+                          {
                             "scaleY": 1,
                           },
                         ],
@@ -375,7 +375,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                     numberOfLines={1}
                     onLayout={[Function]}
                     style={
-                      Object {
+                      {
                         "color": "#2165E3",
                         "fontFamily": "sans-serif",
                         "fontSize": 16,
@@ -387,14 +387,14 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "position": "absolute",
                         "textAlign": "left",
                         "top": 36,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": 0,
                           },
-                          Object {
+                          {
                             "translateY": 0,
                           },
-                          Object {
+                          {
                             "scale": 1,
                           },
                         ],
@@ -410,7 +410,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                     maxFontSizeMultiplier={1.5}
                     numberOfLines={1}
                     style={
-                      Object {
+                      {
                         "color": "rgba(0, 0, 0, 0.54)",
                         "fontFamily": "sans-serif",
                         "fontSize": 16,
@@ -422,14 +422,14 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "position": "absolute",
                         "textAlign": "left",
                         "top": 36,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": 0,
                           },
-                          Object {
+                          {
                             "translateY": 0,
                           },
-                          Object {
+                          {
                             "scale": 1,
                           },
                         ],
@@ -454,19 +454,19 @@ exports[`TypeScreen should match snapshot 1`] = `
                   placeholderTextColor="rgba(0, 0, 0, 0.54)"
                   selectionColor="#2165E3"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "margin": 0,
                         "zIndex": 1,
                       },
-                      Object {
+                      {
                         "height": 56,
                       },
-                      Object {
+                      {
                         "paddingBottom": 0,
                         "paddingTop": 0,
                       },
-                      Object {
+                      {
                         "color": "#6D6D68",
                         "fontFamily": "sans-serif",
                         "fontSize": 16,
@@ -477,8 +477,8 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "textAlignVertical": "center",
                       },
                       false,
-                      Array [
-                        Object {},
+                      [
+                        {},
                       ],
                       undefined,
                     ]
@@ -494,14 +494,14 @@ exports[`TypeScreen should match snapshot 1`] = `
         </View>
         <View
           style={
-            Object {
+            {
               "marginBottom": 16,
             }
           }
         >
           <View
             style={
-              Object {
+              {
                 "marginBottom": 16,
               }
             }
@@ -509,15 +509,15 @@ exports[`TypeScreen should match snapshot 1`] = `
             <View
               pointerEvents="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "bottom": 0,
                     "left": 0,
                     "position": "absolute",
                     "right": 0,
                     "top": 6,
                   },
-                  Object {
+                  {
                     "backgroundColor": "rgb(242, 242, 242)",
                     "borderColor": "rgba(0, 0, 0, 0.54)",
                     "borderRadius": 4,
@@ -531,11 +531,11 @@ exports[`TypeScreen should match snapshot 1`] = `
             <View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "paddingBottom": 0,
                     },
-                    Object {
+                    {
                       "minHeight": 64,
                       "paddingTop": 8,
                     },
@@ -546,15 +546,15 @@ exports[`TypeScreen should match snapshot 1`] = `
                   collapsable={false}
                   pointerEvents="none"
                   style={
-                    Object {
+                    {
                       "bottom": 0,
                       "left": 0,
                       "opacity": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": 3,
                         },
                       ],
@@ -567,7 +567,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                     maxFontSizeMultiplier={1.5}
                     numberOfLines={1}
                     style={
-                      Object {
+                      {
                         "backgroundColor": "rgb(242, 242, 242)",
                         "color": "transparent",
                         "fontFamily": "sans-serif",
@@ -580,17 +580,17 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "position": "absolute",
                         "textAlign": "left",
                         "top": 37,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": 0,
                           },
-                          Object {
+                          {
                             "translateY": -30,
                           },
-                          Object {
+                          {
                             "scale": 0.75,
                           },
-                          Object {
+                          {
                             "scaleY": 0.2,
                           },
                         ],
@@ -607,7 +607,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                     numberOfLines={1}
                     onLayout={[Function]}
                     style={
-                      Object {
+                      {
                         "color": "#2165E3",
                         "fontFamily": "sans-serif",
                         "fontSize": 16,
@@ -619,14 +619,14 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "position": "absolute",
                         "textAlign": "left",
                         "top": 36,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": 0,
                           },
-                          Object {
+                          {
                             "translateY": -30,
                           },
-                          Object {
+                          {
                             "scale": 0.75,
                           },
                         ],
@@ -642,7 +642,7 @@ exports[`TypeScreen should match snapshot 1`] = `
                     maxFontSizeMultiplier={1.5}
                     numberOfLines={1}
                     style={
-                      Object {
+                      {
                         "color": "rgba(0, 0, 0, 0.54)",
                         "fontFamily": "sans-serif",
                         "fontSize": 16,
@@ -654,14 +654,14 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "position": "absolute",
                         "textAlign": "left",
                         "top": 36,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": 0,
                           },
-                          Object {
+                          {
                             "translateY": -30,
                           },
-                          Object {
+                          {
                             "scale": 0.75,
                           },
                         ],
@@ -686,19 +686,19 @@ exports[`TypeScreen should match snapshot 1`] = `
                   placeholderTextColor="rgba(0, 0, 0, 0.54)"
                   selectionColor="#2165E3"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "margin": 0,
                         "zIndex": 1,
                       },
-                      Object {
+                      {
                         "height": 56,
                       },
-                      Object {
+                      {
                         "paddingBottom": 0,
                         "paddingTop": 0,
                       },
-                      Object {
+                      {
                         "color": "#6D6D68",
                         "fontFamily": "sans-serif",
                         "fontSize": 16,
@@ -709,8 +709,8 @@ exports[`TypeScreen should match snapshot 1`] = `
                         "textAlignVertical": "center",
                       },
                       false,
-                      Array [
-                        Object {},
+                      [
+                        {},
                       ],
                       undefined,
                     ]
@@ -727,7 +727,7 @@ exports[`TypeScreen should match snapshot 1`] = `
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "backgroundColor": "rgba(0, 0, 0, 0.12)",
               "borderColor": "transparent",
               "borderRadius": 4,
@@ -739,7 +739,7 @@ exports[`TypeScreen should match snapshot 1`] = `
               "marginTop": 8,
               "minWidth": 64,
               "shadowColor": "#000000",
-              "shadowOffset": Object {
+              "shadowOffset": {
                 "height": 0,
                 "width": 0,
               },
@@ -752,7 +752,7 @@ exports[`TypeScreen should match snapshot 1`] = `
             accessibilityLabel="Add secret"
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
                 "disabled": true,
               }
             }
@@ -769,12 +769,12 @@ exports[`TypeScreen should match snapshot 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "overflow": "hidden",
                 },
                 false,
-                Object {
+                {
                   "borderRadius": 4,
                 },
               ]
@@ -783,8 +783,8 @@ exports[`TypeScreen should match snapshot 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "center",
@@ -795,8 +795,8 @@ exports[`TypeScreen should match snapshot 1`] = `
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginLeft": 12,
                       "marginRight": -4,
                     },
@@ -812,33 +812,33 @@ exports[`TypeScreen should match snapshot 1`] = `
                 numberOfLines={1}
                 selectable={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "textAlign": "left",
                     },
-                    Object {
+                    {
                       "color": "#6D6D68",
                       "fontFamily": "sans-serif",
                       "fontWeight": "normal",
                     },
-                    Object {
+                    {
                       "writingDirection": "ltr",
                     },
-                    Array [
-                      Object {
+                    [
+                      {
                         "marginHorizontal": 16,
                         "marginVertical": 9,
                         "textAlign": "center",
                       },
-                      Object {
+                      {
                         "letterSpacing": 1,
                       },
                       false,
                       undefined,
-                      Object {
+                      {
                         "textTransform": "uppercase",
                       },
-                      Object {
+                      {
                         "color": "rgba(0, 0, 0, 0.32)",
                         "fontFamily": "sans-serif-medium",
                         "fontWeight": "normal",

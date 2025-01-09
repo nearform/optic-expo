@@ -4,8 +4,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={
-    Array [
-      Object {
+    [
+      {
         "flex": 1,
       },
       undefined,
@@ -16,14 +16,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
     collapsable={false}
     pointerEvents="box-none"
     style={
-      Object {
+      {
         "flex": 1,
       }
     }
   >
     <View
       style={
-        Object {
+        {
           "flexGrow": 1,
           "justifyContent": "flex-start",
           "width": "100%",
@@ -39,7 +39,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
       />
       <RCTScrollView
         contentContainerStyle={
-          Object {
+          {
             "flexGrow": 1,
           }
         }
@@ -47,7 +47,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
         <View>
           <View
             style={
-              Object {
+              {
                 "margin": 16,
               }
             }
@@ -55,12 +55,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
             <View
               collapsable={false}
               style={
-                Object {
+                {
                   "backgroundColor": "#ffffff",
                   "borderRadius": 4,
                   "elevation": 1,
                   "shadowColor": "#000000",
-                  "shadowOffset": Object {
+                  "shadowOffset": {
                     "height": 0.5,
                     "width": 0,
                   },
@@ -71,8 +71,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexShrink": 1,
                     },
                     undefined,
@@ -82,14 +82,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexDirection": "row",
                         "justifyContent": "space-between",
                         "paddingLeft": 16,
                       },
-                      Object {
+                      {
                         "minHeight": 72,
                       },
                       undefined,
@@ -98,8 +98,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 40,
                           "justifyContent": "center",
                           "marginRight": 16,
@@ -111,18 +111,18 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "#2165E3",
                             "borderRadius": 20,
                             "height": 40,
                             "width": 40,
                           },
-                          Object {
+                          {
                             "alignItems": "center",
                             "justifyContent": "center",
                           },
-                          Object {},
+                          {},
                         ]
                       }
                     >
@@ -131,8 +131,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flex": 1,
                           "flexDirection": "column",
                           "justifyContent": "center",
@@ -143,38 +143,38 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#6D6D68",
                             "fontFamily": "sans-serif",
                             "fontWeight": "normal",
                           },
-                          Object {
+                          {
                             "textAlign": "left",
                           },
-                          Array [
-                            Object {
+                          [
+                            {
                               "textAlign": "left",
                             },
-                            Object {
+                            {
                               "color": "rgba(109, 109, 104, 0.87)",
                               "fontFamily": "sans-serif-medium",
                               "fontWeight": "normal",
                               "writingDirection": "ltr",
                             },
-                            Array [
-                              Object {
+                            [
+                              {
                                 "fontSize": 20,
                                 "letterSpacing": 0.15,
                                 "lineHeight": 30,
                                 "marginVertical": 2,
                               },
-                              Array [
-                                Object {
+                              [
+                                {
                                   "minHeight": 30,
                                   "paddingRight": 16,
                                 },
-                                Object {
+                                {
                                   "marginBottom": 0,
                                 },
                                 undefined,
@@ -187,26 +187,26 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     >
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "textAlign": "left",
                             },
-                            Object {
+                            {
                               "color": "#6D6D68",
                               "fontFamily": "sans-serif",
                               "fontWeight": "normal",
                             },
-                            Object {
+                            {
                               "writingDirection": "ltr",
                             },
-                            Array [
-                              Object {
+                            [
+                              {
                                 "fontFamily": "Poppins_700Bold",
                                 "fontSize": 24,
                                 "letterSpacing": 0,
                                 "lineHeight": 36,
                               },
-                              Object {
+                              {
                                 "alignItems": "center",
                                 "color": "#6D6D68",
                                 "display": "flex",
@@ -223,34 +223,34 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#6D6D68",
                             "fontFamily": "sans-serif",
                             "fontWeight": "normal",
                           },
-                          Object {
+                          {
                             "textAlign": "left",
                           },
-                          Array [
-                            Object {
+                          [
+                            {
                               "textAlign": "left",
                             },
-                            Object {
+                            {
                               "color": "rgba(109, 109, 104, 0.54)",
                               "fontFamily": "sans-serif",
                               "fontWeight": "normal",
                               "writingDirection": "ltr",
                             },
-                            Array [
-                              Object {
+                            [
+                              {
                                 "fontSize": 12,
                                 "letterSpacing": 0.4,
                                 "lineHeight": 20,
                                 "marginVertical": 2,
                               },
-                              Array [
-                                Object {
+                              [
+                                {
                                   "marginVertical": 0,
                                   "minHeight": 20,
                                   "paddingRight": 16,
@@ -273,7 +273,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       <View
                         collapsable={false}
                         style={
-                          Object {
+                          {
                             "backgroundColor": undefined,
                             "borderColor": undefined,
                             "borderRadius": 18,
@@ -291,7 +291,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           accessibilityLabel="toggle-menu"
                           accessibilityRole="button"
                           accessibilityState={
-                            Object {
+                            {
                               "disabled": false,
                             }
                           }
@@ -301,7 +301,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           collapsable={false}
                           focusable={true}
                           hitSlop={
-                            Object {
+                            {
                               "bottom": 6,
                               "left": 6,
                               "right": 6,
@@ -318,18 +318,18 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "overflow": "hidden",
                               },
                               false,
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexGrow": 1,
                                   "justifyContent": "center",
                                 },
-                                Object {
+                                {
                                   "borderRadius": 18,
                                 },
                               ],
@@ -345,12 +345,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "paddingHorizontal": 16,
                       },
                       undefined,
-                      Object {
+                      {
                         "paddingHorizontal": 8,
                       },
                     ]
@@ -358,7 +358,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 >
                   <View
                     style={
-                      Object {
+                      {
                         "flex": 1,
                         "marginTop": 16,
                         "paddingHorizontal": 8,
@@ -367,7 +367,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   >
                     <Text
                       style={
-                        Object {
+                        {
                           "color": "rgba(0, 0, 0, 0.6)",
                           "fontSize": 10,
                           "marginRight": 8,
@@ -378,7 +378,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     </Text>
                     <View
                       style={
-                        Object {
+                        {
                           "flexDirection": "row",
                           "justifyContent": "space-between",
                           "marginBottom": 16,
@@ -387,7 +387,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     >
                       <View
                         style={
-                          Object {
+                          {
                             "alignItems": "center",
                             "flexDirection": "row",
                           }
@@ -395,7 +395,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <View
                           style={
-                            Object {
+                            {
                               "alignItems": "center",
                               "flexDirection": "row",
                               "justifyContent": "center",
@@ -404,24 +404,24 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         >
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "textAlign": "left",
                                 },
-                                Object {
+                                {
                                   "color": "#6D6D68",
                                   "fontFamily": "sans-serif",
                                   "fontWeight": "normal",
                                 },
-                                Object {
+                                {
                                   "writingDirection": "ltr",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "fontFamily": "FiraCode_400Regular",
                                     "fontSize": 24,
                                   },
-                                  Object {
+                                  {
                                     "alignItems": "center",
                                     "color": "#6D6D68",
                                     "display": "flex",
@@ -438,7 +438,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         <View
                           collapsable={false}
                           style={
-                            Object {
+                            {
                               "backgroundColor": undefined,
                               "borderColor": undefined,
                               "borderRadius": 15,
@@ -456,7 +456,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             accessibilityLabel="copy-otp"
                             accessibilityRole="button"
                             accessibilityState={
-                              Object {
+                              {
                                 "disabled": false,
                               }
                             }
@@ -466,7 +466,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             collapsable={false}
                             focusable={true}
                             hitSlop={
-                              Object {
+                              {
                                 "bottom": 6,
                                 "left": 6,
                                 "right": 6,
@@ -483,18 +483,18 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             onResponderTerminationRequest={[Function]}
                             onStartShouldSetResponder={[Function]}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "overflow": "hidden",
                                 },
                                 false,
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "center",
                                     "flexGrow": 1,
                                     "justifyContent": "center",
                                   },
-                                  Object {
+                                  {
                                     "borderRadius": 15,
                                   },
                                 ],
@@ -508,7 +508,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       </View>
                       <View
                         style={
-                          Object {
+                          {
                             "height": 30,
                             "position": "relative",
                             "width": 30,
@@ -525,12 +525,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           minX={0}
                           minY={0}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderWidth": 0,
                               },
-                              Object {
+                              {
                                 "flex": 0,
                                 "height": 30,
                                 "width": 30,
@@ -546,14 +546,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
                               fill={null}
                               propList={
-                                Array [
+                                [
                                   "fill",
                                   "stroke",
                                   "strokeWidth",
                                 ]
                               }
                               stroke={
-                                Object {
+                                {
                                   "payload": -2500135,
                                   "type": 0,
                                 }
@@ -564,7 +564,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
                               fill={null}
                               propList={
-                                Array [
+                                [
                                   "fill",
                                   "stroke",
                                   "strokeWidth",
@@ -574,13 +574,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 ]
                               }
                               stroke={
-                                Object {
+                                {
                                   "payload": -1342820,
                                   "type": 0,
                                 }
                               }
                               strokeDasharray={
-                                Array [
+                                [
                                   "84.82300164692441",
                                   "84.82300164692441",
                                 ]
@@ -593,7 +593,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         </RNSVGSvgView>
                         <View
                           style={
-                            Object {
+                            {
                               "alignItems": "center",
                               "display": "flex",
                               "height": "100%",
@@ -607,30 +607,30 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         >
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "textAlign": "left",
                                 },
-                                Object {
+                                {
                                   "color": "#6D6D68",
                                   "fontFamily": "sans-serif",
                                   "fontWeight": "normal",
                                 },
-                                Object {
+                                {
                                   "writingDirection": "ltr",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "fontFamily": "FiraCode_400Regular",
                                     "fontSize": 24,
                                   },
-                                  Object {
+                                  {
                                     "alignItems": "center",
                                     "color": "#6D6D68",
                                     "display": "flex",
                                     "marginBottom": 0,
                                   },
-                                  Object {
+                                  {
                                     "fontSize": 12,
                                   },
                                 ],
@@ -645,8 +645,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "backgroundColor": "rgba(0, 0, 0, 0.12)",
                           "height": 0.5,
                         },
@@ -659,7 +659,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   />
                   <View
                     style={
-                      Object {
+                      {
                         "alignItems": "center",
                         "flexDirection": "row",
                         "justifyContent": "space-between",
@@ -671,32 +671,32 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     <View>
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "textAlign": "left",
                             },
-                            Object {
+                            {
                               "color": "#6D6D68",
                               "fontFamily": "sans-serif",
                               "fontWeight": "normal",
                             },
-                            Object {
+                            {
                               "writingDirection": "ltr",
                             },
-                            Array [
-                              Object {
+                            [
+                              {
                                 "fontSize": 10,
                                 "fontWeight": "400",
                                 "letterSpacing": 1.1,
                                 "textTransform": "uppercase",
                               },
-                              Object {
+                              {
                                 "alignItems": "center",
                                 "color": "#6D6D68",
                                 "display": "flex",
                                 "marginBottom": 0,
                               },
-                              Object {
+                              {
                                 "color": "rgba(0, 0, 0, 0.6)",
                                 "fontSize": 10,
                                 "marginRight": 8,
@@ -710,24 +710,24 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       </Text>
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "textAlign": "left",
                             },
-                            Object {
+                            {
                               "color": "#6D6D68",
                               "fontFamily": "sans-serif",
                               "fontWeight": "normal",
                             },
-                            Object {
+                            {
                               "writingDirection": "ltr",
                             },
-                            Array [
-                              Object {
+                            [
+                              {
                                 "fontFamily": "FiraCode_400Regular",
                                 "fontSize": 24,
                               },
-                              Object {
+                              {
                                 "alignItems": "center",
                                 "color": "#6D6D68",
                                 "display": "flex",
@@ -745,7 +745,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       <View
                         collapsable={false}
                         style={
-                          Object {
+                          {
                             "backgroundColor": "transparent",
                             "borderColor": "transparent",
                             "borderRadius": 4,
@@ -754,7 +754,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             "elevation": 0,
                             "minWidth": 64,
                             "shadowColor": "#000000",
-                            "shadowOffset": Object {
+                            "shadowOffset": {
                               "height": 0,
                               "width": 0,
                             },
@@ -766,7 +766,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         <View
                           accessibilityRole="button"
                           accessibilityState={
-                            Object {
+                            {
                               "disabled": false,
                             }
                           }
@@ -783,12 +783,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "overflow": "hidden",
                               },
                               false,
-                              Object {
+                              {
                                 "borderRadius": 4,
                               },
                             ]
@@ -797,13 +797,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                   "justifyContent": "center",
                                 },
-                                Object {
+                                {
                                   "flexDirection": "row-reverse",
                                 },
                               ]
@@ -811,8 +811,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           >
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "marginLeft": -4,
                                     "marginRight": 12,
                                   },
@@ -828,33 +828,33 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               numberOfLines={1}
                               selectable={false}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "textAlign": "left",
                                   },
-                                  Object {
+                                  {
                                     "color": "#6D6D68",
                                     "fontFamily": "sans-serif",
                                     "fontWeight": "normal",
                                   },
-                                  Object {
+                                  {
                                     "writingDirection": "ltr",
                                   },
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "marginHorizontal": 16,
                                       "marginVertical": 9,
                                       "textAlign": "center",
                                     },
-                                    Object {
+                                    {
                                       "letterSpacing": 1,
                                     },
                                     false,
                                     undefined,
-                                    Object {
+                                    {
                                       "textTransform": "uppercase",
                                     },
-                                    Object {
+                                    {
                                       "color": "#2165E3",
                                       "fontFamily": "sans-serif-medium",
                                       "fontWeight": "normal",
@@ -867,7 +867,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             >
                               <Text
                                 style={
-                                  Object {
+                                  {
                                     "color": "#2165E3",
                                     "fontWeight": "bold",
                                   }
@@ -883,15 +883,15 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "backgroundColor": "rgba(0, 0, 0, 0.12)",
                           "height": 0.5,
                         },
                         undefined,
                         false,
                         false,
-                        Object {
+                        {
                           "marginBottom": 8,
                         },
                       ]
@@ -900,7 +900,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   <View
                     collapsable={false}
                     style={
-                      Object {
+                      {
                         "height": 0,
                         "opacity": 0,
                         "overflow": "hidden",
@@ -909,7 +909,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   >
                     <View
                       style={
-                        Object {
+                        {
                           "flex": 1,
                           "marginTop": 16,
                           "paddingHorizontal": 8,
@@ -918,7 +918,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     >
                       <Text
                         style={
-                          Object {
+                          {
                             "color": "rgba(0, 0, 0, 0.6)",
                             "fontSize": 10,
                             "marginRight": 8,
@@ -929,34 +929,34 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       </Text>
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "textAlign": "left",
                             },
-                            Object {
+                            {
                               "color": "#6D6D68",
                               "fontFamily": "sans-serif",
                               "fontWeight": "normal",
                             },
-                            Object {
+                            {
                               "writingDirection": "ltr",
                             },
-                            Array [
-                              Object {
+                            [
+                              {
                                 "fontFamily": "FiraCode_400Regular",
                                 "fontSize": 24,
                               },
-                              Object {
+                              {
                                 "alignItems": "center",
                                 "color": "#6D6D68",
                                 "display": "flex",
                                 "marginBottom": 0,
                               },
-                              Array [
-                                Object {
+                              [
+                                {
                                   "marginBottom": 16,
                                 },
-                                Object {
+                                {
                                   "fontSize": 16,
                                 },
                               ],
@@ -969,8 +969,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     </View>
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "rgba(0, 0, 0, 0.12)",
                             "height": 0.5,
                           },
@@ -986,24 +986,24 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 <View
                   index={2}
                   siblings={
-                    Array [
+                    [
                       "Card.Title",
                       "Card.Content",
                       "Card.Actions",
                     ]
                   }
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexDirection": "row",
                         "padding": 8,
                       },
-                      Object {
+                      {
                         "flexDirection": "row",
                         "justifyContent": "space-between",
                       },
-                      Object {
+                      {
                         "justifyContent": "flex-start",
                       },
                     ]
@@ -1014,9 +1014,9 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     compact={true}
                     mode={false}
                     style={
-                      Array [
+                      [
                         false,
-                        Object {
+                        {
                           "flexDirection": "row",
                           "justifyContent": "flex-start",
                         },
@@ -1026,7 +1026,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     <View
                       collapsable={false}
                       style={
-                        Object {
+                        {
                           "backgroundColor": "transparent",
                           "borderColor": "transparent",
                           "borderRadius": 4,
@@ -1035,7 +1035,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           "elevation": 0,
                           "minWidth": "auto",
                           "shadowColor": "#000000",
-                          "shadowOffset": Object {
+                          "shadowOffset": {
                             "height": 0,
                             "width": 0,
                           },
@@ -1047,7 +1047,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       <View
                         accessibilityRole="button"
                         accessibilityState={
-                          Object {
+                          {
                             "disabled": false,
                           }
                         }
@@ -1064,12 +1064,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "overflow": "hidden",
                             },
                             false,
-                            Object {
+                            {
                               "borderRadius": 4,
                             },
                           ]
@@ -1078,8 +1078,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                                 "justifyContent": "center",
@@ -1090,8 +1090,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "marginLeft": 12,
                                   "marginRight": -4,
                                 },
@@ -1107,35 +1107,35 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             numberOfLines={1}
                             selectable={false}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "textAlign": "left",
                                 },
-                                Object {
+                                {
                                   "color": "#6D6D68",
                                   "fontFamily": "sans-serif",
                                   "fontWeight": "normal",
                                 },
-                                Object {
+                                {
                                   "writingDirection": "ltr",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "marginHorizontal": 16,
                                     "marginVertical": 9,
                                     "textAlign": "center",
                                   },
-                                  Object {
+                                  {
                                     "letterSpacing": 1,
                                   },
                                   false,
-                                  Object {
+                                  {
                                     "marginHorizontal": 8,
                                   },
-                                  Object {
+                                  {
                                     "textTransform": "uppercase",
                                   },
-                                  Object {
+                                  {
                                     "color": "#2165E3",
                                     "fontFamily": "sans-serif-medium",
                                     "fontWeight": "normal",
@@ -1156,9 +1156,9 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     compact={true}
                     mode={false}
                     style={
-                      Array [
+                      [
                         false,
-                        Object {
+                        {
                           "flexDirection": "row",
                           "justifyContent": "flex-end",
                         },
@@ -1168,7 +1168,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     <View
                       collapsable={false}
                       style={
-                        Object {
+                        {
                           "backgroundColor": "#2165E3",
                           "borderColor": "transparent",
                           "borderRadius": 4,
@@ -1177,7 +1177,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           "elevation": 2,
                           "minWidth": 64,
                           "shadowColor": "#000000",
-                          "shadowOffset": Object {
+                          "shadowOffset": {
                             "height": 0.75,
                             "width": 0,
                           },
@@ -1189,7 +1189,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       <View
                         accessibilityRole="button"
                         accessibilityState={
-                          Object {
+                          {
                             "disabled": false,
                           }
                         }
@@ -1206,12 +1206,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "overflow": "hidden",
                             },
                             false,
-                            Object {
+                            {
                               "borderRadius": 4,
                             },
                           ]
@@ -1220,8 +1220,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                                 "justifyContent": "center",
@@ -1232,8 +1232,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "marginLeft": 12,
                                   "marginRight": -4,
                                 },
@@ -1249,33 +1249,33 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             numberOfLines={1}
                             selectable={false}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "textAlign": "left",
                                 },
-                                Object {
+                                {
                                   "color": "#6D6D68",
                                   "fontFamily": "sans-serif",
                                   "fontWeight": "normal",
                                 },
-                                Object {
+                                {
                                   "writingDirection": "ltr",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "marginHorizontal": 16,
                                     "marginVertical": 9,
                                     "textAlign": "center",
                                   },
-                                  Object {
+                                  {
                                     "letterSpacing": 1,
                                   },
                                   false,
                                   undefined,
-                                  Object {
+                                  {
                                     "textTransform": "uppercase",
                                   },
-                                  Object {
+                                  {
                                     "color": "#ffffff",
                                     "fontFamily": "sans-serif-medium",
                                     "fontWeight": "normal",
@@ -1298,7 +1298,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
           </View>
           <View
             style={
-              Object {
+              {
                 "margin": 16,
               }
             }
@@ -1306,12 +1306,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
             <View
               collapsable={false}
               style={
-                Object {
+                {
                   "backgroundColor": "#ffffff",
                   "borderRadius": 4,
                   "elevation": 1,
                   "shadowColor": "#000000",
-                  "shadowOffset": Object {
+                  "shadowOffset": {
                     "height": 0.5,
                     "width": 0,
                   },
@@ -1322,8 +1322,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexShrink": 1,
                     },
                     undefined,
@@ -1333,14 +1333,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexDirection": "row",
                         "justifyContent": "space-between",
                         "paddingLeft": 16,
                       },
-                      Object {
+                      {
                         "minHeight": 72,
                       },
                       undefined,
@@ -1349,8 +1349,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 40,
                           "justifyContent": "center",
                           "marginRight": 16,
@@ -1362,18 +1362,18 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "#2165E3",
                             "borderRadius": 20,
                             "height": 40,
                             "width": 40,
                           },
-                          Object {
+                          {
                             "alignItems": "center",
                             "justifyContent": "center",
                           },
-                          Object {},
+                          {},
                         ]
                       }
                     >
@@ -1382,8 +1382,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flex": 1,
                           "flexDirection": "column",
                           "justifyContent": "center",
@@ -1394,38 +1394,38 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#6D6D68",
                             "fontFamily": "sans-serif",
                             "fontWeight": "normal",
                           },
-                          Object {
+                          {
                             "textAlign": "left",
                           },
-                          Array [
-                            Object {
+                          [
+                            {
                               "textAlign": "left",
                             },
-                            Object {
+                            {
                               "color": "rgba(109, 109, 104, 0.87)",
                               "fontFamily": "sans-serif-medium",
                               "fontWeight": "normal",
                               "writingDirection": "ltr",
                             },
-                            Array [
-                              Object {
+                            [
+                              {
                                 "fontSize": 20,
                                 "letterSpacing": 0.15,
                                 "lineHeight": 30,
                                 "marginVertical": 2,
                               },
-                              Array [
-                                Object {
+                              [
+                                {
                                   "minHeight": 30,
                                   "paddingRight": 16,
                                 },
-                                Object {
+                                {
                                   "marginBottom": 0,
                                 },
                                 undefined,
@@ -1438,26 +1438,26 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     >
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "textAlign": "left",
                             },
-                            Object {
+                            {
                               "color": "#6D6D68",
                               "fontFamily": "sans-serif",
                               "fontWeight": "normal",
                             },
-                            Object {
+                            {
                               "writingDirection": "ltr",
                             },
-                            Array [
-                              Object {
+                            [
+                              {
                                 "fontFamily": "Poppins_700Bold",
                                 "fontSize": 24,
                                 "letterSpacing": 0,
                                 "lineHeight": 36,
                               },
-                              Object {
+                              {
                                 "alignItems": "center",
                                 "color": "#6D6D68",
                                 "display": "flex",
@@ -1474,34 +1474,34 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#6D6D68",
                             "fontFamily": "sans-serif",
                             "fontWeight": "normal",
                           },
-                          Object {
+                          {
                             "textAlign": "left",
                           },
-                          Array [
-                            Object {
+                          [
+                            {
                               "textAlign": "left",
                             },
-                            Object {
+                            {
                               "color": "rgba(109, 109, 104, 0.54)",
                               "fontFamily": "sans-serif",
                               "fontWeight": "normal",
                               "writingDirection": "ltr",
                             },
-                            Array [
-                              Object {
+                            [
+                              {
                                 "fontSize": 12,
                                 "letterSpacing": 0.4,
                                 "lineHeight": 20,
                                 "marginVertical": 2,
                               },
-                              Array [
-                                Object {
+                              [
+                                {
                                   "marginVertical": 0,
                                   "minHeight": 20,
                                   "paddingRight": 16,
@@ -1524,7 +1524,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       <View
                         collapsable={false}
                         style={
-                          Object {
+                          {
                             "backgroundColor": undefined,
                             "borderColor": undefined,
                             "borderRadius": 18,
@@ -1542,7 +1542,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           accessibilityLabel="toggle-menu"
                           accessibilityRole="button"
                           accessibilityState={
-                            Object {
+                            {
                               "disabled": false,
                             }
                           }
@@ -1552,7 +1552,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           collapsable={false}
                           focusable={true}
                           hitSlop={
-                            Object {
+                            {
                               "bottom": 6,
                               "left": 6,
                               "right": 6,
@@ -1569,18 +1569,18 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "overflow": "hidden",
                               },
                               false,
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexGrow": 1,
                                   "justifyContent": "center",
                                 },
-                                Object {
+                                {
                                   "borderRadius": 18,
                                 },
                               ],
@@ -1596,12 +1596,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "paddingHorizontal": 16,
                       },
                       undefined,
-                      Object {
+                      {
                         "paddingHorizontal": 8,
                       },
                     ]
@@ -1609,7 +1609,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 >
                   <View
                     style={
-                      Object {
+                      {
                         "flex": 1,
                         "marginTop": 16,
                         "paddingHorizontal": 8,
@@ -1618,7 +1618,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   >
                     <Text
                       style={
-                        Object {
+                        {
                           "color": "rgba(0, 0, 0, 0.6)",
                           "fontSize": 10,
                           "marginRight": 8,
@@ -1629,7 +1629,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     </Text>
                     <View
                       style={
-                        Object {
+                        {
                           "flexDirection": "row",
                           "justifyContent": "space-between",
                           "marginBottom": 16,
@@ -1638,7 +1638,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     >
                       <View
                         style={
-                          Object {
+                          {
                             "alignItems": "center",
                             "flexDirection": "row",
                           }
@@ -1646,7 +1646,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <View
                           style={
-                            Object {
+                            {
                               "alignItems": "center",
                               "flexDirection": "row",
                               "justifyContent": "center",
@@ -1655,24 +1655,24 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         >
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "textAlign": "left",
                                 },
-                                Object {
+                                {
                                   "color": "#6D6D68",
                                   "fontFamily": "sans-serif",
                                   "fontWeight": "normal",
                                 },
-                                Object {
+                                {
                                   "writingDirection": "ltr",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "fontFamily": "FiraCode_400Regular",
                                     "fontSize": 24,
                                   },
-                                  Object {
+                                  {
                                     "alignItems": "center",
                                     "color": "#6D6D68",
                                     "display": "flex",
@@ -1689,7 +1689,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         <View
                           collapsable={false}
                           style={
-                            Object {
+                            {
                               "backgroundColor": undefined,
                               "borderColor": undefined,
                               "borderRadius": 15,
@@ -1707,7 +1707,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             accessibilityLabel="copy-otp"
                             accessibilityRole="button"
                             accessibilityState={
-                              Object {
+                              {
                                 "disabled": false,
                               }
                             }
@@ -1717,7 +1717,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             collapsable={false}
                             focusable={true}
                             hitSlop={
-                              Object {
+                              {
                                 "bottom": 6,
                                 "left": 6,
                                 "right": 6,
@@ -1734,18 +1734,18 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             onResponderTerminationRequest={[Function]}
                             onStartShouldSetResponder={[Function]}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "overflow": "hidden",
                                 },
                                 false,
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "center",
                                     "flexGrow": 1,
                                     "justifyContent": "center",
                                   },
-                                  Object {
+                                  {
                                     "borderRadius": 15,
                                   },
                                 ],
@@ -1759,7 +1759,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       </View>
                       <View
                         style={
-                          Object {
+                          {
                             "height": 30,
                             "position": "relative",
                             "width": 30,
@@ -1776,12 +1776,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           minX={0}
                           minY={0}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderWidth": 0,
                               },
-                              Object {
+                              {
                                 "flex": 0,
                                 "height": 30,
                                 "width": 30,
@@ -1797,14 +1797,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
                               fill={null}
                               propList={
-                                Array [
+                                [
                                   "fill",
                                   "stroke",
                                   "strokeWidth",
                                 ]
                               }
                               stroke={
-                                Object {
+                                {
                                   "payload": -2500135,
                                   "type": 0,
                                 }
@@ -1815,7 +1815,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               d="m 15,1.5 a 13.5,13.5 0 1,0 0,27 a 13.5,13.5 0 1,0 0,-27"
                               fill={null}
                               propList={
-                                Array [
+                                [
                                   "fill",
                                   "stroke",
                                   "strokeWidth",
@@ -1825,13 +1825,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                                 ]
                               }
                               stroke={
-                                Object {
+                                {
                                   "payload": -1342820,
                                   "type": 0,
                                 }
                               }
                               strokeDasharray={
-                                Array [
+                                [
                                   "84.82300164692441",
                                   "84.82300164692441",
                                 ]
@@ -1844,7 +1844,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         </RNSVGSvgView>
                         <View
                           style={
-                            Object {
+                            {
                               "alignItems": "center",
                               "display": "flex",
                               "height": "100%",
@@ -1858,30 +1858,30 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         >
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "textAlign": "left",
                                 },
-                                Object {
+                                {
                                   "color": "#6D6D68",
                                   "fontFamily": "sans-serif",
                                   "fontWeight": "normal",
                                 },
-                                Object {
+                                {
                                   "writingDirection": "ltr",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "fontFamily": "FiraCode_400Regular",
                                     "fontSize": 24,
                                   },
-                                  Object {
+                                  {
                                     "alignItems": "center",
                                     "color": "#6D6D68",
                                     "display": "flex",
                                     "marginBottom": 0,
                                   },
-                                  Object {
+                                  {
                                     "fontSize": 12,
                                   },
                                 ],
@@ -1896,8 +1896,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "backgroundColor": "rgba(0, 0, 0, 0.12)",
                           "height": 0.5,
                         },
@@ -1910,7 +1910,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   />
                   <View
                     style={
-                      Object {
+                      {
                         "alignItems": "center",
                         "flexDirection": "row",
                         "justifyContent": "space-between",
@@ -1922,32 +1922,32 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     <View>
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "textAlign": "left",
                             },
-                            Object {
+                            {
                               "color": "#6D6D68",
                               "fontFamily": "sans-serif",
                               "fontWeight": "normal",
                             },
-                            Object {
+                            {
                               "writingDirection": "ltr",
                             },
-                            Array [
-                              Object {
+                            [
+                              {
                                 "fontSize": 10,
                                 "fontWeight": "400",
                                 "letterSpacing": 1.1,
                                 "textTransform": "uppercase",
                               },
-                              Object {
+                              {
                                 "alignItems": "center",
                                 "color": "#6D6D68",
                                 "display": "flex",
                                 "marginBottom": 0,
                               },
-                              Object {
+                              {
                                 "color": "rgba(0, 0, 0, 0.6)",
                                 "fontSize": 10,
                                 "marginRight": 8,
@@ -1961,24 +1961,24 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       </Text>
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "textAlign": "left",
                             },
-                            Object {
+                            {
                               "color": "#6D6D68",
                               "fontFamily": "sans-serif",
                               "fontWeight": "normal",
                             },
-                            Object {
+                            {
                               "writingDirection": "ltr",
                             },
-                            Array [
-                              Object {
+                            [
+                              {
                                 "fontFamily": "FiraCode_400Regular",
                                 "fontSize": 24,
                               },
-                              Object {
+                              {
                                 "alignItems": "center",
                                 "color": "#6D6D68",
                                 "display": "flex",
@@ -1996,7 +1996,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       <View
                         collapsable={false}
                         style={
-                          Object {
+                          {
                             "backgroundColor": "transparent",
                             "borderColor": "transparent",
                             "borderRadius": 4,
@@ -2005,7 +2005,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             "elevation": 0,
                             "minWidth": 64,
                             "shadowColor": "#000000",
-                            "shadowOffset": Object {
+                            "shadowOffset": {
                               "height": 0,
                               "width": 0,
                             },
@@ -2017,7 +2017,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         <View
                           accessibilityRole="button"
                           accessibilityState={
-                            Object {
+                            {
                               "disabled": false,
                             }
                           }
@@ -2034,12 +2034,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "overflow": "hidden",
                               },
                               false,
-                              Object {
+                              {
                                 "borderRadius": 4,
                               },
                             ]
@@ -2048,13 +2048,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                   "justifyContent": "center",
                                 },
-                                Object {
+                                {
                                   "flexDirection": "row-reverse",
                                 },
                               ]
@@ -2062,8 +2062,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           >
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "marginLeft": -4,
                                     "marginRight": 12,
                                   },
@@ -2079,33 +2079,33 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                               numberOfLines={1}
                               selectable={false}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "textAlign": "left",
                                   },
-                                  Object {
+                                  {
                                     "color": "#6D6D68",
                                     "fontFamily": "sans-serif",
                                     "fontWeight": "normal",
                                   },
-                                  Object {
+                                  {
                                     "writingDirection": "ltr",
                                   },
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "marginHorizontal": 16,
                                       "marginVertical": 9,
                                       "textAlign": "center",
                                     },
-                                    Object {
+                                    {
                                       "letterSpacing": 1,
                                     },
                                     false,
                                     undefined,
-                                    Object {
+                                    {
                                       "textTransform": "uppercase",
                                     },
-                                    Object {
+                                    {
                                       "color": "#2165E3",
                                       "fontFamily": "sans-serif-medium",
                                       "fontWeight": "normal",
@@ -2118,7 +2118,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             >
                               <Text
                                 style={
-                                  Object {
+                                  {
                                     "color": "#2165E3",
                                     "fontWeight": "bold",
                                   }
@@ -2134,15 +2134,15 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "backgroundColor": "rgba(0, 0, 0, 0.12)",
                           "height": 0.5,
                         },
                         undefined,
                         false,
                         false,
-                        Object {
+                        {
                           "marginBottom": 8,
                         },
                       ]
@@ -2151,7 +2151,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   <View
                     collapsable={false}
                     style={
-                      Object {
+                      {
                         "height": 0,
                         "opacity": 0,
                         "overflow": "hidden",
@@ -2160,7 +2160,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   >
                     <View
                       style={
-                        Object {
+                        {
                           "flex": 1,
                           "marginTop": 16,
                           "paddingHorizontal": 8,
@@ -2169,7 +2169,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     >
                       <Text
                         style={
-                          Object {
+                          {
                             "color": "rgba(0, 0, 0, 0.6)",
                             "fontSize": 10,
                             "marginRight": 8,
@@ -2180,34 +2180,34 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       </Text>
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "textAlign": "left",
                             },
-                            Object {
+                            {
                               "color": "#6D6D68",
                               "fontFamily": "sans-serif",
                               "fontWeight": "normal",
                             },
-                            Object {
+                            {
                               "writingDirection": "ltr",
                             },
-                            Array [
-                              Object {
+                            [
+                              {
                                 "fontFamily": "FiraCode_400Regular",
                                 "fontSize": 24,
                               },
-                              Object {
+                              {
                                 "alignItems": "center",
                                 "color": "#6D6D68",
                                 "display": "flex",
                                 "marginBottom": 0,
                               },
-                              Array [
-                                Object {
+                              [
+                                {
                                   "marginBottom": 16,
                                 },
-                                Object {
+                                {
                                   "fontSize": 16,
                                 },
                               ],
@@ -2220,8 +2220,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     </View>
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "rgba(0, 0, 0, 0.12)",
                             "height": 0.5,
                           },
@@ -2237,24 +2237,24 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 <View
                   index={2}
                   siblings={
-                    Array [
+                    [
                       "Card.Title",
                       "Card.Content",
                       "Card.Actions",
                     ]
                   }
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexDirection": "row",
                         "padding": 8,
                       },
-                      Object {
+                      {
                         "flexDirection": "row",
                         "justifyContent": "space-between",
                       },
-                      Object {
+                      {
                         "justifyContent": "flex-start",
                       },
                     ]
@@ -2265,9 +2265,9 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     compact={true}
                     mode={false}
                     style={
-                      Array [
+                      [
                         false,
-                        Object {
+                        {
                           "flexDirection": "row",
                           "justifyContent": "flex-start",
                         },
@@ -2277,7 +2277,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     <View
                       collapsable={false}
                       style={
-                        Object {
+                        {
                           "backgroundColor": "transparent",
                           "borderColor": "transparent",
                           "borderRadius": 4,
@@ -2286,7 +2286,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           "elevation": 0,
                           "minWidth": "auto",
                           "shadowColor": "#000000",
-                          "shadowOffset": Object {
+                          "shadowOffset": {
                             "height": 0,
                             "width": 0,
                           },
@@ -2298,7 +2298,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       <View
                         accessibilityRole="button"
                         accessibilityState={
-                          Object {
+                          {
                             "disabled": false,
                           }
                         }
@@ -2315,12 +2315,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "overflow": "hidden",
                             },
                             false,
-                            Object {
+                            {
                               "borderRadius": 4,
                             },
                           ]
@@ -2329,8 +2329,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                                 "justifyContent": "center",
@@ -2341,8 +2341,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "marginLeft": 12,
                                   "marginRight": -4,
                                 },
@@ -2358,35 +2358,35 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             numberOfLines={1}
                             selectable={false}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "textAlign": "left",
                                 },
-                                Object {
+                                {
                                   "color": "#6D6D68",
                                   "fontFamily": "sans-serif",
                                   "fontWeight": "normal",
                                 },
-                                Object {
+                                {
                                   "writingDirection": "ltr",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "marginHorizontal": 16,
                                     "marginVertical": 9,
                                     "textAlign": "center",
                                   },
-                                  Object {
+                                  {
                                     "letterSpacing": 1,
                                   },
                                   false,
-                                  Object {
+                                  {
                                     "marginHorizontal": 8,
                                   },
-                                  Object {
+                                  {
                                     "textTransform": "uppercase",
                                   },
-                                  Object {
+                                  {
                                     "color": "#2165E3",
                                     "fontFamily": "sans-serif-medium",
                                     "fontWeight": "normal",
@@ -2407,9 +2407,9 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     compact={true}
                     mode={false}
                     style={
-                      Array [
+                      [
                         false,
-                        Object {
+                        {
                           "flexDirection": "row",
                           "justifyContent": "flex-end",
                         },
@@ -2419,7 +2419,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     <View
                       collapsable={false}
                       style={
-                        Object {
+                        {
                           "backgroundColor": "#2165E3",
                           "borderColor": "transparent",
                           "borderRadius": 4,
@@ -2428,7 +2428,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           "elevation": 2,
                           "minWidth": 64,
                           "shadowColor": "#000000",
-                          "shadowOffset": Object {
+                          "shadowOffset": {
                             "height": 0.75,
                             "width": 0,
                           },
@@ -2440,7 +2440,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       <View
                         accessibilityRole="button"
                         accessibilityState={
-                          Object {
+                          {
                             "disabled": false,
                           }
                         }
@@ -2457,12 +2457,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "overflow": "hidden",
                             },
                             false,
-                            Object {
+                            {
                               "borderRadius": 4,
                             },
                           ]
@@ -2471,8 +2471,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                                 "justifyContent": "center",
@@ -2483,8 +2483,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "marginLeft": 12,
                                   "marginRight": -4,
                                 },
@@ -2500,33 +2500,33 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                             numberOfLines={1}
                             selectable={false}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "textAlign": "left",
                                 },
-                                Object {
+                                {
                                   "color": "#6D6D68",
                                   "fontFamily": "sans-serif",
                                   "fontWeight": "normal",
                                 },
-                                Object {
+                                {
                                   "writingDirection": "ltr",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "marginHorizontal": 16,
                                     "marginVertical": 9,
                                     "textAlign": "center",
                                   },
-                                  Object {
+                                  {
                                     "letterSpacing": 1,
                                   },
                                   false,
                                   undefined,
-                                  Object {
+                                  {
                                     "textTransform": "uppercase",
                                   },
-                                  Object {
+                                  {
                                     "color": "#ffffff",
                                     "fontFamily": "sans-serif-medium",
                                     "fontWeight": "normal",
@@ -2552,8 +2552,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
       <View
         pointerEvents="box-none"
         style={
-          Array [
-            Object {
+          [
+            {
               "bottom": 0,
               "justifyContent": "flex-end",
               "left": 0,
@@ -2561,7 +2561,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
               "right": 0,
               "top": 0,
             },
-            Object {
+            {
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -2585,7 +2585,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
           onStartShouldSetResponder={[Function]}
           pointerEvents="none"
           style={
-            Object {
+            {
               "backgroundColor": "rgba(0, 0, 0, 0.5)",
               "bottom": 0,
               "left": 0,
@@ -2599,7 +2599,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
         <View
           pointerEvents="box-none"
           style={
-            Object {
+            {
               "alignItems": "flex-end",
             }
           }
@@ -2610,14 +2610,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
             <View
               pointerEvents="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "flex-end",
                     "marginBottom": 16,
                   },
-                  Object {
+                  {
                     "marginHorizontal": 24,
                   },
                 ]
@@ -2629,7 +2629,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   accessibilityRole="button"
                   collapsable={false}
                   style={
-                    Object {
+                    {
                       "backgroundColor": "#ffffff",
                       "borderRadius": 5,
                       "elevation": 2,
@@ -2639,14 +2639,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       "paddingHorizontal": 12,
                       "paddingVertical": 6,
                       "shadowColor": "#000000",
-                      "shadowOffset": Object {
+                      "shadowOffset": {
                         "height": 0.75,
                         "width": 0,
                       },
                       "shadowOpacity": 0.24,
                       "shadowRadius": 1.5,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "scale": 1,
                         },
                       ],
@@ -2664,8 +2664,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexShrink": 1,
                         },
                         undefined,
@@ -2675,22 +2675,22 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   >
                     <Text
                       index={0}
-                      siblings={Array []}
+                      siblings={[]}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "textAlign": "left",
                           },
-                          Object {
+                          {
                             "color": "#6D6D68",
                             "fontFamily": "sans-serif",
                             "fontWeight": "normal",
                           },
-                          Object {
+                          {
                             "writingDirection": "ltr",
                           },
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "rgba(109, 109, 104, 0.45999999999999996)",
                             },
                             undefined,
@@ -2709,20 +2709,20 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 collapsable={false}
                 pointerEvents="none"
                 style={
-                  Object {
+                  {
                     "backgroundColor": "#ffffff",
                     "borderRadius": 28,
                     "elevation": 6,
                     "opacity": 0,
                     "shadowColor": "#000000",
-                    "shadowOffset": Object {
+                    "shadowOffset": {
                       "height": 5,
                       "width": 0,
                     },
                     "shadowOpacity": 0.24,
                     "shadowRadius": 6,
-                    "transform": Array [
-                      Object {
+                    "transform": [
+                      {
                         "scale": 1,
                       },
                     ],
@@ -2733,7 +2733,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   accessibilityLabel="Scan QR Code"
                   accessibilityRole="button"
                   accessibilityState={
-                    Object {
+                    {
                       "disabled": false,
                     }
                   }
@@ -2750,12 +2750,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "overflow": "hidden",
                       },
                       false,
-                      Object {
+                      {
                         "borderRadius": 28,
                       },
                     ]
@@ -2765,13 +2765,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   <View
                     pointerEvents="none"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexDirection": "row",
                           "justifyContent": "center",
                         },
-                        Object {
+                        {
                           "borderRadius": 28,
                           "height": 40,
                           "width": 40,
@@ -2782,12 +2782,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "justifyContent": "center",
                           },
-                          Object {
+                          {
                             "height": 24,
                             "width": 24,
                           },
@@ -2797,15 +2797,15 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       <View
                         collapsable={false}
                         style={
-                          Object {
+                          {
                             "bottom": 0,
                             "left": 0,
                             "opacity": 1,
                             "position": "absolute",
                             "right": 0,
                             "top": 0,
-                            "transform": Array [
-                              Object {
+                            "transform": [
+                              {
                                 "rotate": "0deg",
                               },
                             ],
@@ -2822,14 +2822,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
             <View
               pointerEvents="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "flex-end",
                     "marginBottom": 16,
                   },
-                  Object {
+                  {
                     "marginHorizontal": 24,
                   },
                 ]
@@ -2841,7 +2841,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   accessibilityRole="button"
                   collapsable={false}
                   style={
-                    Object {
+                    {
                       "backgroundColor": "#ffffff",
                       "borderRadius": 5,
                       "elevation": 2,
@@ -2851,14 +2851,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       "paddingHorizontal": 12,
                       "paddingVertical": 6,
                       "shadowColor": "#000000",
-                      "shadowOffset": Object {
+                      "shadowOffset": {
                         "height": 0.75,
                         "width": 0,
                       },
                       "shadowOpacity": 0.24,
                       "shadowRadius": 1.5,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "scale": 1,
                         },
                       ],
@@ -2876,8 +2876,8 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexShrink": 1,
                         },
                         undefined,
@@ -2887,22 +2887,22 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   >
                     <Text
                       index={0}
-                      siblings={Array []}
+                      siblings={[]}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "textAlign": "left",
                           },
-                          Object {
+                          {
                             "color": "#6D6D68",
                             "fontFamily": "sans-serif",
                             "fontWeight": "normal",
                           },
-                          Object {
+                          {
                             "writingDirection": "ltr",
                           },
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "rgba(109, 109, 104, 0.45999999999999996)",
                             },
                             undefined,
@@ -2921,20 +2921,20 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 collapsable={false}
                 pointerEvents="none"
                 style={
-                  Object {
+                  {
                     "backgroundColor": "#ffffff",
                     "borderRadius": 28,
                     "elevation": 6,
                     "opacity": 0,
                     "shadowColor": "#000000",
-                    "shadowOffset": Object {
+                    "shadowOffset": {
                       "height": 5,
                       "width": 0,
                     },
                     "shadowOpacity": 0.24,
                     "shadowRadius": 6,
-                    "transform": Array [
-                      Object {
+                    "transform": [
+                      {
                         "scale": 1,
                       },
                     ],
@@ -2945,7 +2945,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   accessibilityLabel="Add details manually"
                   accessibilityRole="button"
                   accessibilityState={
-                    Object {
+                    {
                       "disabled": false,
                     }
                   }
@@ -2962,12 +2962,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "overflow": "hidden",
                       },
                       false,
-                      Object {
+                      {
                         "borderRadius": 28,
                       },
                     ]
@@ -2977,13 +2977,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   <View
                     pointerEvents="none"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexDirection": "row",
                           "justifyContent": "center",
                         },
-                        Object {
+                        {
                           "borderRadius": 28,
                           "height": 40,
                           "width": 40,
@@ -2994,12 +2994,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "justifyContent": "center",
                           },
-                          Object {
+                          {
                             "height": 24,
                             "width": 24,
                           },
@@ -3009,15 +3009,15 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                       <View
                         collapsable={false}
                         style={
-                          Object {
+                          {
                             "bottom": 0,
                             "left": 0,
                             "opacity": 1,
                             "position": "absolute",
                             "right": 0,
                             "top": 0,
-                            "transform": Array [
-                              Object {
+                            "transform": [
+                              {
                                 "rotate": "0deg",
                               },
                             ],
@@ -3037,7 +3037,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
             collapsable={false}
             pointerEvents="auto"
             style={
-              Object {
+              {
                 "backgroundColor": "#2165E3",
                 "borderRadius": 28,
                 "elevation": 6,
@@ -3046,14 +3046,14 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                 "marginTop": 0,
                 "opacity": 1,
                 "shadowColor": "#000000",
-                "shadowOffset": Object {
+                "shadowOffset": {
                   "height": 5,
                   "width": 0,
                 },
                 "shadowOpacity": 0.24,
                 "shadowRadius": 6,
-                "transform": Array [
-                  Object {
+                "transform": [
+                  {
                     "scale": 1,
                   },
                 ],
@@ -3064,7 +3064,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
               accessibilityLabel="show-actions"
               accessibilityRole="button"
               accessibilityState={
-                Object {
+                {
                   "disabled": false,
                   "expanded": false,
                 }
@@ -3082,12 +3082,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "overflow": "hidden",
                   },
                   false,
-                  Object {
+                  {
                     "borderRadius": 28,
                   },
                 ]
@@ -3097,13 +3097,13 @@ exports[`HomeScreen renders secret cards when available 1`] = `
               <View
                 pointerEvents="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "center",
                     },
-                    Object {
+                    {
                       "borderRadius": 28,
                       "height": 56,
                       "width": 56,
@@ -3114,12 +3114,12 @@ exports[`HomeScreen renders secret cards when available 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "justifyContent": "center",
                       },
-                      Object {
+                      {
                         "height": 24,
                         "width": 24,
                       },
@@ -3129,15 +3129,15 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                   <View
                     collapsable={false}
                     style={
-                      Object {
+                      {
                         "bottom": 0,
                         "left": 0,
                         "opacity": 1,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "rotate": "0deg",
                           },
                         ],
@@ -3161,8 +3161,8 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={
-    Array [
-      Object {
+    [
+      {
         "flex": 1,
       },
       undefined,
@@ -3173,14 +3173,14 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
     collapsable={false}
     pointerEvents="box-none"
     style={
-      Object {
+      {
         "flex": 1,
       }
     }
   >
     <View
       style={
-        Object {
+        {
           "flexGrow": 1,
           "justifyContent": "flex-start",
           "width": "100%",
@@ -3196,7 +3196,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
       />
       <RCTScrollView
         contentContainerStyle={
-          Object {
+          {
             "flexGrow": 1,
           }
         }
@@ -3204,7 +3204,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
         <View>
           <View
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "flex": 1,
                 "paddingHorizontal": 24,
@@ -3214,26 +3214,26 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
           >
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "textAlign": "left",
                   },
-                  Object {
+                  {
                     "color": "#6D6D68",
                     "fontFamily": "sans-serif",
                     "fontWeight": "normal",
                   },
-                  Object {
+                  {
                     "writingDirection": "ltr",
                   },
-                  Array [
-                    Object {
+                  [
+                    {
                       "fontFamily": "Poppins_700Bold",
                       "fontSize": 24,
                       "letterSpacing": 0,
                       "lineHeight": 36,
                     },
-                    Object {
+                    {
                       "alignItems": "center",
                       "color": "#6D6D68",
                       "display": "flex",
@@ -3248,26 +3248,26 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
             </Text>
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "textAlign": "left",
                   },
-                  Object {
+                  {
                     "color": "#6D6D68",
                     "fontFamily": "sans-serif",
                     "fontWeight": "normal",
                   },
-                  Object {
+                  {
                     "writingDirection": "ltr",
                   },
-                  Array [
-                    Object {
+                  [
+                    {
                       "fontFamily": "DidactGothic_400Regular",
                       "fontSize": 16,
                       "fontWeight": "400",
                       "letterSpacing": 0.5,
                     },
-                    Object {
+                    {
                       "alignItems": "center",
                       "color": "#6D6D68",
                       "display": "flex",
@@ -3286,8 +3286,8 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
       <View
         pointerEvents="box-none"
         style={
-          Array [
-            Object {
+          [
+            {
               "bottom": 0,
               "justifyContent": "flex-end",
               "left": 0,
@@ -3295,7 +3295,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
               "right": 0,
               "top": 0,
             },
-            Object {
+            {
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -3319,7 +3319,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
           onStartShouldSetResponder={[Function]}
           pointerEvents="none"
           style={
-            Object {
+            {
               "backgroundColor": "rgba(0, 0, 0, 0.5)",
               "bottom": 0,
               "left": 0,
@@ -3333,7 +3333,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
         <View
           pointerEvents="box-none"
           style={
-            Object {
+            {
               "alignItems": "flex-end",
             }
           }
@@ -3344,14 +3344,14 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
             <View
               pointerEvents="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "flex-end",
                     "marginBottom": 16,
                   },
-                  Object {
+                  {
                     "marginHorizontal": 24,
                   },
                 ]
@@ -3363,7 +3363,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   accessibilityRole="button"
                   collapsable={false}
                   style={
-                    Object {
+                    {
                       "backgroundColor": "#ffffff",
                       "borderRadius": 5,
                       "elevation": 2,
@@ -3373,14 +3373,14 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                       "paddingHorizontal": 12,
                       "paddingVertical": 6,
                       "shadowColor": "#000000",
-                      "shadowOffset": Object {
+                      "shadowOffset": {
                         "height": 0.75,
                         "width": 0,
                       },
                       "shadowOpacity": 0.24,
                       "shadowRadius": 1.5,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "scale": 1,
                         },
                       ],
@@ -3398,8 +3398,8 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexShrink": 1,
                         },
                         undefined,
@@ -3409,22 +3409,22 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   >
                     <Text
                       index={0}
-                      siblings={Array []}
+                      siblings={[]}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "textAlign": "left",
                           },
-                          Object {
+                          {
                             "color": "#6D6D68",
                             "fontFamily": "sans-serif",
                             "fontWeight": "normal",
                           },
-                          Object {
+                          {
                             "writingDirection": "ltr",
                           },
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "rgba(109, 109, 104, 0.45999999999999996)",
                             },
                             undefined,
@@ -3443,20 +3443,20 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                 collapsable={false}
                 pointerEvents="none"
                 style={
-                  Object {
+                  {
                     "backgroundColor": "#ffffff",
                     "borderRadius": 28,
                     "elevation": 6,
                     "opacity": 0,
                     "shadowColor": "#000000",
-                    "shadowOffset": Object {
+                    "shadowOffset": {
                       "height": 5,
                       "width": 0,
                     },
                     "shadowOpacity": 0.24,
                     "shadowRadius": 6,
-                    "transform": Array [
-                      Object {
+                    "transform": [
+                      {
                         "scale": 1,
                       },
                     ],
@@ -3467,7 +3467,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   accessibilityLabel="Scan QR Code"
                   accessibilityRole="button"
                   accessibilityState={
-                    Object {
+                    {
                       "disabled": false,
                     }
                   }
@@ -3484,12 +3484,12 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "overflow": "hidden",
                       },
                       false,
-                      Object {
+                      {
                         "borderRadius": 28,
                       },
                     ]
@@ -3499,13 +3499,13 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   <View
                     pointerEvents="none"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexDirection": "row",
                           "justifyContent": "center",
                         },
-                        Object {
+                        {
                           "borderRadius": 28,
                           "height": 40,
                           "width": 40,
@@ -3516,12 +3516,12 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "justifyContent": "center",
                           },
-                          Object {
+                          {
                             "height": 24,
                             "width": 24,
                           },
@@ -3531,15 +3531,15 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                       <View
                         collapsable={false}
                         style={
-                          Object {
+                          {
                             "bottom": 0,
                             "left": 0,
                             "opacity": 1,
                             "position": "absolute",
                             "right": 0,
                             "top": 0,
-                            "transform": Array [
-                              Object {
+                            "transform": [
+                              {
                                 "rotate": "0deg",
                               },
                             ],
@@ -3556,14 +3556,14 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
             <View
               pointerEvents="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "flex-end",
                     "marginBottom": 16,
                   },
-                  Object {
+                  {
                     "marginHorizontal": 24,
                   },
                 ]
@@ -3575,7 +3575,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   accessibilityRole="button"
                   collapsable={false}
                   style={
-                    Object {
+                    {
                       "backgroundColor": "#ffffff",
                       "borderRadius": 5,
                       "elevation": 2,
@@ -3585,14 +3585,14 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                       "paddingHorizontal": 12,
                       "paddingVertical": 6,
                       "shadowColor": "#000000",
-                      "shadowOffset": Object {
+                      "shadowOffset": {
                         "height": 0.75,
                         "width": 0,
                       },
                       "shadowOpacity": 0.24,
                       "shadowRadius": 1.5,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "scale": 1,
                         },
                       ],
@@ -3610,8 +3610,8 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexShrink": 1,
                         },
                         undefined,
@@ -3621,22 +3621,22 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   >
                     <Text
                       index={0}
-                      siblings={Array []}
+                      siblings={[]}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "textAlign": "left",
                           },
-                          Object {
+                          {
                             "color": "#6D6D68",
                             "fontFamily": "sans-serif",
                             "fontWeight": "normal",
                           },
-                          Object {
+                          {
                             "writingDirection": "ltr",
                           },
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "rgba(109, 109, 104, 0.45999999999999996)",
                             },
                             undefined,
@@ -3655,20 +3655,20 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                 collapsable={false}
                 pointerEvents="none"
                 style={
-                  Object {
+                  {
                     "backgroundColor": "#ffffff",
                     "borderRadius": 28,
                     "elevation": 6,
                     "opacity": 0,
                     "shadowColor": "#000000",
-                    "shadowOffset": Object {
+                    "shadowOffset": {
                       "height": 5,
                       "width": 0,
                     },
                     "shadowOpacity": 0.24,
                     "shadowRadius": 6,
-                    "transform": Array [
-                      Object {
+                    "transform": [
+                      {
                         "scale": 1,
                       },
                     ],
@@ -3679,7 +3679,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   accessibilityLabel="Add details manually"
                   accessibilityRole="button"
                   accessibilityState={
-                    Object {
+                    {
                       "disabled": false,
                     }
                   }
@@ -3696,12 +3696,12 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "overflow": "hidden",
                       },
                       false,
-                      Object {
+                      {
                         "borderRadius": 28,
                       },
                     ]
@@ -3711,13 +3711,13 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   <View
                     pointerEvents="none"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexDirection": "row",
                           "justifyContent": "center",
                         },
-                        Object {
+                        {
                           "borderRadius": 28,
                           "height": 40,
                           "width": 40,
@@ -3728,12 +3728,12 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "justifyContent": "center",
                           },
-                          Object {
+                          {
                             "height": 24,
                             "width": 24,
                           },
@@ -3743,15 +3743,15 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                       <View
                         collapsable={false}
                         style={
-                          Object {
+                          {
                             "bottom": 0,
                             "left": 0,
                             "opacity": 1,
                             "position": "absolute",
                             "right": 0,
                             "top": 0,
-                            "transform": Array [
-                              Object {
+                            "transform": [
+                              {
                                 "rotate": "0deg",
                               },
                             ],
@@ -3771,7 +3771,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
             collapsable={false}
             pointerEvents="auto"
             style={
-              Object {
+              {
                 "backgroundColor": "#2165E3",
                 "borderRadius": 28,
                 "elevation": 6,
@@ -3780,14 +3780,14 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                 "marginTop": 0,
                 "opacity": 1,
                 "shadowColor": "#000000",
-                "shadowOffset": Object {
+                "shadowOffset": {
                   "height": 5,
                   "width": 0,
                 },
                 "shadowOpacity": 0.24,
                 "shadowRadius": 6,
-                "transform": Array [
-                  Object {
+                "transform": [
+                  {
                     "scale": 1,
                   },
                 ],
@@ -3798,7 +3798,7 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
               accessibilityLabel="show-actions"
               accessibilityRole="button"
               accessibilityState={
-                Object {
+                {
                   "disabled": false,
                   "expanded": false,
                 }
@@ -3816,12 +3816,12 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "overflow": "hidden",
                   },
                   false,
-                  Object {
+                  {
                     "borderRadius": 28,
                   },
                 ]
@@ -3831,13 +3831,13 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
               <View
                 pointerEvents="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "center",
                     },
-                    Object {
+                    {
                       "borderRadius": 28,
                       "height": 56,
                       "width": 56,
@@ -3848,12 +3848,12 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "justifyContent": "center",
                       },
-                      Object {
+                      {
                         "height": 24,
                         "width": 24,
                       },
@@ -3863,15 +3863,15 @@ exports[`HomeScreen should match snapshot when there are no secrets 1`] = `
                   <View
                     collapsable={false}
                     style={
-                      Object {
+                      {
                         "bottom": 0,
                         "left": 0,
                         "opacity": 1,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "rotate": "0deg",
                           },
                         ],
