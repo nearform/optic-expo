@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "optic-expo",
-  "version": "1.5.2",
+  "version": "2.0.0",
   "versionCode": 31,
   "main": "index.ts",
   "scripts": {
@@ -80,7 +80,6 @@
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.5",
     "@types/react": "~18.3.12",
-    "@types/react-test-renderer": "^19.0.0",
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8.19.0",
     "@typescript-eslint/parser": "^8.19.0",
@@ -101,7 +100,6 @@
     "jest-expo": "^52.0.2",
     "lint-staged": "^15.3.0",
     "prettier": "^3.4.2",
-    "react-test-renderer": "^19.0.0",
     "ts-jest": "^29.2.5",
     "typescript": "^5.3.3"
   },
