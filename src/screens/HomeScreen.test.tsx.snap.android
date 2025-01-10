@@ -1403,7 +1403,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           ]
                         }
                       >
-                        mysecret
+                        my-secret
                       </Text>
                     </View>
                     <View
@@ -2928,7 +2928,7 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                           ]
                         }
                       >
-                        myanothersecret
+                        my-another-secret
                       </Text>
                     </View>
                     <View

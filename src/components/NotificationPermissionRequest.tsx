@@ -81,7 +81,9 @@ export default function NotificationPermissionRequest() {
       }
     } else {
       setPermissionGranted(false)
-      console.log('permissions denied, not a device')
+      if (typeof process.env.JEST_WORKER_ID === 'undefined') {
+        console.log('permissions denied, not a device') // only log if not running tests
+      }
     }
   }
   async function sendPermissionRequest() {

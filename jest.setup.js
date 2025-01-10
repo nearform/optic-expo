@@ -19,9 +19,9 @@ jest.mock('@expo-google-fonts/fira-code', () => ({
 
 jest.mock('expo-auth-session/providers/google')
 jest.mock('expo-constants', () => ({
+  ...jest.requireActual('expo-constants'),
   manifest: { extra: { apiUrl: 'http://dummy.com/api' } },
 }))
-// jest.mock('firebase')
 
 jest.mock('./src/context/AuthContext')
 jest.mock('./src/context/SecretsContext')
