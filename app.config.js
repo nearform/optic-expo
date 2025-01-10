@@ -16,6 +16,8 @@ const config = {
     '230076165693-a668m77v43bsbi0usea3p4o83ehco09r.apps.googleusercontent.com', // cSpell:disable-line
   CLIENT_ID_IOS:
     '230076165693-v8kk0ase89jp3s1qe0rtg70t3vb2h9i9.apps.googleusercontent.com', // cSpell:disable-line
+  IOS_URL_SCHEME:
+    'com.googleusercontent.apps.230076165693-v8kk0ase89jp3s1qe0rtg70t3vb2h9i9', // cSpell:disable-line
   EAS_PROJECT_ID: 'e3c6e759-c8c5-41a8-861e-b3e4adab619a',
   APP_PACKAGE_ID: 'com.nearform.optic',
 }
@@ -82,6 +84,14 @@ export default {
     playStoreUrl:
       'https://play.google.com/store/apps/details?id=com.nearform.optic',
   },
+  plugins: [
+    [
+      '@react-native-google-signin/google-signin',
+      {
+        iosUrlScheme: config.IOS_URL_SCHEME,
+      },
+    ],
+  ],
   runtimeVersion: {
     policy: 'sdkVersion',
   },

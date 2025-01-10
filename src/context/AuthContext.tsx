@@ -1,7 +1,5 @@
 import * as AppleAuthentication from 'expo-apple-authentication'
-import * as Google from 'expo-auth-session/providers/google'
 import Constants from 'expo-constants'
-import * as WebBrowser from 'expo-web-browser'
 import { initializeApp } from 'firebase/app'
 import {
   User as FirebaseUser,
@@ -20,6 +18,9 @@ import React, {
   useMemo,
   useState,
 } from 'react'
+import { GoogleSignin } from '@react-native-google-signin/google-signin'
+import * as GS from '@react-native-google-signin/google-signin'
+import { useAsyncCallback } from 'react-async-hook'
 
 import { User } from '../types'
 
@@ -45,7 +46,7 @@ const {
   messagingSenderId,
   appId,
   clientId,
-  androidClientId,
+  // androidClientId, // NOTE: now unused?
   iosClientId,
 } = Constants.expoConfig?.extra as FirebaseSettings
 
@@ -62,7 +63,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
 
-WebBrowser.maybeCompleteAuthSession()
+GoogleSignin.configure({
+  webClientId: clientId,
+  iosClientId,
+})
 
 type ContextType = {
   loading: boolean
@@ -80,29 +84,41 @@ type AuthenticationProviderProps = {
   children: React.ReactNode
 }
 
-// FIXME: likely not needed any more, remove once auth is working
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const projectNameForProxy = `@${Constants.expoConfig.owner}/${Constants.expoConfig.slug}`
-
 function useGoogleAuth() {
-  const [, response, promptAsync] = Google.useIdTokenAuthRequest({
-    clientId,
-    androidClientId,
-    iosClientId,
+  const { execute: login, result } = useAsyncCallback(async () => {
+    try {
+      await GoogleSignin.hasPlayServices()
+      const response = await GoogleSignin.signIn()
+      if (GS.isSuccessResponse(response)) {
+        return { userInfo: response.data }
+      } else {
+        console.log('Google sign in cancelled')
+      }
+    } catch (error) {
+      if (GS.isErrorWithCode(error)) {
+        switch (error.code) {
+          case GS.statusCodes.IN_PROGRESS:
+            console.log('Google auth already in progress')
+            break
+          case GS.statusCodes.PLAY_SERVICES_NOT_AVAILABLE:
+            console.log('Google play services not available')
+            break
+          default:
+            console.log('Google sign in error', error)
+        }
+      } else {
+        console.log('An unexpected error occurred,', error)
+      }
+    }
   })
 
-  const login = useCallback<ContextType['handleLoginGoogle']>(
-    () => promptAsync(), // FIXME: swap to development build and custom uri scheme
-    [promptAsync],
-  )
-
   useEffect(() => {
-    if (response?.type === 'success') {
-      const { id_token } = response.params
-      const credentials = GoogleAuthProvider.credential(id_token)
+    if (result) {
+      const { idToken } = result.userInfo
+      const credentials = GoogleAuthProvider.credential(idToken)
       signInWithCredential(auth, credentials)
     }
-  }, [response])
+  }, [result])
 
   return login
 }
