@@ -67,6 +67,14 @@ In order to successfully run the Optic-expo app locally you will need the follow
 1. Download Xcode from the App Store.
 1. Open Xcode, navigate to "Preferences / Locations" and select the appropriate version in Command Line Tools.
 
+## Setup / Debug Google Signin
+
+This should already be all set up, but in case of GS errors such as `DEVELOPER_ERROR`, ensure OAuth 2.0 Client IDs are set up for each build method keystore's `SHA-1`
+
+1. Run `eas credentials` to obtain SHA-1 fingerprint for EAS build
+2. Run `cd android && ./gradlew signingReport` to obtain local build SHA-1 fingerprints
+3. Ensure each SHA-1 has a matching OAuth Client ID in GCC
+
 ## Providing Apple Developer Access
 
 1. Login to Apple Developer using an account with "App Manager" role
