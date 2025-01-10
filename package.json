@@ -29,7 +29,7 @@
     "aes-js": "^3.1.2",
     "buffer": "^6.0.3",
     "dotenv": "^16.4.7",
-    "expo": "^52.0.23",
+    "expo": "~52.0.24",
     "expo-apple-authentication": "^7.1.2",
     "expo-auth-session": "^6.0.1",
     "expo-camera": "^16.0.10",
@@ -46,9 +46,9 @@
     "expo-notifications": "^0.29.11",
     "expo-secure-store": "^14.0.0",
     "expo-sharing": "^13.0.0",
-    "expo-splash-screen": "^0.29.18",
+    "expo-splash-screen": "~0.29.19",
     "expo-status-bar": "^2.0.0",
-    "expo-updates": "^0.26.10",
+    "expo-updates": "~0.26.11",
     "expo-web-browser": "^14.0.1",
     "firebase": "^11.1.0",
     "global": "^4.4.0",
@@ -111,5 +111,12 @@
       "eslint --fix",
       "prettier --write"
     ]
+  },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "listUnknownPackages": false
+      }
+    }
   }
 }
