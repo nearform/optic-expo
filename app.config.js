@@ -85,11 +85,11 @@ export default {
       'https://play.google.com/store/apps/details?id=com.nearform.optic',
   },
   plugins: [
+    'expo-font',
+    'expo-secure-store',
     [
       '@react-native-google-signin/google-signin',
-      {
-        iosUrlScheme: config.IOS_URL_SCHEME,
-      },
+      { iosUrlScheme: config.IOS_URL_SCHEME },
     ],
   ],
   runtimeVersion: {
