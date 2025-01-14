@@ -1,15 +1,19 @@
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage'
+import * as GS from '@react-native-google-signin/google-signin'
+import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import * as AppleAuthentication from 'expo-apple-authentication'
 import Constants from 'expo-constants'
-import { initializeApp } from 'firebase/app'
+import { FirebaseOptions, initializeApp } from 'firebase/app'
 import {
   User as FirebaseUser,
-  getAuth,
   GoogleAuthProvider,
   OAuthProvider,
   onAuthStateChanged,
   signInWithCredential,
   signInWithEmailAndPassword,
   signOut,
+  initializeAuth,
+  getReactNativePersistence,
 } from 'firebase/auth'
 import React, {
   useCallback,
@@ -18,8 +22,6 @@ import React, {
   useMemo,
   useState,
 } from 'react'
-import { GoogleSignin } from '@react-native-google-signin/google-signin'
-import * as GS from '@react-native-google-signin/google-signin'
 import { useAsyncCallback } from 'react-async-hook'
 
 import { User } from '../types'
@@ -50,7 +52,7 @@ const {
   iosClientId,
 } = Constants.expoConfig?.extra as FirebaseSettings
 
-const firebaseConfig = {
+const firebaseConfig: FirebaseOptions = {
   apiKey,
   authDomain,
   databaseURL,
@@ -61,7 +63,9 @@ const firebaseConfig = {
 }
 
 const app = initializeApp(firebaseConfig)
-const auth = getAuth(app)
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+})
 
 GoogleSignin.configure({
   webClientId: clientId,
