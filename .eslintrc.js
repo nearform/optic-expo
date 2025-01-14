@@ -8,6 +8,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     '@react-native-community',
+    // 'plugin:deprecation/recommended', // FIXME: enable later
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     // 'plugin:jest/recommended',
@@ -19,6 +20,7 @@ module.exports = {
     },
     ecmaVersion: 12,
     sourceType: 'module',
+    project: './tsconfig.json',
   },
   rules: {
     'import/order': ['error', { 'newlines-between': 'always' }],
@@ -55,5 +57,12 @@ module.exports = {
   env: {
     'jest/globals': true,
   },
-  ignorePatterns: ['patch/', 'ios/', 'android/', 'node_modules/', 'dist/'],
+  ignorePatterns: [
+    'patch/',
+    'ios/',
+    'android/',
+    'node_modules/',
+    'dist/',
+    '*.js',
+  ],
 }

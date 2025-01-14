@@ -95,6 +95,7 @@
     "eslint-config-expo": "~8.0.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-babel-module": "^5.3.2",
+    "eslint-plugin-deprecation": "^3.0.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jest": "^28.10.0",
     "eslint-plugin-prettier": "^5.2.1",
