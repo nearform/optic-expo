@@ -10,7 +10,7 @@
     ],
     "moduleResolution": "node",
     "noEmit": true,
-    "strict": false,
+    "strict": false, // FIXME: set to true and fix all ts errors 😢
     "target": "esnext",
     "resolveJsonModule": true,
     "skipLibCheck": true,

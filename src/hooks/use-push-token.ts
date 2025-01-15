@@ -1,31 +1,22 @@
-import { useEffect, useState } from 'react'
 import * as Notifications from 'expo-notifications'
+import { useAsync } from 'react-async-hook'
+import Constants from 'expo-constants'
 
 async function getToken() {
-  let token
+  let token = ''
 
   try {
     // FIXME: check push notifications work
-    const notification = await Notifications.getExpoPushTokenAsync()
+    const notification = await Notifications.getExpoPushTokenAsync({
+      projectId: Constants.expoConfig.extra.eas.projectId,
+    })
     token = notification.data
-  } catch (e) {
-    return console.error(e)
+  } catch (error) {
+    console.error(error)
   }
 
   return token
 }
 
-export default function usePushToken() {
-  const [expoToken, setExpoToken] = useState('')
-
-  useEffect(() => {
-    const fn = async () => {
-      const token = await getToken()
-      if (token) setExpoToken(token)
-    }
-
-    if (!expoToken) fn()
-  }, [expoToken])
-
-  return expoToken
-}
+const usePushToken = () => useAsync(getToken, []).result
+export default usePushToken

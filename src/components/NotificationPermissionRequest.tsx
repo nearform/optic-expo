@@ -69,6 +69,7 @@ async function setChannel() {
 export default function NotificationPermissionRequest() {
   const [permissionGranted, setPermissionGranted] = useState<boolean>(true)
   const [userRejected, setUserRejected] = useState<boolean>(false)
+  const [deviceUnsupported, setDeviceUnsupported] = useState<boolean>(false)
   async function checkPermissions() {
     if (isDevice) {
       await setChannel()
@@ -81,8 +82,12 @@ export default function NotificationPermissionRequest() {
       }
     } else {
       setPermissionGranted(false)
+      setDeviceUnsupported(true)
       if (typeof process.env.JEST_WORKER_ID === 'undefined') {
-        console.log('permissions denied, not a device') // only log if not running tests
+        // only log if not running tests
+        console.log(
+          'permissions denied, non-device (ie. simulator, web) not supported',
+        )
       }
     }
   }
@@ -94,7 +99,7 @@ export default function NotificationPermissionRequest() {
   }
 
   async function handleAcceptPermissions() {
-    if (!userRejected) {
+    if (!userRejected && !deviceUnsupported) {
       const granted = await sendPermissionRequest()
 
       if (granted) {
@@ -109,6 +114,9 @@ export default function NotificationPermissionRequest() {
       } else {
         setPermissionGranted(true)
       }
+    } else if (deviceUnsupported) {
+      Alert.alert('Notifications not supported. Please use a physical device.')
+      openSettings()
     } else {
       openSettings()
     }
