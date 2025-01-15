@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
+import { Buffer as BufferImport } from 'buffer'
 
 import { registerRootComponent } from 'expo'
 
-global.Buffer = global.Buffer || require('buffer').Buffer
-
 import App from './src/App'
+
+global.Buffer = global.Buffer || BufferImport
 
 registerRootComponent(App)

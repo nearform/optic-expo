@@ -58,7 +58,6 @@ export const AuthScreen: React.FC<AuthScreenProps> = () => {
         mode="contained"
         icon={({ size }) => (
           <Image
-            // FIXME: double-check this and all other usages of `require`
             // eslint-disable-next-line @typescript-eslint/no-require-imports
             source={require('../assets/google.png')}
             style={{ width: size, height: size }}
