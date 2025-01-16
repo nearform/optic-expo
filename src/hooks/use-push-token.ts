@@ -6,7 +6,6 @@ async function getToken() {
   let token = ''
 
   try {
-    // FIXME: check push notifications work
     const notification = await Notifications.getExpoPushTokenAsync({
       projectId: Constants.expoConfig.extra.eas.projectId,
     })

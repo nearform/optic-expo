@@ -11,7 +11,7 @@ import CryptoJS from 'react-native-crypto-js'
 
 import { Secret } from '../types'
 
-// FIXME: do we want to switch to the beta expo-file-system?
+// TODO: do we want to switch to the new beta expo-file-system?
 
 const mimeType = 'application/octet-stream'
 
