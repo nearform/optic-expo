@@ -77,9 +77,11 @@ export default {
     versionCode: pkg.versionCode,
     package: config.APP_PACKAGE_ID,
     googleServicesFile: './google-services.json',
+    icon: './src/assets/icon.png',
     adaptiveIcon: {
-      foregroundImage: './src/assets/icon.png',
-      backgroundColor: '#FFFFFF',
+      foregroundImage: './src/assets/adaptive-icon.png',
+      monochromeImage: './src/assets/adaptive-icon.png',
+      backgroundColor: '#2165E3',
     },
     playStoreUrl:
       'https://play.google.com/store/apps/details?id=com.nearform.optic',
