@@ -91,6 +91,19 @@ export default {
       '@react-native-google-signin/google-signin',
       { iosUrlScheme: config.IOS_URL_SCHEME },
     ],
+    [
+      'expo-splash-screen',
+      {
+        backgroundColor: '#FFFFFF',
+        image: './src/assets/splash.png',
+        // TODO: enable if / when we have a dark mode theme for the app
+        // dark: {
+        //   image: './src/assets/splash-dark.png',
+        //   backgroundColor: '#000000',
+        // },
+        imageWidth: 200, // This is the max allowed width apparently
+      },
+    ],
   ],
   runtimeVersion: {
     policy: 'sdkVersion',

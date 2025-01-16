@@ -85,7 +85,6 @@ export default function Main() {
 
   useEffect(() => {
     if (hasPoppinsLoaded && hasDidactLoaded && hasFiraCodeLoaded && !loading) {
-      // FIXME: double-check this is still functional
       SplashScreen.hide()
     }
   }, [hasDidactLoaded, hasFiraCodeLoaded, hasPoppinsLoaded, loading])
