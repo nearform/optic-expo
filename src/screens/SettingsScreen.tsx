@@ -84,7 +84,7 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
   const handleImport = async () => {
     try {
       const result = await DocumentPicker.getDocumentAsync({
-        type: '*/*', // FIXME: check which types are supported, and alter accordingly
+        type: 'text/*',
         multiple: false,
         copyToCacheDirectory: true,
       })
