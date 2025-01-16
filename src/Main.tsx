@@ -100,7 +100,7 @@ export default function Main() {
   return (
     <NavigationContainer>
       <MainStack.Navigator
-        id={undefined} // FIXME: diagnose this properly and remove
+        id={undefined} // TODO: diagnose why this is needed properly, and remove
         initialRouteName="Home"
         screenOptions={{
           headerStyle: {

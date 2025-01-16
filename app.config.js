@@ -110,5 +110,5 @@ export default {
   runtimeVersion: {
     policy: 'sdkVersion',
   },
-  // newArchEnabled: true, // FIXME: do we want to do this later?
+  // newArchEnabled: true, // TODO: do we want to enable this later?
 }
