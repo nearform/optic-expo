@@ -1429,38 +1429,26 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     [
                       "Card.Title",
                       "Card.Content",
-                      "Card.Actions",
+                      "View",
                     ]
                   }
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "padding": 8,
-                      },
-                      {
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                      },
-                      {
-                        "justifyContent": "flex-start",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "justifyContent": "space-between",
+                      "padding": 8,
+                    }
                   }
                   total={3}
                 >
                   <View
-                    compact={true}
-                    mode={false}
                     style={
-                      [
-                        false,
-                        {
-                          "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                        },
-                      ]
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                      }
                     }
                   >
                     <View
@@ -1639,16 +1627,11 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     </View>
                   </View>
                   <View
-                    compact={true}
-                    mode={false}
                     style={
-                      [
-                        false,
-                        {
-                          "flexDirection": "row",
-                          "justifyContent": "flex-end",
-                        },
-                      ]
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "flex-end",
+                      }
                     }
                   >
                     <View
@@ -2954,38 +2937,26 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     [
                       "Card.Title",
                       "Card.Content",
-                      "Card.Actions",
+                      "View",
                     ]
                   }
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "padding": 8,
-                      },
-                      {
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                      },
-                      {
-                        "justifyContent": "flex-start",
-                      },
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 8,
+                      "justifyContent": "space-between",
+                      "padding": 8,
+                    }
                   }
                   total={3}
                 >
                   <View
-                    compact={true}
-                    mode={false}
                     style={
-                      [
-                        false,
-                        {
-                          "flexDirection": "row",
-                          "justifyContent": "flex-start",
-                        },
-                      ]
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "flex-start",
+                      }
                     }
                   >
                     <View
@@ -3164,16 +3135,11 @@ exports[`HomeScreen renders secret cards when available 1`] = `
                     </View>
                   </View>
                   <View
-                    compact={true}
-                    mode={false}
                     style={
-                      [
-                        false,
-                        {
-                          "flexDirection": "row",
-                          "justifyContent": "flex-end",
-                        },
-                      ]
+                      {
+                        "flexDirection": "row",
+                        "justifyContent": "flex-end",
+                      }
                     }
                   >
                     <View

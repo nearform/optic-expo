@@ -110,6 +110,8 @@ export default function Main() {
             color: theme.colors.surface,
           },
           freezeOnBlur: true,
+          headerTintColor: theme.colors.surface,
+          headerPressColor: 'rgba(255, 255, 255, 0.32)',
         }}
       >
         <MainStack.Screen
