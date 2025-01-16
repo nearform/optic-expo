@@ -1,4 +1,4 @@
-name: expo-eas-build
+name: expo-eas-submit
 
 on:
   workflow_call:
