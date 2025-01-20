@@ -72,7 +72,7 @@
     "react-timeago": "^7.2.0",
     "url-otpauth": "^2.0.0",
     "utility-types": "^3.11.0",
-    "uuid": "^11.0.4"
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
