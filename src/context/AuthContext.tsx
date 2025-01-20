@@ -6,14 +6,14 @@ import Constants from 'expo-constants'
 import { FirebaseOptions, initializeApp } from 'firebase/app'
 import {
   User as FirebaseUser,
+  getReactNativePersistence,
   GoogleAuthProvider,
+  initializeAuth,
   OAuthProvider,
   onAuthStateChanged,
   signInWithCredential,
   signInWithEmailAndPassword,
   signOut,
-  initializeAuth,
-  getReactNativePersistence,
 } from 'firebase/auth'
 import React, {
   useCallback,
@@ -23,6 +23,7 @@ import React, {
   useState,
 } from 'react'
 import { useAsyncCallback } from 'react-async-hook'
+import { Alert } from 'react-native'
 
 import { User } from '../types'
 
@@ -96,22 +97,22 @@ function useGoogleAuth() {
       if (GS.isSuccessResponse(response)) {
         return { userInfo: response.data }
       } else {
-        console.log('Google sign in cancelled')
+        Alert.alert('Error', 'Google sign in cancelled')
       }
     } catch (error) {
       if (GS.isErrorWithCode(error)) {
         switch (error.code) {
           case GS.statusCodes.IN_PROGRESS:
-            console.log('Google auth already in progress')
+            Alert.alert('Error', 'Google auth already in progress')
             break
           case GS.statusCodes.PLAY_SERVICES_NOT_AVAILABLE:
-            console.log('Google play services not available')
+            Alert.alert('Error', 'Google play services not available')
             break
           default:
-            console.log('Google sign in error', error)
+            Alert.alert('Error', 'Google sign in error: ' + error)
         }
       } else {
-        console.log('An unexpected error occurred,', error)
+        Alert.alert('Error', 'An unexpected error occurred: ' + error)
       }
     }
   })
