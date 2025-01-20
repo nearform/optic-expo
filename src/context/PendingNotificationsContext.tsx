@@ -34,13 +34,13 @@ const PendingNotificationsContext = createContext(initialContext)
 
 export const PendingNotificationsProvider = ({ children }) => {
   const [pendingNotifications, setPendingNotifications] = useState(
-    defaultPendingNotifications,
+    defaultPendingNotifications
   )
 
   useEffect(() => {
     async function fn() {
       const s = await storage.getObject<OpticNotification[]>(
-        'pendingNotifications',
+        'pendingNotifications'
       )
       if (s) {
         setPendingNotifications(s)
@@ -55,7 +55,7 @@ export const PendingNotificationsProvider = ({ children }) => {
       const notificationId = notification.request.content.data.uniqueId
       const notAddedYet =
         pendingNotifications.findIndex(
-          item => item.request.content.data.uniqueId === notificationId,
+          item => item.request.content.data.uniqueId === notificationId
         ) === -1
 
       if (notAddedYet) {
@@ -69,31 +69,31 @@ export const PendingNotificationsProvider = ({ children }) => {
         setPendingNotifications(updatedPendingNotifications)
         await storage.saveObject(
           'pendingNotifications',
-          updatedPendingNotifications,
+          updatedPendingNotifications
         )
       }
     },
-    [pendingNotifications, setPendingNotifications],
+    [pendingNotifications, setPendingNotifications]
   )
 
   const removeNotification = useCallback(
     async (notificationId: string) => {
       const updatedPendingNotifications = pendingNotifications.filter(
         notification =>
-          notification.request.content.data.uniqueId !== notificationId,
+          notification.request.content.data.uniqueId !== notificationId
       )
       if (updatedPendingNotifications.length !== pendingNotifications.length) {
         setPendingNotifications(updatedPendingNotifications)
         await storage.saveObject(
           'pendingNotifications',
-          updatedPendingNotifications,
+          updatedPendingNotifications
         )
 
         // We use uniqueId to identify our OTP requests, but we use a different
         // identifier for their associated push notifications.
         const removedNotification = pendingNotifications.find(
           notification =>
-            notification.request.content.data.uniqueId === notificationId,
+            notification.request.content.data.uniqueId === notificationId
         )
         try {
           await dismissNotificationAsync(removedNotification.request.identifier)
@@ -102,12 +102,12 @@ export const PendingNotificationsProvider = ({ children }) => {
         }
       }
     },
-    [pendingNotifications, setPendingNotifications],
+    [pendingNotifications, setPendingNotifications]
   )
 
   const value = useMemo(
     () => ({ pendingNotifications, addNotification, removeNotification }),
-    [pendingNotifications, addNotification, removeNotification],
+    [pendingNotifications, addNotification, removeNotification]
   )
 
   return (

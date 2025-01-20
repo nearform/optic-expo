@@ -77,7 +77,7 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
       await secretsManager.upsert(secret, user.uid)
       setSecrets(await secretsManager.getAllByUser(user.uid))
     },
-    [user],
+    [user]
   )
 
   const remove = useCallback<ContextType['remove']>(
@@ -85,7 +85,7 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
       await secretsManager.remove(secret._id)
       setSecrets(await secretsManager.getAllByUser(user.uid))
     },
-    [user],
+    [user]
   )
 
   const update = useCallback<ContextType['update']>(
@@ -93,7 +93,7 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
       await secretsManager.upsert(secret, user.uid)
       setSecrets(await secretsManager.getAllByUser(user.uid))
     },
-    [user],
+    [user]
   )
 
   const replace = useCallback<ContextType['replace']>(async allSecrets => {
@@ -103,7 +103,7 @@ export const SecretsProvider: React.FC<SecretsProviderProps> = ({
 
   const value = useMemo<ContextType>(
     () => ({ secrets, secretsLoading, add, update, remove, replace }),
-    [secrets, secretsLoading, add, update, remove, replace],
+    [secrets, secretsLoading, add, update, remove, replace]
   )
 
   return (

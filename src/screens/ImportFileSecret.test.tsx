@@ -16,7 +16,7 @@ describe('ImportFileSecret', () => {
       <ImportFileSecret
         navigation={navigation}
         route={{ params: { fileContent: 'testFileContent' } }}
-      />,
+      />
     )
   }
 

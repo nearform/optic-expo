@@ -219,7 +219,7 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
       handleLoginApple,
       handleLoginPassword,
       handleDeleteAccount,
-    ],
+    ]
   )
 
   return <AuthContext.Provider value={context}>{children}</AuthContext.Provider>

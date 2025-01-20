@@ -52,7 +52,7 @@ export const PrefsProvider: React.FC<PrefsProviderProps> = ({ children }) => {
       setPrefs(newPrefs)
       storage.saveObject('prefs', newPrefs)
     },
-    [prefs],
+    [prefs]
   )
 
   const value = useMemo<ContextType>(() => ({ prefs, save }), [prefs, save])

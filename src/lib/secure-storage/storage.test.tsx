@@ -22,10 +22,10 @@ describe('storage', () => {
 
   it('setItem to reject when exception occurs in readAsStringAsync', async () => {
     ;(readAsStringAsync as jest.Mock).mockRejectedValueOnce(
-      'readAsStringAsync error',
+      'readAsStringAsync error'
     )
     await expect(setItem('foo', 'bar')).rejects.toEqual(
-      'readAsStringAsync error',
+      'readAsStringAsync error'
     )
   })
 
@@ -39,23 +39,23 @@ describe('storage', () => {
     ;(setItemAsync as jest.Mock).mockResolvedValueOnce(undefined)
     ;(readAsStringAsync as jest.Mock).mockReturnValueOnce(null)
     ;(writeAsStringAsync as jest.Mock).mockRejectedValueOnce(
-      'writeAsStringAsync error',
+      'writeAsStringAsync error'
     )
     await expect(setItem('foo', 'bar')).rejects.toEqual(
-      'writeAsStringAsync error',
+      'writeAsStringAsync error'
     )
   })
 
   it('getItem to reject when exception occurs in readAsStringAsync', async () => {
     ;(readAsStringAsync as jest.Mock).mockRejectedValueOnce(
-      'readAsStringAsync error',
+      'readAsStringAsync error'
     )
     await expect(getItem('foo')).rejects.toEqual('readAsStringAsync error')
   })
 
   it('getItem to reject when getItemAsync returns null', async () => {
     ;(readAsStringAsync as jest.Mock).mockResolvedValueOnce(
-      'encrypted_storage_key',
+      'encrypted_storage_key'
     )
     ;(getItemAsync as jest.Mock).mockResolvedValueOnce(null)
     await expect(getItem('foo')).rejects.toEqual('Storage key not found')
@@ -63,7 +63,7 @@ describe('storage', () => {
 
   it('getItem to reject when exception occurs in getItemAsync', async () => {
     ;(readAsStringAsync as jest.Mock).mockResolvedValueOnce(
-      'encrypted_storage_key',
+      'encrypted_storage_key'
     )
     ;(getItemAsync as jest.Mock).mockRejectedValueOnce('getItemAsync error')
     await expect(getItem('foo')).rejects.toEqual('getItemAsync error')

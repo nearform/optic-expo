@@ -69,7 +69,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         issuer: secret.issuer,
       })
     },
-    [navigation],
+    [navigation]
   )
 
   const handleDeleteSecret = async (secret: Secret) => {
@@ -89,7 +89,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     async (notification: OpticNotification) => {
       addNotification(notification)
     },
-    [addNotification],
+    [addNotification]
   )
 
   const onNotificationResponse = useCallback(
@@ -112,7 +112,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         packageInfo,
       })
     },
-    [navigation, secrets],
+    [navigation, secrets]
   )
 
   useEffect(() => {
@@ -121,7 +121,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
     responseListener.current =
       Notifications.addNotificationResponseReceivedListener(
-        onNotificationResponse,
+        onNotificationResponse
       )
 
     return () => {

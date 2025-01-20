@@ -87,7 +87,7 @@ export default function NotificationPermissionRequest() {
       if (typeof process.env.JEST_WORKER_ID === 'undefined') {
         // only log if not running tests
         console.log(
-          'permissions denied, non-device (ie. ios simulator, web) not supported',
+          'permissions denied, non-device (ie. ios simulator, web) not supported'
         )
       }
     }

@@ -35,7 +35,7 @@ const androidExport = async (fileName, fileContent) => {
     const uri = await StorageAccessFramework.createFileAsync(
       permissions.directoryUri,
       fileName,
-      mimeType,
+      mimeType
     )
 
     await writeAsStringAsync(uri, fileContent, {
@@ -90,12 +90,12 @@ export const showImportConfirmAlert = (onConfirm: () => void) => {
       },
       { text: 'IMPORT', onPress: onConfirm },
     ],
-    { cancelable: true },
+    { cancelable: true }
   )
 }
 
 export const readFile = async (
-  uri: string,
+  uri: string
 ): Promise<{ fileContent: string; isJson: boolean }> => {
   if (!uri) {
     return {
@@ -114,7 +114,7 @@ export const readFile = async (
 
 export const decryptDataToSecrets = (
   fileData: string,
-  secret: string,
+  secret: string
 ): Secret[] => {
   try {
     if (!fileData) {

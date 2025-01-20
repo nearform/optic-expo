@@ -83,7 +83,7 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
       return tokens.filter(
         ({ token, description }) =>
           description.toLowerCase().includes(search.toLowerCase()) ||
-          token.toLowerCase().includes(search.toLowerCase()),
+          token.toLowerCase().includes(search.toLowerCase())
       )
     } else {
       return tokens

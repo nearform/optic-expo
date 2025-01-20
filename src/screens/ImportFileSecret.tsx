@@ -57,7 +57,7 @@ export const ImportFileSecret: React.FC<ImportFileSecretProps> = ({
       }
       const secrets = decryptDataToSecrets(
         fileContent,
-        `${secret.trim()}.${user.uid}`,
+        `${secret.trim()}.${user.uid}`
       )
       await replace(secrets)
       navigation.navigate('Home')

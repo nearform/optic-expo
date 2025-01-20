@@ -32,7 +32,7 @@ const showDeleteAccountConfirm = (onConfirm: () => void) => {
       },
       { text: 'Delete account', onPress: onConfirm },
     ],
-    { cancelable: true },
+    { cancelable: true }
   )
 }
 

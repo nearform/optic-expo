@@ -11,7 +11,7 @@ declare module 'react-timeago' {
       suffix: Suffix,
       epochMilliseconds: number,
       nextFormatter: () => React.ReactNode,
-      now: () => number,
+      now: () => number
     ) => React.ReactNode
 
     interface Props<T extends React.ElementType = 'time'> {
@@ -36,7 +36,7 @@ declare module 'react-timeago' {
 
   function ReactTimeago<T extends React.ElementType = 'time'>(
     props: ReactTimeago.Props<T> &
-      Omit<React.ComponentProps<T>, keyof ReactTimeago.Props<T> | 'children'>,
+      Omit<React.ComponentProps<T>, keyof ReactTimeago.Props<T> | 'children'>
   ): React.ReactElement | null
 
   export default ReactTimeago

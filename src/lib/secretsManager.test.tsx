@@ -24,7 +24,7 @@ describe('secretsManager', () => {
         secret: 'somesecret',
         uid: '11',
       },
-      '11',
+      '11'
     )
 
     expect(s).toEqual({
@@ -44,7 +44,7 @@ describe('secretsManager', () => {
         secret: 'newsecret',
         uid: '11',
       },
-      '11',
+      '11'
     )
 
     expect(s).toEqual({
@@ -68,7 +68,7 @@ describe('secretsManager', () => {
         secret: 'newsecret',
         uid: '11',
       },
-      '11',
+      '11'
     )
 
     expect(await secretsManager.get(s1._id, '11')).toEqual({
@@ -86,7 +86,7 @@ describe('secretsManager', () => {
         secret: 'secret-2',
         uid: '22',
       },
-      '22',
+      '22'
     )
 
     expect(await secretsManager.getAllByUser('11')).toEqual([
@@ -118,7 +118,7 @@ describe('secretsManager', () => {
         secret: 'newsecret',
         uid: '11',
       },
-      '11',
+      '11'
     )
 
     await secretsManager.remove(s._id)
