@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "optic-expo",
-  "version": "2.0.0",
+  "version": "1.5.2",
   "versionCode": 31,
   "main": "index.ts",
   "scripts": {
