@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Notification from 'expo-notifications'
-import { Subscription } from 'expo-modules-core'
+import { EventSubscription } from 'expo-modules-core'
 import { fireEvent, waitFor } from '@testing-library/react-native'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
@@ -63,7 +63,7 @@ describe('CreateTokenScreen', () => {
     })
     ;(
       Notification.addNotificationResponseReceivedListener as jest.Mock
-    ).mockReturnValue({} as Subscription)
+    ).mockReturnValue({} as EventSubscription)
   })
 
   afterEach(() => {

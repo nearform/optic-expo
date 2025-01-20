@@ -11,13 +11,15 @@ import CryptoJS from 'react-native-crypto-js'
 
 import { Secret } from '../types'
 
+// TODO: do we want to switch to the new beta expo-file-system?
+
 const mimeType = 'application/octet-stream'
 
 function isJsonString(str) {
   try {
     JSON.parse(str)
     return true
-  } catch (e) {
+  } catch {
     return false
   }
 }
@@ -105,7 +107,7 @@ export const readFile = async (
     const fileContent = await readAsStringAsync(uri)
     const isJson = isJsonString(fileContent)
     return { fileContent, isJson }
-  } catch (e) {
+  } catch {
     throw Error('Unable to parse the backup file')
   }
 }

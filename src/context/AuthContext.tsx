@@ -1,15 +1,29 @@
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage'
+import * as GS from '@react-native-google-signin/google-signin'
+import { GoogleSignin } from '@react-native-google-signin/google-signin'
+import * as AppleAuthentication from 'expo-apple-authentication'
+import Constants from 'expo-constants'
+import { FirebaseOptions, initializeApp } from 'firebase/app'
+import {
+  User as FirebaseUser,
+  getReactNativePersistence,
+  GoogleAuthProvider,
+  initializeAuth,
+  OAuthProvider,
+  onAuthStateChanged,
+  signInWithCredential,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth'
 import React, {
-  useState,
-  useEffect,
-  useMemo,
   useCallback,
   useContext,
+  useEffect,
+  useMemo,
+  useState,
 } from 'react'
-import * as Google from 'expo-auth-session/providers/google'
-import firebase from 'firebase'
-import * as WebBrowser from 'expo-web-browser'
-import Constants from 'expo-constants'
-import * as AppleAuthentication from 'expo-apple-authentication'
+import { useAsyncCallback } from 'react-async-hook'
+import { Alert } from 'react-native'
 
 import { User } from '../types'
 
@@ -35,11 +49,11 @@ const {
   messagingSenderId,
   appId,
   clientId,
-  androidClientId,
+  // androidClientId, // NOTE: now unused?
   iosClientId,
 } = Constants.expoConfig?.extra as FirebaseSettings
 
-const firebaseConfig = {
+const firebaseConfig: FirebaseOptions = {
   apiKey,
   authDomain,
   databaseURL,
@@ -49,11 +63,15 @@ const firebaseConfig = {
   appId,
 }
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig)
-}
+const app = initializeApp(firebaseConfig)
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+})
 
-WebBrowser.maybeCompleteAuthSession()
+GoogleSignin.configure({
+  webClientId: clientId,
+  iosClientId,
+})
 
 type ContextType = {
   loading: boolean
@@ -71,36 +89,41 @@ type AuthenticationProviderProps = {
   children: React.ReactNode
 }
 
-const projectNameForProxy = `@${Constants.expoConfig.owner}/${Constants.expoConfig.slug}`
-
 function useGoogleAuth() {
-  const [, response, promptAsync] = Google.useIdTokenAuthRequest(
-    {
-      expoClientId: clientId,
-      clientId,
-      androidClientId,
-      iosClientId,
-    },
-    {
-      projectNameForProxy,
+  const { execute: login, result } = useAsyncCallback(async () => {
+    try {
+      await GoogleSignin.hasPlayServices()
+      const response = await GoogleSignin.signIn()
+      if (GS.isSuccessResponse(response)) {
+        return { userInfo: response.data }
+      } else {
+        Alert.alert('Error', 'Google sign in cancelled')
+      }
+    } catch (error) {
+      if (GS.isErrorWithCode(error)) {
+        switch (error.code) {
+          case GS.statusCodes.IN_PROGRESS:
+            Alert.alert('Error', 'Google auth already in progress')
+            break
+          case GS.statusCodes.PLAY_SERVICES_NOT_AVAILABLE:
+            Alert.alert('Error', 'Google play services not available')
+            break
+          default:
+            Alert.alert('Error', 'Google sign in error: ' + error)
+        }
+      } else {
+        Alert.alert('Error', 'An unexpected error occurred: ' + error)
+      }
     }
-  )
-
-  const login = useCallback<ContextType['handleLoginGoogle']>(
-    () =>
-      promptAsync({
-        projectNameForProxy,
-      }),
-    [promptAsync]
-  )
+  })
 
   useEffect(() => {
-    if (response?.type === 'success') {
-      const { id_token } = response.params
-      const credentials = firebase.auth.GoogleAuthProvider.credential(id_token)
-      firebase.auth().signInWithCredential(credentials)
+    if (result) {
+      const { idToken } = result.userInfo
+      const credentials = GoogleAuthProvider.credential(idToken)
+      signInWithCredential(auth, credentials)
     }
-  }, [response])
+  }, [result])
 
   return login
 }
@@ -111,12 +134,12 @@ function useAppleAuth() {
       const credential = await AppleAuthentication.signInAsync({
         requestedScopes: [AppleAuthentication.AppleAuthenticationScope.EMAIL],
       })
-      const provider = new firebase.auth.OAuthProvider('apple.com')
+      const provider = new OAuthProvider('apple.com')
       const credentials = provider.credential({
         idToken: credential.identityToken,
       })
-      firebase.auth().signInWithCredential(credentials)
-    } catch (e) {
+      signInWithCredential(auth, credentials)
+    } catch {
       // do nothing
     }
   }, [])
@@ -126,14 +149,14 @@ function useAppleAuth() {
 
 function usePasswordAuth() {
   return useCallback(async ({ user, password }) => {
-    await firebase.auth().signInWithEmailAndPassword(user, password)
+    await signInWithEmailAndPassword(auth, user, password)
   }, [])
 }
 
 export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   children,
 }) => {
-  const [firebaseUser, setFirebaseUser] = useState<firebase.User>()
+  const [firebaseUser, setFirebaseUser] = useState<FirebaseUser>()
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState<User>()
 
@@ -142,10 +165,11 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   const handleLoginPassword = usePasswordAuth()
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(newFirebaseUser => {
+    const unsubscribe = onAuthStateChanged(auth, newFirebaseUser => {
       setLoading(false)
       setFirebaseUser(newFirebaseUser)
     })
+    return () => unsubscribe()
   }, [])
 
   useEffect(() => {
@@ -167,7 +191,7 @@ export const AuthProvider: React.FC<AuthenticationProviderProps> = ({
   }, [firebaseUser])
 
   const handleLogout = useCallback<ContextType['handleLogout']>(async () => {
-    await firebase.auth().signOut()
+    await signOut(auth)
     setUser(null)
   }, [])
 

@@ -26,8 +26,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: theme.spacing(1),
   },
   cardActions: {
-    justifyContent: 'space-between',
+    alignItems: 'center',
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: theme.spacing(1),
+    padding: theme.spacing(1),
   },
   rightActions: {
     justifyContent: 'flex-end',
@@ -148,7 +151,7 @@ export const SecretCard: React.FC<SecretProps> = ({
             <Divider />
           </Animated.View>
         </Card.Content>
-        <Card.Actions style={styles.cardActions}>
+        <View style={styles.cardActions}>
           <View style={styles.leftActions}>
             {deleteInProgress ? (
               <Text style={styles.deleteLabel}>Deleting secret...</Text>
@@ -174,7 +177,7 @@ export const SecretCard: React.FC<SecretProps> = ({
               </Button>
             )}
           </View>
-        </Card.Actions>
+        </View>
       </Card>
     </View>
   )

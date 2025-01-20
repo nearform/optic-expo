@@ -13,7 +13,7 @@ export default {
   generate(secret) {
     try {
       return authenticator.generate(secret)
-    } catch (err) {
+    } catch {
       console.error('failed to generate secret')
       return '-'
     }

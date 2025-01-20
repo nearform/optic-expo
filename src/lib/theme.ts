@@ -1,6 +1,10 @@
 import { TextStyle } from 'react-native'
 import { MD2LightTheme as PaperDefaultTheme } from 'react-native-paper'
-import { DefaultTheme as NavigationDefaultTheme } from '@react-navigation/native'
+import {
+  DefaultTheme as NavigationDefaultTheme,
+  type Theme as NativeTheme,
+} from '@react-navigation/native'
+import type { ThemeProp } from 'react-native-paper/lib/typescript/types'
 
 export type TypographyVariant =
   | 'h1'
@@ -94,6 +98,17 @@ const typography: Record<TypographyVariant, TextStyle> = {
   },
 }
 
+interface CustomTheme {
+  colors: {
+    textSecondary: string
+  }
+  typography: Record<TypographyVariant, TextStyle>
+  spacing: (mul: number) => number
+  alpha: (color: string, op: number) => string
+}
+
+export type AppTheme = ThemeProp & NativeTheme & CustomTheme
+
 const theme = {
   ...PaperDefaultTheme,
   ...NavigationDefaultTheme,
@@ -109,6 +124,6 @@ const theme = {
   spacing: (mul: number) => mul * 8,
   alpha: (color: string, op: number) =>
     `${color}${Math.round(0xff * op).toString(16)}`,
-}
+} as const satisfies AppTheme
 
 export default theme

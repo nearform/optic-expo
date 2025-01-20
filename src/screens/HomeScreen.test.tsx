@@ -1,6 +1,7 @@
 import React from 'react'
 import * as Notification from 'expo-notifications'
-import { Subscription } from 'expo-modules-core'
+import { EventSubscription } from 'expo-modules-core'
+import { act } from '@testing-library/react-native'
 
 import apiFactory from '../lib/api'
 import { getMockedNavigation, renderWithTheme } from '../../test/utils'
@@ -18,6 +19,9 @@ jest.mock('expo-notifications', () => ({
   addNotificationResponseReceivedListener: jest.fn(),
   removeNotificationSubscription: jest.fn(),
   useLastNotificationResponse: jest.fn(),
+  getPermissionsAsync: jest.fn().mockResolvedValue({ status: 'undetermined' }),
+  setNotificationChannelAsync: jest.fn(),
+  AndroidImportance: { MAX: 7 },
 }))
 
 jest.mock('../lib/api')
@@ -28,6 +32,14 @@ jest.mock('../lib/otp', () => ({
 
 jest.mock('../hooks/use-push-token', () => () => 'dummy-expo-token')
 
+beforeAll(() => {
+  jest.useFakeTimers()
+})
+
+afterAll(() => {
+  jest.useRealTimers()
+})
+
 describe('HomeScreen', () => {
   const registerSubscriptionStub = jest.fn()
 
@@ -37,7 +49,7 @@ describe('HomeScreen', () => {
     })
     ;(
       Notification.addNotificationResponseReceivedListener as jest.Mock
-    ).mockReturnValue({} as Subscription)
+    ).mockReturnValue({} as EventSubscription)
   })
 
   afterEach(() => {
@@ -49,19 +61,21 @@ describe('HomeScreen', () => {
     return renderWithTheme(<HomeScreen navigation={navigation} />)
   }
 
-  it('should match snapshot when there are no secrets', () => {
+  it('should match snapshot when there are no secrets', async () => {
     const view = setup()
+    await act(() => Promise.resolve())
+
     expect(view).toMatchSnapshot()
   })
 
-  it('renders secret cards when available', () => {
+  it('renders secret cards when available', async () => {
     ;(useSecrets as jest.Mock).mockReturnValue({
       secrets: [
         {
           _id: '111',
           account: 'Account 1',
           issuer: 'Some issuer',
-          secret: 'mysecret',
+          secret: 'my-secret',
           uid: '222',
           tokens: [{ token: 'some-token', description: 'A description' }],
         },
@@ -69,7 +83,7 @@ describe('HomeScreen', () => {
           _id: '222',
           account: 'Account 1',
           issuer: 'Some issuer',
-          secret: 'myanothersecret',
+          secret: 'my-another-secret',
           uid: '222',
         },
       ],
@@ -80,6 +94,7 @@ describe('HomeScreen', () => {
     })
 
     const view = setup()
+    await act(() => Promise.resolve())
 
     expect(view).toMatchSnapshot()
   })

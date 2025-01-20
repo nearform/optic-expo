@@ -8,8 +8,10 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     '@react-native-community',
+    // 'plugin:deprecation/recommended', // TODO: enable later and resolve all deprecation warnings
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    // 'plugin:jest/recommended',
     'plugin:prettier/recommended',
   ],
   parserOptions: {
@@ -18,6 +20,7 @@ module.exports = {
     },
     ecmaVersion: 12,
     sourceType: 'module',
+    project: './tsconfig.json',
   },
   rules: {
     'import/order': ['error', { 'newlines-between': 'always' }],
@@ -29,6 +32,12 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
     'react/no-unstable-nested-components': ['warn', { allowAsProps: true }],
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        additionalHooks: '(useAsync|useAsyncCallback)',
+      },
+    ],
   },
   settings: {
     react: {
@@ -48,4 +57,12 @@ module.exports = {
   env: {
     'jest/globals': true,
   },
+  ignorePatterns: [
+    'patch/',
+    'ios/',
+    'android/',
+    'node_modules/',
+    'dist/',
+    '*.js',
+  ],
 }

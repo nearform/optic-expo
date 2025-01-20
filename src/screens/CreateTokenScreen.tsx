@@ -52,7 +52,7 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
 
   useEffect(() => {
     if (isFocused) {
-      ref.current && ref.current.focus()
+      if (ref.current) ref.current.focus()
     }
   }, [isFocused])
 
@@ -102,7 +102,9 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
     return null
   }
 
-  console.log(expoToken)
+  if (process.env.NODE_ENV !== 'test') {
+    console.log(expoToken) // only log if not running tests
+  }
 
   return (
     <>

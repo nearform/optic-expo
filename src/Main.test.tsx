@@ -10,6 +10,14 @@ jest.mock('./lib/api')
 jest.mock('./context/AuthContext')
 jest.mock('./hooks/use-push-token', () => () => 'dummy-expo-token')
 jest.mock('./screens/AuthScreen.tsx')
+jest.mock('expo-constants', () => ({
+  ...jest.requireActual('expo-constants'),
+  AppOwnership: {},
+}))
+jest.mock('expo-notifications', () => ({
+  dismissNotificationAsync: jest.fn().mockResolvedValue(undefined),
+  setNotificationHandler: jest.fn(),
+}))
 
 describe('Main', () => {
   it('should render AuthScreen for unauthenticated users', () => {

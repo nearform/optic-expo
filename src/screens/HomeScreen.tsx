@@ -1,23 +1,24 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import { useIsFocused } from '@react-navigation/core'
+import { StackNavigationProp } from '@react-navigation/stack'
+import { EventSubscription } from 'expo-modules-core'
 import * as Notifications from 'expo-notifications'
 import { NotificationResponse } from 'expo-notifications'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
-import { Subscription } from 'expo-modules-core'
-import { StackNavigationProp } from '@react-navigation/stack'
-import { useIsFocused } from '@react-navigation/core'
 import Toast from 'react-native-root-toast'
 
-import { usePendingNotifications } from '../context/PendingNotificationsContext'
-import { useSecrets } from '../context/SecretsContext'
+import { MainStackParamList } from '../Main'
+import { Actions } from '../components/Actions'
+import { NoSecrets } from '../components/NoSecrets'
+import NotificationPermissionRequest from '../components/NotificationPermissionRequest'
+import { SecretCard } from '../components/SecretCard'
 import { useAuth } from '../context/AuthContext'
 import { useInitialLoading } from '../context/InitalLoadingContext'
+import { usePendingNotifications } from '../context/PendingNotificationsContext'
+import { useSecrets } from '../context/SecretsContext'
 import apiFactory from '../lib/api'
-import { NoSecrets } from '../components/NoSecrets'
-import { Actions } from '../components/Actions'
-import { SecretCard } from '../components/SecretCard'
 import { NotificationData, OpticNotification, Secret } from '../types'
-import { MainStackParamList } from '../Main'
-import NotificationPermissionRequest from '../components/NotificationPermissionRequest'
+
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -46,8 +47,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const { secrets, secretsLoading, remove } = useSecrets()
   const { addNotification } = usePendingNotifications()
   const isFocused = useIsFocused()
-  const notificationListener = useRef<Subscription>()
-  const responseListener = useRef<Subscription>()
+  const notificationListener = useRef<EventSubscription>()
+  const responseListener = useRef<EventSubscription>()
   const lastNotificationResponse = Notifications.useLastNotificationResponse()
   const { initialLoadingComplete, markInitialLoadingComplete } =
     useInitialLoading()
@@ -79,7 +80,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       return true
     } catch (err) {
       console.log(err)
-      Toast.show(`An error occured while deleting the secret`)
+      Toast.show('An error occurred while deleting the secret')
       return false
     }
   }

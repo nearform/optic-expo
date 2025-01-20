@@ -5,15 +5,13 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react-native",
-    "lib": [
-      "es2017"
-    ],
+    "lib": ["es2017"],
     "moduleResolution": "node",
     "noEmit": true,
-    "strict": false,
+    "strict": false, // TODO: set to true and fix all ts errors 😢
     "target": "esnext",
     "resolveJsonModule": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules",
@@ -22,5 +20,5 @@
     "jest.config.js"
   ],
   "extends": "expo/tsconfig.base",
-  "typeRoots": ["node_modules/@types", "src/types"],
+  "typeRoots": ["node_modules/@types", "src/types"]
 }

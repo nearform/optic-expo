@@ -22,24 +22,32 @@ To get started, visit the [Getting Started](https://optic.nearform.com/getting-s
 ## Requirements
 
 - Node LTS
-- yarn
-- expo go app (on your ios/android phone or you can use the ios simulator)
+- Yarn
+- The latest development build app installed via TestFlight (_instructions update needed_) if you are using an iPhone.
+If you are using an android phone or emulator, or an iPhone simulator, a build should be created and installed automatically.
 
-## Setup
+A development build is essentially a modified version of the expo go app, with custom native code added in - the standard method of using Expo nowadays.
 
+## Setup & Development (Android)
+
+Ensure an Android emulator is set up on your machine, or connect a real android device and enable [USB debugging](https://developer.android.com/studio/debug/dev-options#debugging)
 1. `yarn`
-1. `yarn start`
+1. `yarn android`
 
-## Development
+This should build a new expo development build and install it automatically on your device, as well as start the Expo server. Changes to the typescript in the codebase should now be automatically reflected on your device.
 
-In order to successfully run the Optic-expo app locally you will need the following:
+## Builds
+
+In order to successfully create EAS builds or edit EAS config, you will need the following:
 
 1. Expo user account. You can sign up [here](https://expo.dev/signup).
 1. Once you have an Expo account, your account needs to be added to the NearForm organization (ask @simoneb to do that for you).
-1. Scan the QR code on your terminal or go to `exp://172.22.22.56:19000`
-1. Once the app loads, if you get the signin screen, in your terminal run `expo login -u <username> -p <password>` and reload the app
+1.  See [EAS builds](https://docs.expo.dev/build/introduction/) for the various commands to run. EAS is a cloud-based service, but the cli offers the choice to build locally too.
+
+Creating builds is necessary if you want to generate standalone applications for ios or android for testing or publishing.
 
 ## Running on a iOS device
+_Outdated - written when the app was using Expo Go (and npm?!) rather than development builds (and yarn). Should be rewritten to support this._
 
 1. Create an issue in this repo asking for apple connect developer access for the app (see section: [Providing Apple Developer Access](##providing-apple-developer-access))
 1. Install expo-cli globally: `npm i -g expo-cli`
@@ -75,12 +83,19 @@ In order to successfully run the Optic-expo app locally you will need the follow
 1. Navigate to [https://appstoreconnect.apple.com/access/users](https://appstoreconnect.apple.com/access/users)
 1. Click on the "+" button on the top left corner and add the user info (most of the time will be developer or app manager) and choose what apps they have access to
 
+## Troubleshooting
+
+### Setup / Debug Google Signin
+
+This should already be all set up, but in case of Google Signin errors such as `DEVELOPER_ERROR`, ensure OAuth 2.0 Client IDs are set up for each build method keystore's `SHA-1`
+
+1. Run `eas credentials` to obtain SHA-1 fingerprint for EAS build
+2. Run `cd android && ./gradlew signingReport` to obtain local build SHA-1 fingerprints (if you have run a local build)
+3. Ensure each SHA-1 has a matching OAuth Client ID in GCC
+
 ## Notes
 
-- The app doesn't run on the web
-- `yarn start:native` is different from `yarn start` having the flag `--dev-client` you need to build a native version of the app as it generates a url like this:
-  `com.nearform.optic://expo-development-client/?url=http%3A%2F%2F192.168.5.92%3A8081` so you have to run `expo run:android` first.
-  exp://192.168.5.92:19000 </br> <br> As most things, it's a trade-off.Pp Without --dev-client it's faster to start working as you don't have to install native tools but it hides some problems that only occur in the native versions like the google login problem and the qr code scan.
+- The app doesn't run on the web, as it utilises native functionality. This could be potentially supported, but web-specific setup would need to be added to support things like push-notifications, camera qr-scanning and Google Signin
 
 ## Figma Design
 

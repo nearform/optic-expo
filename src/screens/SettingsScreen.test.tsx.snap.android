@@ -4,8 +4,8 @@ exports[`SettingsScreen should match snapshot 1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={
-    Array [
-      Object {
+    [
+      {
         "flex": 1,
       },
       undefined,
@@ -16,14 +16,14 @@ exports[`SettingsScreen should match snapshot 1`] = `
     collapsable={false}
     pointerEvents="box-none"
     style={
-      Object {
+      {
         "flex": 1,
       }
     }
   >
     <View
       style={
-        Object {
+        {
           "flexGrow": 1,
           "justifyContent": "flex-start",
           "width": "100%",
@@ -32,7 +32,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
     >
       <RCTScrollView
         contentContainerStyle={
-          Object {
+          {
             "flexGrow": 1,
             "justifyContent": "space-between",
             "marginBottom": 56,
@@ -43,7 +43,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
           <View>
             <View
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flexDirection": "row",
                   "justifyContent": "space-between",
@@ -54,25 +54,25 @@ exports[`SettingsScreen should match snapshot 1`] = `
             >
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "textAlign": "left",
                     },
-                    Object {
+                    {
                       "color": "#6D6D68",
                       "fontFamily": "sans-serif",
                       "fontWeight": "normal",
                     },
-                    Object {
+                    {
                       "writingDirection": "ltr",
                     },
-                    Array [
-                      Object {
+                    [
+                      {
                         "fontSize": 16,
                         "fontWeight": "400",
                         "letterSpacing": 0.15,
                       },
-                      Object {
+                      {
                         "alignItems": "center",
                         "color": "#6D6D68",
                         "display": "flex",
@@ -88,7 +88,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
               <AndroidSwitch
                 accessibilityRole="switch"
                 accessibilityState={
-                  Object {
+                  {
                     "disabled": true,
                   }
                 }
@@ -105,7 +105,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
             </View>
             <View
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flexDirection": "row",
                   "justifyContent": "space-between",
@@ -116,25 +116,25 @@ exports[`SettingsScreen should match snapshot 1`] = `
             >
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "textAlign": "left",
                     },
-                    Object {
+                    {
                       "color": "#6D6D68",
                       "fontFamily": "sans-serif",
                       "fontWeight": "normal",
                     },
-                    Object {
+                    {
                       "writingDirection": "ltr",
                     },
-                    Array [
-                      Object {
+                    [
+                      {
                         "fontSize": 16,
                         "fontWeight": "400",
                         "letterSpacing": 0.15,
                       },
-                      Object {
+                      {
                         "alignItems": "center",
                         "color": "#6D6D68",
                         "display": "flex",
@@ -150,29 +150,40 @@ exports[`SettingsScreen should match snapshot 1`] = `
               <View
                 collapsable={false}
                 style={
-                  Object {
+                  {
                     "backgroundColor": "transparent",
                     "borderColor": "transparent",
                     "borderRadius": 4,
                     "borderStyle": "solid",
                     "borderWidth": 0,
-                    "elevation": 0,
                     "minWidth": "auto",
                     "shadowColor": "#000000",
-                    "shadowOffset": Object {
-                      "height": 0,
+                    "shadowOffset": {
+                      "height": 3,
                       "width": 0,
                     },
-                    "shadowOpacity": 0,
-                    "shadowRadius": 0,
+                    "shadowOpacity": 0.24,
+                    "shadowRadius": 4,
                   }
                 }
               >
                 <View
                   accessibilityRole="button"
                   accessibilityState={
-                    Object {
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
                       "disabled": true,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
@@ -188,12 +199,11 @@ exports[`SettingsScreen should match snapshot 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "overflow": "hidden",
                       },
-                      false,
-                      Object {
+                      {
                         "borderRadius": 4,
                       },
                     ]
@@ -202,8 +212,8 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexDirection": "row",
                           "justifyContent": "center",
@@ -214,8 +224,8 @@ exports[`SettingsScreen should match snapshot 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginLeft": 12,
                             "marginRight": -4,
                           },
@@ -225,41 +235,76 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       }
                       testID="button-icon-container"
                     >
-                      <Text />
+                      <Text
+                        accessibilityElementsHidden={true}
+                        allowFontScaling={false}
+                        importantForAccessibility="no-hide-descendants"
+                        pointerEvents="none"
+                        selectable={false}
+                        style={
+                          [
+                            {
+                              "color": "rgba(0, 0, 0, 0.32)",
+                              "fontSize": 16,
+                            },
+                            [
+                              {
+                                "lineHeight": 16,
+                                "transform": [
+                                  {
+                                    "scaleX": 1,
+                                  },
+                                ],
+                              },
+                              {
+                                "backgroundColor": "transparent",
+                              },
+                            ],
+                            {
+                              "fontFamily": "material-community",
+                              "fontStyle": "normal",
+                              "fontWeight": "normal",
+                            },
+                            {},
+                          ]
+                        }
+                      >
+                        󰈝
+                      </Text>
                     </View>
                     <Text
                       numberOfLines={1}
                       selectable={false}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "textAlign": "left",
                           },
-                          Object {
+                          {
                             "color": "#6D6D68",
                             "fontFamily": "sans-serif",
                             "fontWeight": "normal",
                           },
-                          Object {
+                          {
                             "writingDirection": "ltr",
                           },
-                          Array [
-                            Object {
+                          [
+                            {
                               "marginHorizontal": 16,
                               "marginVertical": 9,
                               "textAlign": "center",
                             },
-                            Object {
+                            {
                               "letterSpacing": 1,
                             },
                             false,
-                            Object {
+                            {
                               "marginHorizontal": 8,
                             },
-                            Object {
+                            {
                               "textTransform": "uppercase",
                             },
-                            Object {
+                            {
                               "color": "rgba(0, 0, 0, 0.32)",
                               "fontFamily": "sans-serif-medium",
                               "fontWeight": "normal",
@@ -278,7 +323,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
             </View>
             <View
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flexDirection": "row",
                   "justifyContent": "space-between",
@@ -289,25 +334,25 @@ exports[`SettingsScreen should match snapshot 1`] = `
             >
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "textAlign": "left",
                     },
-                    Object {
+                    {
                       "color": "#6D6D68",
                       "fontFamily": "sans-serif",
                       "fontWeight": "normal",
                     },
-                    Object {
+                    {
                       "writingDirection": "ltr",
                     },
-                    Array [
-                      Object {
+                    [
+                      {
                         "fontSize": 16,
                         "fontWeight": "400",
                         "letterSpacing": 0.15,
                       },
-                      Object {
+                      {
                         "alignItems": "center",
                         "color": "#6D6D68",
                         "display": "flex",
@@ -323,7 +368,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
               <View
                 collapsable={false}
                 style={
-                  Object {
+                  {
                     "backgroundColor": "transparent",
                     "borderColor": "transparent",
                     "borderRadius": 4,
@@ -332,7 +377,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                     "elevation": 0,
                     "minWidth": "auto",
                     "shadowColor": "#000000",
-                    "shadowOffset": Object {
+                    "shadowOffset": {
                       "height": 0,
                       "width": 0,
                     },
@@ -344,8 +389,20 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 <View
                   accessibilityRole="button"
                   accessibilityState={
-                    Object {
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
                       "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
@@ -361,12 +418,11 @@ exports[`SettingsScreen should match snapshot 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "overflow": "hidden",
                       },
-                      false,
-                      Object {
+                      {
                         "borderRadius": 4,
                       },
                     ]
@@ -375,8 +431,8 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexDirection": "row",
                           "justifyContent": "center",
@@ -387,8 +443,8 @@ exports[`SettingsScreen should match snapshot 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginLeft": 12,
                             "marginRight": -4,
                           },
@@ -398,41 +454,76 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       }
                       testID="button-icon-container"
                     >
-                      <Text />
+                      <Text
+                        accessibilityElementsHidden={true}
+                        allowFontScaling={false}
+                        importantForAccessibility="no-hide-descendants"
+                        pointerEvents="none"
+                        selectable={false}
+                        style={
+                          [
+                            {
+                              "color": "#2165E3",
+                              "fontSize": 16,
+                            },
+                            [
+                              {
+                                "lineHeight": 16,
+                                "transform": [
+                                  {
+                                    "scaleX": 1,
+                                  },
+                                ],
+                              },
+                              {
+                                "backgroundColor": "transparent",
+                              },
+                            ],
+                            {
+                              "fontFamily": "material-community",
+                              "fontStyle": "normal",
+                              "fontWeight": "normal",
+                            },
+                            {},
+                          ]
+                        }
+                      >
+                        󰈠
+                      </Text>
                     </View>
                     <Text
                       numberOfLines={1}
                       selectable={false}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "textAlign": "left",
                           },
-                          Object {
+                          {
                             "color": "#6D6D68",
                             "fontFamily": "sans-serif",
                             "fontWeight": "normal",
                           },
-                          Object {
+                          {
                             "writingDirection": "ltr",
                           },
-                          Array [
-                            Object {
+                          [
+                            {
                               "marginHorizontal": 16,
                               "marginVertical": 9,
                               "textAlign": "center",
                             },
-                            Object {
+                            {
                               "letterSpacing": 1,
                             },
                             false,
-                            Object {
+                            {
                               "marginHorizontal": 8,
                             },
-                            Object {
+                            {
                               "textTransform": "uppercase",
                             },
-                            Object {
+                            {
                               "color": "#2165E3",
                               "fontFamily": "sans-serif-medium",
                               "fontWeight": "normal",
@@ -453,7 +544,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
           <View>
             <View
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "paddingTop": 24,
                 }
@@ -461,25 +552,25 @@ exports[`SettingsScreen should match snapshot 1`] = `
             >
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "textAlign": "left",
                     },
-                    Object {
+                    {
                       "color": "#6D6D68",
                       "fontFamily": "sans-serif",
                       "fontWeight": "normal",
                     },
-                    Object {
+                    {
                       "writingDirection": "ltr",
                     },
-                    Array [
-                      Object {
+                    [
+                      {
                         "fontSize": 16,
                         "fontWeight": "400",
                         "letterSpacing": 0.15,
                       },
-                      Object {
+                      {
                         "alignItems": "center",
                         "color": "#6D6D68",
                         "display": "flex",
@@ -493,7 +584,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
             </View>
             <View
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "paddingTop": 24,
                 }
@@ -502,7 +593,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
               <View
                 collapsable={false}
                 style={
-                  Object {
+                  {
                     "backgroundColor": "#2165E3",
                     "borderColor": "transparent",
                     "borderRadius": 4,
@@ -511,7 +602,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                     "elevation": 2,
                     "minWidth": 64,
                     "shadowColor": "#000000",
-                    "shadowOffset": Object {
+                    "shadowOffset": {
                       "height": 0.75,
                       "width": 0,
                     },
@@ -523,8 +614,20 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 <View
                   accessibilityRole="button"
                   accessibilityState={
-                    Object {
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
                       "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
@@ -540,12 +643,11 @@ exports[`SettingsScreen should match snapshot 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "overflow": "hidden",
                       },
-                      false,
-                      Object {
+                      {
                         "borderRadius": 4,
                       },
                     ]
@@ -554,8 +656,8 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexDirection": "row",
                           "justifyContent": "center",
@@ -568,33 +670,33 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       numberOfLines={1}
                       selectable={false}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "textAlign": "left",
                           },
-                          Object {
+                          {
                             "color": "#6D6D68",
                             "fontFamily": "sans-serif",
                             "fontWeight": "normal",
                           },
-                          Object {
+                          {
                             "writingDirection": "ltr",
                           },
-                          Array [
-                            Object {
+                          [
+                            {
                               "marginHorizontal": 16,
                               "marginVertical": 9,
                               "textAlign": "center",
                             },
-                            Object {
+                            {
                               "letterSpacing": 1,
                             },
                             false,
                             undefined,
-                            Object {
+                            {
                               "textTransform": "uppercase",
                             },
-                            Object {
+                            {
                               "color": "#ffffff",
                               "fontFamily": "sans-serif-medium",
                               "fontWeight": "normal",
@@ -614,7 +716,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 collapsable={false}
                 color="red"
                 style={
-                  Object {
+                  {
                     "backgroundColor": "transparent",
                     "borderColor": "transparent",
                     "borderRadius": 4,
@@ -624,7 +726,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
                     "marginTop": 64,
                     "minWidth": 64,
                     "shadowColor": "#000000",
-                    "shadowOffset": Object {
+                    "shadowOffset": {
                       "height": 0,
                       "width": 0,
                     },
@@ -636,8 +738,20 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 <View
                   accessibilityRole="button"
                   accessibilityState={
-                    Object {
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
                       "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
@@ -653,12 +767,11 @@ exports[`SettingsScreen should match snapshot 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "overflow": "hidden",
                       },
-                      false,
-                      Object {
+                      {
                         "borderRadius": 4,
                       },
                     ]
@@ -667,8 +780,8 @@ exports[`SettingsScreen should match snapshot 1`] = `
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexDirection": "row",
                           "justifyContent": "center",
@@ -681,33 +794,33 @@ exports[`SettingsScreen should match snapshot 1`] = `
                       numberOfLines={1}
                       selectable={false}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "textAlign": "left",
                           },
-                          Object {
+                          {
                             "color": "#6D6D68",
                             "fontFamily": "sans-serif",
                             "fontWeight": "normal",
                           },
-                          Object {
+                          {
                             "writingDirection": "ltr",
                           },
-                          Array [
-                            Object {
+                          [
+                            {
                               "marginHorizontal": 16,
                               "marginVertical": 9,
                               "textAlign": "center",
                             },
-                            Object {
+                            {
                               "letterSpacing": 1,
                             },
                             false,
                             undefined,
-                            Object {
+                            {
                               "textTransform": "uppercase",
                             },
-                            Object {
+                            {
                               "color": "#2165E3",
                               "fontFamily": "sans-serif-medium",
                               "fontWeight": "normal",
@@ -726,7 +839,7 @@ exports[`SettingsScreen should match snapshot 1`] = `
             </View>
             <View
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "marginTop": 80,
                 }
@@ -734,25 +847,25 @@ exports[`SettingsScreen should match snapshot 1`] = `
             >
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "textAlign": "left",
                     },
-                    Object {
+                    {
                       "color": "#6D6D68",
                       "fontFamily": "sans-serif",
                       "fontWeight": "normal",
                     },
-                    Object {
+                    {
                       "writingDirection": "ltr",
                     },
-                    Array [
-                      Object {
+                    [
+                      {
                         "fontSize": 16,
                         "fontWeight": "400",
                         "letterSpacing": 0.15,
                       },
-                      Object {
+                      {
                         "alignItems": "center",
                         "color": "#6D6D68",
                         "display": "flex",
@@ -767,25 +880,25 @@ exports[`SettingsScreen should match snapshot 1`] = `
               </Text>
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "textAlign": "left",
                     },
-                    Object {
+                    {
                       "color": "#6D6D68",
                       "fontFamily": "sans-serif",
                       "fontWeight": "normal",
                     },
-                    Object {
+                    {
                       "writingDirection": "ltr",
                     },
-                    Array [
-                      Object {
+                    [
+                      {
                         "fontSize": 14,
                         "fontWeight": "500",
                         "letterSpacing": 0.15,
                       },
-                      Object {
+                      {
                         "alignItems": "center",
                         "color": "#6D6D68",
                         "display": "flex",
