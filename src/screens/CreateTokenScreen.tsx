@@ -102,7 +102,7 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
     return null
   }
 
-  if (typeof process.env.JEST_WORKER_ID === 'undefined') {
+  if (process.env.NODE_ENV !== 'test') {
     console.log(expoToken) // only log if not running tests
   }
 

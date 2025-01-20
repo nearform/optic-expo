@@ -8,7 +8,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     '@react-native-community',
-    // 'plugin:deprecation/recommended', // FIXME: enable later
+    // 'plugin:deprecation/recommended', // TODO: enable later and resolve all deprecation warnings
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     // 'plugin:jest/recommended',
