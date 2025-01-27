@@ -108,7 +108,7 @@
     "prettier": "^3.4.2",
     "react-test-renderer": "18.3.1",
     "ts-jest": "^29.2.5",
-    "typescript": "^5.3.3"
+    "typescript": "^5.7.3"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,d.ts}": [
