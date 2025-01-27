@@ -13,16 +13,18 @@ jobs:
     secrets:
       expo-token: ${{ secrets.EXPO_TOKEN }}
 
-  submit-ios:
-    uses: ./.github/workflows/expo-eas-submit.yml
-    with:
-      platform: 'ios'
-    secrets:
-      expo-token: ${{ secrets.EXPO_TOKEN }}
+  # # NOTE: App store submission disabled for now
 
-  submit-android:
-    uses: ./.github/workflows/expo-eas-submit.yml
-    with:
-      platform: 'android'
-    secrets:
-      expo-token: ${{ secrets.EXPO_TOKEN }}
+  # submit-ios:
+  #   uses: ./.github/workflows/expo-eas-submit.yml
+  #   with:
+  #     platform: 'ios'
+  #   secrets:
+  #     expo-token: ${{ secrets.EXPO_TOKEN }}
+
+  # submit-android:
+  #   uses: ./.github/workflows/expo-eas-submit.yml
+  #   with:
+  #     platform: 'android'
+  #   secrets:
+  #     expo-token: ${{ secrets.EXPO_TOKEN }}
