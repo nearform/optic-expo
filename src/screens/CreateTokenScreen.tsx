@@ -1,19 +1,20 @@
+import { useIsFocused } from '@react-navigation/core'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Button, TextInput } from 'react-native-paper'
-import { NativeStackScreenProps } from 'react-native-screens/native-stack'
+import { TextInput } from 'react-native-paper'
 import Toast from 'react-native-root-toast'
-import { useIsFocused } from '@react-navigation/core'
+import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
+import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
+import { ThemedButton } from '../components/ThemedButton'
+import { Typography } from '../components/Typography'
 import { useAuth } from '../context/AuthContext'
-import apiFactory from '../lib/api'
 import { useSecrets } from '../context/SecretsContext'
 import usePushToken from '../hooks/use-push-token'
-import { MainStackParamList } from '../Main'
-import theme from '../lib/theme'
-import { Typography } from '../components/Typography'
 import { useSecretSelector } from '../hooks/use-secret-selector'
-import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
+import apiFactory from '../lib/api'
+import theme from '../lib/theme'
+import { MainStackParamList } from '../Main'
 
 const styles = StyleSheet.create({
   container: {
@@ -23,10 +24,6 @@ const styles = StyleSheet.create({
   description: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(4),
-  },
-  button: {
-    marginTop: theme.spacing(1),
-    justifyContent: 'center',
   },
 })
 
@@ -129,15 +126,13 @@ export const CreateTokenScreen = ({ route, navigation }: Props) => {
             multiline
           />
         </View>
-        <Button
-          style={styles.button}
+        <ThemedButton
           icon="plus"
-          mode="contained"
           onPress={handleGenerateToken}
           disabled={disabled}
         >
-          Create Token
-        </Button>
+          Create token
+        </ThemedButton>
       </View>
       {isGenerating && <LoadingSpinnerOverlay />}
     </>

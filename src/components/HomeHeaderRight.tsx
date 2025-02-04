@@ -32,13 +32,13 @@ export default function HomeHeaderRight() {
         </Badge>
         <IconButton
           icon="bell"
-          iconColor={theme.colors.surface}
+          iconColor={theme.colors.secondary}
           onPress={() => navigate('Notifications')}
         />
       </View>
       <IconButton
         icon="cog"
-        iconColor={theme.colors.surface}
+        iconColor={theme.colors.secondary}
         onPress={() => navigate('Settings')}
       />
     </View>

@@ -78,7 +78,10 @@ type ContextType = {
   user: User | null
   handleLoginGoogle: () => void
   handleLoginApple: () => void
-  handleLoginPassword: (credentials: { user: string; password: string }) => void
+  handleLoginPassword: (credentials: {
+    user: string
+    password: string
+  }) => Promise<void>
   handleLogout: () => Promise<void>
   handleDeleteAccount: () => Promise<void>
 }

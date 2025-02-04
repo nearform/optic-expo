@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   button: {
     textAlign: 'center',
     alignItems: 'flex-start',
-    padding: theme.spacing(1),
+    padding: theme.spacing(0.2),
     marginTop: theme.spacing(1),
   },
 })
@@ -55,6 +55,8 @@ export const AuthScreen: React.FC<AuthScreenProps> = () => {
       <Button
         style={styles.button}
         accessibilityLabel="login with google"
+        uppercase={false}
+        labelStyle={{ letterSpacing: 0.5 }}
         mode="contained"
         icon={({ size }) => (
           <Image
@@ -64,7 +66,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = () => {
           />
         )}
         onPress={handleLoginGoogle}
-        color={theme.colors.surface}
+        buttonColor={theme.colors.surface}
       >
         Sign in with Google
       </Button>

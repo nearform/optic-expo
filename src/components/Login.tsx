@@ -9,7 +9,7 @@ type LoginProps = {
 export const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [user, setUser] = useState('')
   const [password, setPassword] = useState('')
-  const [logginIn, setLoggingIn] = useState(false)
+  const [loggingIn, setLoggingIn] = useState(false)
 
   const login = useCallback(async () => {
     setLoggingIn(true)
@@ -32,7 +32,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
         accessibilityLabel="User"
         value={user}
         onChangeText={setUser}
-        disabled={logginIn}
+        disabled={loggingIn}
       />
       <TextInput
         autoComplete="off"
@@ -41,14 +41,14 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
         secureTextEntry={true}
         value={password}
         onChangeText={setPassword}
-        disabled={logginIn}
+        disabled={loggingIn}
       />
       <Button
         mode="outlined"
         style={{ backgroundColor: '#fff' }}
         onPress={login}
-        disabled={logginIn}
-        loading={logginIn}
+        disabled={loggingIn}
+        loading={loggingIn}
       >
         Login
       </Button>

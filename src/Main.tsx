@@ -110,14 +110,14 @@ export default function Main() {
             color: theme.colors.surface,
           },
           freezeOnBlur: true,
-          headerTintColor: theme.colors.surface,
+          headerTintColor: theme.colors.secondary,
           headerPressColor: 'rgba(255, 255, 255, 0.32)',
         }}
       >
         <MainStack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'Your Tokens', headerRight: HomeHeaderRight }}
+          options={{ title: 'Your tokens', headerRight: HomeHeaderRight }}
         />
         <MainStack.Screen
           name="Settings"
@@ -149,17 +149,17 @@ export default function Main() {
         <MainStack.Screen
           name="OtpRequest"
           component={OtpRequestScreen}
-          options={{ title: 'OTP Request', headerLeft: DefaultHeaderLeft }}
+          options={{ title: 'OTP request', headerLeft: DefaultHeaderLeft }}
         />
         <MainStack.Screen
           name="Scan"
           component={ScanScreen}
-          options={{ title: 'Scan QR Code', headerLeft: DefaultHeaderLeft }}
+          options={{ title: 'Scan QR code', headerLeft: DefaultHeaderLeft }}
         />
         <MainStack.Screen
           name="Type"
           component={TypeScreen}
-          options={{ title: 'New Secret', headerLeft: DefaultHeaderLeft }}
+          options={{ title: 'New secret', headerLeft: DefaultHeaderLeft }}
         />
         <MainStack.Screen
           name="Notifications"
@@ -170,13 +170,13 @@ export default function Main() {
           name="ExportFileSecret"
           component={ExportFileSecret}
           options={{
-            title: 'Encrypt Exported Tokens',
+            title: 'Encrypt exported tokens',
           }}
         />
         <MainStack.Screen
           name="ImportFileSecret"
           component={ImportFileSecret}
-          options={{ title: "Decrypt Secret's File" }}
+          options={{ title: "Decrypt secret's file" }}
         />
       </MainStack.Navigator>
     </NavigationContainer>
