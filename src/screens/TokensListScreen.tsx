@@ -1,13 +1,14 @@
-import { StyleSheet, View, ScrollView } from 'react-native'
-import React, { Fragment, useCallback, useMemo, useState } from 'react'
-import { NativeStackScreenProps } from 'react-native-screens/native-stack'
-import { TextInput, Text, Divider, FAB, Portal, List } from 'react-native-paper'
 import { useIsFocused } from '@react-navigation/core'
+import React, { Fragment, useCallback, useMemo, useState } from 'react'
+import { ScrollView, StyleSheet, View } from 'react-native'
+import { Divider, List, Portal, Text, TextInput } from 'react-native-paper'
+import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import { MainStackParamList } from '../Main'
-import theme from '../lib/theme'
-import { useSecretSelector } from '../hooks/use-secret-selector'
+import { ThemedButton } from '../components/ThemedButton'
 import { Typography } from '../components/Typography'
+import { useSecretSelector } from '../hooks/use-secret-selector'
+import theme from '../lib/theme'
 
 const styles = StyleSheet.create({
   container: {
@@ -57,7 +58,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 0,
   },
   fab: {
-    backgroundColor: theme.colors.primary,
     position: 'absolute',
     margin: theme.spacing(3),
     bottom: 0,
@@ -167,14 +167,15 @@ export const TokensListScreen = ({ route, navigation }: Props) => {
         )}
       </View>
       <Portal>
-        <FAB
-          visible={shouldShowFab}
-          label="Create Token"
-          icon="plus"
-          small
-          style={styles.fab}
-          onPress={handleCreateToken}
-        />
+        {shouldShowFab && (
+          <ThemedButton
+            icon="plus"
+            style={styles.fab}
+            onPress={handleCreateToken}
+          >
+            Create token
+          </ThemedButton>
+        )}
       </Portal>
     </>
   )

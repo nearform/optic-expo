@@ -100,6 +100,7 @@ const typography: Record<TypographyVariant, TextStyle> = {
 
 interface CustomTheme {
   colors: {
+    secondary: string
     textSecondary: string
   }
   typography: Record<TypographyVariant, TextStyle>
@@ -116,9 +117,11 @@ const theme = {
   colors: {
     ...PaperDefaultTheme.colors,
     ...NavigationDefaultTheme.colors,
-    primary: '#2165E3',
-    text: '#6D6D68',
-    textSecondary: 'rgba(0, 0, 0, 0.6)',
+    primary: '#000E38',
+    secondary: '#00E5A4',
+    accent: '#166BFF',
+    text: '#000E38',
+    textSecondary: '#454551',
   },
   typography,
   spacing: (mul: number) => mul * 8,

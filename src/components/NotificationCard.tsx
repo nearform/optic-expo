@@ -1,22 +1,23 @@
-import React, { useCallback, useMemo, useState } from 'react'
-import TimeAgo from 'react-timeago'
 import * as LocalAuthentication from 'expo-local-authentication'
+import React, { useCallback, useMemo, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Avatar, Button, Card, Text } from 'react-native-paper'
+import { Avatar, Card, Text } from 'react-native-paper'
+import TimeAgo from 'react-timeago'
 
-import apiFactory from '../lib/api'
-import theme from '../lib/theme'
 import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
-import { OpticNotification } from '../types'
 import { useAuth } from '../context/AuthContext'
-import { useCanUseLocalAuth } from '../hooks/use-can-use-local-auth'
 import { usePendingNotifications } from '../context/PendingNotificationsContext'
 import { usePrefs } from '../context/PrefsContext'
+import { useCanUseLocalAuth } from '../hooks/use-can-use-local-auth'
 import { useSecretSelector } from '../hooks/use-secret-selector'
 import { useTokenDataSelector } from '../hooks/use-token-data-selector'
+import apiFactory from '../lib/api'
+import theme from '../lib/theme'
+import { OpticNotification } from '../types'
 
-import { Typography } from './Typography'
 import { PackageInfo } from './PackageInfo'
+import { ThemedButton } from './ThemedButton'
+import { Typography } from './Typography'
 
 const OTP_REQUEST_TIMEOUT = 60001 // See https://github.com/nearform/optic/blob/master/server/lib/routes/otp.js#L5
 
@@ -166,29 +167,29 @@ export const NotificationCard: React.FC<NotificationCardProps> = ({
             </View>
             <View style={{ ...styles.cardRow, flexDirection: 'row' }}>
               {expired ? (
-                <Button
+                <ThemedButton
                   style={styles.button}
-                  mode="outlined"
+                  variant="secondary"
                   onPress={handleDismiss}
                 >
                   Dismiss
-                </Button>
+                </ThemedButton>
               ) : (
                 <>
-                  <Button
+                  <ThemedButton
                     style={styles.leftButton}
-                    mode="outlined"
+                    variant="secondary"
                     onPress={handleReject}
                   >
                     Reject
-                  </Button>
-                  <Button
+                  </ThemedButton>
+                  <ThemedButton
                     style={styles.rightButton}
-                    mode="contained"
+                    variant="primary"
                     onPress={handleApprove}
                   >
                     Approve
-                  </Button>
+                  </ThemedButton>
                 </>
               )}
             </View>

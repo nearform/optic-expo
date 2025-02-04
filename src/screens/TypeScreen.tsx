@@ -1,13 +1,14 @@
+import { StackNavigationProp } from '@react-navigation/stack'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { TextInput, Button } from 'react-native-paper'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { TextInput } from 'react-native-paper'
 
-import theme from '../lib/theme'
+import { ThemedButton } from '../components/ThemedButton'
+import { Typography } from '../components/Typography'
 import { useAuth } from '../context/AuthContext'
 import { useSecrets } from '../context/SecretsContext'
+import theme from '../lib/theme'
 import { MainStackParamList } from '../Main'
-import { Typography } from '../components/Typography'
 
 const RFC4648_REGEX = /^[ABCDEFGHIJKLMNOPQRSTUVWXYZ234567]*$/
 
@@ -26,7 +27,6 @@ const styles = StyleSheet.create({
   },
   formButton: {
     marginTop: theme.spacing(1),
-    height: 50,
     justifyContent: 'center',
   },
 })
@@ -101,16 +101,15 @@ export const TypeScreen: React.FC<TypeScreenProps> = ({ navigation }) => {
           />
         </View>
 
-        <Button
+        <ThemedButton
           accessibilityLabel="Add secret"
           style={styles.formButton}
           icon="plus"
-          mode="contained"
           onPress={handleAddSecretButtonPress}
           disabled={disabled}
         >
-          Add Secret
-        </Button>
+          Add secret
+        </ThemedButton>
       </View>
     </View>
   )

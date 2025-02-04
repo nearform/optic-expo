@@ -1,22 +1,23 @@
-import { StyleSheet, View } from 'react-native'
-import { NativeStackScreenProps } from 'react-native-screens/native-stack'
-import React, { useCallback, useMemo, useState } from 'react'
-import { Avatar, Button } from 'react-native-paper'
-import Toast from 'react-native-root-toast'
 import * as LocalAuthentication from 'expo-local-authentication'
+import React, { useCallback, useMemo, useState } from 'react'
+import { StyleSheet, View } from 'react-native'
+import { Avatar } from 'react-native-paper'
+import Toast from 'react-native-root-toast'
+import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
-import theme from '../lib/theme'
-import { MainStackParamList } from '../Main'
-import { usePendingNotifications } from '../context/PendingNotificationsContext'
-import { useAuth } from '../context/AuthContext'
-import apiFactory from '../lib/api'
-import { Typography } from '../components/Typography'
-import { useTokenDataSelector } from '../hooks/use-token-data-selector'
-import { useSecretSelector } from '../hooks/use-secret-selector'
 import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
+import { PackageInfo } from '../components/PackageInfo'
+import { ThemedButton } from '../components/ThemedButton'
+import { Typography } from '../components/Typography'
+import { useAuth } from '../context/AuthContext'
+import { usePendingNotifications } from '../context/PendingNotificationsContext'
 import { usePrefs } from '../context/PrefsContext'
 import { useCanUseLocalAuth } from '../hooks/use-can-use-local-auth'
-import { PackageInfo } from '../components/PackageInfo'
+import { useSecretSelector } from '../hooks/use-secret-selector'
+import { useTokenDataSelector } from '../hooks/use-token-data-selector'
+import apiFactory from '../lib/api'
+import theme from '../lib/theme'
+import { MainStackParamList } from '../Main'
 
 const styles = StyleSheet.create({
   container: {
@@ -137,16 +138,20 @@ export const OtpRequestScreen = ({ route, navigation }: Props) => {
         </View>
         {packageInfo && <PackageInfo packageInfo={packageInfo} />}
         <View>
-          <Button style={styles.button} mode="outlined" onPress={handleReject}>
-            Reject
-          </Button>
-          <Button
+          <ThemedButton
+            variant="secondary"
             style={styles.button}
-            mode="contained"
+            onPress={handleReject}
+          >
+            Reject
+          </ThemedButton>
+          <ThemedButton
+            variant="primary"
+            style={styles.button}
             onPress={handleApprove}
           >
             Approve
-          </Button>
+          </ThemedButton>
         </View>
       </View>
       {isLoading && <LoadingSpinnerOverlay />}

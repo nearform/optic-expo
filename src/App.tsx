@@ -22,7 +22,7 @@ export default function App() {
               <InitialLoadingProvider>
                 <PaperProvider theme={theme}>
                   <Main />
-                  <StatusBar style="auto" />
+                  <StatusBar style="light" />
                 </PaperProvider>
               </InitialLoadingProvider>
             </PendingNotificationsProvider>

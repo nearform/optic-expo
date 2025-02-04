@@ -5,7 +5,14 @@ import { FAB } from 'react-native-paper'
 import theme from '../lib/theme'
 
 const styles = StyleSheet.create({
-  primaryButton: {
+  fab: {
+    backgroundColor: theme.colors.secondary,
+  },
+  fabLabel: {
+    color: theme.colors.surface,
+    fontSize: theme.typography.caption.fontSize,
+  },
+  fabLabelContainer: {
     backgroundColor: theme.colors.primary,
   },
 })
@@ -31,16 +38,23 @@ export const Actions: React.FC<ActionsProps> = ({
       open={open}
       accessibilityLabel="show-actions"
       icon={open ? 'close' : 'plus'}
-      fabStyle={styles.primaryButton}
+      color={theme.colors.primary}
+      fabStyle={styles.fab}
       actions={[
         {
           icon: 'qrcode',
           label: 'Scan QR Code',
+          labelStyle: styles.fabLabel,
+          containerStyle: styles.fabLabelContainer,
+          color: theme.colors.primary,
           onPress: onScan,
         },
         {
           icon: 'pencil',
           label: 'Add details manually',
+          color: theme.colors.primary,
+          labelStyle: styles.fabLabel,
+          containerStyle: styles.fabLabelContainer,
           onPress: onType,
         },
       ]}

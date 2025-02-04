@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
-import { Button, Divider } from 'react-native-paper'
 import React from 'react'
+import { StyleSheet, View } from 'react-native'
+import { Button, Divider } from 'react-native-paper'
 
 import theme from '../../lib/theme'
 import { Typography } from '../Typography'
@@ -18,10 +18,6 @@ const styles = StyleSheet.create({
     marginRight: theme.spacing(1),
     paddingBottom: theme.spacing(0.5),
     fontSize: 10,
-  },
-  seeTokensText: {
-    color: theme.colors.primary,
-    fontWeight: 'bold',
   },
   divider: {
     marginBottom: theme.spacing(1),
@@ -45,11 +41,12 @@ export const TokensInfo = ({ count, onPress }: Props) => {
         </View>
         <View>
           <Button
-            icon="chevron-right"
             onPress={onPress}
             contentStyle={{ flexDirection: 'row-reverse' }}
+            labelStyle={{ textDecorationLine: 'underline' }}
+            uppercase={false}
           >
-            <Text style={styles.seeTokensText}>SEE TOKENS</Text>
+            See tokens
           </Button>
         </View>
       </View>

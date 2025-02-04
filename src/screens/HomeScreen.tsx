@@ -55,12 +55,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
   const api = useMemo(() => apiFactory({ idToken: user.idToken }), [user])
 
-  const handleAddToken = (secret: Secret) => {
-    navigation.navigate('CreateToken', {
-      secretId: secret._id,
-    })
-  }
-
   const handleViewTokens = useCallback(
     (secret: Secret) => {
       navigation.navigate('TokensList', {
@@ -176,7 +170,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
             <SecretCard
               key={secret._id}
               data={secret}
-              onAddToken={() => handleAddToken(secret)}
               onDelete={handleDeleteSecret}
               onViewTokens={() => handleViewTokens(secret)}
             />

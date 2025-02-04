@@ -1,20 +1,21 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { Alert, StyleSheet, View } from 'react-native'
-import { Button, ProgressBar, TextInput } from 'react-native-paper'
-import { NativeStackScreenProps } from 'react-native-screens/native-stack'
+import { ProgressBar, TextInput } from 'react-native-paper'
 import Toast from 'react-native-root-toast'
+import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
+import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
+import { CopyableInfo } from '../components/SecretCard/CopyableInfo'
+import { ThemedButton } from '../components/ThemedButton'
+import { Typography } from '../components/Typography'
 import { useAuth } from '../context/AuthContext'
-import apiFactory from '../lib/api'
 import { useSecrets } from '../context/SecretsContext'
 import usePushToken from '../hooks/use-push-token'
-import { MainStackParamList } from '../Main'
-import theme from '../lib/theme'
-import { Typography } from '../components/Typography'
-import { CopyableInfo } from '../components/SecretCard/CopyableInfo'
 import { useSecretSelector } from '../hooks/use-secret-selector'
 import { useTokenDataSelector } from '../hooks/use-token-data-selector'
-import { LoadingSpinnerOverlay } from '../components/LoadingSpinnerOverlay'
+import apiFactory from '../lib/api'
+import theme from '../lib/theme'
+import { MainStackParamList } from '../Main'
 
 const SAVE_UPDATED_DESCRIPTION_DELAY = 1000
 
@@ -222,27 +223,26 @@ export const TokenScreen = ({ route, navigation }: Props) => {
           />
         </View>
         <View style={styles.refresh}>
-          <Button
+          <ThemedButton
             style={styles.refreshButton}
             icon="refresh"
-            mode="contained"
             onPress={() => showRefreshConfirmAlert(handleRefreshToken)}
           >
-            REFRESH TOKEN
-          </Button>
+            Refresh
+          </ThemedButton>
           <Typography variant="body2">
             If you renew the token, you’ll need to update it where you’re using
             it to request OTP from command-line.
           </Typography>
         </View>
         <View>
-          <Button
+          <ThemedButton
             icon="delete-forever"
-            mode="outlined"
+            variant="secondary"
             onPress={() => showRevokeConfirmAlert(handleRevokeToken)}
           >
-            REVOKE TOKEN
-          </Button>
+            Revoke token
+          </ThemedButton>
         </View>
       </View>
       {isRefreshing && (

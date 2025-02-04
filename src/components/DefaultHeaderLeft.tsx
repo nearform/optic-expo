@@ -5,5 +5,7 @@ import type { StackHeaderLeftProps } from '@react-navigation/stack/lib/typescrip
 import theme from '../lib/theme'
 
 export default function DefaultHeaderLeft(props: StackHeaderLeftProps) {
-  return <IconButton {...props} iconColor={theme.colors.surface} icon="close" />
+  return (
+    <IconButton {...props} iconColor={theme.colors.secondary} icon="close" />
+  )
 }

@@ -71,20 +71,18 @@ const styles = StyleSheet.create({
 })
 
 const BUTTON_LABELS = {
-  showSecret: 'SECRET',
-  addToken: 'Add Token',
+  showSecret: 'Secret',
+  addToken: 'Add token',
 }
 
 type SecretProps = {
   data: Secret
-  onAddToken: () => void
   onViewTokens: () => void
   onDelete: (_: Secret) => Promise<boolean>
 }
 
 export const SecretCard: React.FC<SecretProps> = ({
   data,
-  onAddToken,
   onViewTokens,
   onDelete,
 }) => {
@@ -159,6 +157,8 @@ export const SecretCard: React.FC<SecretProps> = ({
               <Button
                 compact
                 onPress={handleToggleExpand}
+                uppercase={false}
+                textColor={theme.colors.accent}
                 icon={expanded ? 'eye-off' : 'eye'}
               >
                 {BUTTON_LABELS.showSecret}
@@ -166,15 +166,11 @@ export const SecretCard: React.FC<SecretProps> = ({
             )}
           </View>
           <View style={styles.rightActions}>
-            {deleteInProgress ? (
+            {deleteInProgress && (
               <ActivityIndicator
                 style={styles.deleteActivity}
                 color={theme.colors.error}
               />
-            ) : (
-              <Button onPress={onAddToken} mode="contained" icon="plus">
-                {BUTTON_LABELS.addToken}
-              </Button>
             )}
           </View>
         </View>
