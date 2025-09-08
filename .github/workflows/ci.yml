@@ -22,7 +22,7 @@ jobs:
 
       - name: Check if it is a dependency that should be managed by Expo
         if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const script = require(`./scripts/check-expo-dependencies.js`);
